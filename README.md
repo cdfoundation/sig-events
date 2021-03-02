@@ -2,4 +2,4 @@
 CDF Events Special Interest Group
 
 # Participants
-- Mauricio Salatino
+- [Salaboy](http://github.com/salaboy) Mauricio Salatino, [Camunda](http://camunda.com) / [LearnK8s](http://learnk8s.io)
