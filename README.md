@@ -63,7 +63,7 @@ Current members:
 - Steve Taylor [@sbtaylor15](https://github.com/sbtaylor15), [DeployHub](https://www.deployhub.com) / [Ortelius OS](https://ortelius.io)
 - Tracy Ragan [@tracyragan](https://github.com/tracyragan), [DeployHub](https://www.deployhub.com) / [Ortelius OS](https://ortelius.io)
 - Erik Sternerson [@erkist](https://github.com/erkist), doWhile
-- Cameron Motevasselani ([@link108](https://github.com/link108)), Armory
+- Cameron Motevasselani ([@link108](https://github.com/link108)), [Armory](https://www.armory.io/)
 
 ## New Members
 
