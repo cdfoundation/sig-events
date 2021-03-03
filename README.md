@@ -103,7 +103,7 @@ Chairs and the TOC Sponsor of the SIG are
 
 ## Meetings
 
-SIG Events meets every even week on Mondays at 16:00UTC. (*See your timezone [here](https://time.is/1600_in_UTC)*).
+SIG Events meets the 1st and 3rd Mondays of every month at 16:00UTC. (*See your timezone [here](https://time.is/1600_in_UTC)*).
 
 - [Meeting agenda and minutes](./docs/meetings.md).
 - [Zoom Bridge](https://zoom.us/j/97660712600?pwd=Z3BqYTE5YzNsbEhmck16cjdZNEFIUT09).
