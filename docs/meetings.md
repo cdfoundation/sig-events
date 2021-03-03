@@ -2,7 +2,7 @@
 
 <!-- Link TBD [![hackmd-github-sync-badge](https://hackmd.io/QijjoIAiSeCNhaLpXhr05w/badge)](https://hackmd.io/QijjoIAiSeCNhaLpXhr05w) -->
 
-This SIG meets every other Monday at 16.00 UTC (See your timezone [here](https://time.is/1600_in_UTC)). The meeting can be accessed through this zoom link: (https://zoom.us/j/97660712600?pwd=Z3BqYTE5YzNsbEhmck16cjdZNEFIUT09)[https://zoom.us/j/97660712600?pwd=Z3BqYTE5YzNsbEhmck16cjdZNEFIUT09].
+This SIG meets the 1st and 3rd Mondays of every month at 16.00 UTC (See your timezone [here](https://time.is/1600_in_UTC)). The meeting can be accessed through this zoom link: (https://zoom.us/j/97660712600?pwd=Z3BqYTE5YzNsbEhmck16cjdZNEFIUT09)[https://zoom.us/j/97660712600?pwd=Z3BqYTE5YzNsbEhmck16cjdZNEFIUT09].
 
 Meeting notes for the SIG are managed on [HackMD - TBD](https://hackmd.io) and published to [GitHub](https://github.com/cdfoundation/sig-events/blob/master/docs/meetings.md).
 
