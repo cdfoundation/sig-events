@@ -40,7 +40,7 @@ The group aims to provide reference implementations such as event listeners and 
 
 This is group started as a work-stream within the CDF SIG Interoperability.
 
-The forming of the workstream was suggested on a [recent SIG Interoperability meeting]( https://github.com/cdfoundation/sig-interoperability/blob/master/docs/meetings.md#may-28-2020) and its first meeting was held on June 8th 2020.
+The forming of the workstream was suggested on a [SIG Interoperability meeting](https://github.com/cdfoundation/sig-interoperability/blob/master/docs/meetings_2020.md#May-28-2020) and its first meeting was held on June 8th 2020.
 
 The SIG was formed in February 2021.
 
