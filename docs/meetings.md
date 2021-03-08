@@ -1,13 +1,12 @@
-# Events in CICD Workstream Meeting Notes
+# Events SIG Meeting Notes
 
 [![hackmd-github-sync-badge](https://hackmd.io/QijjoIAiSeCNhaLpXhr05w/badge)](https://hackmd.io/QijjoIAiSeCNhaLpXhr05w)
 
-
-This workstream meet every second Monday at 16.00 UTC  (See your timezone [here](https://time.is/1600_in_UTC)). The meeting can be accessed through this zoom link: https://zoom.us/j/97660712600?pwd=Z3BqYTE5YzNsbEhmck16cjdZNEFIUT09
+This SIG meets the 1st and 3rd Mondays of every month at 16.00 UTC (See your timezone [here](https://time.is/1600_in_UTC)). The meeting can be accessed through [this zoom link](https://zoom.us/j/97660712600?pwd=Z3BqYTE5YzNsbEhmck16cjdZNEFIUT09).
 
 The forming of this workstream was suggested on a [recent SIG Interoperability meeting]( https://github.com/cdfoundation/sig-interoperability/blob/master/docs/meetings.md#may-28-2020) and its first meeting was held on June 8th.
 
-Meeting notes for the workstream are managed on HackMD [here](https://hackmd.io/QijjoIAiSeCNhaLpXhr05w), and published to GitHub [here](https://github.com/cdfoundation/sig-interoperability/blob/master/workstreams/events_in_cicd/meetings.md).
+Meeting notes for the workstream are managed on HackMD [here](https://hackmd.io/xjK5ujQbTHSaEZjoY28b8g), and published to GitHub [here](https://github.com/cdfoundation/sig-interoperability/blob/master/workstreams/events_in_cicd/meetings.md).
 
 ## Meeting March 1st
 Meeeting time in your timezone [here](https://time.is/1600_1_March_2021_in_UTC). You're welcome to join!
