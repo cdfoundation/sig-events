@@ -1,6 +1,6 @@
 # Events SIG Meeting Notes
 
-[![hackmd-github-sync-badge](https://hackmd.io/QijjoIAiSeCNhaLpXhr05w/badge)](https://hackmd.io/QijjoIAiSeCNhaLpXhr05w)
+[![hackmd-github-sync-badge](https://hackmd.io/xjK5ujQbTHSaEZjoY28b8g/badge)](https://hackmd.io/xjK5ujQbTHSaEZjoY28b8g)
 
 This SIG meets the 1st and 3rd Mondays of every month at 16.00 UTC (See your timezone [here](https://time.is/1600_in_UTC)). The meeting can be accessed through [this zoom link](https://zoom.us/j/97660712600?pwd=Z3BqYTE5YzNsbEhmck16cjdZNEFIUT09).
 
