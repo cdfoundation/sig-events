@@ -11,11 +11,14 @@ These events are related to Source Code repositories
 - **Repository Deleted Event**: a Source Code Repository was deleted and it is not longer available
 - **Branch Created Event**: a Branch inside the Repository was created 
 - **Branch Deleted Event**: a Branch inside the Repository was deleted
-- **Change Committed**: a change is commited to a branch
-- **Change Approved**: a change request is created by a user, that requires review and approval before being applied to an existing branch inside the repository
-- **Change Rejected**: a change was reviewed and rejected by a user
-- **Change Merged**: a change request has been merged to a branch in an existing repository
 
+From each repository you can emit events related with proposed source code changes. Each change can include a single or multiple commits that can also be tracked. 
+
+- **Change Submitted Event**: a source code change was created and submitted to a repository specific branch. Examples: PullRequest sent to Github, MergeRequest sent to Gitlab, Change created in Gerrit
+- **Change Approved Event**:  someone (user) or an automated system submitted an approval to the source code change. A user or an automated system needs to be in charge of understanding how many approvals are needed for this change to be merged.    
+- **Change Merged Event**: the change is merged to the target branch where it was submitted. 
+- **Change Abandoned Event**: a tool or a user decides that the change has been inactive for a while and it can be considered abandoned.
+- **Commit Added**: a new commit is added to an existing Change
 
 Repository Events MUST include the following attributes:
 - **Event Type**: the type is restricted to include `CD.Repository**` prefix. For example `CD.Repository.Created` or `CD.Repository.ChangeApproved`
@@ -24,4 +27,4 @@ Repository Events MUST include the following attributes:
 
 Optional attributes: 
 - **Repository Owner**: indicates who is the owner of the repository, usually a `user` or an `organization`
-- **Repository URL View**: URL to access the repository from a user web browser
+- **Repository View URL**: URL to access the repository from a user web browser
