@@ -29,7 +29,7 @@ From each repository you can emit events related with proposed source code chang
 - **Change Approved Event**:  someone (user) or an automated system submitted an approval to the source code change. A user or an automated system needs to be in charge of understanding how many approvals are needed for this change to be merged.    
 - **Change Merged Event**: the change is merged to the target branch where it was submitted. 
 - **Change Abandoned Event**: a tool or a user decides that the change has been inactive for a while and it can be considered abandoned.
-- **Commit Added**: a new commit is added to an existing Change
+- **Change Updated**: the Change has been updated, for example a new commit is added or removed from an existing Change
 
 
 Optional attributes for **Change** Events: 
