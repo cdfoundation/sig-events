@@ -14,9 +14,9 @@ The following Test events are defined in two separate categories **Test Case** a
 
 - **Test Case Queued**: a Test task has been queued, and it is waiting to be started
 - **Test Case Started**: a Test task has started
-- **Test Case Finished**: a Test task has finished, the event will contain the finished status, success, error or failure
-- **Test Suite Started**: a Test task has started
-- **Test Suite Finished**: a Test task has finished, the event will contain the finished status, success, error or failure
+- **Test Case Finished**: a Test task has finished, the event will contain the finished status: success, error or failure
+- **Test Suite Started**: a Test Suite has started
+- **Test Suite Finished**: a Test Suite has finished, the event will contain the finished status: success, error or failure
 
 Finally, events needs to be generated for the output of the pipeline such as the artifacts that were packaged and released for others to use. 
 
