@@ -1,5 +1,7 @@
 # Continuous Integration Events
 
+__Note:__ This is a work-in-progress draft version and is being worked on by members of the Events SIG. You are very welcome to join the work and the discussions!
+
 These events are related to **Continuous Integration(CI)** activities. CI usually include activities such as building, testing, packaging and releasing software artifacts. 
 
 The following events represent concrete Tasks that are associated with the execution of CI pipelines:
