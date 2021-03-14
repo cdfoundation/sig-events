@@ -1,5 +1,7 @@
 # Continuous Deployment Pipelines Events 
 
+__Note:__ This is a work-in-progress draft version and is being worked on by members of the Events SIG. You are very welcome to join the work and the discussions!
+
 These events are related to continous deployment pipelines and their target environments. 
 These events can be emitted by environments to report where software artifacts such as services, binaries, deamons, jobs or embedded software are running. 
 
