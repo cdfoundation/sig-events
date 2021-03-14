@@ -1,3 +1,7 @@
+# Continuous Delivery Events Vocabulary
+
+__Note:__ This is a work-in-progress draft version and is being worked on by members of the Events SIG. You are very welcome to join the work and the discussions!
+
 This document intends to describe a set of events related to different phases of a Continuous Delivery process. 
 These events are categorized by meaning and the phase where they are intenteded to be used. 
 These events are agnostic from any specific tool and are designed to fit a wide range of scenarios. 
