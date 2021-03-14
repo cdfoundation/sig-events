@@ -1,7 +1,8 @@
 # Source Code Version Control Events
 
-This phase includes events related to changes in Source Code repositories that are relevant from a Continuous Delivery perspective.
+__Note:__ This is a work-in-progress draft version and is being worked on by members of the Events SIG. You are very welcome to join the work and the discussions!
 
+This phase includes events related to changes in Source Code repositories that are relevant from a Continuous Delivery perspective.
 
 ## Repository Events
 
