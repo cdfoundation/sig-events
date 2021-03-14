@@ -26,8 +26,8 @@ Optional attributes:
 
 From each repository you can emit events related with proposed source code changes. Each change can include a single or multiple commits that can also be tracked. 
 
-- **Change Submitted Event**: a source code change was created and submitted to a repository specific branch. Examples: PullRequest sent to Github, MergeRequest sent to Gitlab, Change created in Gerrit
-- **Change Approved Event**:  someone (user) or an automated system submitted an approval to the source code change. A user or an automated system needs to be in charge of understanding how many approvals are needed for this change to be merged.    
+- **Change Created Event**: a source code change was created and submitted to a repository specific branch. Examples: PullRequest sent to Github, MergeRequest sent to Gitlab, Change created in Gerrit
+- **Change Reviewed Event**:  someone (user) or an automated system submitted an review to the source code change. A user or an automated system needs to be in charge of understanding how many approvals/rejections are needed for this change to be merged or rejected. The review event needs to include if the change is approved by the reviewer, more changes are needed or if the change is rejected.     
 - **Change Merged Event**: the change is merged to the target branch where it was submitted. 
 - **Change Abandoned Event**: a tool or a user decides that the change has been inactive for a while and it can be considered abandoned.
 - **Change Updated**: the Change has been updated, for example a new commit is added or removed from an existing Change
