@@ -1,5 +1,7 @@
 # Continuous Delivery
 
+__Note:__ This is a work-in-progress draft version and is being worked on by members of the Events SIG. You are very welcome to join the work and the discussions!
+
 Continuous Delivery related to activities and orchestration that needs to exist to be able to deterministically and continously being able to delivery software to users. 
 
 A pipeline, in the context of Continuous Delivery, is the definition of a set of tasks that needs to be performed to build, test, package, release and deploy software artifacts. A pipeline can be instanciated multiple times, for example to build different versions of the same artifact. We are refering to this instance as PipelineRun. It will have a unique Id and it will help us to track the build and release progress on a particular software artifact. 
