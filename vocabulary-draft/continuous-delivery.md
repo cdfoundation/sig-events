@@ -18,7 +18,7 @@ Each pipeline is defined as a set of Tasks to be performed in sequence, hence tr
 - **TaskRun Finished**: a TaskRun inside a PipelineRun has finished. 
 
 Pipeline Events MUST include the following attributes:
-- **Event Type**: the type is restricted to include `CD.Pipeline**` prefix. For example `CD.Pipeline.PipelineRun.Queued` or `CD.Pipeline.Tests.Started`
+- **Event Type**: the type is restricted to include `cd.pipeline**` prefix. For example `cd.pipeline.pipelinerun.queued` or `cd.pipeline.tests.started`
 - **PipelineRun Id**: unique identifier for a pipeline execution
 - **Pipeline Name**: unique identifier for the pipeline, not for the instance. A pipeline can have multiple instances/runs.  
 - **PipelineRun Status**: current status of the PipelineRun at the time when the event was emitted. If the pipeline is finished, this attribute should reflect if it finished successfully or if there was an error on the execution. Possible statuses: [Running, Finished, Error]
