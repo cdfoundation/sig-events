@@ -16,7 +16,7 @@ The term Environment represent any platform which has all the means to run a Ser
 - **Service Undeployed**: an existing instance of a Service has been terminated an it is not longer present in an environment
 
 Continuous Deployment Events MUST include the following attributes:
-- **Event Type**: the type is restricted to include `CD.Environment**` prefix. For example `CD.Environment.Service.Upgraded` or `CD.Environment.Created`
+- **Event Type**: the type is restricted to include `cd.environment**` prefix. For example `cd.environment.service.upgraded` or `cd.environment.created`
 - **Environment ID**: unique identifier for the Environment
 
 
