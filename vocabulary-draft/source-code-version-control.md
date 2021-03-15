@@ -16,7 +16,7 @@ These events are related to Source Code repositories
 
 
 Repository Events MUST include the following attributes:
-- **Event Type**: the type is restricted to include `CD.Repository**` prefix. For example `CD.Repository.Created` or `CD.Repository.ChangeApproved`
+- **Event Type**: the type is restricted to include `cd.repository**` prefix. For example `cd.repository.created` or `cd.repository.changeapproved`
 - **Repository URL**: indicates the location of the source code repository for API operations, this URL needs to include the protocol used to connect to the repository. For example `git://` , `ssh://`, `https://`
 - **Repository Name**: friendly name to list this repository to users
 
