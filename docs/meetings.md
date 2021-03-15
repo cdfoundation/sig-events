@@ -2,11 +2,90 @@
 
 [![hackmd-github-sync-badge](https://hackmd.io/xjK5ujQbTHSaEZjoY28b8g/badge)](https://hackmd.io/xjK5ujQbTHSaEZjoY28b8g)
 
-This SIG meets the 1st and 3rd Mondays of every month at 16.00 UTC (See your timezone [here](https://time.is/1600_in_UTC)). The meeting can be accessed through [this zoom link](https://zoom.us/j/97660712600?pwd=Z3BqYTE5YzNsbEhmck16cjdZNEFIUT09).
+This SIG meets the 1st and 3rd Mondays of every month at 3pm UTC (during summer time, in winter time it is 4pm UTC). See your timezone [here](https://time.is/3pm_in_UTC). The meeting can be accessed through [this zoom link](https://zoom.us/j/97660712600?pwd=Z3BqYTE5YzNsbEhmck16cjdZNEFIUT09).
 
 The forming of this workstream was suggested on a [recent SIG Interoperability meeting]( https://github.com/cdfoundation/sig-interoperability/blob/master/docs/meetings.md#may-28-2020) and its first meeting was held on June 8th.
 
 Meeting notes for the workstream are managed on HackMD [here](https://hackmd.io/xjK5ujQbTHSaEZjoY28b8g), and published to GitHub [here](https://github.com/cdfoundation/sig-interoperability/blob/master/workstreams/events_in_cicd/meetings.md).
+
+
+## Meeting April 5th
+Meeeting time in your timezone [here](https://time.is/3pm_5_April_2021_in_UTC). You're welcome to join!
+
+Participants:
+- \<add yourself\>
+
+### Agenda and Notes
+\<To be added\>
+
+
+## Meeting March 15th
+Meeeting time in your timezone [here](https://time.is/1600_15_March_2021_in_UTC). You're welcome to join!
+
+Participants:
+- Steve Taylor (DeployHub/Ortelius)
+- Tracy Ragan (DeployHub/Ortlius)
+- Mattias LInnér (Ericsson)
+- Mauricio Salatino (Camunda/LearnK8s)
+- Andreas Grimmer (Keptn/Dynatrace)
+- Fredrik Fristedt (Axis Communications)
+- Ravi Lachhman (Harness)
+- Erik Sternerson (doWhile)
+- Emil Bäckmark (Ericsson)
+- Tracy Miranda (CDF)
+
+### Agenda and Notes
+
+- APs
+
+- SIG setup - Emil/Andrea
+  - Recordings uploaded to Youtube, since November 2020, Ok?
+      - That's ok with us :)
+  - New HackMD team
+  - GitHub repo
+  - GitHub discussions
+  - [Slack](https://cdeliveryfdn.slack.com/archives/C0151BTKEJX)
+  - [CDF announcement for the SIG](https://docs.google.com/document/d/1-dITtHInAnwpdoYo2_idQP2IG1CvNI6whqSzE8VckZk/edit#heading=h.hgckty8ur8h9)
+  - [CDF podcast presenting our SIG](https://cdeliveryfdn.buzzsprout.com/1008697/8123014-cdf-special-interest-group-events)
+
+- Feedback from Vocabulary meeting - Mauricio
+  - Proposal to Aligning terms with CNCF audience, even if that is not our full scope, for the first revisions I think that it will help us to focus
+  - Perhaps focus on one use case at a time? (But make sure "not to close the door" for later use cases)
+      - 1: Cloud service development and deployment
+      - 2: Embedded / high-complexity product delivery
+      - 3: ...?
+  - We intend to merge the pull requests in there in a week or so. But it will be very preliminary, and the definitions will be up for changes as the discussions go on.
+
+- What should our SIG meetings focus on as we now have complementing vocabulary meetings? - All
+    - Presentations?
+    - Blog posts and similar?
+    - Recurring feedback from workgroups (e.g. Vocabulary workgroup)
+    - Upcoming Conferences
+
+- Daylight savings time and frequency - Emil/Andrea
+    - What is [your time](https://time.is/1600_5_April_2021_in_UTC) on Monday in ***three*** weeks? Could we have it one hour earlier ([3pm UTC](https://time.is/3pm_5_April_2021_in_UTC)) instead?
+    - Decided to go for 3pm UTC from next meeting on.
+
+- Current status of [PRs in sig-events](https://github.com/cdfoundation/sig-events/pulls)
+    - And [one in TOC repo](https://github.com/cdfoundation/toc/pull/92)
+
+- Upcoming Presentations
+    - [Events Vocabulary](https://hackmd.io/B-Z7mLh_Qc6frm51f3GIYA?view)
+        - We should wait for the current PRs to be merged before we present this, and base this presentation on those pull requests mainly. Add some info from the old vocabulary document if any.
+    - [CD Flow](https://github.com/salaboy/cd-flow/) - date to be decided
+    - Eiffel Protocol - with focus on linked/referenced events?
+        - Mattias could have that presentation, but not on next meeting. In 5 weeks probably.
+
+
+- \<add your agenda point\>
+
+### Action Points
+- ~~Emil/Andrea: Set up new repo, Slack, HackMD, etc for our SIG~~
+- ~~Mauricio: Set up a meeting series for vocabulary discussions~~
+- Emil: Reach out to Dan L to check if CDF defines what licenses to use.
+    - Dan wasn't aware of that, but we're welcome to bring this to TOC meeting
+    - Steve will bring it to TOC meeting tomorrow (March 16th)
+
 
 ## Meeting March 1st
 Meeeting time in your timezone [here](https://time.is/1600_1_March_2021_in_UTC). You're welcome to join!
