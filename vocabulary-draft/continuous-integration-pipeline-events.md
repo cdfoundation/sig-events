@@ -25,4 +25,6 @@ Finally, events needs to be generated for the output of the pipeline such as the
 
 CI Events MUST include the following attributes:
  - **Event Type**: the type is restricted to include `cd.ci.**` prefix. For example `cd.ci.build.queued` or `cd.ci.artifact.packaged`
+
+Optional attributes: 
  - **Artifact Id**: the unique identifier of the artifact that the event is refering to. 
