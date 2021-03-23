@@ -13,6 +13,7 @@ The term Environment represent any platform which has all the means to run a Ser
 - **Environment Deleted**: an environment has been deleted and cannot longer be used
 - **Service Deployed**: a new instance of the Service has been deployed
 - **Service Upgraded**: an existing instance of a Service has been upgraded to a new version
+- **Service Rolledback**: an existing instance of a Service has been rolledback to a previous version
 - **Service Removed**: an existing instance of a Service has been terminated an it is not longer present in an environment
 
 Continuous Deployment Events MUST include the following attributes:
