@@ -21,7 +21,7 @@ The following Test events are defined in two separate categories **Test Case** a
 Finally, events needs to be generated for the output of the pipeline such as the artifacts that were packaged and released for others to use. 
 
 - **Artifact Packaged**: an artifact has been packaged for distribution, this artifact is now versioned with a fixed version
-- **Artifact Released**: an artifact has been released and it can be advertised for others to use
+- **Artifact Published**: an artifact has been published and it can be advertised for others to use
 
 CI Events MUST include the following attributes:
  - **Event Type**: the type is restricted to include `cd.ci.**` prefix. For example `cd.ci.build.queued` or `cd.ci.artifact.packaged`
