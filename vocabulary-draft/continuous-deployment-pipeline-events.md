@@ -13,7 +13,7 @@ The term Environment represent any platform which has all the means to run a Ser
 - **Environment Deleted**: an environment has been deleted and cannot longer be used
 - **Service Deployed**: a new instance of the Service has been deployed
 - **Service Upgraded**: an existing instance of a Service has been upgraded to a new version
-- **Service Undeployed**: an existing instance of a Service has been terminated an it is not longer present in an environment
+- **Service Removed**: an existing instance of a Service has been terminated an it is not longer present in an environment
 
 Continuous Deployment Events MUST include the following attributes:
 - **Event Type**: the type is restricted to include `cd.environment**` prefix. For example `cd.environment.service.upgraded` or `cd.environment.created`
