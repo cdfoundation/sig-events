@@ -65,6 +65,7 @@ Current members:
 - Erik Sternerson [@erkist](https://github.com/erkist), doWhile
 - Cameron Motevasselani ([@link108](https://github.com/link108)), [Armory](https://www.armory.io/)
 - Alois Reitbauer ([@aloisreitbauer](https://github.com/aloisreitbauer)), [Dynatrace](https://www.dynatrace.com/)
+- Fredrik Fristedt [@fredjn](https://github.com/fredjn), Axis Communications
 
 ## New Members
 
@@ -74,7 +75,7 @@ New members are advised to:
 
 - Join the [SIG](https://lists.cd.foundation/g/sig-events) and
 [CDF TOC](https://lists.cd.foundation/g/cdf-toc) mailing lists.
-- Join the [#sig-events channel on CDF Slack](https://cdeliveryfdn.slack.com/archives/C0151BTKEJX) and introduce yourself.
+- Join the [CDF Slack](https://join.slack.com/t/cdeliveryfdn/shared_invite/zt-ao8y4qhd-BQcTUg5l7m0HxXyBvJrT4w%20) and jump into the [#sig-events channel](https://cdeliveryfdn.slack.com/archives/C0151BTKEJX) and introduce yourself.
 - Go through the [README.md](README.md) document.
 - Regularly join the SIG meetings.
 - Submit a PR to add yourself to the [members list](#members).
