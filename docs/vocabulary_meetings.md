@@ -1,12 +1,12 @@
 # Vocabulary Discussion Meeting Notes
 
-[![hackmd-github-sync-badge](https://hackmd.io/xjK5ujQbTHSaEZjoY28b8g/badge)](https://hackmd.io/xjK5ujQbTHSaEZjoY28b8g)
+[![hackmd-github-sync-badge](https://hackmd.io/2FRGlw9fTMmKN1OQUVvguA/badge)](https://hackmd.io/2FRGlw9fTMmKN1OQUVvguA)
 
 This document contains the notes from the of the Events SIG meetings focused on [vocabulary discussion](https://hackmd.io/lBlDCrL7TvmtNOjxdopJ5g).
 
 
 ## Meeting March 23rd
-Meeeting time in your timezone [here](https://time.is/4pm_24_March_2021_in_UTC). You're welcome to join!
+Meeeting time [in your timezone](https://time.is/4pm_24_March_2021_in_UTC). You're welcome to join!
 
 Participants:
 - Mauricio Salatino (Camunda/LearnK8s)
