@@ -9,14 +9,18 @@ The forming of this workstream was suggested on a [recent SIG Interoperability m
 Meeting notes for the workstream are managed on HackMD [here](https://hackmd.io/xjK5ujQbTHSaEZjoY28b8g), and published to GitHub [here](https://github.com/cdfoundation/sig-interoperability/blob/master/workstreams/events_in_cicd/meetings.md).
 
 
-## Meeting April 5th
-Meeeting time in your timezone [here](https://time.is/3pm_5_April_2021_in_UTC). You're welcome to join!
+## Meeting April 19th
+Meeeting time in your timezone [here](https://time.is/3pm_19_April_2021_in_UTC). You're welcome to join!
 
 Participants:
 - \<add yourself\>
 
 ### Agenda and Notes
 \<To be added\>
+
+
+## Meeting April 5th
+***Meeting cancelled due to bank holiday in several countries***
 
 
 ## Meeting March 15th
