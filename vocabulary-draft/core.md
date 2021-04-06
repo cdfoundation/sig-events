@@ -1,4 +1,4 @@
-# Continuous Delivery
+# Continuous Delivery Core Events
 
 __Note:__ This is a work-in-progress draft version and is being worked on by members of the Events SIG. You are very welcome to join the work and the discussions!
 
