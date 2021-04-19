@@ -4,9 +4,20 @@
 
 This document contains the notes from the of the Events SIG meetings focused on [vocabulary discussion](https://hackmd.io/lBlDCrL7TvmtNOjxdopJ5g).
 
+## Meeting April 6
+
+Check-in, mostly. No new actions?
+
+Participants:
+- Mauricio Salatino (Camunda/LearnK8s)
+- Emil Bäckmark (Ericsson)
+- Erik Sternerson (doWhile)
+- Alois Reitbauer (Dynatrace)
+- Gopinath Rebala
+
 
 ## Meeting March 23rd
-Meeeting time [in your timezone](https://time.is/4pm_24_March_2021_in_UTC). You're welcome to join!
+Meeting time [in your timezone](https://time.is/4pm_24_March_2021_in_UTC). You're welcome to join!
 
 Participants:
 - Mauricio Salatino (Camunda/LearnK8s)
@@ -36,21 +47,25 @@ dedicated GitHub discussions, each with a dedicated owner.
 
 GitHub discussions (tick once created):
 
-- [ ] (Andrea) Buckets (or phases) of events
-- [ ] (Tracy) GitOps specific events
+- [x] (Andrea) Buckets (or phases) of events [Discussion](https://github.com/cdfoundation/sig-events/discussions/44)
+- [x] (Tracy) GitOps specific events - [Discussion](https://github.com/cdfoundation/sig-events/discussions/30)
 - [ ] (Mattias) 4keys specific events / mappings
-- [ ] (Erik) What is a "change", granularity of events (PR, commit)
-- [ ] (Steve) DevSecOps specific events and bucket
+- [x] (Erik) What is a "change", granularity of events (PR, commit) - [Discussion](https://github.com/cdfoundation/sig-events/discussions/34)
+- [x] (Steve) DevSecOps specific events and bucket - [Discussion](https://github.com/cdfoundation/sig-events/discussions/26)
 - [ ] (Tracy) Continuous Tests as its own bucket
 - [ ] (Alois) Deployments and versions (e.g. blue/green)
-- [ ] (Steve) Environments
-- [ ] (Andrea)Lightweigth vs. heavyweigth events (artifacts, logs)
-- [ ] (Erik) New [CD Bucket events](https://github.com/cdfoundation/sig-events/pull/23)
-- [ ] (Mauricio) Core / base / orchestration events
+- [x] (Steve) Environments - [Discussion](https://github.com/cdfoundation/sig-events/discussions/28)
+- [x] (Andrea) Lightweigth vs. heavyweigth events (artifacts, logs) - [Discussion](https://github.com/cdfoundation/sig-events/discussions/47)
+- [x] (Erik) New [CD Bucket events](https://github.com/cdfoundation/sig-events/pull/23)
+  - [Artifact / Component discussion](https://github.com/cdfoundation/sig-events/discussions/24)
+  - [Product Compositions discussion](https://github.com/cdfoundation/sig-events/discussions/35)
+  - [Confidence Labels discussion](https://github.com/cdfoundation/sig-events/discussions/37)
+  - [Environment Allocation discussion](https://github.com/cdfoundation/sig-events/discussions/38)
+- [ ] (Mauricio) Core / base / orchestration events - [Pull Request?](https://github.com/cdfoundation/sig-events/pull/31)
 - [ ] (Alois) Status changed / heartbeat events
 
 Action Points:
 
-- [ ] (Mauricio) PR to link bucket docs to introduction doc
+- [x] (Mauricio) PR to link bucket docs to introduction doc - [Pull Request](https://github.com/cdfoundation/sig-events/pull/32)
 - [ ] (Steve) Add deployment start/finish events
-- [ ] (Andrea) Create issue about removing the bucket from the event type
+- [x] (Andrea) Create issue about removing the bucket from the event type - [Issue](https://github.com/cdfoundation/sig-events/issues/45)
