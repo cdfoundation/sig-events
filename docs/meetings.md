@@ -9,14 +9,112 @@ The forming of this workstream was suggested on a [recent SIG Interoperability m
 Meeting notes for the workstream are managed on HackMD [here](https://hackmd.io/xjK5ujQbTHSaEZjoY28b8g), and published to GitHub [here](https://github.com/cdfoundation/sig-interoperability/blob/master/workstreams/events_in_cicd/meetings.md).
 
 
+## Agenda Template
+
+- AP From Last week
+- SIG Events Updates
+- Workstream Updates
+  - Dictionary
+- Meetups / conferences
+- Blog Posts / Links
+- Presentations
+- PR / Design Discussions
+
+## Meeting May 10th
+**Note: The meeting is postponed one week due to bank holiday in UK**
+
+Meeeting time in your timezone [here](https://time.is/3pm_10_May_2021_in_UTC). You're welcome to join!
+
+Participants:
+
+- Emil Bäckmark, Ericsson
+- Steve Taylor, DeployHub
+- Andrea Frittoli, IBM
+- Mattias Linnér, Ericsson
+- Mauricio Salatino, LearnK8s
+- Vibhav Bobade, RedHat
+- Kara de la Marck, CloudBees
+- Tracy Ragan (DeployHub)
+- \<add yourself\>
+
+### Agenda
+
+- AP From Last week
+    - From last TOC meeting: We can use Apache2 for our contributions
+    - We are going to use [Apache2 License](https://github.com/cdfoundation/sig-events/blob/main/LICENSE)
+    - [Google doc for BoF](https://docs.google.com/document/d/1LgEp0ZuhhNsvp7oW-M0Uzdpsyu0uai8-YoB6L4S42Q8/edit)
+- SIG Events Updates
+    - Meeting frequency change
+        - Who wants to have the invite from the CDF Calendar?
+    - Which user group should we start focusing on?
+        - Who has capacity to perform a PoC?
+            - Mauricio Salatino
+            - Erik Sternerson
+            - Andrea Frittoli
+            - Mattias Linnér
+            - Vibhav Bobade
+        - Create a small library to generate / parse the events
+        - 0. Diagram to demostrate what we can build with shared events
+            - Eduction material
+        - 1. Integration between a couple of project
+            - We could use a translation layer to begin with
+            - Demonstrate that two projects can interop through common events
+        - 2. Remove translation layer
+        - 3. Stretch goal: 4-keys (collecting metric)
+            - It requires running services
+- Workstream Updates
+  - Dictionary
+      - No updates
+- Meetups / conferences
+- Blog Posts / Links
+- Presentations
+    - Eiffel (Mattias)
+- PR / Design Discussions
+
+
 ## Meeting April 19th
 Meeeting time in your timezone [here](https://time.is/3pm_19_April_2021_in_UTC). You're welcome to join!
 
 Participants:
+- Andrea Frittoli (IBM)
+- Mattias LInnér (Ericsson)
+- Emil Bäckmark (Ericsson)
+- Tracy Ragan (DeployHub)
 - \<add yourself\>
 
 ### Agenda and Notes
-\<To be added\>
+
+- AP From Last week
+    - Licenses for Events SIG
+    - From TOC:
+        - Any OSI approved license is ok
+        - Keptn, Tekton, Eiffel and Ortelius use Apache2
+        - (AP - Andrea) Open a GitHub Discussion, and send a mail to the mailing list
+        - (AP - Andrea/Emil) Bring the Apache2 proposal to the TOC
+- SIG Events Updates
+  - Tracy joined the CNCF App Delivery SIG
+  - Steve to look into SDPX/Events SIG interop (Pedigree / Provenance)
+  - [SPDX Presentation]( https://docs.google.com/presentation/d/1YNtXPRGuj9hri_rGid_E7LZ9OODcNASbdNmNOOOzFAk/edit#slide=id.gd25d926f37_0_136) at TOC
+- Workstream Updates
+  - Dictionary
+      - No updates from the last meeting
+      - Some AP open from the [previous meeting](https://github.com/cdfoundation/sig-events/blob/main/docs/vocabulary_meetings.md#meeting-march-23rd) - [HackMD Version](https://hackmd.io/2FRGlw9fTMmKN1OQUVvguA)
+- Meetups / conferences
+    - [cdCon Events SIG BoF](https://cdcon2021.sched.com/event/iv29/bof-session-event-based-cd-conversations-with-the-cdf-events-sig-tracy-ragan-deployhub-emil-backmark-ericsson-andrea-frittoli-ibm-erik-sternerson-dowhile)
+        - (AP Tracy) Start a shared Google Docs for the questions - [https://docs.google.com/document/d/1LgEp0ZuhhNsvp7oW-M0Uzdpsyu0uai8-YoB6L4S42Q8/edit]
+        - We can still make it panel-like within the BoF
+        - 30min slot
+    - [KubeCon NA CFP](https://events.linuxfoundation.org/kubecon-cloudnativecon-north-america/program/cfp/#overview) until May 23rd
+        - We should submit proposals from the SIG
+        - Present work done on the protocol
+        - Any PoC that we have until then
+- Blog Posts / Links
+- Presentations
+    - (Postponed until May 3rd) Mattias: Presentation - Eiffel Protocol with focus on linked/referenced events
+    - 
+- PR / Design Discussions
+- Open 
+- \<To be added\>
 
 
 ## Meeting April 5th
