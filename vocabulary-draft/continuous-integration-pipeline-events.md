@@ -24,7 +24,7 @@ Finally, events needs to be generated for the output of the pipeline such as the
 - **Artifact Published**: an artifact has been published and it can be advertised for others to use
 
 CI Events MUST include the following attributes:
- - **Event Type**: the type is restricted to include `cd.ci.**` prefix. For example `cd.ci.build.queued` or `cd.ci.artifact.packaged`
+ - **Event Type**: the type is restricted to include `cd.**` prefix. For example `cd.build.queued` or `cd.artifact.packaged`
 
 Optional attributes: 
  - **Artifact Id**: the unique identifier of the artifact that the event is refering to. 
