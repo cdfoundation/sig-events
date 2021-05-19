@@ -70,6 +70,58 @@ func (t CDEventType) String() string {
 	return string(t)
 }
 
+func CreateTaskRunEvent(eventType CDEventType,
+	taskRunId string,
+	taskRunName string,
+	taskRunPipelineId string,
+	envData map[string]string) (cloudevents.Event, error) {
+	event := cloudevents.NewEvent()
+	event.SetID(uuid.NewV4().String())
+	event.SetType(string(eventType))
+	event.SetTime(time.Now())
+
+	setExtensionForTaskRunEvents(event, taskRunId, taskRunName, taskRunPipelineId )
+
+	event.SetData(cloudevents.ApplicationJSON, envData)
+
+	return event, nil
+}
+
+func setExtensionForTaskRunEvents(event cloudevents.Event, taskRunId string, taskRunName string, taskRunPipelineId string) {
+	event.SetExtension("taskrunid", taskRunId)
+	event.SetExtension("taskrunname", taskRunName)
+	event.SetExtension("taskrunpipelineid", taskRunPipelineId)
+
+}
+
+func CreatePipelineRunEvent(eventType CDEventType,
+	pipelineRunId string,
+	pipelineRunName string,
+	pipelineRunStatus string,
+	pipelineRunURL string,
+	pipelineRunErrors string,
+	envData map[string]string) (cloudevents.Event, error) {
+	event := cloudevents.NewEvent()
+	event.SetID(uuid.NewV4().String())
+	event.SetType(string(eventType))
+	event.SetTime(time.Now())
+
+	setExtensionForPipelineRunEvents(event, pipelineRunId, pipelineRunName, pipelineRunStatus,pipelineRunURL, pipelineRunErrors )
+
+	event.SetData(cloudevents.ApplicationJSON, envData)
+
+	return event, nil
+}
+
+func setExtensionForPipelineRunEvents(event cloudevents.Event, pipelineRunId string, pipelineRunName string,
+	pipelineRunStatus string, pipelineRunURL string, pipelineRunErrors string) {
+		event.SetExtension("pipelinerunid", pipelineRunId)
+		event.SetExtension("pipelinerunname", pipelineRunName)
+		event.SetExtension("pipelinerunstatus", pipelineRunStatus)
+	    event.SetExtension("pipelinerunurl", pipelineRunURL)
+	    event.SetExtension("pipelinerunerrors", pipelineRunErrors)
+}
+
 
 func CreateEnvironmentEvent(eventType CDEventType,
 	envId string,
