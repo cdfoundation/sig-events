@@ -23,7 +23,7 @@ func init() {
 }
 
 var pipelineRunCmd = &cobra.Command{
-	Use:   "service",
+	Use:   "pipelinerun",
 	Short: "Emit PipelineRun related Events",
 	Long:  `Emit PipelineRun related CloudEvent`,
 }
