@@ -70,6 +70,29 @@ func (t CDEventType) String() string {
 	return string(t)
 }
 
+func CreateBranchEvent(eventType CDEventType,
+	branchId string,
+	branchName string,
+	branchRepositoryId string,
+	repositoryData map[string]string) (cloudevents.Event, error) {
+	event := cloudevents.NewEvent()
+	event.SetID(uuid.NewV4().String())
+	event.SetType(string(eventType))
+	event.SetTime(time.Now())
+
+	setExtensionForBranchEvents(event, branchId, branchName, branchRepositoryId )
+
+	event.SetData(cloudevents.ApplicationJSON, repositoryData)
+
+	return event, nil
+}
+
+func setExtensionForBranchEvents(event cloudevents.Event, branchId string, branchName string, branchRepositoryId string) {
+	event.SetExtension("branchid", branchId)
+	event.SetExtension("branchname", branchName)
+	event.SetExtension("branchrepositoryid", branchRepositoryId)
+
+}
 
 func CreateRepositoryEvent(eventType CDEventType,
 	repositoryId string,
