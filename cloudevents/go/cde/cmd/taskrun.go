@@ -16,8 +16,7 @@ func init() {
 	taskRunCmd.PersistentFlags().StringVarP(&taskRunId, "id", "i", "", "Task Run Id")
 	taskRunCmd.PersistentFlags().StringVarP(&taskRunName, "name", "n", "", "Task Run's Name")
 	taskRunCmd.PersistentFlags().StringVarP(&taskRunPipelineId, "pipelineid", "p", "", "Task Run's Pipeline Id")
-
-	pipelineRunCmd.PersistentFlags().StringToStringVarP(&taskRunData, "data", "d", map[string]string{}, "Task Run's Data")
+	taskRunCmd.PersistentFlags().StringToStringVarP(&taskRunData, "data", "d", map[string]string{}, "Task Run's Data")
 }
 
 var taskRunCmd = &cobra.Command{

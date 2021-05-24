@@ -70,6 +70,31 @@ func (t CDEventType) String() string {
 	return string(t)
 }
 
+
+func CreateRepositoryEvent(eventType CDEventType,
+	repositoryId string,
+	repositoryName string,
+	repositoryURL string,
+	repositoryData map[string]string) (cloudevents.Event, error) {
+	event := cloudevents.NewEvent()
+	event.SetID(uuid.NewV4().String())
+	event.SetType(string(eventType))
+	event.SetTime(time.Now())
+
+	setExtensionForRepositoryEvents(event, repositoryId, repositoryName, repositoryURL )
+
+	event.SetData(cloudevents.ApplicationJSON, repositoryData)
+
+	return event, nil
+}
+
+func setExtensionForRepositoryEvents(event cloudevents.Event, repositoryId string, repositoryName string, repositoryURL string) {
+	event.SetExtension("repositoryid", repositoryId)
+	event.SetExtension("repositoryname", repositoryName)
+	event.SetExtension("repositoryurl", repositoryURL)
+
+}
+
 func CreateTaskRunEvent(eventType CDEventType,
 	taskRunId string,
 	taskRunName string,
