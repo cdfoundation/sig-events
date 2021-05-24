@@ -22,11 +22,14 @@ Integrate with your existing pipelines, repositories, and environments.
 Use `cde --help`
 
 The following events are supported:
-- [Environment Events](https://github.com/salaboy/cd-flow/#environment-events)
-- [Service Events](https://github.com/salaboy/cd-flow/#service-events)
+- [Environment Events](#environment-events)
+- [Service Events](#service-events)
+- [PipelineRun Events](#pipelinerun-events)
+- [TaskRun Events](#taskrun-events)
+- [Repository Events](#repository-events)
             
 
-# CDE  Events
+# CDE Events
 
 The following events are currently supported: 
 
@@ -56,7 +59,42 @@ Examples:
 - **cd.service.rolledback.v1** `./cde service upgraded --envId staging --name my-service --version 1.0.2 --data service=data`
 - **cd.service.removed.v1** `./cde service upgraded --envId staging --name my-service --version 1.0.2 --data service=data`
 
+## PipelineRun Events
+- Properties
+  - Id
+  - Name
+  - URL
+  - Status  
+  - Errors
+    
+Examples:
+- **cd.pipelinerun.started.v1**  `./cde pipelinerun queued --help --id pipe1 --name "My Pipeline" --status "Starting" --url "http://my-pipelinerunner" --errors "Hopfully no errors" --data pipeline=data`
+- **cd.pipelinerun.finished.v1** `./cde pipelinerun started --help --id pipe1 --name "My Pipeline" --status "Starting" --url "http://my-pipelinerunner" --errors "Hopfully no errors" --data pipeline=data`
+- **cd.pipelinerun.queued.v1**   `./cde pipelinerun finished --help --id pipe1 --name "My Pipeline" --status "Starting" --url "http://my-pipelinerunner" --errors "Hopfully no errors" --data pipeline=data`
 
+## TaskRun Events
+- Properties
+  - Id
+  - Name
+  - PipelineId
+  - Status
+  - Errors
+
+Examples:
+- **cd.taskrun.started.v1**  `./cde taskrun queued --help --id task1 --name "My Task Run" --pipeid pipe1 --status "Running" --url "http://my-pipelinerunner/task1" --errors "Hopfully no errors" --data task=data`
+- **cd.taskrun.finished.v1** `./cde taskrun started --help --id task1 --name "My Task Run" --pipeid pipe1 --status "Successful" --url "http://my-pipelinerunner/task1" --errors "Hopfully no errors" --data task=data`
+- **cd.taskrun.queued.v1**   `./cde taskrun finished --help --id task1 --name "My Task Run" --pipeid pipe1 --status "Queued" --url "http://my-pipelinerunner/task1" --errors "Hopfully no errors" --data task=data`
+
+## Repository Events
+- Properties
+  - Id
+  - Name
+  - URL
+    
+Examples: 
+- **cd.repository.created.v1** `./cde repository created --id repository_id --name "Name of repository" --url "http://my-repository" --data repository=data`
+- **cd.repository.modified.v1** `./cde repository modified --id repository_id --name "Name of repository" --url "http://my-repository" --data repository=data`
+- **cd.repository.deleted.v1** `./cde repository deleted --id repository_id --name "Name of repository" --url "http://my-repository" --data repository=data`
 
 
 # References
