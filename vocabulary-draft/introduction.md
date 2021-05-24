@@ -8,10 +8,11 @@ These events are agnostic from any specific tool and are designed to fit a wide 
 
 The phases covered by this proposal are:
 
-- **Source Code Version Control Events**: Events emitted by changes in source code or by the creation, modification or deletion of new repositories that hold source code.
-- **Continuous Integration Pipelines Events**: includes events related to building, testings, packaging and releasing software artifacts, usually binaries.
-- **Continuous Deployment Pipelines Events**: include events related with environments where the artifacts produced by the integration pipelines actually run. These are usually services running in a specific environment (dev, QA, production), or embedded software running in a specific hardware. 
-- **Continuous Delivery Events**: includes events related to activities and orchestration that needs to exist to be able to deterministically and continously being able to delivery software to users. 
+- **[Core Events](core.md)**: includes core events related to core activities and orchestration that needs to exist to be able to deterministically and continously being able to delivery software to users. 
+- **[Source Code Version Control Events](source-code-version-control.md)**: Events emitted by changes in source code or by the creation, modification or deletion of new repositories that hold source code.
+- **[Continuous Integration Pipelines Events](continuous-integration-pipeline-events.md)**: includes events related to building, testings, packaging and releasing software artifacts, usually binaries.
+- **[Continuous Deployment Pipelines Events](continuous-deployment-pipeline-events.md)**: include events related with environments where the artifacts produced by the integration pipelines actually run. These are usually services running in a specific environment (dev, QA, production), or embedded software running in a specific hardware. 
+
 
 These phases can also be considered as different profiles of the vocabulary that can be adopted independently. 
 Also notice that we currently use the term 'pipeline' to denote a pipelines, workflows and related concepts. We also use the term 'task' to denote a job/stage/step.
