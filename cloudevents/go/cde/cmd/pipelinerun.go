@@ -10,14 +10,14 @@ import (
 
 func init() {
 	rootCmd.AddCommand(pipelineRunCmd)
-	pipelineRunCmd.AddCommand(serviceDeployedCmd)
-	pipelineRunCmd.AddCommand(serviceUpgradedCmd)
-	pipelineRunCmd.AddCommand(serviceRolledbackCmd)
+	pipelineRunCmd.AddCommand(pipelineRunStartedCmd)
+	pipelineRunCmd.AddCommand(pipelineRunFinishedCmd)
+	pipelineRunCmd.AddCommand(pipelineRunQueuedCmd)
 
 	pipelineRunCmd.PersistentFlags().StringVarP(&pipelineRunId, "id", "i", "", "Pipeline Run Id")
 	pipelineRunCmd.PersistentFlags().StringVarP(&pipelineRunName, "name", "n", "", "Pipeline Run's Name")
 	pipelineRunCmd.PersistentFlags().StringVarP(&pipelineRunStatus, "status", "s", "", "Pipeline Run's Status")
-	pipelineRunCmd.PersistentFlags().StringVarP(&pipelineRunURL, "url", "s", "", "Pipeline Run's URL")
+	pipelineRunCmd.PersistentFlags().StringVarP(&pipelineRunURL, "url", "u", "", "Pipeline Run's URL")
 	pipelineRunCmd.PersistentFlags().StringVarP(&pipelineRunErrors, "errors", "e", "", "Pipeline Run's Errors")
 	pipelineRunCmd.PersistentFlags().StringToStringVarP(&pipelineRunData, "data", "d", map[string]string{}, "Pipeline Run's Data")
 }
