@@ -77,7 +77,7 @@ func CreateBranchEvent(eventType CDEventType,
 	repositoryData map[string]string) (cloudevents.Event, error) {
 	event := cloudevents.NewEvent()
 	event.SetID(uuid.NewV4().String())
-	event.SetType(string(eventType))
+	event.SetType(eventType.String())
 	event.SetTime(time.Now())
 
 	setExtensionForBranchEvents(event, branchId, branchName, branchRepositoryId )
@@ -101,7 +101,7 @@ func CreateRepositoryEvent(eventType CDEventType,
 	repositoryData map[string]string) (cloudevents.Event, error) {
 	event := cloudevents.NewEvent()
 	event.SetID(uuid.NewV4().String())
-	event.SetType(string(eventType))
+	event.SetType(eventType.String())
 	event.SetTime(time.Now())
 
 	setExtensionForRepositoryEvents(event, repositoryId, repositoryName, repositoryURL )
@@ -125,7 +125,7 @@ func CreateTaskRunEvent(eventType CDEventType,
 	envData map[string]string) (cloudevents.Event, error) {
 	event := cloudevents.NewEvent()
 	event.SetID(uuid.NewV4().String())
-	event.SetType(string(eventType))
+	event.SetType(eventType.String())
 	event.SetTime(time.Now())
 
 	setExtensionForTaskRunEvents(event, taskRunId, taskRunName, taskRunPipelineId )
@@ -151,7 +151,7 @@ func CreatePipelineRunEvent(eventType CDEventType,
 	envData map[string]string) (cloudevents.Event, error) {
 	event := cloudevents.NewEvent()
 	event.SetID(uuid.NewV4().String())
-	event.SetType(string(eventType))
+	event.SetType(eventType.String())
 	event.SetTime(time.Now())
 
 	setExtensionForPipelineRunEvents(event, pipelineRunId, pipelineRunName, pipelineRunStatus,pipelineRunURL, pipelineRunErrors )
@@ -178,7 +178,7 @@ func CreateEnvironmentEvent(eventType CDEventType,
 	envData map[string]string) (cloudevents.Event, error) {
 	event := cloudevents.NewEvent()
 	event.SetID(uuid.NewV4().String())
-	event.SetType(string(eventType))
+	event.SetType(eventType.String())
 	event.SetTime(time.Now())
 
 	setExtensionForEnvEvents(event, envId, envName, envRepoUrl)
@@ -203,7 +203,7 @@ func CreateServiceEvent(eventType CDEventType,
 	serviceData map[string]string) (cloudevents.Event, error) {
 	event := cloudevents.NewEvent()
 	event.SetID(uuid.NewV4().String())
-	event.SetType(string(eventType))
+	event.SetType(eventType.String())
 	event.SetTime(time.Now())
 
 	setExtensionForServiceEvents(event, serviceEnvId, serviceName, serviceVersion)
