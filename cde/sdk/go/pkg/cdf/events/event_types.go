@@ -70,11 +70,60 @@ func (t CDEventType) String() string {
 	return string(t)
 }
 
+
+func CreateArtifactEvent(eventType CDEventType,
+	artifactId string,
+	artifactName string,
+	artifactVersion string,
+	artifactData map[string]string) (cloudevents.Event, error) {
+	event := cloudevents.NewEvent()
+	event.SetID(uuid.NewV4().String())
+	event.SetType(eventType.String())
+	event.SetTime(time.Now())
+
+	setExtensionForBuildEvents(event, artifactId, artifactName, artifactVersion )
+
+	event.SetData(cloudevents.ApplicationJSON, artifactData)
+
+	return event, nil
+}
+
+func setExtensionForArtifactEvents(event cloudevents.Event, artifactId string, artifactName string, artifactVersion string) {
+	event.SetExtension("artifactid", artifactId)
+	event.SetExtension("artiactname", artifactName)
+	event.SetExtension("artifactversion", artifactVersion)
+
+}
+
+func CreateBuildEvent(eventType CDEventType,
+	buildId string,
+	buildName string,
+	buildArtifactId string,
+	artifactData map[string]string) (cloudevents.Event, error) {
+	event := cloudevents.NewEvent()
+	event.SetID(uuid.NewV4().String())
+	event.SetType(eventType.String())
+	event.SetTime(time.Now())
+
+	setExtensionForBuildEvents(event, buildId, buildName, buildArtifactId )
+
+	event.SetData(cloudevents.ApplicationJSON, artifactData)
+
+	return event, nil
+}
+
+func setExtensionForBuildEvents(event cloudevents.Event, buildId string, buildName string, buildArtifactId string) {
+	event.SetExtension("buildid", buildId)
+	event.SetExtension("buildname", buildName)
+	event.SetExtension("buildartifactid", buildArtifactId)
+
+}
+
 func CreateBranchEvent(eventType CDEventType,
 	branchId string,
 	branchName string,
 	branchRepositoryId string,
-	repositoryData map[string]string) (cloudevents.Event, error) {
+	branchData map[string]string) (cloudevents.Event, error) {
 	event := cloudevents.NewEvent()
 	event.SetID(uuid.NewV4().String())
 	event.SetType(eventType.String())
@@ -82,7 +131,7 @@ func CreateBranchEvent(eventType CDEventType,
 
 	setExtensionForBranchEvents(event, branchId, branchName, branchRepositoryId )
 
-	event.SetData(cloudevents.ApplicationJSON, repositoryData)
+	event.SetData(cloudevents.ApplicationJSON, branchData)
 
 	return event, nil
 }
@@ -122,7 +171,7 @@ func CreateTaskRunEvent(eventType CDEventType,
 	taskRunId string,
 	taskRunName string,
 	taskRunPipelineId string,
-	envData map[string]string) (cloudevents.Event, error) {
+	taskRunData map[string]string) (cloudevents.Event, error) {
 	event := cloudevents.NewEvent()
 	event.SetID(uuid.NewV4().String())
 	event.SetType(eventType.String())
@@ -130,7 +179,7 @@ func CreateTaskRunEvent(eventType CDEventType,
 
 	setExtensionForTaskRunEvents(event, taskRunId, taskRunName, taskRunPipelineId )
 
-	event.SetData(cloudevents.ApplicationJSON, envData)
+	event.SetData(cloudevents.ApplicationJSON, taskRunData)
 
 	return event, nil
 }
@@ -148,7 +197,7 @@ func CreatePipelineRunEvent(eventType CDEventType,
 	pipelineRunStatus string,
 	pipelineRunURL string,
 	pipelineRunErrors string,
-	envData map[string]string) (cloudevents.Event, error) {
+	pipelineRunData map[string]string) (cloudevents.Event, error) {
 	event := cloudevents.NewEvent()
 	event.SetID(uuid.NewV4().String())
 	event.SetType(eventType.String())
@@ -156,7 +205,7 @@ func CreatePipelineRunEvent(eventType CDEventType,
 
 	setExtensionForPipelineRunEvents(event, pipelineRunId, pipelineRunName, pipelineRunStatus,pipelineRunURL, pipelineRunErrors )
 
-	event.SetData(cloudevents.ApplicationJSON, envData)
+	event.SetData(cloudevents.ApplicationJSON, pipelineRunData)
 
 	return event, nil
 }
