@@ -68,9 +68,9 @@ Examples:
   - Errors
     
 Examples:
-- **cd.pipelinerun.started.v1**  `./cde pipelinerun queued --help --id pipe1 --name "My Pipeline" --status "Starting" --url "http://my-pipelinerunner" --errors "Hopfully no errors" --data pipeline=data`
-- **cd.pipelinerun.finished.v1** `./cde pipelinerun started --help --id pipe1 --name "My Pipeline" --status "Starting" --url "http://my-pipelinerunner" --errors "Hopfully no errors" --data pipeline=data`
-- **cd.pipelinerun.queued.v1**   `./cde pipelinerun finished --help --id pipe1 --name "My Pipeline" --status "Starting" --url "http://my-pipelinerunner" --errors "Hopfully no errors" --data pipeline=data`
+- **cd.pipelinerun.started.v1**  `./cde pipelinerun queued --id pipe1 --name "My Pipeline" --status "Starting" --url "http://my-pipelinerunner" --errors "Hopfully no errors" --data pipeline=data`
+- **cd.pipelinerun.finished.v1** `./cde pipelinerun started --id pipe1 --name "My Pipeline" --status "Starting" --url "http://my-pipelinerunner" --errors "Hopfully no errors" --data pipeline=data`
+- **cd.pipelinerun.queued.v1**   `./cde pipelinerun finished --id pipe1 --name "My Pipeline" --status "Starting" --url "http://my-pipelinerunner" --errors "Hopfully no errors" --data pipeline=data`
 
 ## TaskRun Events
 - Properties
@@ -81,9 +81,9 @@ Examples:
   - Errors
 
 Examples:
-- **cd.taskrun.started.v1**  `./cde taskrun queued --help --id task1 --name "My Task Run" --pipeid pipe1 --status "Running" --url "http://my-pipelinerunner/task1" --errors "Hopfully no errors" --data task=data`
-- **cd.taskrun.finished.v1** `./cde taskrun started --help --id task1 --name "My Task Run" --pipeid pipe1 --status "Successful" --url "http://my-pipelinerunner/task1" --errors "Hopfully no errors" --data task=data`
-- **cd.taskrun.queued.v1**   `./cde taskrun finished --help --id task1 --name "My Task Run" --pipeid pipe1 --status "Queued" --url "http://my-pipelinerunner/task1" --errors "Hopfully no errors" --data task=data`
+- **cd.taskrun.started.v1**  `./cde taskrun queued --id task1 --name "My Task Run" --pipeid pipe1 --status "Running" --url "http://my-pipelinerunner/task1" --errors "Hopfully no errors" --data task=data`
+- **cd.taskrun.finished.v1** `./cde taskrun started --id task1 --name "My Task Run" --pipeid pipe1 --status "Successful" --url "http://my-pipelinerunner/task1" --errors "Hopfully no errors" --data task=data`
+- **cd.taskrun.queued.v1**   `./cde taskrun finished --id task1 --name "My Task Run" --pipeid pipe1 --status "Queued" --url "http://my-pipelinerunner/task1" --errors "Hopfully no errors" --data task=data`
 
 ## Repository Events
 - Properties
