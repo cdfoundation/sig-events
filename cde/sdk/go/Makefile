@@ -8,7 +8,7 @@ MAIN_SRC_FILE=main.go
 GO := GO111MODULE=on go
 GO_NOMOD :=GO111MODULE=off go
 REV := $(shell git rev-parse --short HEAD 2> /dev/null || echo 'unknown')
-ORG := jenkins-x-plugins
+ORG := cdfoundation
 ORG_REPO := $(ORG)/$(NAME)
 RELEASE_ORG_REPO := $(ORG_REPO)
 ROOT_PACKAGE := github.com/$(ORG_REPO)
@@ -26,32 +26,9 @@ GOTEST := $(GO) test
 # set dev version unless VERSION is explicitly set via environment
 VERSION ?= $(shell echo "$$(git for-each-ref refs/tags/ --count=1 --sort=-version:refname --format='%(refname:short)' 2>/dev/null)-dev+$(REV)" | sed 's/^v//')
 
-# Build flags for setting build-specific configuration at build time - defaults to empty
-#BUILD_TIME_CONFIG_FLAGS ?= ""
 
-# Full build flags used when building binaries. Not used for test compilation/execution.
-BUILDFLAGS :=  -ldflags \
-  " -X $(ROOT_PACKAGE)/pkg/version.Version=$(VERSION)\
-		-X $(ROOT_PACKAGE)/pkg/version.Revision='$(REV)'\
-		-X $(ROOT_PACKAGE)/pkg/version.Branch='$(BRANCH)'\
-		-X $(ROOT_PACKAGE)/pkg/version.BuildDate='$(BUILD_DATE)'\
-		-X $(ROOT_PACKAGE)/pkg/version.GoVersion='$(GO_VERSION)'\
-		$(BUILD_TIME_CONFIG_FLAGS)"
 
-# Some tests expect default values for version.*, so just use the config package values there.
-TEST_BUILDFLAGS :=  -ldflags "$(BUILD_TIME_CONFIG_FLAGS)"
 
-ifdef DEBUG
-BUILDFLAGS := -gcflags "all=-N -l" $(BUILDFLAGS)
-endif
-
-ifdef PARALLEL_BUILDS
-BUILDFLAGS += -p $(PARALLEL_BUILDS)
-GOTEST += -p $(PARALLEL_BUILDS)
-else
-# -p 4 seems to work well for people
-GOTEST += -p 4
-endif
 
 ifdef DISABLE_TEST_CACHING
 GOTEST += -count=1
@@ -63,36 +40,28 @@ COVERFLAGS=-coverprofile=$(COVER_OUT) --covermode=count --coverpkg=./...
 
 build: $(GO_DEPENDENCIES) clean
 	go mod download
-	CGO_ENABLED=$(CGO_ENABLED) $(GO) $(BUILD_TARGET) $(BUILDFLAGS) -o build/$(NAME) $(MAIN_SRC_FILE)
+	CGO_ENABLED=$(CGO_ENABLED) $(GO) $(BUILD_TARGET) -o build/$(NAME) $(MAIN_SRC_FILE)
 
 test: ## Run tests with the "unit" build tag
-	CGO_ENABLED=$(CGO_ENABLED) $(GOTEST) --tags=unit -failfast -short ./... $(TEST_BUILDFLAGS)
+	CGO_ENABLED=$(CGO_ENABLED) $(GOTEST) --tags=unit -failfast -short ./...
 
-#test-coverage : make-reports-dir ## Run tests and coverage for all tests with the "unit" build tag
-#	CGO_ENABLED=$(CGO_ENABLED) $(GOTEST) --tags=unit $(COVERFLAGS) -failfast -short ./... $(TEST_BUILDFLAGS)
-#
-#test-report: make-reports-dir get-test-deps test-coverage ## Create the test report
-#	@gocov convert $(COVER_OUT) | gocov report
-#
-#test-report-html: make-reports-dir get-test-deps test-coverage ## Create the test report in HTML format
-#	@gocov convert $(COVER_OUT) | gocov-html > $(REPORTS_DIR)/cover.html && open $(REPORTS_DIR)/cover.html
 
 install: $(GO_DEPENDENCIES) ## Install the binary
-	GOBIN=${GOPATH}/bin $(GO) install $(BUILDFLAGS) $(MAIN_SRC_FILE)
+	GOBIN=${GOPATH}/bin $(GO) install  $(MAIN_SRC_FILE)
 
 linux: ## Build for Linux
-	CGO_ENABLED=$(CGO_ENABLED) GOOS=linux GOARCH=amd64 $(GO) $(BUILD_TARGET) $(BUILDFLAGS) -o build/linux/$(NAME) $(MAIN_SRC_FILE)
+	CGO_ENABLED=$(CGO_ENABLED) GOOS=linux GOARCH=amd64 $(GO) $(BUILD_TARGET) -o build/linux/$(NAME) $(MAIN_SRC_FILE)
 	chmod +x build/linux/$(NAME)
 
 arm: ## Build for ARM
-	CGO_ENABLED=$(CGO_ENABLED) GOOS=linux GOARCH=arm $(GO) $(BUILD_TARGET) $(BUILDFLAGS) -o build/arm/$(NAME) $(MAIN_SRC_FILE)
+	CGO_ENABLED=$(CGO_ENABLED) GOOS=linux GOARCH=arm $(GO) $(BUILD_TARGET) -o build/arm/$(NAME) $(MAIN_SRC_FILE)
 	chmod +x build/arm/$(NAME)
 
 win: ## Build for Windows
-	CGO_ENABLED=$(CGO_ENABLED) GOOS=windows GOARCH=amd64 $(GO) $(BUILD_TARGET) $(BUILDFLAGS) -o build/win/$(NAME)-windows-amd64.exe $(MAIN_SRC_FILE)
+	CGO_ENABLED=$(CGO_ENABLED) GOOS=windows GOARCH=amd64 $(GO) $(BUILD_TARGET) -o build/win/$(NAME)-windows-amd64.exe $(MAIN_SRC_FILE)
 
 darwin: ## Build for OSX
-	CGO_ENABLED=$(CGO_ENABLED) GOOS=darwin GOARCH=amd64 $(GO) $(BUILD_TARGET) $(BUILDFLAGS) -o build/darwin/$(NAME) $(MAIN_SRC_FILE)
+	CGO_ENABLED=$(CGO_ENABLED) GOOS=darwin GOARCH=amd64 $(GO) $(BUILD_TARGET) -o build/darwin/$(NAME) $(MAIN_SRC_FILE)
 	chmod +x build/darwin/$(NAME)
 
 .PHONY: goreleaser
@@ -122,6 +91,9 @@ fmt: importfmt ## Format the code
 importfmt: get-fmt-deps
 	@echo "Formatting the imports..."
 	goimports -w $(GO_DEPENDENCIES)
+
+get-fmt-deps: ## Install test dependencies
+	$(GO_NOMOD) get golang.org/x/tools/cmd/goimports
 
 .PHONY: lint
 lint: ## Lint the code

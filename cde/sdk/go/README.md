@@ -2,12 +2,12 @@
 
 Simple CLI and library to emit Cloud Events related to Continuous Delivery.
 
-The idea behind this framework and command-line interface is to empower you  emitting events related to a Continuous Delivery to enable interoperability between different tools, measure performance and gain visibility of your CD processes.
+The framework and command-line interface enables you to emit and receive events related to Continuous Delivery, with the purpose of enabling features such as interoperability between different tools/services, performance measurements, increased visibility into your Continuous Delivery processes, etc.
 
 
 ## Usage
 
-Download the binary `cde` or build from source, by clonning this repository and run `make build`
+Download the binary `cde` or build from source, by cloning this repository and run `make build`
 
 Set `CDE_SINK` environment variable to define where CloudEvents will be sent. You can do this by running:
 
