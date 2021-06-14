@@ -2,7 +2,7 @@
 
 [![hackmd-github-sync-badge](https://hackmd.io/xjK5ujQbTHSaEZjoY28b8g/badge)](https://hackmd.io/xjK5ujQbTHSaEZjoY28b8g)
 
-This SIG meets the 1st and 3rd Mondays of every month at 3pm UTC (during summer time, in winter time it is 4pm UTC). See your timezone [here](https://time.is/3pm_in_UTC). The meeting can be accessed through [this zoom link](https://zoom.us/j/97660712600?pwd=Z3BqYTE5YzNsbEhmck16cjdZNEFIUT09).
+This SIG meets bi-weekly on Mondays at 3pm UTC (during summer time, in winter time it is 4pm UTC). See your timezone [here](https://time.is/3pm_in_UTC). The meeting can be accessed through [this zoom link](https://zoom.us/j/97660712600?pwd=Z3BqYTE5YzNsbEhmck16cjdZNEFIUT09).
 
 The SIG was initiated as a [workstream under SIG Interoperability ]( https://github.com/cdfoundation/sig-interoperability/blob/master/docs/meetings_2020.md#May-28-2020) and its first meeting was held on June 8th 2020.
 
