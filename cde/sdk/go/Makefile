@@ -11,7 +11,7 @@ REV := $(shell git rev-parse --short HEAD 2> /dev/null || echo 'unknown')
 ORG := cdfoundation
 ORG_REPO := $(ORG)/$(NAME)
 RELEASE_ORG_REPO := $(ORG_REPO)
-ROOT_PACKAGE := github.com/$(ORG_REPO)
+ROOT_PACKAGE := github.com/$(ORG_REPO)/$(NAME)/sdk/go
 GO_VERSION := 1.16
 GO_DEPENDENCIES := $(call rwildcard,pkg/,*.go) $(call rwildcard,cmd/,*.go)
 
@@ -25,10 +25,6 @@ GOTEST := $(GO) test
 
 # set dev version unless VERSION is explicitly set via environment
 VERSION ?= $(shell echo "$$(git for-each-ref refs/tags/ --count=1 --sort=-version:refname --format='%(refname:short)' 2>/dev/null)-dev+$(REV)" | sed 's/^v//')
-
-
-
-
 
 ifdef DISABLE_TEST_CACHING
 GOTEST += -count=1

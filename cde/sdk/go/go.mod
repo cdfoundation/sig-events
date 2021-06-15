@@ -1,4 +1,4 @@
-module github.com/cdfoundation/sig-events/cde
+module github.com/cdfoundation/sig-events/cde/sdk/go
 
 go 1.16
 
