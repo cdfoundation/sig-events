@@ -19,7 +19,7 @@ import (
 	"context"
 	"log"
 
-	cde "github.com/cdfoundation/sig-events/cde/pkg/cdf/events"
+	cde "github.com/cdfoundation/sig-events/cde/sdk/go/pkg/cdf/events"
 	cloudevents "github.com/cloudevents/sdk-go/v2"
 	"github.com/spf13/cobra"
 )

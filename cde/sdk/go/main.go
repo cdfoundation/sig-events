@@ -17,7 +17,7 @@ limitations under the License.
 package main
 
 import (
-	cmd "github.com/cdfoundation/sig-events/cde/cmd"
+	cmd "github.com/cdfoundation/sig-events/cde/sdk/go/cmd"
 	"log"
 )
 
