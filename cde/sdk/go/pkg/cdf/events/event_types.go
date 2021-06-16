@@ -84,19 +84,22 @@ func (t CDEventType) String() string {
 	return string(t)
 }
 
-func CreateArtifactEvent(eventType CDEventType,
-	artifactId string,
-	artifactName string,
-	artifactVersion string,
-	artifactData map[string]string) (cloudevents.Event, error) {
+type ArtifactEventParams struct {
+	ArtifactId      string
+	ArtifactName    string
+	ArtifactVersion string
+	ArtifactData    map[string]string
+}
+
+func CreateArtifactEvent(eventType CDEventType, params ArtifactEventParams) (cloudevents.Event, error) {
 	event := cloudevents.NewEvent()
 	event.SetID(uuid.NewV4().String())
 	event.SetType(eventType.String())
 	event.SetTime(time.Now())
 
-	setExtensionForArtifactEvents(event, artifactId, artifactName, artifactVersion)
+	setExtensionForArtifactEvents(event, params.ArtifactId, params.ArtifactName, params.ArtifactVersion)
 
-	err := event.SetData(cloudevents.ApplicationJSON, artifactData)
+	err := event.SetData(cloudevents.ApplicationJSON, params.ArtifactData)
 	if err != nil {
 		return cloudevents.Event{}, err
 	}
