@@ -29,10 +29,10 @@ func init() {
 	artifactCmd.AddCommand(artifactPackagedCmd)
 	artifactCmd.AddCommand(artifactPublishedCmd)
 
-	artifactCmd.PersistentFlags().StringVarP(&artifactId, "id", "i", "", "Artifact Id")
-	artifactCmd.PersistentFlags().StringVarP(&artifactName, "name", "n", "", "Artifact Name")
-	artifactCmd.PersistentFlags().StringVarP(&artifactVersion, "version", "v", "", "Artifact Version")
-	artifactCmd.PersistentFlags().StringToStringVarP(&artifactData, "data", "d", map[string]string{}, "Artifact Data")
+	artifactCmd.PersistentFlags().StringVarP(&artifactParams.ArtifactId, "id", "i", "", "Artifact Id")
+	artifactCmd.PersistentFlags().StringVarP(&artifactParams.ArtifactName, "name", "n", "", "Artifact Name")
+	artifactCmd.PersistentFlags().StringVarP(&artifactParams.ArtifactVersion, "version", "v", "", "Artifact Version")
+	artifactCmd.PersistentFlags().StringToStringVarP(&artifactParams.ArtifactData, "data", "d", map[string]string{}, "Artifact Data")
 }
 
 var artifactCmd = &cobra.Command{
@@ -41,12 +41,7 @@ var artifactCmd = &cobra.Command{
 	Long:  `Emit Artifact related CloudEvent`,
 }
 
-var (
-	artifactId      string
-	artifactName    string
-	artifactVersion string
-	artifactData    map[string]string
-)
+var artifactParams = cde.ArtifactEventParams{}
 
 var artifactPackagedCmd = &cobra.Command{
 	Use:   "packaged",
@@ -60,8 +55,7 @@ var artifactPackagedCmd = &cobra.Command{
 		}
 
 		// Create an Event.
-		event, _ := cde.CreateArtifactEvent(cde.ArtifactPackagedEventV1, artifactId,
-			artifactName, artifactVersion, artifactData)
+		event, _ := cde.CreateArtifactEvent(cde.ArtifactPackagedEventV1, artifactParams)
 
 		event.SetSource(source)
 
@@ -92,8 +86,7 @@ var artifactPublishedCmd = &cobra.Command{
 		}
 
 		// Create an Event.
-		event, _ := cde.CreateArtifactEvent(cde.ArtifactPublishedEventV1, artifactId,
-			artifactName, artifactVersion, artifactData)
+		event, _ := cde.CreateArtifactEvent(cde.ArtifactPublishedEventV1, artifactParams)
 
 		event.SetSource(source)
 
