@@ -109,9 +109,8 @@ func CreateArtifactEvent(eventType CDEventType, params ArtifactEventParams) (clo
 
 func setExtensionForArtifactEvents(event cloudevents.Event, artifactId string, artifactName string, artifactVersion string) {
 	event.SetExtension("artifactid", artifactId)
-	event.SetExtension("artiactname", artifactName)
+	event.SetExtension("artifactname", artifactName)
 	event.SetExtension("artifactversion", artifactVersion)
-
 }
 
 func CreateBuildEvent(eventType CDEventType,
