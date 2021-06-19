@@ -18,6 +18,8 @@ package events
 import (
 	"time"
 
+	"github.com/cdfoundation/sig-events/cde/sdk/go/pkg/cdf/events/extensions"
+
 	cloudevents "github.com/cloudevents/sdk-go/v2"
 	uuid "github.com/satori/go.uuid"
 )
@@ -108,9 +110,10 @@ func CreateArtifactEvent(eventType CDEventType, params ArtifactEventParams) (clo
 }
 
 func setExtensionForArtifactEvents(event cloudevents.Event, artifactId string, artifactName string, artifactVersion string) {
-	event.SetExtension("artifactid", artifactId)
-	event.SetExtension("artifactname", artifactName)
-	event.SetExtension("artifactversion", artifactVersion)
+	event.SetExtension(extensions.ArtifactIdExtension, artifactId)
+	event.SetExtension(extensions.ArtifactNameExtension, artifactName)
+	event.SetExtension(extensions.ArtifactVersionExtension, artifactVersion)
+
 }
 
 func CreateBuildEvent(eventType CDEventType,
