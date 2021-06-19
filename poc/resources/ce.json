@@ -1,22 +1,22 @@
 {
-	"specversion": "1.0",
-	"id": "1d66c226-ce82-11eb-b6cf-784f43552794",
-	"source": "keptn-cdf-translator",
-	"type": "sh.keptn.event.production.delivery.triggered",
-	"datacontenttype": "application/json",
-	"time": "2021-06-16T09:06:19.92761Z",
-	"data": {
-		"project": "podtatohead",
-		"stage": "production",
-		"service": "helloservice",
-		"configurationChange": {
-			"values": {
-				"image": "docker.io/salaboy/workflow-runner-d39e5dbd6821f05bffd514bde1e32a2a"
-			}
-		},
-		"deployment": {
-			"deploymentURIsLocal": null,
-			"deploymentstrategy": ""
-		}
-	}
+    "specversion": "1.0",
+    "id": "8e273904-d0d6-11eb-a902-784f43552794",
+    "source": "keptn-cdf-translator",
+    "type": "sh.keptn.event.production.delivery.triggered",
+    "datacontenttype": "application/json",
+    "time": "2021-06-19T08:15:49.144604Z",
+    "data": {
+        "project": "fmtok8s",
+        "stage": "production",
+        "service": "agenda-service",
+        "configurationChange": {
+            "values": {
+                "image": "docker.io/salaboy/agenda-service:0.0.20"
+            }
+        },
+        "deployment": {
+            "deploymentURIsLocal": null,
+            "deploymentstrategy": ""
+        }
+    }
 }
