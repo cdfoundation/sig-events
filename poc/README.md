@@ -10,7 +10,7 @@ work that the SIG Events is doing.
 ## PoC Overview
 
 The proof of concept showcases interaction between [Tekton](https://tekton.dev)
-and [Keptn](https://keptn.sh/), using the CD Events specification **being** worked on by
+and [Keptn](https://keptn.sh/), using the CD Events specification being worked on by
 the [Events Special Interest Group](https://github.com/cdfoundation/sig-events)
 part of the [Continuous Delivery Foundation](https://cd.foundation/) (CDF).
 
@@ -61,13 +61,13 @@ Going from top to bottom in the diagram:
 * At the top, we have **Tekton** without modifications.
   Tekton runs the build and deploy operations for the described use case above.
 * Just below, we have an experimental **[Tekton CloudEvents controller](https://github.com/tektoncd/experimental/tree/main/cloudevents)**.
-  The controller **TODO** (reacts on internal Tekton signals to send events).
+  The controller creates CD Events from Tekton internal signals.
 * Next, we have the **CD Events Go library/CLI** which provides both the encoding
   and transmission of CD Events following the specification.
 * The Go library/CLI internally uses the **[CloudEvents Go SDK](https://github.com/cloudevents/sdk-go)**
   to create and send events.
 * Next to Keptn, we have two modules, one for incoming and one for outgoing Keptn events.
-  * The **[Keptn translation](TODO:link)** module translates from CD Events
+  * The **[Keptn translation](https://github.com/salaboy/keptn-cdf-translator)** module translates from CD Events
   to Keptn native events.
-  * The **[Keptn service](TODO:link)** module **TODO** creates CD Events from Keptn internal signals.
+  * The **[Keptn service](https://github.com/salaboy/cdf-events-keptn-adapter)** module creates CD Events from Keptn internal signals.
 * Finally, we have **Keptn** itself, orchestrating the life-cycle operations for the use case above.
