@@ -22,6 +22,64 @@ Meeting notes for the workstream are managed on HackMD [here](https://hackmd.io/
 
 
 
+## Meeting June 21st
+
+Meeeting time in your timezone [here](https://time.is/3pm_21_June_2021_in_UTC). You're welcome to join!
+
+
+Participants:
+- Emil Bäckmark (Ericsson)
+- Mauricio Salatino (LearnK8s)
+- Mattias Linnér (Ericsson)
+- Jürgen Etzlstorfer (Dynatrace, Keptn)
+- Erik Sternerson (doWhile)
+- Tracy Ragan (DeployHub, Ortelius)
+- Andrea Frittoli (IBM)
+- Derek Wang (Intuit, Argo Events)
+- Steve Taylor (DeployHub/Ortelius)
+- Gopinath Rebala (OpsMx)
+
+### Agenda
+- Action Items From Last week
+    - (A) Erik to make a PR about "What is a change": https://github.com/cdfoundation/sig-events/discussions/34
+    - (A) Andrea to make a PR about Lightweigth vs heavyweight: https://github.com/cdfoundation/sig-events/discussions/47
+- SIG Events Updates
+    - SIG meetings during the summer period
+        - Emil is away July 5th to Aug 6th
+        - Andrea is away 26/07 -> 26/08 (possibly)
+        - The workstream should continue if enough people are available. The SIG could have fewer meetings during the summer and wait with needed decisions until most people are back.
+        - Decided: SIG meeting July 19th and August 16th
+            - (A) Emil will update the calendar invite
+- Workstream Updates - Vocabulary
+    - Event protocol name poll
+        - Short-term we use the name "CD Events", but we should have a better name
+        - [Name Poll](https://docs.google.com/forms/d/1CVPooDG16B6JaBqQysH7V6UehYcZcSw_PM1HrtxwNns/edit)
+        - [Poll Answers so far](https://docs.google.com/spreadsheets/d/14Q9X_330YNGK1Naq22TN0iA2q1mVSSXIusGysCGmcVU/edit?resourcekey#gid=1286431544)
+        - (A) Erik to start a discussion about the name and criteria that we want to consider for a name
+        - Target Date: let's aim for Oct 1st for the name
+    - PoC status
+        - PoC hacking very much ongoing
+        - In the BoF we will present the ongoing work, probably without showing a live run. We could show some code examples and the PoC readme/description
+- Meetups / conferences
+    - Event related presentations etc on cdCon
+        - [Behind the Scenes of Keptn: Event-Driven Delivery & Ops Orchestration - Andreas Grabner, Dynatrace](https://cdcon2021.sched.com/event/ipny/behind-the-scenes-of-keptn-event-driven-delivery-ops-orchestration-andreas-grabner-dynatrace)
+        - [Linking Events to Achieve Traceability and Data Aggregation in CI/CD Systems - Emil Bäckmark, Ericsson](https://cdcon2021.sched.com/event/iori/linking-events-to-achieve-traceability-and-data-aggregation-in-cicd-systems-emil-backmark-ericsson)
+        - [Event-driven Distributed CI for 20000 Projects - Aleksandra Fedorova, Red Hat](https://cdcon2021.sched.com/event/iosg/event-driven-distributed-ci-for-20000-projects-aleksandra-fedorova-red-hat)
+        - [Lightning Talk: Events of Screwdriver - Alan Dong & Jithin Emmanuel, Verizon Media](https://cdcon2021.sched.com/event/ioui/lightning-talk-events-of-screwdriver-alan-dong-jithin-emmanuel-verizon-media)
+        - [BoF Session: Event Based CD: Conversations with the CDF Events SIG - Tracy Ragan, DeployHub; Emil Backmark, Ericsson; Andrea Frittoli, IBM & Erik Sternerson, doWhile](https://cdcon2021.sched.com/event/iv29/bof-session-event-based-cd-conversations-with-the-cdf-events-sig-tracy-ragan-deployhub-emil-backmark-ericsson-andrea-frittoli-ibm-erik-sternerson-dowhile)
+            - Questions: https://docs.google.com/document/d/1LgEp0ZuhhNsvp7oW-M0Uzdpsyu0uai8-YoB6L4S42Q8/edit
+            - Tracy to facilitate
+        - [Putting Chaos into Continuous Delivery – Evaluate & Increase the Resilience of your Applications - Juergen Etzlstorfer, Dynatrace & Karthik Satchitanand, ChaosNative](https://cdcon2021.sched.com/event/iouH/putting-chaos-into-continuous-delivery-evaluate-increase-the-resilience-of-your-applications-juergen-etzlstorfer-dynatrace-karthik-satchitanand-chaosnative)
+    - DevOpsWorld (Mauricio / Andrea) - Using CloudEvents to Create an Interoperable CI/CD Ecosystem - accepted
+- Blog Posts / Links
+    - Meeting recordings https://www.youtube.com/playlist?list=PL2KXbZ9-EY9RlxWAnAjxs8Azuz11XVhkC 
+- Presentations
+    - Argo Events presentation aimed for August 30th, by Derek Wang. 15-20 minutes
+- PR / Design Discussions
+    - [Experimental buckets](https://github.com/cdfoundation/sig-events/discussions/68)
+
+
+
 ## Meeting June 7th
 
 Meeeting time in your timezone [here](https://time.is/3pm_7_June_2021_in_UTC). You're welcome to join!
