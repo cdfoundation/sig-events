@@ -1,0 +1,10 @@
+---
+apiVersion: triggers.tekton.dev/v1alpha1
+kind: EventListener
+metadata:
+  name: cdevent-listener
+  namespace: cdevents
+spec:
+  serviceAccountName: tekton-cdevent-listener
+  namespaceSelector:
+    matchNames: ['cdevents']

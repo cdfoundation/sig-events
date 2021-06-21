@@ -6,7 +6,6 @@ metadata:
     description: |
       Build the container image of the Podtato Head service
     cd.artifact.packaged: enabled
-    cd.artifact.published: enabled
 spec:
   params:
     - name: gitRepository
@@ -22,11 +21,18 @@ spec:
       description: The path to the dockerfile within the context
       default: docker/DockerfileV0.1.0
     - name: target
-      description: The target container registry image to build (without version)
-      default: uk.icr.io/tekton/podtato-server
+      description: The target container registry and path where to build the image
+      default: kind-registry:5000/cdevent
+    - name: target-name
+      description: Name of the image to publish
+      default: agenda-service
     - name: version
       description: the target version to build
       default: V0.1.0
+    - name: kanikoExtraArgs
+      type: array
+      description: extra args to pass to the kaniko builder
+      default: [--insecure-registry=kind-registry:5000]
   workspaces:
     - name: sources
       description: Workspace where the git repo is prepared for testing
@@ -59,11 +65,13 @@ spec:
         bundle: gcr.io/tekton-releases/catalog/upstream/kaniko:0.4
       params:
         - name: IMAGE
-          value: $(params.target):$(params.version)
+          value: $(params.target)/$(params.target-name):$(params.version)
         - name: CONTEXT
           value: $(params.context)
         - name: DOCKERFILE
           value: $(params.dockerfile)
+        - name: EXTRA_ARGS
+          value: ["$(params.kanikoExtraArgs[*])"]
       workspaces:
         - name: source
           workspace: sources
@@ -97,6 +105,49 @@ spec:
               printf "$ARTIFACT_VERSION_RESULT_VALUE" > "$ARTIFACT_VERSION_RESULT_PATH"
       params:
         - name: name
-          value: $(params.target)
+          value: $(params.target-name)
         - name: version
           value: $(params.version)
+---
+apiVersion: tekton.dev/v1beta1
+kind: Pipeline
+metadata:
+  name: deploy-artifact
+  annotations:
+    description: |
+      Deploy the Podtato Head service
+    cd.service.deployed: enabled
+spec:
+  params:
+    - name: artifactId
+    - name: artifactName
+    - name: artifactVersion
+    - name: context
+    - name: keptnId
+    - name: envId
+  workspaces:
+    - name: kubeconfig
+      description: Kubeconfig secret
+  results:
+    - name: cd.service.envid
+      value: $(tasks.deploy.results.envId)
+    - name: cd.service.name
+      value: $(tasks.deploy.results.serviceName)
+    - name: cd.service.version
+      value: $(tasks.deploy.results.serviceVersion)
+  tasks:
+    - name: deploy
+      taskSpec:
+        params:
+          - name: envid
+          - name: name
+          - name: version
+        results:
+          - name: envId
+          - name: serviceName
+          - name: serviceVersion
+        steps:
+          - name: noop
+            image: alpine
+            script: |
+              echo "I'm not doing anything..."
