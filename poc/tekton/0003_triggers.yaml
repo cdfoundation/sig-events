@@ -1,0 +1,43 @@
+---
+apiVersion: triggers.tekton.dev/v1alpha1
+kind: Trigger
+metadata:
+  name: cdevent-artifact-published
+  namespace: cdevents
+spec:
+  interceptors:
+    - cel:
+        filter: >-
+          header.Ce-Type == "cd.artifact.packaged.v1"
+  bindings:
+    - name: artifactId
+      value: $(header.Ce-Artifactid)
+    - name: artifactName
+      value: $(header.Ce-Artifactname)
+    - name: artifactVersion
+      value: $(header.Ce-Artifactversion)
+    - name: context
+      value: $(body.context)
+    - name: keptnId
+      value: $(body.keptnid)
+  template:
+    spec:
+      params:
+        - name: artifactId
+        - name: artifactName
+        - name: artifactVersion
+        - name: context
+        - name: keptnId
+      resourceTemplates:
+        - apiVersion: "tekton.dev/v1beta1"
+          kind: PipelineRun
+          metadata:
+            generateName: "deploy-artifact-"
+          spec:
+            pipelineRef:
+              name: deploy-artifact
+            params:
+              - name: headers
+                value: $(tt.params.context)
+              - name: body
+                value: $(tt.params.keptnId)
