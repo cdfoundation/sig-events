@@ -1,0 +1,102 @@
+apiVersion: tekton.dev/v1beta1
+kind: Pipeline
+metadata:
+  name: build-artifact
+  annotations:
+    description: |
+      Build the container image of the Podtato Head service
+    cd.artifact.packaged: enabled
+    cd.artifact.published: enabled
+spec:
+  params:
+    - name: gitRepository
+      description: The git repository that hosts context and Dockerfile
+      default: https://github.com/cncf/podtato-head
+    - name: gitRevision
+      description: The git revision to build
+      default: main
+    - name: context
+      description: The path to the docker context in the sources workspace
+      default: podtato-server
+    - name: dockerfile
+      description: The path to the dockerfile within the context
+      default: docker/DockerfileV0.1.0
+    - name: target
+      description: The target container registry image to build (without version)
+      default: uk.icr.io/tekton/podtato-server
+    - name: version
+      description: the target version to build
+      default: V0.1.0
+  workspaces:
+    - name: sources
+      description: Workspace where the git repo is prepared for testing
+    - name: dockerconfig
+      description: Docker config secret
+  results:
+    - name: cd.artifact.id
+      value: $(tasks.image-build.results.IMAGE-DIGEST)
+    - name: cd.artifact.name
+      value: $(tasks.export-results.results.artifactName)
+    - name: cd.artifact.version
+      value: $(tasks.export-results.results.artifactVersion)
+  tasks:
+    - name: clone-repo
+      taskRef:
+        name: git-clone
+        bundle: gcr.io/tekton-releases/catalog/upstream/git-clone:0.4
+      params:
+        - name: url
+          value: $(params.gitRepository)
+        - name: revision
+          value: $(params.gitRevision)
+      workspaces:
+        - name: output
+          workspace: sources
+    - name: image-build
+      runAfter: [clone-repo]
+      taskRef:
+        name: kaniko
+        bundle: gcr.io/tekton-releases/catalog/upstream/kaniko:0.4
+      params:
+        - name: IMAGE
+          value: $(params.target):$(params.version)
+        - name: CONTEXT
+          value: $(params.context)
+        - name: DOCKERFILE
+          value: $(params.dockerfile)
+      workspaces:
+        - name: source
+          workspace: sources
+        - name: dockerconfig
+          workspace: dockerconfig
+    - name: export-results
+      runAfter: [image-build]
+      taskSpec:
+        params:
+          - name: name
+          - name: version
+        results:
+          - name: artifactName
+            description: The name of the artifact
+          - name: artifactVersion
+            description: The version of the artifact
+        steps:
+          - name: create-results
+            image: alpine
+            env:
+              - name: ARTIFACT_NAME_RESULT_PATH
+                value: $(results.artifactName.path)
+              - name: ARTIFACT_VERSION_RESULT_PATH
+                value: $(results.artifactVersion.path)
+              - name: ARTIFACT_NAME_RESULT_VALUE
+                value: $(params.name)
+              - name: ARTIFACT_VERSION_RESULT_VALUE
+                value: $(params.version)
+            script: |
+              printf "$ARTIFACT_NAME_RESULT_VALUE" > "$ARTIFACT_NAME_RESULT_PATH"
+              printf "$ARTIFACT_VERSION_RESULT_VALUE" > "$ARTIFACT_VERSION_RESULT_PATH"
+      params:
+        - name: name
+          value: $(params.target)
+        - name: version
+          value: $(params.version)
