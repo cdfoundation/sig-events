@@ -7,7 +7,6 @@ If you have keptn cli installed already you can run these two commands:
 
 And instead of creating a project with the quickstart instructions the shipyard.yaml file is provided to run the following steps. 
 
-
 You need to export the two following Environment Variables: 
 
 **Note**: If you don't install istio for ingress you need to port-forward with:
@@ -27,16 +26,21 @@ Run the CLI Command: `keptn create project fmtok8s --shipyard=your_shipyard.yaml
 
 Run the CLI command: `keptn create service agenda-service --project=fmtok8s` 
 
-Now you can start the CDEvents to Ketpn Inbound Translator component () with from inside the tranlator go project (this will configure a server in port 8081 to avoid conflict with Keptn in 8080): 
+Now you can start the CDEvents to Ketpn Inbound Translator component () with from inside the translator go project (this will configure a server in port 8081 to avoid conflict with Keptn in 8080): 
 
 ```
 go build
 go run main.go
 ```
 
+You can also run the translator component in the k8s cluster:
+```bash
+export KO_DOCKER_REPO=<your-local-repo>
+ko apply -f config/
+```
+
 Using the CDE binary you can emit an CD CloudEvent to the translator layer. Make sure that you export the CDE_SINK for CDE to point to the translator endpoint: 
 `export CDE_SINK=http://localhost:8081/events`
-
 
 `cde artifact packaged --id agenda-service-rest --name agenda-service -v 0.0.20 --data artifact=hash`
 
