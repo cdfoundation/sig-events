@@ -111,4 +111,5 @@ SIG Events meets bi-weekly on Mondays at 3pm UTC in the summer time and at 4pm U
 - [Zoom Bridge](https://zoom.us/j/97660712600?pwd=Z3BqYTE5YzNsbEhmck16cjdZNEFIUT09).
 - [Zoom International dial-in numbers](https://zoom.us/zoomconference).
 - [CDF Public Calendar (UTC)](https://calendar.google.com/calendar/u/0/embed?src=linuxfoundation.org_mhf0kmgedn67ihni8r129avp24@group.calendar.google.com&ctz=UTC).
+- [Recorded meetings on Youtube](https://www.youtube.com/playlist?list=PL2KXbZ9-EY9RlxWAnAjxs8Azuz11XVhkC)
 - [Archived meeting notes (2020)](docs/meetings_2020.md).
