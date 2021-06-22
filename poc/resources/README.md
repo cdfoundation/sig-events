@@ -24,7 +24,7 @@ Then configure the bridge (this will give you the credentials for the user inter
 
 Run the CLI Command: `keptn create project fmtok8s --shipyard=your_shipyard.yaml` 
 
-Run the CLI command: `keptn create service agenda-service --project=fmtok8s` 
+Run the CLI command: `keptn create service podtato-server --project=fmtok8s` 
 
 Now you can start the CDEvents to Ketpn Inbound Translator component () with from inside the translator go project (this will configure a server in port 8081 to avoid conflict with Keptn in 8080): 
 
