@@ -6,9 +6,11 @@ metadata:
   namespace: cdevents
 spec:
   interceptors:
-    - cel:
-        filter: >-
-          header.Ce-Type == "cd.artifact.packaged.v1"
+    - ref:
+        name: "cel"
+      params:
+        - name: "filter"
+          value: "header.match('Ce-Type', 'cd.artifact.published.v1')"
   bindings:
     - name: artifactId
       value: $(header.Ce-Artifactid)
