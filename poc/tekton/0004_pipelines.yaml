@@ -25,7 +25,7 @@ spec:
       default: kind-registry:5000/cdevent
     - name: target-name
       description: Name of the image to publish
-      default: agenda-service
+      default: podtato-server
     - name: version
       description: the target version to build
       default: V0.1.0
