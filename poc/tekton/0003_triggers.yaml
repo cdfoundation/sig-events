@@ -16,20 +16,17 @@ spec:
       value: $(header.Ce-Artifactid)
     - name: artifactName
       value: $(header.Ce-Artifactname)
-    - name: artifactVersion
-      value: $(header.Ce-Artifactversion)
-    - name: context
-      value: $(body.context)
-    - name: keptnId
-      value: $(body.keptnid)
+    - name: shkeptcontext
+      value: $(body.shkeptncontext)
+    - name: triggerid
+      value: $(body.triggerid)
   template:
     spec:
       params:
         - name: artifactId
         - name: artifactName
-        - name: artifactVersion
-        - name: context
-        - name: keptnId
+        - name: shkeptncontext
+        - name: triggerid
       resourceTemplates:
         - apiVersion: "tekton.dev/v1beta1"
           kind: PipelineRun
@@ -39,7 +36,13 @@ spec:
             pipelineRef:
               name: deploy-artifact
             params:
-              - name: headers
-                value: $(tt.params.context)
-              - name: body
-                value: $(tt.params.keptnId)
+              - name: image
+                value: $(tt.params.artifactId)
+              - name: name
+                value: $(tt.params.artifactName)
+              - name: shkeptncontext
+                value: $(tt.params.shkeptncontext)
+              - name: triggerid
+                value: $(tt.params.triggerid)
+              - name: envId
+                value: "production"

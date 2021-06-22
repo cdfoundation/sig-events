@@ -123,21 +123,18 @@ apiVersion: tekton.dev/v1beta1
 kind: Pipeline
 metadata:
   name: deploy-artifact
+  namespace: cdevents
   annotations:
     description: |
       Deploy the Podtato Head service
     cd.service.deployed: enabled
 spec:
   params:
-    - name: artifactId
-    - name: artifactName
-    - name: artifactVersion
-    - name: context
-    - name: keptnId
+    - name: image
+    - name: name
+    - name: shkeptncontext
+    - name: triggerid
     - name: envId
-  workspaces:
-    - name: kubeconfig
-      description: Kubeconfig secret
   results:
     - name: cd.service.envid
       value: $(tasks.deploy.results.envId)
@@ -145,19 +142,90 @@ spec:
       value: $(tasks.deploy.results.serviceName)
     - name: cd.service.version
       value: $(tasks.deploy.results.serviceVersion)
+    - name: sh.keptn.context
+      value: $(tasks.deploy.results.shkeptncontext)
+    - name: sh.keptn.trigger.id
+      value: $(tasks.deploy.results.shkeptntriggerid)
   tasks:
     - name: deploy
       taskSpec:
         params:
           - name: envid
           - name: name
-          - name: version
+          - name: image
+          - name: shkeptncontext
+          - name: shkeptntriggerid
         results:
           - name: envId
           - name: serviceName
           - name: serviceVersion
+          - name: shkeptncontext
+          - name: shkeptntriggerid
+        stepTemplate:
+          env:
+            - name: NAMESPACE
+              value: $(params.envid)
+            - name: SERVICE_NAME
+              value: $(params.name)
         steps:
-          - name: noop
-            image: alpine
+          - name: deploy
+            image: docker.io/bitnami/kubectl@sha256:792e0aaabee6c51d734b5d3b150ba990d6106c4c081731d8570c1b9afe0c52d9
             script: |
-              echo "I'm not doing anything..."
+              #!/bin/sh
+              set -ex
+
+              # Try to create a deployment, in case it's our first run
+              kubectl create deployment ${SERVICE_NAME} --image $(params.image) -n ${NAMESPACE} || true
+
+              # Update the deployment, rollout new image
+              kubectl set image deployment/${SERVICE_NAME} *=$(params.image) -n ${NAMESPACE}
+
+              # Create a service if it doesn't exists yet
+              kubectl expose deployment/${SERVICE_NAME} --port 8080 --target-port 80 -n ${NAMESPACE} || true
+
+          - name: ingress
+            image: docker.io/bitnami/kubectl@sha256:792e0aaabee6c51d734b5d3b150ba990d6106c4c081731d8570c1b9afe0c52d9
+            script: |
+              #!/bin/bash
+              set -ex
+
+              # Create an Ingress (unless it exists already)
+              cat <<EOF | kubectl create -f - || true
+              apiVersion: networking.k8s.io/v1
+              kind: Ingress
+              metadata:
+                name: ${SERVICE_NAME}
+                namespace: ${NAMESPACE}
+                annotations:
+                  nginx.ingress.kubernetes.io/rewrite-target: /\$2
+              spec:
+                rules:
+                - http:
+                    paths:
+                    - path: /${SERVICE_NAME}(/|$)(.*)
+                      pathType: Prefix
+                      backend:
+                        service:
+                          name: ${SERVICE_NAME}
+                          port:
+                            number: 8080
+              EOF
+              # Export results
+              printf "$(params.shkeptncontext)" > $(results.shkeptncontext.path)
+              printf "$(params.shkeptntriggerid)" > $(results.shkeptntriggerid.path)
+              printf "http://localhost/${SERVICE_NAME}" > $(results.envId.path)
+              printf "${SERVICE_NAME}" > $(results.serviceName.path)
+              # Export the deployment generation as serviceVersion
+              kubectl get deployment/${SERVICE_NAME} -n ${NAMESPACE} -o jsonpath='{.metadata.generation}' > $(results.serviceVersion.path)
+
+      params:
+        - name: envId
+          value: $(params.envId)
+        - name: name
+          value: $(params.name)
+        - name: image
+          value: $(params.image)
+        - name: shkeptncontext
+          value: $(params.shkeptncontext)
+        - name: shkeptntriggerid
+          value: $(params.triggerid)
