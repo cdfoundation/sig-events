@@ -10,25 +10,25 @@ spec:
   params:
     - name: gitRepository
       description: The git repository that hosts context and Dockerfile
-      default: https://github.com/cncf/podtato-head
+      default: https://github.com/cdfoundation/sig-events
     - name: gitRevision
       description: The git revision to build
       default: main
     - name: context
       description: The path to the docker context in the sources workspace
-      default: podtato-server
+      default: poc/docker
     - name: dockerfile
       description: The path to the dockerfile within the context
-      default: docker/DockerfileV0.1.0
+      default: Dockerfile
     - name: target
       description: The target container registry and path where to build the image
       default: kind-registry:5000/cdevent
     - name: target-name
       description: Name of the image to publish
-      default: podtato-server
+      default: poc
     - name: version
       description: the target version to build
-      default: V0.1.0
+      default: v1.0
     - name: kanikoExtraArgs
       type: array
       description: extra args to pass to the kaniko builder
@@ -150,7 +150,7 @@ spec:
     - name: deploy
       taskSpec:
         params:
-          - name: envid
+          - name: envId
           - name: name
           - name: image
           - name: shkeptncontext
@@ -164,9 +164,11 @@ spec:
         stepTemplate:
           env:
             - name: NAMESPACE
-              value: $(params.envid)
+              value: $(params.envId)
             - name: SERVICE_NAME
               value: $(params.name)
+            - name: CONTAINER_IMAGE
+              value: $(params.image)
         steps:
           - name: deploy
             image: docker.io/bitnami/kubectl@sha256:792e0aaabee6c51d734b5d3b150ba990d6106c4c081731d8570c1b9afe0c52d9
@@ -175,10 +177,10 @@ spec:
               set -ex
 
               # Try to create a deployment, in case it's our first run
-              kubectl create deployment ${SERVICE_NAME} --image $(params.image) -n ${NAMESPACE} || true
+              kubectl create deployment ${SERVICE_NAME} --image ${CONTAINER_IMAGE} -n ${NAMESPACE} || true
 
               # Update the deployment, rollout new image
-              kubectl set image deployment/${SERVICE_NAME} *=$(params.image) -n ${NAMESPACE}
+              kubectl set image deployment/${SERVICE_NAME} *=${CONTAINER_IMAGE} -n ${NAMESPACE}
 
               # Create a service if it doesn't exists yet
               kubectl expose deployment/${SERVICE_NAME} --port 8080 --target-port 80 -n ${NAMESPACE} || true
@@ -213,7 +215,7 @@ spec:
               # Export results
               printf "$(params.shkeptncontext)" > $(results.shkeptncontext.path)
               printf "$(params.shkeptntriggerid)" > $(results.shkeptntriggerid.path)
-              printf "http://localhost/${SERVICE_NAME}" > $(results.envId.path)
+              printf "http://localhost/${SERVICE_NAME}/" > $(results.envId.path)
               printf "${SERVICE_NAME}" > $(results.serviceName.path)
               # Export the deployment generation as serviceVersion
               kubectl get deployment/${SERVICE_NAME} -n ${NAMESPACE} -o jsonpath='{.metadata.generation}' > $(results.serviceVersion.path)
