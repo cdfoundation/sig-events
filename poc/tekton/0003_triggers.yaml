@@ -11,12 +11,16 @@ spec:
       params:
         - name: "filter"
           value: "header.match('Ce-Type', 'cd.artifact.published.v1')"
+        - name: "overlays"
+          value:
+            - key: artifactId
+              expression: "header['Ce-Artifactid'][0].replace('kind-registry', 'localhost')"
   bindings:
     - name: artifactId
-      value: $(header.Ce-Artifactid)
+      value: $(extensions.artifactId)
     - name: artifactName
       value: $(header.Ce-Artifactname)
-    - name: shkeptcontext
+    - name: shkeptncontext
       value: $(body.shkeptncontext)
     - name: triggerid
       value: $(body.triggerid)
@@ -33,6 +37,7 @@ spec:
           metadata:
             generateName: "deploy-artifact-"
           spec:
+            serviceAccountName: runner
             pipelineRef:
               name: deploy-artifact
             params:
