@@ -6,7 +6,7 @@ This folder contains all the Tekton resources required for the PoC.
 
 ### Install Tekton
 
-Set up a kind cluster with Tekton using [tekton_in_kind.sh](tekton_in_kind.sh).
+Set up a kind cluster with Tekton using [tekton_in_kind.sh](../tekton_in_kind.sh).
 Alternatively:
 
 1. Install Tekton Pipeline:
