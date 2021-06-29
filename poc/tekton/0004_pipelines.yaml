@@ -38,6 +38,7 @@ spec:
       description: Workspace where the git repo is prepared for testing
     - name: dockerconfig
       description: Docker config secret
+      optional: true
   results:
     - name: cd.artifact.id
       value: $(tasks.export-results.results.artifactId)
@@ -136,7 +137,7 @@ spec:
     - name: triggerid
     - name: envId
   results:
-    - name: cd.service.envid
+    - name: cd.service.envId
       value: $(tasks.deploy.results.envId)
     - name: cd.service.name
       value: $(tasks.deploy.results.serviceName)
