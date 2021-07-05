@@ -8,6 +8,9 @@
 - [Governance](#governance)
 - [Communication](#communication)
 - [Meetings](#meetings)
+- [Specification](vocabulary-draft/README.md)
+- [Proof of Concept](poc/README.md)
+- [SDK](cde/sdk/go/README.md)
 
 ## Group Charter
 
@@ -36,12 +39,10 @@ The group is working on a standardized event protocol that caters for technology
 
 The group aims to provide reference implementations such as event listeners and event senders on top of CloudEvents.
 
-## History
+### History
 
 This is group started as a work-stream within the CDF SIG Interoperability.
-
 The forming of the workstream was suggested on a [SIG Interoperability meeting](https://github.com/cdfoundation/sig-interoperability/blob/master/docs/meetings_2020.md#May-28-2020) and its first meeting was held on June 8th 2020.
-
 The SIG was formed in February 2021.
 
 ## What is an event?
@@ -67,7 +68,7 @@ Current members:
 - Alois Reitbauer ([@aloisreitbauer](https://github.com/aloisreitbauer)), [Dynatrace](https://www.dynatrace.com/)
 - Fredrik Fristedt [@fredjn](https://github.com/fredjn), Axis Communications
 
-## New Members
+### New Members
 
 Membership to this SIG is open to public and self-declared.
 

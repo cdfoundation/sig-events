@@ -3,7 +3,7 @@
 __Note:__ This is a work-in-progress draft version and is being worked on by members of the Events SIG. You are very welcome to join the work and the discussions!
 
 This document intends to describe a set of events related to different phases of a Continuous Delivery process. 
-These events are categorized by meaning and the phase where they are intenteded to be used. 
+These events are categorized by meaning, and the phase where they are intended to be used. 
 These events are agnostic from any specific tool and are designed to fit a wide range of scenarios. 
 
 The phases covered by this proposal are:
@@ -17,7 +17,7 @@ The phases covered by this proposal are:
 These phases can also be considered as different profiles of the vocabulary that can be adopted independently. 
 Also notice that we currently use the term 'pipeline' to denote a pipelines, workflows and related concepts. We also use the term 'task' to denote a job/stage/step.
 
-# Required Metadata for CD Events
+## Required Metadata for CD Events
 
 The following attributes are REQUIRED to be present in all the Events defined in this vocabulary:
 
@@ -27,4 +27,3 @@ The following attributes are REQUIRED to be present in all the Events defined in
 - **Event Timestamp**: defines the time when the event was produced
 
 The following sections list the events in different phases, allowing adopters to choose the events that they are more interested in.
-
