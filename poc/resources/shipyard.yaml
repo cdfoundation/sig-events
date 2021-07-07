@@ -8,7 +8,10 @@ spec:
       sequences:
         - name: "delivery"
           tasks:
+#            - name: "approval"
+#              properties:
+#                pass: "manual"
+#                warning: "manual"
             - name: "deployment"
-            - name: "test"
-            - name: "evaluation"
-            - name: "release"
+              properties:
+                deploymentstrategy: "direct"

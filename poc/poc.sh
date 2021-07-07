@@ -13,10 +13,10 @@ export KO_DOCKER_REPO=kind.local
 # on a local laptop running docker.
 # It creates a kind cluster named cde and deploys to it:
 # - Tekton
-# - Tekton experiment cloudevents controller (TBD)
-# - Keptn (TBD)
-# - Keptn inbound translation layer (TBD)
-# - Keptn output adapter layer (TBD)
+# - Tekton experiment cloudevents controller
+# - Keptn
+# - Keptn inbound translation layer
+# - Keptn output adapter layer
 # - Nginx ingress controller
 # - Knative (optional - partly implemented)
 # - Istio (optional - not implemented)
@@ -29,10 +29,13 @@ export KO_DOCKER_REPO=kind.local
 # - kind 0.11.1
 # - tkn CLI
 # - keptn CLI (`curl -sL https://get.keptn.sh | bash`)
+# - keptn inbound/outbound adapters and tekton cloudevent controller
+#   should be cloned under $GOROOT/src/github.com/<org>/<repo> or alternatively
+#   the corresponding PATH environment variables must be set (see the declare section above)
 
 # Notes:
 # - Latest versions will be installed if not specified
-# - If a kind cluster named "cde" already exists this will fail
+# - The script is written to be mostly idempotent
 
 get_latest_release() {
   curl --silent "https://api.github.com/repos/$1/releases/latest" | # Get latest release from GitHub api
@@ -225,7 +228,6 @@ echo export TEKTON_DASHBOARD_VERSION="$TEKTON_DASHBOARD_VERSION"
 kubectl apply -f "https://storage.googleapis.com/tekton-releases/pipeline/previous/${TEKTON_PIPELINE_VERSION}/release.yaml"
 kubectl apply -f "https://storage.googleapis.com/tekton-releases/triggers/previous/${TEKTON_TRIGGERS_VERSION}/release.yaml"
 kubectl wait --for condition=established --timeout=60s crd -l app.kubernetes.io/part-of=tekton-triggers
-kubectl apply -f "https://storage.googleapis.com/tekton-releases/triggers/previous/${TEKTON_TRIGGERS_VERSION}/interceptors.yaml" || true
 kubectl apply -f "https://github.com/tektoncd/dashboard/releases/download/${TEKTON_DASHBOARD_VERSION}/tekton-dashboard-release.yaml"
 
 # Wait until all pods are ready
@@ -290,13 +292,12 @@ popd
 echo "===> Install Keptn Outbound"
 CDF_EVENTS_KEPTN_ADAPTER_PATH=${CDF_EVENTS_KEPTN_ADAPTER_PATH:-${GOPATH}/src/github.com/salaboy/cdf-events-keptn-adapter}
 pushd "$CDF_EVENTS_KEPTN_ADAPTER_PATH"
-docker build --tag localhost:${reg_port}/cdevents/cdf-events-keptn-keptn-cdeventsadapter:latest .
+docker build --tag localhost:${reg_port}/cdevents/cdf-events-keptn-adapter:latest .
 docker push localhost:${reg_port}/cdevents/cdf-events-keptn-adapter:latest
 kubectl apply -f deploy/service.yaml
 # Set the correct pub-sub topics
 kubectl set env deployment/helm-service -n keptn PUBSUB_TOPIC=sh.keptn.event.service.create.finished,sh.keptn.event.rollback.triggered,sh.keptn.event.release.triggered,sh.keptn.event.action.triggered,sh.keptn.event.service.delete.finished -c distributor
 kubectl set env deployment/cdf-events-keptn-adapter -n keptn PUBSUB_TOPIC=sh.keptn.event.deployment.triggered -c distributor
-kubectl set env deployment/cdf-events-keptn-adapter -n keptn PUBSUB_URL="" -c distributor
 pushd
 
 echo "===> Install Tekton CloudEvents controller"
