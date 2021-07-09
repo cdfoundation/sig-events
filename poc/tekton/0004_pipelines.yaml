@@ -200,12 +200,13 @@ spec:
                 name: ${SERVICE_NAME}
                 namespace: ${NAMESPACE}
                 annotations:
-                  nginx.ingress.kubernetes.io/rewrite-target: /\$2
+                  kubernetes.io/ingress.class: "contour-external"
               spec:
                 rules:
-                - http:
+                - host: ${SERVICE_NAME}-127.0.0.1.nip.io
+                  http:
                     paths:
-                    - path: /${SERVICE_NAME}(/|$)(.*)
+                    - path: /
                       pathType: Prefix
                       backend:
                         service:
@@ -216,7 +217,7 @@ spec:
               # Export results
               printf "$(params.shkeptncontext)" > $(results.shkeptncontext.path)
               printf "$(params.shkeptntriggerid)" > $(results.shkeptntriggerid.path)
-              printf "http://localhost/${SERVICE_NAME}/" > $(results.envId.path)
+              printf "http://${SERVICE_NAME}-127.0.0.1.nip.io" > $(results.envId.path)
               printf "${SERVICE_NAME}" > $(results.serviceName.path)
               # Export the deployment generation as serviceVersion
               kubectl get deployment/${SERVICE_NAME} -n ${NAMESPACE} -o jsonpath='{.metadata.generation}' > $(results.serviceVersion.path)

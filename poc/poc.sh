@@ -4,8 +4,9 @@ set -e -o pipefail
 BASE_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )"
 
 declare TEKTON_PIPELINE_VERSION TEKTON_TRIGGERS_VERSION TEKTON_DASHBOARD_VERSION TEKTON_CLOUDEVENTS_PATH
-declare KNATIVE_VERSION KNATIVE_NET_KOURIER_VERSION
+declare KNATIVE_VERSION KNATIVE_NET_CONTOUR_VERSION KNATIVE_EVENTING_VERSION
 declare KEPTN_CDF_TRANSLATOR_PATH CDF_EVENTS_KEPTN_ADAPTER_PATH KEPTN_PROJECT KEPTN_SERVICE
+declare BROKER_NAME
 
 export KO_DOCKER_REPO=kind.local
 
@@ -17,9 +18,7 @@ export KO_DOCKER_REPO=kind.local
 # - Keptn
 # - Keptn inbound translation layer
 # - Keptn output adapter layer
-# - Nginx ingress controller
-# - Knative (optional - partly implemented)
-# - Istio (optional - not implemented)
+# - Knative + Courier Ingress
 # It deploys a container registry available at localhost:5000 and reachable from
 # the kind cluster.
 
@@ -85,19 +84,8 @@ fi
 if [ -z "$TEKTON_DASHBOARD_VERSION" ]; then
   TEKTON_DASHBOARD_VERSION=$(get_latest_release tektoncd/dashboard)
 fi
-if [ -z "$KNATIVE_VERSION" ]; then
-  MAIN_CONTAINER_HTTP_PORT=80
-  MAIN_CONTAINER_HTTPS_PORT=443
-  ALT_CONTAINER_HTTP_PORT=22222 # unused
-  ALT_CONTAINER_HTTPS_PORT=22223 # unused
-  TEKTON_PORT=80
-else
-  MAIN_CONTAINER_HTTP_PORT=31080
-  MAIN_CONTAINER_HTTPS_PORT=31443
-  ALT_CONTAINER_HTTP_PORT=80
-  ALT_CONTAINER_HTTPS_PORT=443
-  TEKTON_PORT=8080
-fi
+
+KNATIVE_VERSION=${KNATIVE_VERSION:-0.24.0}
 
 echo "===> Creating a local Container Registry"
 # create registry container unless it already exists
@@ -130,23 +118,17 @@ nodes:
   - role: control-plane
     image: kindest/node:v1.21.1@sha256:69860bda5563ac81e3c0057d654b5253219618a22ec3a346306239bba8cfa1a6
     kubeadmConfigPatches:
-      - |
-        kind: InitConfiguration
-        nodeRegistration:
-          kubeletExtraArgs:
-            node-labels: "ingress-ready=true"
+    - |
+      kind: InitConfiguration
+      nodeRegistration:
+        kubeletExtraArgs:
+          node-labels: "ingress-ready=true"
     extraPortMappings:
-      - containerPort: $MAIN_CONTAINER_HTTP_PORT
+      - containerPort: 31080 # expose port 31380 of the node to port 80 on the host, later to be use by kourier or contour ingress
+        listenAddress: 127.0.0.1
         hostPort: 80
-        protocol: TCP
-      - containerPort: $MAIN_CONTAINER_HTTPS_PORT
+      - containerPort: 443
         hostPort: 443
-        protocol: TCP
-      - containerPort: $ALT_CONTAINER_HTTP_PORT
-        hostPort: 8080
-        protocol: TCP
-      - containerPort: $ALT_CONTAINER_HTTPS_PORT
-        hostPort: 8443
         protocol: TCP
   - role: worker
     image: kindest/node:v1.21.1@sha256:69860bda5563ac81e3c0057d654b5253219618a22ec3a346306239bba8cfa1a6
@@ -161,32 +143,31 @@ containerdConfigPatches:
 EOF
 fi
 
+# Wait for the cluster to be ready
+kubectl wait pod --timeout=-1s --for=condition=Ready -l '!job-name' -n kube-system > /dev/null
+
 # connect the registry to the cluster network
 # (the network may already be connected)
 docker network connect "kind" "${reg_name}" || true
 
 # Knative (serving only for now)
-if [ -n "$KNATIVE_VERSION" ]; then
-  echo "===> Deploying Knative controller"
-  export KNATIVE_VERSION
-  curl -sL https://raw.githubusercontent.com/csantanapr/knative-kind/master/02-serving.sh | sh
+echo "===> Deploying Knative controller"
+export KNATIVE_VERSION
+curl -sL https://raw.githubusercontent.com/csantanapr/knative-kind/master/02-serving.sh | bash
 
-  echo "===> Deploying Kourier"
-  export KNATIVE_NET_KOURIER_VERSION=${KNATIVE_NET_KOURIER_VERSION:-$KNATIVE_VERSION}
-  curl -sL https://raw.githubusercontent.com/csantanapr/knative-kind/master/02-kourier.sh | sh
+echo "===> Deploying Contour"
+export KNATIVE_NET_CONTOUR_VERSION=${KNATIVE_NET_CONTOUR_VERSION:-$KNATIVE_VERSION}
+curl -sL https://raw.githubusercontent.com/csantanapr/knative-kind/master/02-contour.sh | bash
 
-  EXTERNAL_IP="127.0.0.1"
-  KNATIVE_DOMAIN="$EXTERNAL_IP.nip.io"
-  kubectl patch configmap -n knative-serving config-domain -p "{\"data\": {\"$KNATIVE_DOMAIN\": \"\"}}"
-fi
+echo "===> Deploying Knative Serving"
+export KNATIVE_EVENTING_VERSION=${KNATIVE_EVENTING_VERSION:-$KNATIVE_VERSION}
+export BROKER_NAME=${BROKER_NAME:-"events-broker"}
+kubectl delete "broker/${BROKER_NAME}" > /dev/null || true
+curl -sL https://raw.githubusercontent.com/csantanapr/knative-kind/master/04-eventing.sh | bash
 
-echo "===> Deploying the Ingress controller"
-# Deploy the ingress
-kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/controller-v0.47.0/deploy/static/provider/kind/deploy.yaml
-kubectl wait --namespace ingress-nginx \
-  --for=condition=ready pod \
-  --selector=app.kubernetes.io/component=controller \
-  --timeout=160s
+EXTERNAL_IP="127.0.0.1"
+KNATIVE_DOMAIN="knative-$EXTERNAL_IP.nip.io"
+kubectl patch configmap -n knative-serving config-domain -p "{\"data\": {\"$KNATIVE_DOMAIN\": \"\"}}"
 
 echo "===> RBAC and secrets"
 # Install some basic RBAC and secrets needed by triggers
@@ -204,14 +185,13 @@ metadata:
   name: tekton-dashboard
   namespace: tekton-pipelines
   annotations:
-    nginx.ingress.kubernetes.io/rewrite-target: /\$2
-    nginx.ingress.kubernetes.io/configuration-snippet: |
-      rewrite ^(/[a-z1-9\-]*)$ \$1/ redirect;
+    kubernetes.io/ingress.class: "contour-external"
 spec:
   rules:
-  - http:
+  - host: tekton-127.0.0.1.nip.io
+    http:
       paths:
-      - path: /dashboard(/|$)(.*)
+      - path: /
         pathType: Prefix
         backend:
           service:
@@ -225,16 +205,16 @@ echo export TEKTON_TRIGGERS_VERSION="$TEKTON_TRIGGERS_VERSION"
 echo export TEKTON_DASHBOARD_VERSION="$TEKTON_DASHBOARD_VERSION"
 
 # Install Tekton Pipeline, Triggers and Dashboard
-kubectl apply -f "https://storage.googleapis.com/tekton-releases/pipeline/previous/${TEKTON_PIPELINE_VERSION}/release.yaml"
-kubectl apply -f "https://storage.googleapis.com/tekton-releases/triggers/previous/${TEKTON_TRIGGERS_VERSION}/release.yaml"
+kubectl apply -f "https://storage.googleapis.com/tekton-releases/pipeline/previous/${TEKTON_PIPELINE_VERSION}/release.yaml" > /dev/null
+kubectl apply -f "https://storage.googleapis.com/tekton-releases/triggers/previous/${TEKTON_TRIGGERS_VERSION}/release.yaml" > /dev/null
 kubectl wait --for condition=established --timeout=60s crd -l app.kubernetes.io/part-of=tekton-triggers
-kubectl apply -f "https://github.com/tektoncd/dashboard/releases/download/${TEKTON_DASHBOARD_VERSION}/tekton-dashboard-release.yaml"
-
+kubectl apply -f "https://storage.googleapis.com/tekton-releases/triggers/previous/${TEKTON_TRIGGERS_VERSION}/interceptors.yaml" > /dev/null
+kubectl apply -f "https://github.com/tektoncd/dashboard/releases/download/${TEKTON_DASHBOARD_VERSION}/tekton-dashboard-release.yaml" > /dev/null
 # Wait until all pods are ready
 kubectl wait -n tekton-pipelines --for=condition=ready pods --all --timeout=120s
 
 # Configure Tekton
-kubectl patch cm feature-flags -n tekton-pipelines -p '{"data": {"enable-tekton-oci-bundles": "true"}}'
+kubectl patch cm feature-flags -n tekton-pipelines -p '{"data": {"enable-tekton-oci-bundles": "true"}}' > /dev/null
 kubectl create namespace production || true
 
 echo Tekton Dashboard available at http://localhost:"${TEKTON_PORT}"/dashboard/ after installation
@@ -250,6 +230,8 @@ kind: Ingress
 metadata:
   name: keptn
   namespace: keptn
+  annotations:
+    kubernetes.io/ingress.class: "contour-external"
 spec:
   rules:
   - host: keptn-127.0.0.1.nip.io
@@ -264,16 +246,17 @@ spec:
               number: 80
 EOF
 
-keptn install --use-case=continuous-delivery --yes -q
+keptn install --yes -q
 
 # Keptn Auth
 export KEPTN_ENDPOINT=http://keptn-127.0.0.1.nip.io/api
 export KEPTN_API_TOKEN=$(kubectl get secret keptn-api-token -n keptn -ojsonpath={.data.keptn-api-token} | base64 --decode)
 keptn auth --endpoint=$KEPTN_ENDPOINT --api-token=$KEPTN_API_TOKEN
 
-# Keptn Create Project and Service
+# Keptn Create Project and Service (always re-create if exists)
 KEPTN_PROJECT=${KEPTN_PROJECT:-cde}
 KEPTN_SERVICE=${KEPTN_SERVICE:-poc}
+keptn delete project "$KEPTN_PROJECT" > /dev/null || true
 keptn create project "$KEPTN_PROJECT" --shipyard="$BASE_DIR/resources/shipyard.yaml"
 keptn create service "$KEPTN_SERVICE" --project="$KEPTN_PROJECT"
 
@@ -296,7 +279,6 @@ docker build --tag localhost:${reg_port}/cdevents/cdf-events-keptn-adapter:lates
 docker push localhost:${reg_port}/cdevents/cdf-events-keptn-adapter:latest
 kubectl apply -f deploy/service.yaml
 # Set the correct pub-sub topics
-kubectl set env deployment/helm-service -n keptn PUBSUB_TOPIC=sh.keptn.event.service.create.finished,sh.keptn.event.rollback.triggered,sh.keptn.event.release.triggered,sh.keptn.event.action.triggered,sh.keptn.event.service.delete.finished -c distributor
 kubectl set env deployment/cdf-events-keptn-adapter -n keptn PUBSUB_TOPIC=sh.keptn.event.deployment.triggered -c distributor
 pushd
 
@@ -308,7 +290,65 @@ ko apply -f config/
 popd
 
 # Configure the cloudevents controller to talk to the keptn inbound adapter
-kubectl patch cm config-defaults -n tekton-cloudevents -p '{"data": {"default-cloud-events-sink": "http://keptn-cdevents.keptn:8080/events"}}'
+BROKER_SINK="http://broker-ingress.knative-eventing.svc.cluster.local/default/$BROKER_NAME"
+kubectl patch cm config-defaults -n tekton-cloudevents -p '{"data": {"default-cloud-events-sink": "'$BROKER_SINK'"}}'
 
 # Install Tekton Resources
 kubectl create -f "$BASE_DIR/tekton/" || true
+
+# Install cloud-player
+kubectl create -f "$BASE_DIR/cloudplayer/deploy.yaml"
+
+# Create the triggers to get the events to the keptn inbound service
+kubectl create -f - <<EOF
+apiVersion: eventing.knative.dev/v1
+kind: Trigger
+metadata:
+  name: cd-artifact-packaged-to-keptn-in
+spec:
+  broker: $BROKER_NAME
+  filter:
+    attributes:
+      type: cd.artifact.packaged.v1
+  subscriber:
+    uri: http://keptn-cdevents.keptn:8080/events
+EOF
+kubectl create -f - <<EOF
+apiVersion: eventing.knative.dev/v1
+kind: Trigger
+metadata:
+  name: cd-service-deployed-to-keptn-in
+spec:
+  broker: $BROKER_NAME
+  filter:
+    attributes:
+      type: cd.service.deployed.v1
+  subscriber:
+    uri: http://keptn-cdevents.keptn:8080/events
+EOF
+kubectl create -f - <<EOF
+apiVersion: eventing.knative.dev/v1
+kind: Trigger
+metadata:
+  name: cd-artifact-published-to-keptn-in
+spec:
+  broker: $BROKER_NAME
+  filter:
+    attributes:
+      type: cd.artifact.published.v1
+  subscriber:
+    uri: http://keptn-cdevents.keptn:8080/events
+EOF
+kubectl create -f - <<EOF
+apiVersion: eventing.knative.dev/v1
+kind: Trigger
+metadata:
+  name: cd-artifact-published-to-tekton-triggers
+spec:
+  broker: $BROKER_NAME
+  filter:
+    attributes:
+      type: cd.artifact.published.v1
+  subscriber:
+    uri: http://el-cdevent-listener.cdevents:8080
+EOF
