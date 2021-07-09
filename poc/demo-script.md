@@ -28,3 +28,15 @@ tkn pipeline start build-artifact -w name=sources,volumeClaimTemplateFile=./tekt
 - Watch the pipeline execution in the [Tekton Dashboard](http://localhost/dashboard)
 - Watch the Keptn sequence progress on the [bridge](https://keptn-127.0.0.1.nip.io/bridge/project/cde/sequence)
 - Once the sequence is complete the [link](http://localhost/poc/) in the deployment on the bridge opens the deployed demo app
+
+## Cleanup
+
+Recreate the Keptn project and delete all Tekton `PipelineRuns`:
+
+```shell
+keptn delete project cde
+keptn create project cde --shipyard=resources/shipyard.yaml
+keptn create service poc --project cde
+tkn pr delete --all
+tkn pr delete --all -n cdevents
+```

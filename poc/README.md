@@ -71,3 +71,5 @@ Going from top to bottom in the diagram:
   to Keptn native events.
   * The **[Keptn service](https://github.com/salaboy/cdf-events-keptn-adapter)** module creates CD Events from Keptn internal signals.
 * Finally, we have **Keptn** itself, orchestrating the life-cycle operations for the use case above.
+
+![poc sequence diagram](sig-events-poc.png "PoC Sequence Diagram")
