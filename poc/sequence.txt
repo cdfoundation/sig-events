@@ -7,6 +7,9 @@ sequenceDiagram
     Keptn Inbound -) Keptn: prod.delivery.triggered
     Note right of Keptn Inbound: (Project, Stage, Service, Config Change)
     Note left of Keptn: Name -> Service, ID -> Config Change
+    Keptn ->> User: Wait for Approval
+    Note left of User: Config Change
+    User ->> Keptn: Approved!
     Keptn -) Keptn Outbound: deployment.triggered
     Note right of Keptn: (Project, Service, Stage, Id, Ctx)
     Note right of Keptn: The Keptn Ctx identifies the Deployment Task
