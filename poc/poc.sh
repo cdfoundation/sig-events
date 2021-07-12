@@ -247,6 +247,9 @@ spec:
 EOF
 
 keptn install --yes -q
+# Patch approval service and lighthouse service for approval to work (https://github.com/keptn/keptn/pull/4492)
+kubectl set image deployment/lighthouse-service -n keptn lighthouse-service=keptn/lighthouse-service:0.8.5-dev-PR-4492.202106281409
+kubectl set image deployment/approval-service -n keptn approval-service=keptn/approval-service:0.8.5-dev-PR-4492.202106281409
 
 # Keptn Auth
 export KEPTN_ENDPOINT=http://keptn-127.0.0.1.nip.io/api
