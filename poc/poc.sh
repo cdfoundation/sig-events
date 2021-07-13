@@ -217,8 +217,6 @@ kubectl wait -n tekton-pipelines --for=condition=ready pods --all --timeout=120s
 kubectl patch cm feature-flags -n tekton-pipelines -p '{"data": {"enable-tekton-oci-bundles": "true"}}' > /dev/null
 kubectl create namespace production || true
 
-echo Tekton Dashboard available at http://localhost:"${TEKTON_PORT}"/dashboard/ after installation
-
 # Install keptn
 
 kubectl create namespace keptn || true
@@ -355,3 +353,12 @@ spec:
   subscriber:
     uri: http://el-cdevent-listener.cdevents:8080
 EOF
+
+# Echo endpoints and demo
+echo "Tekton Dashboard available at http://tekton-127.0.0.1.nip.io"
+echo "Keptn Bridge available at http://keptn-127.0.0.1.nip.io"
+echo "-> for the login creds, use keptn configure bridge -o"
+echo "CloudEvents player available at http://cloudevents-player.default.knative-127.0.0.1.nip.io"
+
+echo "To kick off the demo, from the poc folder, run tkn:"
+echo "tkn pipeline start build-artifact -w name=sources,volumeClaimTemplateFile=./tekton/workspace-template.yaml"
