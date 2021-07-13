@@ -25,6 +25,7 @@ export KO_DOCKER_REPO=kind.local
 # Prerequisites:
 # - go 1.15+
 # - docker (recommended 8GB memory config)
+# - ko (https://github.com/google/ko)
 # - kind 0.11.1
 # - tkn CLI
 # - keptn CLI (`curl -sL https://get.keptn.sh | bash`)
@@ -124,7 +125,7 @@ nodes:
         kubeletExtraArgs:
           node-labels: "ingress-ready=true"
     extraPortMappings:
-      - containerPort: 31080 # expose port 31380 of the node to port 80 on the host, later to be use by kourier or contour ingress
+      - containerPort: 31080 # expose port 31380 of the node to port 80 on the host, later to be use by contour ingress
         listenAddress: 127.0.0.1
         hostPort: 80
       - containerPort: 443
@@ -353,6 +354,9 @@ spec:
   subscriber:
     uri: http://el-cdevent-listener.cdevents:8080
 EOF
+
+# Echo relevant environment
+env | egrep '(KO|KIND|KEPTN|^TEKTON|BROKER|KNATIVE|reg_)'
 
 # Echo endpoints and demo
 echo "Tekton Dashboard available at http://tekton-127.0.0.1.nip.io"
