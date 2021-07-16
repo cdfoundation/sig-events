@@ -11,7 +11,7 @@ Download the binary `cde` or build from source, by cloning this repository and r
 
 Set `CDE_SINK` environment variable to define where CloudEvents will be sent. You can do this by running:
 
-`export CDE_SINK=http://my-cloudevent-broker` 
+`export CDE_SINK=http://my-cloudevent-broker`
 
 You can use [SockEye](https://github.com/n3wscott/sockeye) to visualize the cloud events.
 
@@ -27,19 +27,19 @@ The following events are supported:
 - [PipelineRun Events](#pipelinerun-events)
 - [TaskRun Events](#taskrun-events)
 - [Repository Events](#repository-events)
-            
+
 
 # CDE Events
 
-The following events are currently supported: 
+The following events are currently supported:
 
 ## Environment Events
 - Properties
     - Id
     - Name
     - URL
-      
-Examples: 
+
+Examples:
 
 - **cd.environment.created.v1** `./cde env created --id staging --name "Staging Environment" --repo http://github.com/user/myrepo --data event=data`
 - **cd.environment.modified.v1** `./cde env modified --id staging --name "Staging Environment" --repo http://github.com/user/myrepo --data event=data`
@@ -56,8 +56,8 @@ Examples:
 
 - **cd.service.deployed.v1** `./cde service deployed --envId staging --name my-service --version 1.0.2 --data service=data`
 - **cd.service.upgraded.v1** `./cde service upgraded --envId staging --name my-service --version 1.0.3 --data service=data`
-- **cd.service.rolledback.v1** `./cde service upgraded --envId staging --name my-service --version 1.0.2 --data service=data`
-- **cd.service.removed.v1** `./cde service upgraded --envId staging --name my-service --version 1.0.2 --data service=data`
+- **cd.service.rolledback.v1** `./cde service rolledback --envId staging --name my-service --version 1.0.2 --data service=data`
+- **cd.service.removed.v1** `./cde service removed --envId staging --name my-service --version 1.0.2 --data service=data`
 
 ## PipelineRun Events
 - Properties
@@ -66,11 +66,11 @@ Examples:
   - URL
   - Status  
   - Errors
-    
+
 Examples:
-- **cd.pipelinerun.started.v1**  `./cde pipelinerun queued --id pipe1 --name "My Pipeline" --status "Starting" --url "http://my-pipelinerunner" --errors "Hopfully no errors" --data pipeline=data`
-- **cd.pipelinerun.finished.v1** `./cde pipelinerun started --id pipe1 --name "My Pipeline" --status "Starting" --url "http://my-pipelinerunner" --errors "Hopfully no errors" --data pipeline=data`
-- **cd.pipelinerun.queued.v1**   `./cde pipelinerun finished --id pipe1 --name "My Pipeline" --status "Starting" --url "http://my-pipelinerunner" --errors "Hopfully no errors" --data pipeline=data`
+- **cd.pipelinerun.queued.v1**   `./cde pipelinerun queued --id pipe1 --name "My Pipeline" --status "Queued" --url "http://my-pipelinerunner" --errors "Hopfully no errors" --data pipeline=data`
+- **cd.pipelinerun.started.v1**  `./cde pipelinerun started --id pipe1 --name "My Pipeline" --status "Starting" --url "http://my-pipelinerunner" --errors "Hopfully no errors" --data pipeline=data`
+- **cd.pipelinerun.finished.v1** `./cde pipelinerun finished --id pipe1 --name "My Pipeline" --status "Finished" --url "http://my-pipelinerunner" --errors "Hopfully no errors" --data pipeline=data`
 
 ## TaskRun Events
 - Properties
@@ -81,17 +81,17 @@ Examples:
   - Errors
 
 Examples:
-- **cd.taskrun.started.v1**  `./cde taskrun queued --id task1 --name "My Task Run" --pipeid pipe1 --status "Running" --url "http://my-pipelinerunner/task1" --errors "Hopfully no errors" --data task=data`
-- **cd.taskrun.finished.v1** `./cde taskrun started --id task1 --name "My Task Run" --pipeid pipe1 --status "Successful" --url "http://my-pipelinerunner/task1" --errors "Hopfully no errors" --data task=data`
-- **cd.taskrun.queued.v1**   `./cde taskrun finished --id task1 --name "My Task Run" --pipeid pipe1 --status "Queued" --url "http://my-pipelinerunner/task1" --errors "Hopfully no errors" --data task=data`
+- **cd.taskrun.queued.v1**   `./cde taskrun queued --id task1 --name "My Task Run" --pipeid pipe1 --status "Queued" --url "http://my-pipelinerunner/task1" --errors "Hopfully no errors" --data task=data`
+- **cd.taskrun.started.v1**  `./cde taskrun started --id task1 --name "My Task Run" --pipeid pipe1 --status "Running" --url "http://my-pipelinerunner/task1" --errors "Hopfully no errors" --data task=data`
+- **cd.taskrun.finished.v1** `./cde taskrun finished --id task1 --name "My Task Run" --pipeid pipe1 --status "Successful" --url "http://my-pipelinerunner/task1" --errors "Hopfully no errors" --data task=data`
 
 ## Repository Events
 - Properties
   - Id
   - Name
   - URL
-    
-Examples: 
+
+Examples:
 - **cd.repository.created.v1** `./cde repository created --id repository_id --name "Name of repository" --url "http://my-repository" --data repository=data`
 - **cd.repository.modified.v1** `./cde repository modified --id repository_id --name "Name of repository" --url "http://my-repository" --data repository=data`
 - **cd.repository.deleted.v1** `./cde repository deleted --id repository_id --name "Name of repository" --url "http://my-repository" --data repository=data`
