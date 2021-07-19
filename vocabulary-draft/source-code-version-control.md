@@ -16,7 +16,7 @@ These events are related to Source Code repositories
 
 
 Repository Events MUST include the following attributes:
-- **Event Type**: the type is restricted to include `cd.**` prefix. For example `cd.repository.created` or `cd.repository.changeapproved`
+- **Event Type**: the type is restricted to include `cd.**` prefix. For example `cd.repository.created` or `cd.repository.changeproposalreviewed`
 - **Repository URL**: indicates the location of the source code repository for API operations, this URL needs to include the protocol used to connect to the repository. For example `git://` , `ssh://`, `https://`
 - **Repository Name**: friendly name to list this repository to users
 
@@ -24,13 +24,17 @@ Optional attributes:
 - **Repository Owner**: indicates who is the owner of the repository, usually a `user` or an `organization`
 - **Repository View URL**: URL to access the repository from a user web browser
 
-From each repository you can emit events related with proposed source code changes. Each change can include a single or multiple commits that can also be tracked. 
+## Change and change proposal events
 
-- **Change Created Event**: a source code change was created and submitted to a repository specific branch. Examples: PullRequest sent to Github, MergeRequest sent to Gitlab, Change created in Gerrit
-- **Change Reviewed Event**:  someone (user) or an automated system submitted an review to the source code change. A user or an automated system needs to be in charge of understanding how many approvals/rejections are needed for this change to be merged or rejected. The review event needs to include if the change is approved by the reviewer, more changes are needed or if the change is rejected.     
-- **Change Merged Event**: the change is merged to the target branch where it was submitted. 
-- **Change Abandoned Event**: a tool or a user decides that the change has been inactive for a while and it can be considered abandoned.
-- **Change Updated**: the Change has been updated, for example a new commit is added or removed from an existing Change
+From each repository you can emit events related with proposed and/or merged source code changes. Each change can include a single or multiple commits that can also be tracked.
+
+We use the term "change proposal" to represent one or more commits that form a proposal for a change to the source (e.g. a Pull Request in GitHub, a Merge Request in GitLab or a Change in Gerrit.), which becomes a change through approval and merge.
+
+- **Change Proposal Created Event**: a source code change proposal was created and submitted to a repository specific branch.
+- **Change Proposal Reviewed Event**: someone (user) or an automated system submitted a review to the source code change proposal. A user or an automated system needs to be in charge of understanding how many approvals/rejections are needed for this change proposal to be merged or rejected. The review event needs to include if the change proposal is approved by the reviewer, more changes are needed or if the change proposal is rejected.
+- **Change Proposal Abandoned Event**: a tool or a user decides that the change proposal should be abandoned, for instance because it has been inactive for a while.
+- **Change Proposal Updated**: the change proposal has been updated, for example a new commit is added or removed from an existing change proposal.
+- **Change Merged Event**: the change proposal is made a change by it being merged to the target branch where it was submitted.
 
 
 Optional attributes for **Change** Events: 
