@@ -43,6 +43,15 @@ get_latest_release() {
     sed -E 's/.*"([^"]+)".*/\1/'                                    # Pluck JSON value
 }
 
+retry_command() {
+  for counter in {1..5}; do
+    $1 && break
+    sleep $((counter + 1))
+    [[ $counter -eq 5 ]] && echo "Failed!" && exit 1
+    echo "Trying again. Try #$counter"
+  done
+}
+
 # Read command line options
 while getopts ":c:p:t:d:k:" opt; do
   case ${opt} in
@@ -176,7 +185,7 @@ kubectl create -f tekton/rbac.yaml || true
 
 echo "===> Install Tekton"
 
-kubectl create namespace tekton-pipelines || true
+kubectl create namespace --save-config tekton-pipelines || true
 
 # Deploy an ingress for the Tekton Dashboard
 cat <<EOF | kubectl create -f - || true
@@ -215,15 +224,19 @@ kubectl apply -f "https://github.com/tektoncd/dashboard/releases/download/${TEKT
 kubectl wait -n tekton-pipelines --for=condition=ready pods --all --timeout=120s
 
 # Configure Tekton
-kubectl patch cm feature-flags -n tekton-pipelines -p '{"data": {"enable-tekton-oci-bundles": "true"}}' > /dev/null
+retry_command "kubectl patch cm feature-flags -n tekton-pipelines -p {\"data\":{\"enable-tekton-oci-bundles\":\"true\"}}"
+
 kubectl create namespace production || true
 
 # Install keptn
 
-kubectl create namespace keptn || true
+keptn install --yes -q > /dev/null
+# Patch approval service and lighthouse service for approval to work (https://github.com/keptn/keptn/pull/4492)
+kubectl set image deployment/lighthouse-service -n keptn lighthouse-service=keptn/lighthouse-service:0.8.5-dev-PR-4492.202106281409
+kubectl set image deployment/approval-service -n keptn approval-service=keptn/approval-service:0.8.5-dev-PR-4492.202106281409
 
 # Deploy an ingress for Keptn Bridge and API
-cat <<EOF | kubectl create -f - || true
+kubectl create -f - <<EOF || true
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
@@ -245,15 +258,12 @@ spec:
               number: 80
 EOF
 
-keptn install --yes -q
-# Patch approval service and lighthouse service for approval to work (https://github.com/keptn/keptn/pull/4492)
-kubectl set image deployment/lighthouse-service -n keptn lighthouse-service=keptn/lighthouse-service:0.8.5-dev-PR-4492.202106281409
-kubectl set image deployment/approval-service -n keptn approval-service=keptn/approval-service:0.8.5-dev-PR-4492.202106281409
-
 # Keptn Auth
 export KEPTN_ENDPOINT=http://keptn-127.0.0.1.nip.io/api
 export KEPTN_API_TOKEN=$(kubectl get secret keptn-api-token -n keptn -ojsonpath={.data.keptn-api-token} | base64 --decode)
-keptn auth --endpoint=$KEPTN_ENDPOINT --api-token=$KEPTN_API_TOKEN
+
+# Auth Keptn, try a few times
+retry_command "keptn auth --endpoint=$KEPTN_ENDPOINT --api-token=$KEPTN_API_TOKEN"
 
 # Keptn Create Project and Service (always re-create if exists)
 KEPTN_PROJECT=${KEPTN_PROJECT:-cde}
@@ -355,14 +365,44 @@ spec:
     uri: http://el-cdevent-listener.cdevents:8080
 EOF
 
+# Install and configure zipkin
+kubectl create deployment zipkin --image openzipkin/zipkin
+kubectl expose deployment zipkin --type ClusterIP --port 9411
+kubectl create -f - <<EOF
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: zipkin
+  annotations:
+    kubernetes.io/ingress.class: "contour-external"
+spec:
+  rules:
+  - host: zipkin-127.0.0.1.nip.io
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: zipkin
+            port:
+              number: 9411
+EOF
+
+kubectl patch cm config-tracing -n knative-eventing -p '{"data": {"backend": "zipkin", "zipkin-endpoint": "http://zipkin.default.svc.cluster.local:9411/api/v2/spans", "sample-rate": "1"}}'
+
 # Echo relevant environment
-env | egrep '(KO|KIND|KEPTN|^TEKTON|BROKER|KNATIVE|reg_)'
+env | egrep '(KO|KIND|KEPTN|^TEKTON|BROKER|KNATIVE|reg_)' > poc.env
 
 # Echo endpoints and demo
 echo "Tekton Dashboard available at http://tekton-127.0.0.1.nip.io"
 echo "Keptn Bridge available at http://keptn-127.0.0.1.nip.io"
 echo "-> for the login creds, use keptn configure bridge -o"
 echo "CloudEvents player available at http://cloudevents-player.default.knative-127.0.0.1.nip.io"
-
+echo "Zipkin available at http://zipkin-127.0.0.1.nip.io"
+echo
+echo "Environment variables from the script are available in \"poc.env\". To set them up in your console, run:"
+echo ". poc.env"
+echo
 echo "To kick off the demo, from the poc folder, run tkn:"
 echo "tkn pipeline start build-artifact -w name=sources,volumeClaimTemplateFile=./tekton/workspace-template.yaml"
