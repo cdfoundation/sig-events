@@ -8,6 +8,8 @@ This phase includes events related to changes in Source Code repositories that a
 
 These events are related to Source Code repositories
 - **Repository Created Event**: a new Source Code Repository was created to host source code for a project
+
+Example:
 ```json
 {
   "data": {
@@ -25,6 +27,8 @@ These events are related to Source Code repositories
 }
 ```
 - **Repository Modified Event**: a Source Code Repository modified some of its attributes, like location, or owner
+
+Example:
 ```json
 {
   "data": {
@@ -42,6 +46,8 @@ These events are related to Source Code repositories
 }
 ```
 - **Repository Deleted Event**: a Source Code Repository was deleted and it is not longer available
+
+Example:
 ```json
 {
   "data": {
@@ -60,8 +66,6 @@ These events are related to Source Code repositories
 ```
 - **Branch Created Event**: a Branch inside the Repository was created
 - **Branch Deleted Event**: a Branch inside the Repository was deleted
-
-
 
 Repository Events MUST include the following attributes:
 - **Event Type**: the type is restricted to include `cd.**` prefix. For example `cd.repository.created` or `cd.repository.changeapproved`

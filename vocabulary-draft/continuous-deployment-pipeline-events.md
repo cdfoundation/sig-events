@@ -146,7 +146,6 @@ Continuous Deployment Events MUST include the following attributes:
 - **Event Type**: the type is restricted to include `cd.**` prefix. For example `cd.service.upgraded` or `cd.environment.created`
 - **Environment ID**: unique identifier for the Environment
 
-
 Optional attributes:
 
 - **Environment Name**: user-friendly name for the environment, to be displayed in tools or User Interfaces

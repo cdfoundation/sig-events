@@ -75,6 +75,7 @@ Example:
 Each pipeline is defined as a set of Tasks to be performed in sequence, hence tracking this sequence might be important for some cases. A TaskRun is an instance of the Task defined inside the pipeline, as you can expect multiple execution of the pipelines (each a PipelineRun) you can also expect multiple execution of the Tasks, for that reason we use TaskRun to refer to one of these instances.  
 
 - **TaskRun Started**: a TaskRun inside a PipelineRun has started.
+
 Example:
 ```json
 {
@@ -94,6 +95,7 @@ Example:
 ```
 
 - **TaskRun Finished**: a TaskRun inside a PipelineRun has finished.
+
 Example:
 ```json
 {
