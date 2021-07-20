@@ -81,9 +81,8 @@ Examples:
   - Errors
 
 Examples:
-- **cd.taskrun.queued.v1**   `./cde taskrun queued --id task1 --name "My Task Run" --pipeid pipe1 --status "Queued" --url "http://my-pipelinerunner/task1" --errors "Hopfully no errors" --data task=data`
-- **cd.taskrun.started.v1**  `./cde taskrun started --id task1 --name "My Task Run" --pipeid pipe1 --status "Running" --url "http://my-pipelinerunner/task1" --errors "Hopfully no errors" --data task=data`
-- **cd.taskrun.finished.v1** `./cde taskrun finished --id task1 --name "My Task Run" --pipeid pipe1 --status "Successful" --url "http://my-pipelinerunner/task1" --errors "Hopfully no errors" --data task=data`
+- **cd.taskrun.started.v1**  `./cde taskrun started --id task1 --name "My Task Run" --pipelineid pipe1 --data task=data`
+- **cd.taskrun.finished.v1** `./cde taskrun finished --id task1 --name "My Task Run" --pipelineid pipe1 --data task=data`
 
 ## Repository Events
 - Properties
