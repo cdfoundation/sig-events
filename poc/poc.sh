@@ -91,6 +91,31 @@ fi
 
 KNATIVE_VERSION=${KNATIVE_VERSION:-0.24.0}
 
+echo "Checking if needed repos can be found"
+if [ ! -d "${KEPTN_CDF_TRANSLATOR_PATH:-${GOPATH}/src/github.com/salaboy/keptn-cdf-translator}" ] 
+then
+    echo "Can not find required repo: github.com/salaboy/keptn-cdf-translator" 
+    exit 1 # die with error code 1
+fi
+
+if [ ! -d "${CDF_EVENTS_KEPTN_ADAPTER_PATH:-${GOPATH}/src/github.com/salaboy/cdf-events-keptn-adapter}" ] 
+then
+    echo "Can not find required repo: github.com/salaboy/cdf-events-keptn-adapter" 
+    exit 1 # die with error code 1
+fi
+
+if [ ! -d "${TEKTON_CLOUDEVENTS_PATH:-${GOPATH}/src/github.com/tektoncd/experimental/cloudevents}" ] 
+then
+    echo "Can not find required repo: github.com/tektoncd/experimental/cloudevents" 
+    exit 1 # die with error code 1
+fi
+
+echo "Checking if needed commands can be found"
+go version > /dev/null
+ko version > /dev/null
+kind version > /dev/null
+keptn version > /dev/null
+
 echo "===> Creating a local Container Registry"
 # create registry container unless it already exists
 reg_name='kind-registry'
