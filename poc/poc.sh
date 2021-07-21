@@ -32,6 +32,7 @@ export KO_DOCKER_REPO=kind.local
 # - keptn inbound/outbound adapters and tekton cloudevent controller
 #   https://github.com/salaboy/cdf-events-keptn-adapter - inbound
 #   https://github.com/salaboy/keptn-cdf-translator - outbound
+#   https://github.com/tektoncd/experimental - contains tekton cloudevent controller
 #   should be cloned under $GOROOT/src/github.com/<org>/<repo> or alternatively
 #   the corresponding PATH environment variables must be set (see the declare section above)
 
