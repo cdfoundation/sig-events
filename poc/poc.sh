@@ -26,8 +26,8 @@ export KO_DOCKER_REPO=kind.local
 # - go 1.15+
 # - docker (recommended 8GB memory config)
 # - ko (https://github.com/google/ko)
-# - kind 0.11.1
-# - tkn CLI
+# - kind 0.11.1 (https://kind.sigs.k8s.io/docs/user/quick-start/)
+# - tkn CLI (https://github.com/tektoncd/cli)
 # - keptn CLI (`curl -sL https://get.keptn.sh | bash`)
 # - keptn inbound/outbound adapters and tekton cloudevent controller
 #   https://github.com/salaboy/cdf-events-keptn-adapter - inbound
