@@ -110,6 +110,7 @@ then
     exit 1 # die with error code 1
 fi
 
+# As we have "set -e" we only need to run the commands. If not found the script will exit.
 echo "Checking if needed commands can be found"
 go version > /dev/null
 ko version > /dev/null
