@@ -92,21 +92,21 @@ fi
 KNATIVE_VERSION=${KNATIVE_VERSION:-0.24.0}
 
 echo "Checking if needed repos can be found"
-if [ ! -d "${KEPTN_CDF_TRANSLATOR_PATH:-${GOPATH}/src/github.com/salaboy/keptn-cdf-translator}" ] 
+if [ ! -d "${KEPTN_CDF_TRANSLATOR_PATH:-${GOPATH}/src/github.com/salaboy/keptn-cdf-translator}" ]
 then
-    echo "Can not find required repo: github.com/salaboy/keptn-cdf-translator" 
+    echo "Can not find required repo: github.com/salaboy/keptn-cdf-translator"
     exit 1 # die with error code 1
 fi
 
-if [ ! -d "${CDF_EVENTS_KEPTN_ADAPTER_PATH:-${GOPATH}/src/github.com/salaboy/cdf-events-keptn-adapter}" ] 
+if [ ! -d "${CDF_EVENTS_KEPTN_ADAPTER_PATH:-${GOPATH}/src/github.com/salaboy/cdf-events-keptn-adapter}" ]
 then
-    echo "Can not find required repo: github.com/salaboy/cdf-events-keptn-adapter" 
+    echo "Can not find required repo: github.com/salaboy/cdf-events-keptn-adapter"
     exit 1 # die with error code 1
 fi
 
-if [ ! -d "${TEKTON_CLOUDEVENTS_PATH:-${GOPATH}/src/github.com/tektoncd/experimental/cloudevents}" ] 
+if [ ! -d "${TEKTON_CLOUDEVENTS_PATH:-${GOPATH}/src/github.com/tektoncd/experimental/cloudevents}" ]
 then
-    echo "Can not find required repo: github.com/tektoncd/experimental/cloudevents" 
+    echo "Can not find required repo: github.com/tektoncd/experimental/cloudevents"
     exit 1 # die with error code 1
 fi
 
@@ -249,7 +249,7 @@ kubectl create namespace production || true
 
 # Install keptn
 
-kubectl create namespace keptn || true
+keptn install --yes -q > /dev/null
 
 # Deploy an ingress for Keptn Bridge and API
 cat <<EOF | kubectl create -f - || true
@@ -274,7 +274,6 @@ spec:
               number: 80
 EOF
 
-keptn install --yes -q
 # Patch approval service and lighthouse service for approval to work (https://github.com/keptn/keptn/pull/4492)
 kubectl set image deployment/lighthouse-service -n keptn lighthouse-service=keptn/lighthouse-service:0.8.5-dev-PR-4492.202106281409
 kubectl set image deployment/approval-service -n keptn approval-service=keptn/approval-service:0.8.5-dev-PR-4492.202106281409
