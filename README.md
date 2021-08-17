@@ -60,7 +60,7 @@ Current members:
 - Ramin Akhbari, ([@rakhbari](https://github.com/rakhbari)), eBay
 - Mattias Linnér, [@m-linner-ericsson](https://github.com/m-linner-ericsson), Ericsson
 - Andrea Frittoli, [@afrittoli](https://github.com/afrittoli), IBM
-- Mauricio Salatino [@salaboy](https://github.com/salaboy), [Camunda](https://camunda.com) / [LearnK8s](https://learnk8s.io)
+- Mauricio Salatino [@salaboy](https://github.com/salaboy), [VMware](https://vmware.com) [Knative Project](http://knative.dev)
 - Steve Taylor [@sbtaylor15](https://github.com/sbtaylor15), [DeployHub](https://www.deployhub.com) / [Ortelius OS](https://ortelius.io)
 - Tracy Ragan [@tracyragan](https://github.com/tracyragan), [DeployHub](https://www.deployhub.com) / [Ortelius OS](https://ortelius.io)
 - Erik Sternerson [@erkist](https://github.com/erkist), doWhile
