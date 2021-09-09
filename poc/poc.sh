@@ -46,6 +46,15 @@ get_latest_release() {
     sed -E 's/.*"([^"]+)".*/\1/'                                    # Pluck JSON value
 }
 
+retry_command() {
+  for counter in {1..5}; do
+    $1 && break
+    sleep $((counter + 1))
+    [[ $counter -eq 5 ]] && echo "Failed!" && exit 1
+    echo "Trying again. Try #$counter"
+  done
+}
+
 # Read command line options
 while getopts ":c:p:t:d:k:" opt; do
   case ${opt} in
@@ -205,7 +214,7 @@ kubectl create -f tekton/rbac.yaml || true
 
 echo "===> Install Tekton"
 
-kubectl create namespace tekton-pipelines || true
+kubectl create namespace --save-config tekton-pipelines || true
 
 # Deploy an ingress for the Tekton Dashboard
 cat <<EOF | kubectl create -f - || true
@@ -244,7 +253,7 @@ kubectl apply -f "https://github.com/tektoncd/dashboard/releases/download/${TEKT
 kubectl wait -n tekton-pipelines --for=condition=ready pods --all --timeout=120s
 
 # Configure Tekton
-kubectl patch cm feature-flags -n tekton-pipelines -p '{"data": {"enable-tekton-oci-bundles": "true"}}' > /dev/null
+retry_command "kubectl patch cm feature-flags -n tekton-pipelines -p {\"data\":{\"enable-tekton-oci-bundles\":\"true\"}}"
 kubectl create namespace production || true
 
 # Install keptn
@@ -252,7 +261,7 @@ kubectl create namespace production || true
 keptn install --yes -q > /dev/null
 
 # Deploy an ingress for Keptn Bridge and API
-cat <<EOF | kubectl create -f - || true
+kubectl create -f - <<EOF || true
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
@@ -277,7 +286,7 @@ EOF
 # Keptn Auth
 export KEPTN_ENDPOINT=http://keptn-127.0.0.1.nip.io/api
 export KEPTN_API_TOKEN=$(kubectl get secret keptn-api-token -n keptn -ojsonpath={.data.keptn-api-token} | base64 --decode)
-keptn auth --endpoint=$KEPTN_ENDPOINT --api-token=$KEPTN_API_TOKEN
+retry_command "keptn auth --endpoint=$KEPTN_ENDPOINT --api-token=$KEPTN_API_TOKEN"
 
 # Keptn Create Project and Service (always re-create if exists)
 KEPTN_PROJECT=${KEPTN_PROJECT:-cde}
@@ -380,7 +389,7 @@ spec:
 EOF
 
 # Echo relevant environment
-env | egrep '(KO|KIND|KEPTN|^TEKTON|BROKER|KNATIVE|reg_)'
+env | egrep '(KO|KIND|KEPTN|^TEKTON|BROKER|KNATIVE|reg_)' > poc.env
 
 # Echo endpoints and demo
 echo "Tekton Dashboard available at http://tekton-127.0.0.1.nip.io"
