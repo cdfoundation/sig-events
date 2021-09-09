@@ -15,7 +15,7 @@ export KO_DOCKER_REPO=kind.local
 # It creates a kind cluster named cde and deploys to it:
 # - Tekton
 # - Tekton experiment cloudevents controller
-# - Keptn
+# - Keptn (v0.9.x+)
 # - Keptn inbound translation layer
 # - Keptn output adapter layer
 # - Knative + Courier Ingress
@@ -115,7 +115,7 @@ echo "Checking if needed commands can be found"
 go version > /dev/null
 ko version > /dev/null
 kind version > /dev/null
-keptn version > /dev/null
+keptn > /dev/null
 
 echo "===> Creating a local Container Registry"
 # create registry container unless it already exists
@@ -273,10 +273,6 @@ spec:
             port:
               number: 80
 EOF
-
-# Patch approval service and lighthouse service for approval to work (https://github.com/keptn/keptn/pull/4492)
-kubectl set image deployment/lighthouse-service -n keptn lighthouse-service=keptn/lighthouse-service:0.8.5-dev-PR-4492.202106281409
-kubectl set image deployment/approval-service -n keptn approval-service=keptn/approval-service:0.8.5-dev-PR-4492.202106281409
 
 # Keptn Auth
 export KEPTN_ENDPOINT=http://keptn-127.0.0.1.nip.io/api
