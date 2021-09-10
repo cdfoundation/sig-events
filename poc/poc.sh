@@ -329,7 +329,7 @@ BROKER_SINK="http://broker-ingress.knative-eventing.svc.cluster.local/default/$B
 kubectl patch cm config-defaults -n tekton-cloudevents -p '{"data": {"default-cloud-events-sink": "'$BROKER_SINK'"}}'
 
 # Install Tekton Resources
-kubectl create -f "$BASE_DIR/tekton/" || true
+kubectl create -f "$BASE_DIR/tekton/resources/" || true
 
 # Install cloud-player
 kubectl create -f "$BASE_DIR/cloudplayer/deploy.yaml"
