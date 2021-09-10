@@ -2,7 +2,7 @@
 
 [![hackmd-github-sync-badge](https://hackmd.io/xjK5ujQbTHSaEZjoY28b8g/badge)](https://hackmd.io/xjK5ujQbTHSaEZjoY28b8g)
 
-This SIG meets bi-weekly on Mondays at 3pm UTC (during summer time, in winter time it is 4pm UTC). See your timezone [here](https://time.is/3pm_in_UTC). The meeting can be accessed through [this zoom link](https://zoom.us/j/97660712600?pwd=Z3BqYTE5YzNsbEhmck16cjdZNEFIUT09).
+This SIG meets bi-weekly on Mondays at 3pm UTC (during summer time, in winter time it is 4pm UTC). See your timezone [here](https://time.is/3pm_in_UTC). The meeting can be accessed through [this zoom link](https://zoom.us/j/97660712600?pwd=Z3BqYTE5YzNsbEhmck16cjdZNEFIUT09). For older meetings please see our [playlist on YouTube](https://www.youtube.com/playlist?list=PL2KXbZ9-EY9RlxWAnAjxs8Azuz11XVhkC)
 
 The SIG was initiated as a [workstream under SIG Interoperability ]( https://github.com/cdfoundation/sig-interoperability/blob/master/docs/meetings_2020.md#May-28-2020) and its first meeting was held on June 8th 2020.
 
@@ -19,6 +19,162 @@ Meeting notes for the workstream are managed on HackMD [here](https://hackmd.io/
 - Blog Posts / Links
 - Presentations
 - PR / Design Discussions
+
+
+## Meeting September 13th
+
+Meeeting time in your timezone [here](https://time.is/3pm_13_September_2021_in_UTC). You're welcome to join!
+
+Participants:
+- \<add yourself\>
+
+### Agenda
+- Action Items From Last week
+- Presentations
+  - Argo Events, by Derek Wang. 15-20 minutes
+- Protocol Naming
+    - Requirements for a good name (10 min)
+        - Be related to our topic, e.g. continuous delivery, supply chain, messages, events
+        - It is pronounceable (either as a word or as an abbreviation of at most three letters) (e.g. Signal or CDF is fine, SPDX and Sgehgre is a but much)
+        - It is available (i.e. it doesn't already mean something else in our domain, or something negative in any other domain)
+        - NOT Bind us to any organization or group (e.g. Events SIG)
+        - NOT Bind us to any underlying transport or protocol (e.g. CloudEvents)
+    - Other comments:
+        - Provide a nice "brand name"
+        - Should represent the disruption we want to bring
+        - It is spelt as it sounds (not super important when most communication is written, so it is not a strong wish)
+        - We might want to align it to something that people already know
+    - Name Structure
+        - Descriptive name
+            - Subject + "Events"
+            - Subject could be either of: CD, (Software) Supply Chain, Lifecycle, DevOps
+        - Evocative name
+    - Name selection (10 min)
+        - [Current proposals](https://docs.google.com/spreadsheets/d/14Q9X_330YNGK1Naq22TN0iA2q1mVSSXIusGysCGmcVU/edit?resourcekey#gid=1286431544)
+        - Proposals that meet the requirements:
+            - To be added...
+- SIG Events Updates
+- Workstream Updates
+    - Vocabulary
+- Meetups / conferences
+- Blog Posts / Links
+- PR / Design Discussions
+
+
+## Meeting August 31st
+
+Meeeting time in your timezone [here](https://time.is/3pm_31_August_2021_in_UTC). You're welcome to join!
+
+Participants:
+- \<add yourself\>
+- Emil Bäckmark (Ericsson)
+- Steve Taylor (DeployHub)
+- Tracy Ragan (DeployHub)
+
+### Agenda
+- Action Items From Last week
+  - (A) Emil will prepare for the next SIG together with Andrea to try to set a name on the next SIG meeting. Next SIG meeting should be dedicated to the name discussion.
+      - Andrea is still on PTO, so this is postponed until next meeting
+- SIG Events Updates
+    - [Protocol Naming discussion](https://github.com/cdfoundation/sig-events/discussions/70)
+        - Tracy:
+            - Protocol name should be "CD Events", for reasons of simplicity and clarity
+            - Listener tool could be called "Kinetic"?
+            - The event robot "EV" (pronounced "Evie") listens to events. Simple, easy to describe, easy to market, ie logo. Approachable.  Trying to simpifiy complex topic.
+    - [CDF Podcast about Shipwright](https://podcasts.google.com/feed/aHR0cHM6Ly9mZWVkcy5idXp6c3Byb3V0LmNvbS8xMDA4Njk3LnJzcw/episode/QnV6enNwcm91dC04OTY5NTQz?hl=sv&ved=2ahUKEwjxq7WHps7yAhUUmWoFHScBB_MQieUEegQIDBAL&ep=6) mentions the need for artifact events
+- Workstream Updates
+    - [Vocabulary workstream MoM](https://hackmd.io/2FRGlw9fTMmKN1OQUVvguA?view)
+        - WebHooks vs Event sending from upstream services, such as SCMs and Artifact Repositories
+        - Event protocol to become a standard or a project group? Compare with Cloudevents, SPDX, etc
+            - Steve: Standard vs specification vs project. Cloudevents is probably a specification
+        - Bring to SIG-meeting: We should get more implementers, more big players involved. Anyone with contacts into any project related to events can help bring them into the SIG and the workgroup.
+            - Emil: We've invited Shipwright to the SIG
+- Meetups / conferences
+  - [KubeCon NA 2021](https://events.linuxfoundation.org/kubecon-cloudnativecon-north-america/)
+      - We have a slot on KubeCon for SIG Events - Events SIG CDF Virtual Booth @ KubeCon 2021, on October 13th. 12pm Eastern, 6pm CET.
+      - Andrea will give a [presentation about SIG Events](https://kccncna2021.sched.com/event/lV1H/sig-events-using-cloudevents-to-create-an-interoperable-cicd-ecosystem-andrea-frittoli-ibm?iframe=no&w=100%&sidebar=yes&bg=no)
+- Blog Posts / Links
+    - We should write a blog post as soon as we've settled on a name for the protocol (and listener)
+- Presentations
+  - Argo Events presentation aimed for September 13th, by Derek Wang. 15-20 minutes
+- PR / Design Discussions
+
+
+## Meeting August 16th
+
+Meeeting time in your timezone [here](https://time.is/3pm_16_August_2021_in_UTC). You're welcome to join!
+
+Participants:
+- Emil Bäckmark, Ericsson
+- Kara de la Marck, CloudBees
+- Mattias Linnér, Ericsson
+- Tracy Ragan (DeployHub)
+- Steve Taylor (DeployHub)
+- Shruti Chaturvedi (GSoC CloudEvents plugin for Jenkins)
+
+### Agenda
+- Action Items From Last week
+- SIG Events Updates
+- Workstream Updates
+    - Vocabulary
+        - We need a name on the protocol! It should be reflected in a new repo where the protocol will be developed
+        - Should the protocol repo be located under [cdfoundation](https://github.com/cdfoundation) or should it have its own Github organization?
+        - The protocol name should then not conflict with an existing Github org...
+        - [Current results](https://docs.google.com/spreadsheets/d/14Q9X_330YNGK1Naq22TN0iA2q1mVSSXIusGysCGmcVU/edit?resourcekey#gid=1286431544) from [poll](https://docs.google.com/forms/d/1CVPooDG16B6JaBqQysH7V6UehYcZcSw_PM1HrtxwNns/viewform?edit_requested=true)
+        - (A) Emil will prepare for the next SIG together with Andrea to try to set a name on the next SIG meeting. Next SIG meeting should be dedicated to the name discussion.
+        - Should the event protocol be its own project proposed to CDF?
+- Meetups / conferences
+    - Mauricio joins [Keptn user group](https://keptn.sh/community/meetings/#keptn-user-group) tomorrow to show the Tekton+Keptn interoperability PoC
+    - We have a slot on KubeCon for SIG Events - Events SIG CDF Virtual Booth @ KubeCon 2021, on October 13th. 12pm Eastern, 6pm CET.
+        - If you don't have the invite and whish to participate please ask someone that is in, for example Emil.
+- Blog Posts / Links
+- Presentations
+    - Shruti presents [Cloudevents plugin for Jenkins](https://github.com/jenkinsci/cloudevents-plugin) (originally a Google summer of code project) 🎉
+        - Support for CloudEvents, and for the CloudEvents plugin in particular, is part of [Jenkins Roadmap](https://www.jenkins.io/project/roadmap/)
+- PR / Design Discussions
+    - There are a number of PRs that should be reviewed, for example regarding unit tests.
+
+## Meeting July 19th
+
+
+Meeeting time in your timezone [here](https://time.is/3pm_21_June_2021_in_UTC). You're welcome to join!
+
+
+Participants:
+- Mattias Linnér (Ericsson)
+- Erik Sternerson (doWhile)
+- Andrea Frittoli (IBM)(IBM)(IBM)
+- Kara de la Marck (CloudBees)
+- Shruti Chaturvedi (GSoC CloudEvents plugin for Jenkins 🎉)
+- \<add me\>
+
+
+### Agenda
+- Action Items From Last week
+    - (A) Erik to make a PR about "What is a change": https://github.com/cdfoundation/sig-events/discussions/34
+        - Done: https://github.com/cdfoundation/sig-events/pull/85
+    - (A) Andrea to make a PR about Lightweigth vs heavyweight: https://github.com/cdfoundation/sig-events/discussions/47
+        - Done: https://github.com/cdfoundation/sig-events/pull/77 
+- SIG Events Updates
+    - none
+- Workstream Updates
+    - PoC Updates
+    - Jenkins CloudEvents
+        - Slack channel gsoc-2021-jenkins-cloudevents-plugin
+        - Demo on 20/07: https://www.jenkins.io/blog/2021/07/16/gsoc-midterm-presentation/
+        - Jenkins Cloud Native SIG YT channel posts some of our GSoC meetings on Jenkins CloudEvents plugin, see here: https://www.youtube.com/playlist?list=PLN7ajX_VdyaOFG9hTrswbO-ZK_n4B8CaG
+    - Dedicate open source project for spec and artifacts
+        - With own repo, governance
+- Meetups / conferences
+    - DevOpsWorld Presentation Mauricio / Andrea
+- Blog Posts / Links
+    - none
+- Presentations
+    - Jenkins CloudEvents on August 16th
+- PR / Design Discussions
+    - https://github.com/cdfoundation/sig-events/pull/
+        - RedHat uses the "Code contribution" terminology
+- Uploading of the recordings
 
 
 
@@ -50,6 +206,7 @@ Participants:
         - The workstream should continue if enough people are available. The SIG could have fewer meetings during the summer and wait with needed decisions until most people are back.
         - Decided: SIG meeting July 19th and August 16th
             - (A) Emil will update the calendar invite
+                - Emil: Done - Meeting Aug 2nd is cancelled
 - Workstream Updates - Vocabulary
     - Event protocol name poll
         - Short-term we use the name "CD Events", but we should have a better name
