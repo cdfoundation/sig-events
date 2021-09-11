@@ -63,6 +63,7 @@ Current members:
 - Mauricio Salatino [@salaboy](https://github.com/salaboy), [VMware](https://vmware.com) [Knative Project](http://knative.dev)
 - Steve Taylor [@sbtaylor15](https://github.com/sbtaylor15), [DeployHub](https://www.deployhub.com) / [Ortelius OS](https://ortelius.io)
 - Tracy Ragan [@tracyragan](https://github.com/tracyragan), [DeployHub](https://www.deployhub.com) / [Ortelius OS](https://ortelius.io)
+- Brad McCoy [@bradmccooydev](https://github.com/bradmccoydev), [Ortelius OS](https://ortelius.io)
 - Erik Sternerson [@erkist](https://github.com/erkist), doWhile
 - Cameron Motevasselani ([@link108](https://github.com/link108)), [Armory](https://www.armory.io/)
 - Alois Reitbauer ([@aloisreitbauer](https://github.com/aloisreitbauer)), [Dynatrace](https://www.dynatrace.com/)
