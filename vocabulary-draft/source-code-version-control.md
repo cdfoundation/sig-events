@@ -33,9 +33,9 @@ We use the term "change proposal" to represent one or more commits that form a p
 - **Change Proposal Created Event**: a source code change proposal was created and submitted to a repository specific branch.
 - **Change Proposal Reviewed Event**: someone (user) or an automated system submitted a review to the source code change proposal. A user or an automated system needs to be in charge of understanding how many approvals/rejections are needed for this change proposal to be merged or rejected. The review event needs to include if the change proposal is approved by the reviewer, more changes are needed or if the change proposal is rejected.
 - **Change Proposal Abandoned Event**: a tool or a user decides that the change proposal should be abandoned, for instance because it has been inactive for a while.
-- **Change Proposal Updated**: the change proposal has been updated, for example a new commit is added or removed from an existing change proposal.
+- **Change Proposal Updated Event**: the change proposal has been updated, for example a new commit is added or removed from an existing change proposal.
 - **Change Proposal Merged Event**: the change proposal is merged to its target branch.
 
 
-Optional attributes for **Change** Events: 
+Optional attributes for **Change Proposal** Events: 
 - (TBD)
