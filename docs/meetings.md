@@ -12,7 +12,7 @@ Meeting notes for the workstream are managed on HackMD [here](https://hackmd.io/
 ## Agenda Template
 
 - Action Items From Last week
-- SIG Events Updates
+- CDF & SIG Events Updates
 - Workstream Updates
     - Vocabulary
 - Meetups / conferences
@@ -21,11 +21,61 @@ Meeting notes for the workstream are managed on HackMD [here](https://hackmd.io/
 - PR / Design Discussions
 
 
+## Meeting September 27nd
+
+Meeeting time in your timezone [here](https://time.is/3pm_27_September_2021_in_UTC). You're welcome to join!
+
+Participants:
+- Emil Bäckmark, Ericsson
+- Andrea Frittoli, IBM
+- Steve Taylor, DeployHub
+- \<add yourself\>
+
+### Agenda
+- Action Items From Last week
+- Protocol Naming
+    - [Results](https://docs.google.com/forms/d/e/1FAIpQLSdTYx_1jNio67CX1H3GQAy7gn7gikCo3wKCYS6cohCHGNSFfA/viewanalytics)
+        - Decided: "CD Events" it is
+    - When we agree on a name, what are the next steps?
+        - Domain name proposal: events.cd
+        - GitHub organization: "github.com/cdevents"
+            - Registered by Emil just now: https://github.com/cdevents
+        - Event type is reverse of DNS: cd.events would be nice
+        - CD Foundation project proposal
+        - Icon
+            - Would be great if the icon would be possible to add to arbitrary "CD Events supporting" components/projects, like "Evie". A tone/note?
+        - (A) Andrea to ask CDF if the can buy the domain for us
+        - (A) Steve to bring up on TOC tomorrow about the name and how to propose a new project and if there are any artists available to draw an icon
+        - (A) Andrea to register a Twitter handle related to CD Events
+- CDF & SIG Events Updates
+    - [Jenkins plugin with Cloudevents from GSoC](https://github.com/jenkinsci/cloudevents-plugin)
+        - Plugin is published. Inspired by our work but not yet aligned fully.
+        - It would be great to have PoC with this plugin and e.g. Tekton using the CD Events. A use case should be written for such a PoC first.
+        - That PoC discussion can continue on the Vocabulary meeting. Shruti should be invited there.
+    - [SPDX becomes a BOM standard](https://www.linuxfoundation.org/press-release/spdx-becomes-internationally-recognized-standard-for-software-bill-of-materials/)
+        - Postpone this discussion for next meeting
+        - (A) Emil to put it on next SIG meeting agenda
+- Workstream Updates
+    - [Vocabulary](https://hackmd.io/2FRGlw9fTMmKN1OQUVvguA)
+- Meetups / conferences
+    - We have a booth at Kubecon. Not sure what is expected of us there. Tracy will check with T Miranda
+- Blog Posts / Links
+- Presentations
+- PR / Design Discussions
+  - [Open actions and discussions](https://github.com/cdfoundation/sig-events/wiki/Vocabulary-Actions-&-Discussions)
+      - We should look at these items, where decisions are needed, during our SIG meetings.
+      - (A) Emil to put it on next SIG meeting agenda
+
 ## Meeting September 13th
 
 Meeeting time in your timezone [here](https://time.is/3pm_13_September_2021_in_UTC). You're welcome to join!
 
 Participants:
+- Emil Bäckmark (Ericsson)
+- Andrea Frittoli (IBM)
+- Steve Taylor (DeployHub)
+- Mattias Linnér (Ericsson)
+- Erik Sternerson (doWhile)
 - \<add yourself\>
 
 ### Agenda
@@ -53,6 +103,26 @@ Participants:
         - [Current proposals](https://docs.google.com/spreadsheets/d/14Q9X_330YNGK1Naq22TN0iA2q1mVSSXIusGysCGmcVU/edit?resourcekey#gid=1286431544)
         - Proposals that meet the requirements:
             - To be added...
+    - We could have two names, one for the protocol, one for the project
+        - CDE
+          CD Events
+          CDEvents
+          ~~CDCE CD CloudEvents~~
+          ~~CICD Cloudevents (Continuous Integration Continuous Delivery Cloudevents)~~ 
+          events.cd ("Events for Continous Delivery)
+          Semio/Semios (some startups already used that)
+          ~~CSE (CDF SIG Events)~~
+          ~~CDFE (Continious Delivery Foundation Events)~~
+          ECD (Events for Continuous Delivery)
+          ~~Open Lifecycle Orchestration~~
+          LEAP (Lifecycle Events and Analytics Protocol)
+          SPELL (Sandardized Protocol for Event Lifecycle)
+          ~~CICDEP "CICDEP is Continuous Delivery Events Protocol"~~
+          LifecycleEvents: what the events are about as opposed to a trend
+             LiEve
+          (A) Andrea to make a poll from the list
+          (A) Andrea to check with CDF for branding check
+        - https://github.com/cdfoundation/sig-events/discussions/70 
 - SIG Events Updates
 - Workstream Updates
     - Vocabulary
@@ -443,7 +513,7 @@ Meeeting time in your timezone [here](https://time.is/3pm_19_April_2021_in_UTC).
 
 Participants:
 - Andrea Frittoli (IBM)
-- Mattias LInnér (Ericsson)
+- Mattias Linnér (Ericsson)
 - Emil Bäckmark (Ericsson)
 - Tracy Ragan (DeployHub)
 - \<add yourself\>
