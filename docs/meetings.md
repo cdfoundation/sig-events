@@ -20,6 +20,64 @@ Meeting notes for the workstream are managed on HackMD [here](https://hackmd.io/
 - Presentations
 - PR / Design Discussions
 
+## Meeting October 11th
+
+Meeeting time in your timezone [here](https://time.is/3pm_11_October_2021_in_UTC). You're welcome to join!
+
+Participants:
+- Emil Bäckmark, Ericsson
+- Mattias Linnér, Ericsson
+- Brad McCoy, Moula
+- Tracy Ragan, DeployHub
+- Kara de la Marck, CDF
+- \<add yourself\>
+
+### Agenda
+- Action Items From Last week
+- Protocol Naming, next steps
+    - Domain name proposal: events.cd
+        - (A) Andrea to ask CDF if the can buy the domain for us
+    - GitHub organization: https://github.com/cdevents
+    - Event type is reverse of DNS: cd.events would be nice
+    - CD Foundation project proposal
+        - (A) Steve to bring up on TOC tomorrow about the name and how to propose a new project and if there are any artists available to draw an icon
+    - Icon
+        - [Creative Brief](https://docs.google.com/document/d/1wJySvZFPetKTXEa_VD_gbUyDVnV6O272H-n__0FoG2E/edit)
+    - Twitter
+        - (A) Andrea to register a Twitter handle related to CD Events
+    - Update our [readme](https://github.com/cdfoundation/sig-events/blob/main/README.md) to include information about the name and any relevant links to GitHub org etc
+    - More stuff to move from the SIG Events github project to cdevents organization?
+        - We should probably move the specification/vocabulary, the PoC and the SDK to separate projects in the new org.
+            - The spec repo should be called "spec"
+            - The sdk repo(s) should be called "sdk-XYZ", XYZ is specific for each sdk. First one out should be "sdk-go"
+            - Both these align well with how it is set up for Cloudevents: https://github.com/cloudevents/spec, https://github.com/cloudevents/spec/blob/v1.0.1/README.md#sdks
+            - (A) Emil to create these two first repos
+- CDF & SIG Events Updates
+    - anything?
+- Workstream Updates
+    - [Vocabulary](https://hackmd.io/2FRGlw9fTMmKN1OQUVvguA)
+- Meetups / conferences
+    - We have a booth at Kubecon. Not sure what is expected of us there. Tracy will check with T Miranda
+        - We only have 30 minutes. We should not have a propoer 30 mins presentation but instead be prepared to show and discuss our current state of the vocabulary.
+        - Ideas on what to discuss could also be borrowed from our cdCon BoF in June
+    - Please see [CDF public calendar](https://calendar.google.com/calendar/u/0/embed?src=linuxfoundation.org_mhf0kmgedn67ihni8r129avp24@group.calendar.google.com&ctz=America/Los_Angeles): Events SIG CDF Virtual Booth @ KubeCon 2021 on Wed 13 at 11:00am PST
+    - Do we need a Kubecon registration to participate?
+        - Yes. We could register for the virtual booths and keynotes for free probably.
+- Blog Posts / Links
+- Presentations
+    - When things start to materialize we should prepare a presentation for the TOC. For the project proposal.
+    - CD Foundation online meetup. We should get onto the calendar there to present our work. The schedule for this year is filled. To be run by someone in the ambassadors program next year.
+- PR / Design Discussions
+    - [SPDX becomes a BOM standard](https://www.linuxfoundation.org/press-release/spdx-becomes-internationally-recognized-standard-for-software-bill-of-materials/)
+        - [Examples repo](https://spdx.dev/spdx-examples-repo/) provided
+        - How should we relate to the SPDX standard? What are the next steps needed?
+            - (A) Steve to share his ideas on a coming SIG meeting
+    - Shruti: Environment type events, relating to Jenkins' node-events, [see Slack post](https://cdeliveryfdn.slack.com/archives/C0151BTKEJX/p1633498525034400)
+        - We might come back to this on a later meeting when Shruti or someone else from Jenkins participates, or it will be discussed on a Vocabulary meeting as well.
+     - [Open actions and discussions](https://github.com/cdfoundation/sig-events/wiki/Vocabulary-Actions-&-Discussions)
+      - We should look at these items, where decisions are needed, during our SIG meetings.
+
+
 
 ## Meeting September 27nd
 
