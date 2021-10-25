@@ -12,13 +12,87 @@ Meeting notes for the workstream are managed on HackMD [here](https://hackmd.io/
 ## Agenda Template
 
 - Action Items From Last week
-- CDF & SIG Events Updates
-- Workstream Updates
-    - Vocabulary
-- Meetups / conferences
+- Updates From Other Groups
+    - CDF/TOC
+    - SIG Interoperability
+    - SIG Best Practices
+    - [Vocabulary workstream](https://hackmd.io/2FRGlw9fTMmKN1OQUVvguA)
+- Meetups / Conferences
 - Blog Posts / Links
 - Presentations
 - PR / Design Discussions
+
+
+## Meeting October 25nd
+
+Meeeting time in your timezone [here](https://time.is/3pm_25_October_2021_in_UTC). You're welcome to join!
+
+Participants:
+- Emil Bäckmark, Ericsson
+- Erik Sternerson, doWhile
+- Steve Taylor, DeployHub
+- Tracy Ragan, DeployHub
+- Kara de la Marck, CDF
+- Oleg Nenashev, Jenkins/CDF TOC
+- \<add yourself\>
+
+### Agenda
+- Action Items From Last week
+    - Andrea to ask CDF if the can buy the domain events.cd for us
+        - Done, waiting for response
+    - Steve to bring up on TOC Oct 12th about the name and how to propose a new project and if there are any artists available to draw an icon
+        - Done
+    - Andrea to register a Twitter handle related to CD Events
+        - ON: https://twitter.com/cdevents is occupied, Oleg tried to register it a few weeks ago
+    - Emil to create the two first repos - "spec" and "sdk-go"
+        - https://github.com/cdevents/spec
+        - https://github.com/cdevents/sdk-go
+        - Both repos created
+    - Steve to share his ideas on SPDX - How should we relate to the SPDX standard? What are the next steps needed?
+        - Steve will prepare it for a later meeting
+- Daylight Savings Time meeting time adjustment
+    - Europe@October 31st, NA@November 7th
+    - Move to [4pm UTC](https://time.is/4pm_8_November_2021_in_UTC) from November 8th (next meeting)?
+    - Yes, that's decided
+    - (A) Emil to update the meeting in the CDF calendar
+- Updates From Other Groups
+    - CDF/TOC
+        - Discussion on sandbox projects have been held. CD Events should be an incubating project
+        - Voting guidelines are created for project transitions
+        - Regarding terminology, CDF is involved in inclusive naming initiatives. We should relate to that work so we don't define a conflicting terminology, INI checklist: https://github.com/inclusivenaming/website/tree/main/content/word-lists 
+        - Adding CD Events to the CDF landscape - YES!!!
+    - SIG Interoperability
+        - Interop roadmap being progressed
+        - Interop on SBOMs being discussed
+        - Policy driven CD
+    - SIG Best Practices - Mauricio?
+        - Any news about terminology? Something to align on?
+    - [Vocabulary workstream](https://hackmd.io/2FRGlw9fTMmKN1OQUVvguA)
+- Protocol Naming, next steps
+    - [CD Events artwork](https://github.com/cdfoundation/foundation/issues/348)
+        - (A) Erik will add a comment on the issue from our discussion
+    - [CD Events as incubating CDF project](https://github.com/cdfoundation/toc/issues/110)
+        - ST: We should create a proposal to the TOC repo for the project, to be presented to the TOC board
+        - ST: New guidelines should be voted on tomorrows TOC meeting and after that we could get going with our proposal
+        - (A) Steve to get started on that proposal after the TOC meeting
+    - Update our [readme](https://github.com/cdfoundation/sig-events/blob/main/README.md) to include information about the name and any relevant links to GitHub org etc
+    - New [spec repo](https://github.com/cdevents/spec)
+    - [SDK Go repo](https://github.com/cdevents/sdk-go)
+    - More stuff to move from the SIG Events github project to cdevents organization?
+    - Add CD Events to CDF landscape
+- Meetups / Conferences
+    - Takeaways from the Kubecon SIG Events booth
+        - The CDF booth was pretty quite overall towards the end of the Kubecon week, so it was not just us...
+        - Making us a proper project would probably attract more visutors. Better luck next time :)
+- Blog Posts / Links
+    - Let's wait for the CDF project setup and the logo and then provide a blog post.
+- Presentations
+    - Steve presented Ortelius GitOps diagram - work in progress
+    - CD Foundation online meetup. We should get onto the calendar there to present our work. The schedule for this year is filled. To be run by someone in the ambassadors program next year.
+        - (A) Tracy to reach out to see who is driving this for next year.
+- PR / Design Discussions
+     - [Open actions and discussions](https://github.com/cdfoundation/sig-events/wiki/Vocabulary-Actions-&-Discussions)
+
 
 ## Meeting October 11th
 
