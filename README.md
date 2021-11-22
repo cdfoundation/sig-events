@@ -69,6 +69,7 @@ Current members:
 - Alois Reitbauer ([@aloisreitbauer](https://github.com/aloisreitbauer)), [Dynatrace](https://www.dynatrace.com/)
 - Fredrik Fristedt [@fredjn](https://github.com/fredjn), Axis Communications
 - Oleg Nenashev [@oleg-nenashev](https://github.com/oleg-nenashev), Jenkins
+- Kara de la Marck [@MarckK](https://github.com/MarckK), Continuous Delivery Foundation
 
 ### New Members
 
