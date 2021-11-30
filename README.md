@@ -68,7 +68,7 @@ Current members:
 - Cameron Motevasselani ([@link108](https://github.com/link108)), [Armory](https://www.armory.io/)
 - Alois Reitbauer ([@aloisreitbauer](https://github.com/aloisreitbauer)), [Dynatrace](https://www.dynatrace.com/)
 - Fredrik Fristedt [@fredjn](https://github.com/fredjn), Axis Communications
-- Oleg Nenashev [@oleg-nenashev](https://github.com/oleg-nenashev), Jenkins
+- Oleg Nenashev [@oleg-nenashev](https://github.com/oleg-nenashev), Dynatrace / Jenkins
 - Kara de la Marck [@MarckK](https://github.com/MarckK), Continuous Delivery Foundation
 
 ### New Members
