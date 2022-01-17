@@ -2,7 +2,7 @@
 
 [![hackmd-github-sync-badge](https://hackmd.io/xjK5ujQbTHSaEZjoY28b8g/badge)](https://hackmd.io/xjK5ujQbTHSaEZjoY28b8g)
 
-This SIG meets bi-weekly on Mondays at 3pm UTC (during summer time, in winter time it is 4pm UTC). See your timezone [here](https://time.is/3pm_in_UTC). The meeting can be accessed through [this zoom link](https://zoom.us/j/97660712600?pwd=Z3BqYTE5YzNsbEhmck16cjdZNEFIUT09). For older meetings please see our [playlist on YouTube](https://www.youtube.com/playlist?list=PL2KXbZ9-EY9RlxWAnAjxs8Azuz11XVhkC)
+This SIG meets bi-weekly on Mondays at [3pm UTC](https://time.is/3pm_in_UTC) during summer time and at [4pm UTC](https://time.is/4pm_in_UTC) during winter time). The meeting can be accessed through [this zoom link](https://zoom.us/j/97660712600?pwd=Z3BqYTE5YzNsbEhmck16cjdZNEFIUT09). For older meetings please see our [playlist on YouTube](https://www.youtube.com/playlist?list=PL2KXbZ9-EY9RlxWAnAjxs8Azuz11XVhkC)
 
 The SIG was initiated as a [workstream under SIG Interoperability ]( https://github.com/cdfoundation/sig-interoperability/blob/master/docs/meetings_2020.md#May-28-2020) and its first meeting was held on June 8th 2020.
 
@@ -11,16 +11,404 @@ Meeting notes for the workstream are managed on HackMD [here](https://hackmd.io/
 
 ## Agenda Template
 
-- Action Items From Last week
+- Action Items From Last meeting
 - Updates From Other Groups
     - CDF/TOC
     - SIG Interoperability
     - SIG Best Practices
     - [Vocabulary workstream](https://hackmd.io/2FRGlw9fTMmKN1OQUVvguA)
+- CD Events Project set up
 - Meetups / Conferences
 - Blog Posts / Links
 - Presentations
 - PR / Design Discussions
+
+## Next
+
+
+## Meeting January 17th
+
+Meeeting time in your timezone [here](https://time.is/4pm_17_January_2022_in_UTC). You're welcome to join!
+
+Participants:
+- Emil Bäckmark, Ericsson
+- Andrea Frittoli, IBM
+- Mattias Linnér, Ericsson
+- Steve Taylor, DeployHub
+- Kara de la Marck, CDF
+- Tracy Ragan, DeployHub/Ortelius
+- Erik Sternerson, doWhile
+- <\add your name\>
+
+### Agenda
+- Action Items From Last meeting
+    - Andrea to ask CDF if they can buy the domain events.cd for us
+        - Done, waiting for response
+    - Steve to share his ideas on SPDX - How should we relate to the SPDX standard? What are the next steps needed?
+        - After the project proposal
+    - (A)Tracy to reach out to CD Foundation online meetup organizers (CDF ambassadors) to see who is driving this for next year, so that we can get on to the calendar to present our work there
+        - Tacy reached out to Garima, waiting for response
+        - Moving to new platform Bevy early 2022
+        - Oleg is happy to host some meetups
+        - (A) Oleg to reach out to Garima
+        - Unless we can join the online meetup we could self-host such a meetup
+        - Should be about an hour, including 30 minutes presentation
+        - 3rd week of January, in the US/EMEA timezone
+        - (A) Oleg to create a poll for the timeslot to use
+        - (A) Andrea will provide the autumn-21 Kubecon presentation as a base
+        - (?) newsletter
+        - Tracy will meet with Garima on Friday 21st to see how to proceed
+    - Andrea to check [tweetdeck](https://tweetdeck.twitter.com/)
+        - https://twitter.com/_cdevents
+    - ~~Emil to consolidate the latest comments on the~~ [CD Events artwork PR](https://github.com/cdfoundation/foundation/issues/348)
+        - ~~Done, waiting for the creative team~~
+    - ~~Steve to take Code of Conduct v2.1 into the `spec` repo~~
+    - ~~Andrea to add a governance.md into the `spec` repo~~
+        - https://github.com/cdevents/spec/pull/4
+        - ~~Andrea to address some comments~~
+    - (A) Andrea to move the governance docs to the .github repo
+    - (A) Andrea can prepare for the roadmap discussion
+    - Emil & Andrea to start filling out the CD Events Public Relations doc: https://docs.google.com/document/d/1asktguMF_K4N5Vugn0EQ_dCyCgxZX69o2D02MRGzNjA/edit?usp=sharing
+    - **All**: to add quotes to the CD Events Public Relations document from the organization we belong to. At least add a note on if a quote is to be contributed
+    - Emil to clone the SIG Events MoM to a 2022 document and archive the old one
+
+- Updates From Other Groups
+    - CDF/TOC
+        - cdCon CFP is open
+    - SIG Interoperability
+        - Next meeting this Thursday
+        - Fatih will step down from being chair in the SIG
+    - SIG Best Practices
+    - [Vocabulary workstream](https://hackmd.io/2FRGlw9fTMmKN1OQUVvguA)
+        - When creating the FOSDEM presentation it would have helped to have more real world use cases for events in CI/CD. In the presentation there will be a shout out to request such input from the audience
+            - https://github.com/cdevents/presentations/blob/main/fosdem2022/talk-to-cdevents.md
+- CD Events Project set up
+    - CD Events should be listed as an incubating project on CDF homepage menu and https://cd.foundation/projects/
+        - https://github.com/cdfoundation/foundation/issues/353
+    - CD Events icon progressed: https://github.com/cdfoundation/foundation/issues/348
+    - Where to create issues for requesting new repos under cdevents, or request changes to the github organization?
+        - Info added to top github cdevents organization page 
+    - Use Cases for CD Events updated: https://hackmd.io/ZCS2KYKZTpKBqhU9PMuCew
+    - Work on the roadmap - https://hackmd.io/ja_hYsh8RHCkGb_LlA-REA
+        - Proposed to be discussed during next SIG meeting
+        - (A) Andrea can prepare for it
+    - CD Events Public Relations doc: https://docs.google.com/document/d/1asktguMF_K4N5Vugn0EQ_dCyCgxZX69o2D02MRGzNjA/edit?usp=sharing
+        - (A) Emil & Andrea: to start filling it out
+        - (A) **All**: to add quotes to that document from the organization we belong to. At least add a note on if a quote is to be contributed
+- Archive SIG Events MoMs from 2021?
+    - (A) Emil to clone this to a 2022 document and archive the old one
+- Meetups / Conferences
+    - cdCon-22 BoF or panel online/virtual or just onsite?
+        - At this time, we are planning all speakers to be in person. 
+        - BoF/panel could probably be combined virtual/onsite
+        - CFP:  https://events.linuxfoundation.org/cdcon/program/cfp/#overview
+            - Suggestion from Kara is to submit a talk even if we don't know if we're allowed to travel yet
+- Blog Posts / Links
+- Presentations
+- PR / Design Discussions
+
+## Meeting December 6th
+
+Meeeting time in your timezone [here](https://time.is/4pm_6_December_2021_in_UTC). You're welcome to join!
+
+Participants:
+- Steve Taylor (DeployHub)
+- Andrea Frittoli (IBM)
+- Mattias Linnér (Ericsson)
+- Oleg Nenashev (Dynatrace / Jenkins)
+- Tracy Ragan (DeployHub)
+- Steve Taylor (DeployHub)
+- Emil Bäckmark (Ericsson)
+- Jamie Plower
+- - <\add your name\>
+
+### Agenda
+- Action Items From Last week
+    - Andrea to ask CDF if the can buy the domain events.cd for us
+        - Done, waiting for response
+    - Steve to share his ideas on SPDX - How should we relate to the SPDX standard? What are the next steps needed?
+        - After the project proposal
+    - Steve to get started on proposal on the CD Events project to the TOC repo, after guidelines are voted on TOC
+        - Done, merged: https://github.com/cdfoundation/toc/pull/136
+        - We should have a roadmap for CD Events
+            - (A) Andrea: Set up a HackMD doc for the roadmap
+                - https://hackmd.io/ja_hYsh8RHCkGb_LlA-REA 
+    - Tracy to reach out to CD Foundation online meetup organizers (CDF ambassadors) to see who is driving this for next year, so that we can get on to the calendar to present our work there
+        - Tacy reached out to Garima, waiting for response
+        - Moving to new platform Bevy early 2022
+        - Oleg is happy to host some meetups
+        - Oleg to reach out to Garima
+        - Unless we can join the online meetup we could self-host such a meetup
+        - Should be about an hour, including 30 minutes presentation
+        - 3rd week of January, in the US/EMEA timezone
+        - Oleg to create a poll
+        - Andrea will provide the Kubecon presentation as a base\
+        - (?) newsletter
+    - DONE - Andrea to open the Google group as soon as we confirm Google groups are ok
+    - Andrea to check [tweetdeck](https://tweetdeck.twitter.com/)
+        - https://twitter.com/_cdevents
+    - Emil to consolidate the latest comments on the [CD Events artwork PR](https://github.com/cdfoundation/foundation/issues/348)
+        - Done
+        - Waiting for the CDF
+    - Steve to take Code of Conduct v2.1 into the `spec` repo
+    - Andrea to add a governance.md into the `spec` repo
+        - https://github.com/cdevents/spec/pull/4
+        - Andrea to address some comments
+
+- Administrative
+    - Meetings over xmas & new years?
+        - SIG: Dec 20th, Jan 3rd
+        - Vocabulary: Dec 28th
+            - Andrea on PTO Dec 23rd -> Jan 8th
+        - Cancel meetings on Dec 20th and 28th
+- Updates From Other Groups
+    - CDF/TOC
+        - Dec 01 - CDF TOC has votedd for accepting
+        - CD Events to go through the onboarding checklist: https://github.com/cdfoundation/toc/blob/master/process/new_project_onboarding.md 
+        - Steve to handle the remaining onboarding items
+        - Andrea manages the roadmap AI
+    - SIG Interoperability
+        - SIGStore presentation
+    - SIG Best Practices
+        - No news
+    - [Vocabulary workstream](https://hackmd.io/2FRGlw9fTMmKN1OQUVvguA)
+- CD Events Project set up
+    - FYI: [Code of Conduct](https://github.com/cdevents/spec/pull/2) Merged
+    - FYI: [MarkDown Linter](https://github.com/cdevents/spec/pull/3) Merged
+    - [Import Draft Spec](https://github.com/cdevents/spec/pull/5):
+        - Do we want to merge this one or change this first?
+        - Let's mark it clearly that this is not yet ready for implementation
+        - Update the README in this PR
+    - [Primer and Binding](https://github.com/cdevents/spec/pull/6):
+        - Someone would like to work on the CloudEvents binding?
+        - The binding is the input document to update the SDK
+    - Setup a project bootstrap governance
+        - Should we use the SIG meetings as bootstrap committee meetings, or should it be separate?
+        - [OpenTelemetry Charter](https://github.com/open-telemetry/community/blob/main/governance-charter.md) for reference
+        - What happens to the SIG Events if there is a TC set up for CD Events? If SIG Events should stay, what should be its mission?
+    - Update our [readme](https://github.com/cdfoundation/sig-events/blob/main/README.md) to include information about the name and any relevant links to GitHub org etc
+    - Move things from the SIG Events github project to cdevents organization?
+    - Add [CD Events to CDF landscape](https://github.com/cdfoundation/cdf-landscape/pull/192)
+        - [Current proposal](https://github.com/cdfoundation/cdf-landscape/pull/203) proposes to put this under the sub category "Tracing and Measuring" within the "Observability and Analysis" category. Do we agree?
+        - Crunchbase info for CD Events?
+    - New updates on the [CD Events artwork issue](https://github.com/cdfoundation/foundation/issues/348)?
+    - Gmail account for CD Events?
+        - Unclear whether it is needed
+        - Not needed for YouTube and shared calendars in general
+        - Might be useful for backend purposes
+    - Set up a closed Google group for twitter and other accounts?
+        - 
+
+- Meetups / Conferences
+    - FOSDEM
+        - [CI/CD DevRoom](https://fosdem.org/2022/schedule/track/continuous_integration_and_continuous_deployment/)
+        - CfP not yet out? Not official: https://gitlab.com/cicd-devroom/cfp/-/blob/main/fosdem-2022.md
+        - Erik & Andrea to propose a talk?
+    - DevopsDays Geneva - Oleg will go if it happens
+- Blog Posts / Links
+- Presentations
+    - Jamie could present from Fidelity some day
+- PR / Design Discussions
+- Feedback from Jamie Plower, Fidelity
+    - Follow-up to the discussions with Kara and CDF
+    - Using Cloud Events, interested in Jenkins integrations too
+
+
+## Meeting November 22nd
+
+Meeeting time in your timezone [here](https://time.is/4pm_22_November_2021_in_UTC). You're welcome to join!
+
+Participants:
+- \<add yourself\>
+- Steve Taylor (DeployHub)
+- Andrea Frittoli (IBM)
+- Kara de la Marck (CDF)
+- Erik Sternerson (doWhile)
+- Mattias Linnér (Ericsson)
+- Emil Bäckmark (Ericsson)
+- Oleg Nenashev (Dynatrace)
+- Tracy Ragan (DeployHub)
+
+### Agenda
+
+- Action Items From Last SIG meeting
+    - Andrea to ask CDF if the can buy the domain events.cd for us
+        - Done, waiting for response
+    - Steve to share his ideas on SPDX - How should we relate to the SPDX standard? What are the next steps needed?
+        - After the project proposal
+    - Steve to get started on proposal on the CD Events project to the TOC repo, after guidelines are voted on TOC
+        - Done, https://github.com/cdevents/cdf-toc/pull/1
+        - Reviewed during the meeting today
+        - Some updates pending
+        - Artwork / logo
+            - Project requirements to be updated
+        - To be presented at the ToC on Nov 23rd
+        - Add note about zoom account
+    - Tracy to reach out to CD Foundation online meetup organizers (CDF ambassadors) to see who is driving this for next year, so that we can get on to the calendar to present our work there
+        - Tracy reached out to Garima, waiting for response
+        - Moving to new platform Bevy early 2022
+        - Oleg is happy to host some meetups
+        - Oleg to reach out to Garima
+    - Andrea to create Google group for CD Events
+        - Created https://groups.google.com/g/cdevents-dev
+        - Private group for now
+        - Open the group as soon as we confirm Google groups are ok
+    - Andrea to check [tweetdeck](https://tweetdeck.twitter.com/)
+
+- Updates From Other Groups
+    - CDF/TOC
+        - CD Events project presentation at CDF TOC (Nov 23). Do we do it?
+        - Yes, we'll present.
+    - SIG Interoperability
+        - Work on [roadmap](https://docs.google.com/document/d/1uf3sb-WJUp3Acd3WYL5SvgVECHevonufJOxd6KftOxc/edit)
+    - SIG Best Practices - Mauricio?
+        - Working on a series of docs for a docsy site of best practices
+        - Oleg interested in partecipating too
+    - [Vocabulary workstream](https://hackmd.io/2FRGlw9fTMmKN1OQUVvguA)
+
+- CD Events set up
+    - [CDF Project proposal](https://github.com/cdevents/cdf-toc/pull/1)
+        - (Bootstrap) Technical Committee for CD Events?
+        - Setup a project bootstrap governance? We should review best practices from other projects / CDF
+            - We can aim for a bootstrap commitee before the end of 2021
+        - Is a (Bootstrap) Technical Committee for CD Events needed for the project to be accepted by CDF? Should the process of setting up such be linked from the project proposal?
+        - What happens to the SIG Events if there is a TC set up for CD Events? If SIG Events should stay, what should be its mission?
+    - Update our [readme](https://github.com/cdfoundation/sig-events/blob/main/README.md) to include information about the name and any relevant links to GitHub org etc
+    - More stuff to move from the SIG Events github project to cdevents organization?
+    - Add [CD Events to CDF landscape](https://github.com/cdfoundation/cdf-landscape/pull/192)
+        - What category do we propose?
+        - [Feedback needed here](https://github.com/cdfoundation/cdf-landscape/issues/195) and then Kara can move forward on the [prototype for this section of the CDF landscape](https://github.com/cdfoundation/cdf-landscape/pull/203).
+            - Please everyone review / comment here
+        - Crunchbase info for CD Events?
+    - New updates on the [CD Events artwork issue](https://github.com/cdfoundation/foundation/issues/348)?
+        - CDF is looking to see if we have consensus on the logo, to move forward with the designer for the next iteration.
+            - (A) Emil to consolidate the comments
+    - Gmail account for CD Events?
+    - Google group for CD Events? Closed Google group for twitter and other accounts?
+    - Code of Conduct
+        - (A) Steve to take v2.1 into the `spec` repo
+        - https://www.contributor-covenant.org/version/2/1/code_of_conduct/
+        - Note: CDF uses old version of Contributor Covenant, Oleg is about suggesting the update later
+        - (A) Andrea to add a governance.md into `spec`
+
+- Security aspects of events. What WG to talk to to cross-pollinate?
+
+- Meetups / Conferences
+    - KubeCon EU 2022 - who'd be interested to submit a Talk
+    - CFP open until Dec 17th
+    - CDF will likely have a booth there
+    - FOSDEM CI/CD Room opens on Nov 30
+        - https://submission.fosdem.org/submission/devroom
+        - Meeting on the 30th - we should remind ourselves about the CFP
+    - [cdCon tracks are being formed by the programming committee.](https://docs.google.com/document/d/1mB2cNoni9x3XaZu0lZMXA6qsQmwsrOvQOb9pb8PBezA/edit?usp=sharing)
+        - Please comment on the doc with suggestions for tracks.
+            - (A) Everyone to review / comments
+        - Especially in the track that cdEvents talks will likely be grouped within. Right now that is Developer Experience track, to include cdEvents, interoperability, ide integration. Putting these topics under ‘dev experience’ helps spell out the why of these initiatives.
+
+- Blog Posts / Links
+
+- Presentations
+     - [Open actions and discussions](https://github.com/cdfoundation/sig-events/wiki/Vocabulary-Actions-&-Discussions)
+
+
+
+## Meeting November 8th
+
+Meeeting time in your timezone [here](https://time.is/4pm_8_November_2021_in_UTC). You're welcome to join!
+
+Participants:
+- \<add yourself\>
+- Steve Taylor (DeployHub)
+- Andrea Frittoli (IBM)
+- Tracy Ragan (DeployHub)
+- Kara de la Marck (CDF)
+- Mattias Linnér (Ericsson)
+- Erik Sternerson (doWhile)
+
+### Agenda
+- Proposal for cdf ToC
+    - Steve working on a draft PR from https://github.com/cdevents/cdf-toc
+
+- At LF Membership summit
+    - CDEvents identified as a priority (Thanks Tracy and Steve!)
+    - We should get people from more projects involved:
+        - Jenkins: GSoC, maybe someone from CloudBees
+        - Screwdriver
+        - Spinnaker: Armory, OpsMx
+        - Circle CI
+        - Cloudbees
+        - Harness
+        - CodeFresh
+        - GitLab CI
+        - GitHub Actions
+    - Kara + Tracy to drive reaching out to various projects / companies to get involved in CDEvents
+        - We could ask Tracy M. to be involved in calls
+    - We aim to setup a webinar in early 2022 (Jan/Feb)
+        - The idea is to present what we're building
+        - Present a compelling business case
+
+- Twitter account
+    - https://twitter.com/_cdevents
+    - We might want to:
+        - register a gmail account
+        - use a google groups
+        - we could use a closed google group for twitter and other accounts
+        - [tweetdeck](https://tweetdeck.twitter.com/)
+        - Andrea to create Google groups / check tweetdeck
+
+- Security aspects for events
+    - A security bucket of events
+    - Secure (trusted) events
+    - We need to check which WG we need to part of to cross-pollinate
+
+- Action Items From Last week
+    - Andrea to ask CDF if the can buy the domain events.cd for us
+        - Done, waiting for response
+    - Andrea to register a Twitter handle related to CD Events
+        - ON: https://twitter.com/cdevents is occupied, Oleg tried to register it a few weeks ago
+        - https://twitter.com/_cdevents
+    - Steve to share his ideas on SPDX - How should we relate to the SPDX standard? What are the next steps needed?
+        - Steve will prepare it for a later meeting
+        - ossf is working on utilising SPDX spec
+    - Emil to update the meeting in the CDF calendar to align to DST
+        - Done: https://calendar.google.com/calendar/u/0/embed?src=linuxfoundation.org_mhf0kmgedn67ihni8r129avp24@group.calendar.google.com
+    - Erik will add a comment on the [CD Events artwork issue](https://github.com/cdfoundation/foundation/issues/348) from our discussion last meeting
+    - Steve to get started on proposal on the CD Events project to the TOC repo, after guidelines are voted on TOC
+    - Tracy to reach out to CD Foundation online meetup organizers (CDF ambassadors) to see who is driving this for next year, so that we can get on to the calendar to present our work there
+        - Tracy reached out to Garima
+- Updates From Other Groups
+    - CDF/TOC
+        - No updates
+    - SIG Interoperability
+        - No meeting since last SIG Events
+    - SIG Best Practices - Mauricio?
+        - No updates
+    - [Vocabulary workstream](https://hackmd.io/2FRGlw9fTMmKN1OQUVvguA)
+        - Hierarchy of events
+        - For the next meeting
+            - We need to prepare for a larger community
+            - Setup a project bootstrap governance
+                - Discussion for next meeting
+                - Review best practices from other projects / CDF
+                - We can aim for a bootstrap commitee before the end of 2021
+                - 
+- Protocol Naming, next steps
+    - Update our [readme](https://github.com/cdfoundation/sig-events/blob/main/README.md) to include information about the name and any relevant links to GitHub org etc
+    - More stuff to move from the SIG Events github project to cdevents organization?
+    - Add CD Events to CDF landscape
+        - Check what category the project fits in or propose a new one
+        - 
+- Meetups / Conferences
+    - KubeCon EU 2022 - who'd be interested to submit a Talk
+    - CFP open until Dec 17th
+    - CDF will likely have a booth there
+    - FOSDEM CI/CD Room open on Nov 30
+        - https://submission.fosdem.org/submission/devroom
+        - Meeting on the 30th - we should remind ourselves about the CfP
+    - 
+- Blog Posts / Links
+- Presentations
+     - [Open actions and discussions](https://github.com/cdfoundation/sig-events/wiki/Vocabulary-Actions-&-Discussions)
 
 
 ## Meeting October 25nd
