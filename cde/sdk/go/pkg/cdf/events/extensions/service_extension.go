@@ -9,6 +9,9 @@ const (
 	ServiceEnvIdExtension   = "serviceenvid"
 	ServiceNameExtension    = "servicename"
 	ServiceVersionExtension = "serviceversion"
+
+	ServiceNamespaceExtension          = "servicenamespace"
+	ServiceActiveRevisionNameExtension = "serviceactiverevisionname"
 )
 
 // ServiceExtension represents the extension for extension context

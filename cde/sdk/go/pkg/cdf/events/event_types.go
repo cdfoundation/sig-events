@@ -80,10 +80,21 @@ const (
 	ServiceUpgradedEventV1   CDEventType = "cd.service.upgraded.v1"
 	ServiceRolledbackEventV1 CDEventType = "cd.service.rolledback.v1"
 	ServiceRemovedEventV1    CDEventType = "cd.service.removed.v1"
+	ServiceCreatedV1         CDEventType = "cd.service.created.v1"
+	ServicePublishedV1       CDEventType = "cd.service.published,v1"
 )
 
 func (t CDEventType) String() string {
 	return string(t)
+}
+
+type ServiceEventParams struct {
+	ServiceEnvID              string
+	ServiceVersion            string
+	ServiceName               string
+	ServiceNamespace          string
+	ServiceData               map[string]string
+	ServiceActiveRevisionName string
 }
 
 type ArtifactEventParams struct {
@@ -283,18 +294,15 @@ func setExtensionForEnvEvents(event cloudevents.Event, envId string, envName str
 }
 
 func CreateServiceEvent(eventType CDEventType,
-	serviceEnvId string,
-	serviceName string,
-	serviceVersion string,
-	serviceData map[string]string) (cloudevents.Event, error) {
+	params ServiceEventParams) (cloudevents.Event, error) {
 	event := cloudevents.NewEvent()
 	event.SetID(uuid.NewV4().String())
 	event.SetType(eventType.String())
 	event.SetTime(time.Now())
 
-	setExtensionForServiceEvents(event, serviceEnvId, serviceName, serviceVersion)
+	setExtensionForServiceEvents(event, params)
 
-	err := event.SetData(cloudevents.ApplicationJSON, serviceData)
+	err := event.SetData(cloudevents.ApplicationJSON, params.ServiceData)
 	if err != nil {
 		return cloudevents.Event{}, err
 	}
@@ -302,8 +310,36 @@ func CreateServiceEvent(eventType CDEventType,
 	return event, nil
 }
 
-func setExtensionForServiceEvents(event cloudevents.Event, serviceEnvId string, serviceName string, serviceVersion string) {
-	event.SetExtension("serviceenvid", serviceEnvId)
-	event.SetExtension("servicename", serviceName)
-	event.SetExtension("serviceversion", serviceVersion)
+func setExtensionForServiceEvents(event cloudevents.Event, params ServiceEventParams) {
+	emptyOmitter := NewEmptyOmittedEvent(&event)
+	emptyOmitter.Set(extensions.ServiceEnvIdExtension, params.ServiceEnvID).
+		Set(extensions.ServiceNameExtension, params.ServiceName).
+		Set(extensions.ServiceVersionExtension, params.ServiceVersion).
+		Set(extensions.ServiceNamespaceExtension, params.ServiceNamespace).
+		Set(extensions.ServiceActiveRevisionNameExtension, params.ServiceActiveRevisionName)
+}
+
+type emptyOmitted struct {
+	event *cloudevents.Event
+}
+
+func NewEmptyOmittedEvent(event *cloudevents.Event) *emptyOmitted {
+	return &emptyOmitted{
+		event: event,
+	}
+}
+
+// Set checks to see if the value being set is not an empty string
+// if so, it will skip the field in the cloud event. This behavior
+// is very similar to the omitempty struct tag of the json package
+func (e *emptyOmitted) Set(ext, val string) *emptyOmitted {
+	if val != "" {
+		e.event.SetExtension(ext, val)
+	}
+
+	return e
+}
+
+func (e *emptyOmitted) GetEvent() *cloudevents.Event {
+	return e.event
 }

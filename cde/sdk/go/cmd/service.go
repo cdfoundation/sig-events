@@ -31,10 +31,14 @@ func init() {
 	serviceCmd.AddCommand(serviceUpgradedCmd)
 	serviceCmd.AddCommand(serviceRolledbackCmd)
 	serviceCmd.AddCommand(serviceRemovedCmd)
+	serviceCmd.AddCommand(serviceCreatedCmd)
+	serviceCmd.AddCommand(servicePublishedCmd)
 
-	serviceCmd.PersistentFlags().StringVarP(&serviceEnvId, "envId", "e", "", "Environment Id where the Service is running")
+	serviceCmd.PersistentFlags().StringVarP(&serviceEnvID, "envId", "e", "", "Environment Id where the Service is running")
 	serviceCmd.PersistentFlags().StringVarP(&serviceName, "name", "n", "", "Service's Name")
 	serviceCmd.PersistentFlags().StringVarP(&serviceVersion, "version", "v", "", "Service's Version")
+	serviceCmd.PersistentFlags().StringVar(&serviceNamespace, "namespace", "", "Service's Namespace")
+	serviceCmd.PersistentFlags().StringVarP(&serviceActiveRevisionName, "revision", "r", "", "Service's active revision")
 	serviceCmd.PersistentFlags().StringToStringVarP(&serviceData, "data", "d", map[string]string{}, "Service's Data")
 }
 
@@ -45,10 +49,12 @@ var serviceCmd = &cobra.Command{
 }
 
 var (
-	serviceEnvId   string
-	serviceName    string
-	serviceVersion string
-	serviceData    map[string]string
+	serviceEnvID              string
+	serviceName               string
+	serviceVersion            string
+	serviceNamespace          string
+	serviceActiveRevisionName string
+	serviceData               map[string]string
 )
 
 var serviceDeployedCmd = &cobra.Command{
@@ -63,8 +69,14 @@ var serviceDeployedCmd = &cobra.Command{
 		}
 
 		// Create an Event.
-		event, _ := cde.CreateServiceEvent(cde.ServiceDeployedEventV1, serviceEnvId,
-			serviceName, serviceVersion, serviceData)
+		event, _ := cde.CreateServiceEvent(cde.ServiceDeployedEventV1, cde.ServiceEventParams{
+			ServiceEnvID:              serviceEnvID,
+			ServiceVersion:            serviceVersion,
+			ServiceName:               serviceName,
+			ServiceNamespace:          serviceNamespace,
+			ServiceActiveRevisionName: serviceActiveRevisionName,
+			ServiceData:               serviceData,
+		})
 
 		event.SetSource(source)
 
@@ -95,8 +107,14 @@ var serviceUpgradedCmd = &cobra.Command{
 		}
 
 		// Create an Event.
-		event, _ := cde.CreateServiceEvent(cde.ServiceUpgradedEventV1, serviceEnvId,
-			serviceName, serviceVersion, serviceData)
+		event, _ := cde.CreateServiceEvent(cde.ServiceUpgradedEventV1, cde.ServiceEventParams{
+			ServiceEnvID:              serviceEnvID,
+			ServiceVersion:            serviceVersion,
+			ServiceName:               serviceName,
+			ServiceNamespace:          serviceNamespace,
+			ServiceActiveRevisionName: serviceActiveRevisionName,
+			ServiceData:               serviceData,
+		})
 
 		event.SetSource(source)
 
@@ -127,8 +145,14 @@ var serviceRemovedCmd = &cobra.Command{
 		}
 
 		// Create an Event.
-		event, _ := cde.CreateServiceEvent(cde.ServiceRemovedEventV1, serviceEnvId,
-			serviceName, serviceVersion, serviceData)
+		event, _ := cde.CreateServiceEvent(cde.ServiceRemovedEventV1, cde.ServiceEventParams{
+			ServiceEnvID:              serviceEnvID,
+			ServiceVersion:            serviceVersion,
+			ServiceName:               serviceName,
+			ServiceNamespace:          serviceNamespace,
+			ServiceActiveRevisionName: serviceActiveRevisionName,
+			ServiceData:               serviceData,
+		})
 
 		event.SetSource(source)
 
@@ -159,8 +183,90 @@ var serviceRolledbackCmd = &cobra.Command{
 		}
 
 		// Create an Event.
-		event, _ := cde.CreateServiceEvent(cde.ServiceRolledbackEventV1, serviceEnvId,
-			serviceName, serviceVersion, serviceData)
+		event, _ := cde.CreateServiceEvent(cde.ServiceRolledbackEventV1, cde.ServiceEventParams{
+			ServiceEnvID:              serviceEnvID,
+			ServiceVersion:            serviceVersion,
+			ServiceName:               serviceName,
+			ServiceNamespace:          serviceNamespace,
+			ServiceActiveRevisionName: serviceActiveRevisionName,
+			ServiceData:               serviceData,
+		})
+
+		event.SetSource(source)
+
+		// Set a target.
+		ctx := cloudevents.ContextWithTarget(context.Background(), CDE_SINK)
+
+		// Send that Event.
+		log.Printf("sending event %s\n", event)
+
+		if result := c.Send(ctx, event); !cloudevents.IsACK(result) {
+			log.Fatalf("failed to send, %v", result)
+			return result
+		}
+
+		return nil
+	},
+}
+
+var serviceCreatedCmd = &cobra.Command{
+	Use:   "created",
+	Short: "Emit Service created Event",
+	Long:  `Emit Service created CloudEvent`,
+	RunE: func(cmd *cobra.Command, args []string) error {
+		c, err := cloudevents.NewDefaultClient()
+		if err != nil {
+			log.Fatalf("failed to create client, %v", err)
+			return err
+		}
+
+		// Create an Event.
+		event, _ := cde.CreateServiceEvent(cde.ServiceCreatedV1, cde.ServiceEventParams{
+			ServiceEnvID:              serviceEnvID,
+			ServiceVersion:            serviceVersion,
+			ServiceName:               serviceName,
+			ServiceNamespace:          serviceNamespace,
+			ServiceActiveRevisionName: serviceActiveRevisionName,
+			ServiceData:               serviceData,
+		})
+
+		event.SetSource(source)
+
+		// Set a target.
+		ctx := cloudevents.ContextWithTarget(context.Background(), CDE_SINK)
+
+		// Send that Event.
+		log.Printf("sending event %s\n", event)
+
+		if result := c.Send(ctx, event); !cloudevents.IsACK(result) {
+			log.Fatalf("failed to send, %v", result)
+			return result
+		}
+
+		return nil
+	},
+}
+
+var servicePublishedCmd = &cobra.Command{
+	Use:   "published",
+	Short: "Emit Service published Event",
+	Long:  `Emit Service published CloudEvent`,
+	RunE: func(cmd *cobra.Command, args []string) error {
+		c, err := cloudevents.NewDefaultClient()
+		if err != nil {
+			log.Fatalf("failed to create client, %v", err)
+			return err
+		}
+
+		// Create an Event.
+		event, _ := cde.CreateServiceEvent(cde.ServicePublishedV1, cde.ServiceEventParams{
+			ServiceEnvID:              serviceEnvID,
+			ServiceVersion:            serviceVersion,
+			ServiceName:               serviceName,
+			ServiceNamespace:          serviceNamespace,
+			ServiceActiveRevisionName: serviceActiveRevisionName,
+			ServiceData:               serviceData,
+		})
 
 		event.SetSource(source)
 
