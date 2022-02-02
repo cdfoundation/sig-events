@@ -8,6 +8,7 @@ This document contains the notes from the of the Events SIG meetings focused on 
 
 - Issue [Consider taking advantage of this list of task/step types when qualifying event types](https://github.com/cdevents/spec/issues/18)
 
+
 ## Meeting 25th January
 
 Participants:
