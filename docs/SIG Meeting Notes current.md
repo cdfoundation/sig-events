@@ -211,5 +211,4 @@ Participants:
 
 
 
-
 ***Previous meeting notes can be found on [GitHub](https://github.com/cdfoundation/sig-events/tree/main/docs)***
