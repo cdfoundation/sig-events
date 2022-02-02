@@ -1,8 +1,200 @@
-# Vocabulary Discussion Meeting Notes
+# Vocabulary Discussion Meeting Notes (2021)
 
-[![hackmd-github-sync-badge](https://hackmd.io/2FRGlw9fTMmKN1OQUVvguA/badge)](https://hackmd.io/2FRGlw9fTMmKN1OQUVvguA)
 
-This document contains the notes from the of the Events SIG meetings focused on [vocabulary discussion](https://hackmd.io/lBlDCrL7TvmtNOjxdopJ5g).
+
+## Meeting 14th December
+* KubeCon CfP ends this week
+* Quotes for the CD Events launch - Kara will provide a link to a doc for it
+* Use cases should be evolved - https://hackmd.io/ZCS2KYKZTpKBqhU9PMuCew
+* cdCon 2022
+    * CfP will be published early January
+    * Tracks are being set right now. Tracks could change later depending on what submissions come in
+    * The con will be hybrid. Not yet set if presenters are requested to be in person or if remote is ok
+
+Participants:
+- Emil Bäckmark, Ericsson
+- Mattias Linnér, Ericsson
+- Kara de la Marck, CDF
+
+
+
+## Meeting 30th November
+* FYI: FOSDEM Call for participation opened today? https://fosdem.org/2022/news/2021-11-02-devroom-cfp/
+    * Not open yet - we should keep an eye on it
+    * Erik and Andrea are interested in presenting
+    * Emil happy to review at least
+    * We should have a chat on slack once the CfP is open
+    * Timing is a good fit when we want to have more publicity on CDEvents
+    * 
+    * https://fosdem.org/2022/schedule/track/continuous_integration_and_continuous_deployment/
+    * 
+* PRs to the CDEvents/spec repo:
+    * [Code of Conduct](https://github.com/cdevents/spec/pull/2): Merged
+    * [MarkDown Linter](https://github.com/cdevents/spec/pull/3): Merged
+    * [Bootstrap Governance](https://github.com/cdevents/spec/pull/4):
+        * We need to give a rough timeline for the bootstrap governance work
+        * [OpenTelemetry Charter](https://github.com/open-telemetry/community/blob/main/governance-charter.md) for reference
+        * We need to allow a certain amount of time for folks to build up to the requirements that we set to be part of the governance / owners team
+        * 
+    * [Import Draft Spec](https://github.com/cdevents/spec/pull/5):
+        * Do we want to merge this one or change this first?
+        * Let's mark it clearly that this is not yet ready for implementation
+        * Update the README in this PR
+        * 
+    * [Primer and Binding](https://github.com/cdevents/spec/pull/6):
+        * Someone would like to work on the CloudEvents binding?
+        * The binding is the input document to update the SDK
+        * ...
+* Proof of Concept
+    * Do we have new use cases?
+        * If not, how do we get them?
+        * If yes, we could start focussing part of the meeting on this
+        * Four keys
+            * Remediation events are not in the spec yet
+        * Let's keep them documented here: [List of Use Cases](https://hackmd.io/ZCS2KYKZTpKBqhU9PMuCew)
+        * It could eventually be part of the roadmap/primer in GitHub
+
+* Versions of the spec
+    * Clarify that the current version is draft and shall not be implemented yet
+    * Need to define roadmap of what we need to have for a first version
+    * Need to write a version policy document
+
+* Discussions Review
+    * [GitHub Discussions](https://github.com/cdfoundation/sig-events/discussions)
+
+    * Environments
+        * https://github.com/cdfoundation/sig-events/discussions/28
+        * Different kind of environments, ephemeral or long running, different scale too
+        * We should look at tools that make use of environments and their model
+        * It might not be needed for the 4 keys PoC
+        * Environment referred to by name in the initial PoC
+        * 
+    * 
+
+Participants:
+- Mattias Linnér, Ericsson
+- Andrea Frittoli, IBM
+- Erik Sternerson, doWhile
+- Emil Bäckmark, Ericsson
+- Alois Reitbauer, Dynatrace
+
+## Meeting 16th November
+
+* Review https://github.com/cdfoundation/sig-events/discussions/22
+    * Idea: Add TaskRunQueued, and let TaskRuns be parents of other TaskRuns. (Seems to collide with the Generic Activity Events discussed earlier)
+    * PipelineRunFinished is an issue for non-orchestrated pipelines, as there is may not be any authority able to say that a pipeline run is finished.
+
+
+* [LF/CDF identifies CD Events as a focus area.](https://hackmd.io/xjK5ujQbTHSaEZjoY28b8g?view#Meeting-November-8th) Idea is to reach out more broadly Jan/Feb 2021. What do we want to have in place before this?
+    * Vision: What makes events successful are concrete use cases connecting tools together.
+        * Current situation is that most orgs have a mix of tools in their end-to-end continuous delivery.
+        * If we can get 3-or-4 good use cases we have a good base for getting more attention
+            * We should probably have use cases that don't immediately duplicate what Argo and Keptn do.
+            * E.g. Docker build (Jenkins) -> Signature (Jenkins) -> Deploy (Argo) -> Approval gate. (Keptn)
+        * "Give us your pipeline so we can se what's going on"
+            * We probably have quite a wide set of pipeline categories already in our own workgroup, but we have opportunities to reach out as well.
+        * Use cases / pipeline types drive the spec work.
+            * Primarily diagram it out so we can present ideas and the roadmap.
+        * PoCs that exist, and possibly some new ones, can be used to provide "some proof".
+    * We should also make sure to make progress on the protocol, regardless of when we find use cases.
+        * Get the basics in place so we can show something.
+    * Prepare for objections
+        * The main objections against events are:
+            * How do we get an overview of the whole workflow when everything is event-based?
+            * How do we manage security in a distributed system?
+        * A common protocol probably helps resolve both these issues.
+        * We need a stronger/more clear story around the above objections ready.
+    * Is there a good CloudEvents visualization solution available that we can use for demos?
+        * If we have links, it would be nice for the solution to go fetch linked entities
+        * Can Keptn or Argo provide anything here? (they don't speak CloudEvents today, but maybe we can copy/rejigger their solution to use our events)
+        * https://github.com/visjs/vis-network could perhaps be used
+        * https://www.d3-graph-gallery.com/ is also a contender
+    * Move repos to new GitHub org.
+        * Action: Look at Steve's PR before next week
+        * https://github.com/cdevents/cdf-toc/pull/1
+    * 
+
+Participants:
+- (Add yourself)
+- Steve Taylor (DeployHub)
+- Erik Sternerson (doWhile)
+- Mattias Linnér (Ericsson)
+- Andrea Frittoli (IBM)
+- Emil Bäckmark (Ericsson)
+
+## Meeting 2nd November
+
+* Created https://twitter.com/_cdevents (placeholder)
+* ...
+* Review [Vocabulary Actions & Discussions](https://github.com/cdfoundation/sig-events/wiki/Vocabulary-Actions-&-Discussions)
+    * #15 Generic vs. concrete activity events? 
+        * Proposal: Generic plus concrete events
+        * Generic events act as a "base class" for activity events
+        * Generic events can also be used for events related to activites that do not have an appropriate subclass.
+        * Concrete events provide for stronger alignment, e.g. "if you want to send events for a build, here is what you send".
+        * Concrete events extend generic events with additional parameters.
+        * Allowing or generic events may lead to platforms prefering generic events over concrete events as they don't feel that the concrete events are "a perfect fit", which would make us miss out on alignment opportunities.
+            * "If you want the consumer to understand that this is a build, you need to use the build activity event, not a generic activity event".
+        * 
+
+Participants:
+- Andrea Frittoli (IBM)
+- Mattias Linnér (Ericsson)
+- Oleg Nenashev (Jenkins/Keptn/Dynatrace)
+- Emil Bäckmark (Ericsson)
+- Erik Sternerson (doWhile)
+
+
+
+## Meeting 19th October
+
+* Decision based on discussion from SIG:
+    * Vocabulary meetings should focus on spec content and PoCs, not on "project and admin" stuff.
+
+* https://github.com/cdfoundation/sig-events/pull/87
+    * Inside data object vs. top-level attributes
+    * Existing extensions https://github.com/cloudevents/spec/blob/master/documented-extensions.md
+    * https://github.com/cloudevents/spec/blob/v1.0.1/primer.md#cloudevent-attribute-extensions seems to indicate that top level attributes should be few and far between, and should have support from several "voting organizations" of the relevant CNCF working group.
+    * We should set up a vocabulary that covers non-cloud-native scenarios as well, for those scenarios CloudEvents may not be optimal.
+    * Current PoC is defined more as an extension, should be re-written to use the data attribute instead.
+    * Proposal from work group: 
+      > The Events SIG defines a specification ("CD Events") that provides a set of JSON object schemas (one for each event type, covering mandatory and optional attributes etc.)
+      >
+      > When used with CloudEvents, the JSON schema is passed via the `dataschema` attribute and a corresponding JSON object is sent through the `data` attribute.
+      > 
+      > Existing CloudEvents extension attributes (e.g. `partitionkey` from the [Partitioning](https://github.com/cloudevents/spec/blob/v1.0.1/extensions/partitioning.md) extension) should be considered before defining own extensions. If no appropriate extension attributes exists, the goal should be to make an official CloudEvents extension that can be included in the CloudEvents spec.
+
+    * Next steps:
+        * Protocol Format
+            * Document how to vocabulary draft maps to a JSON format
+                * JSONSchema (used in Eiffel)
+                * OpenAPI
+                * 
+            * Recreate the SDK based on the defined schema
+                * Investigate whether it's possible to generate the code
+            * Re-run the PoC with the updated SDK
+        * Events links, context, extensions
+            * We need dedicated discussions
+
+    * How do we take decisions?
+        * Previous discussion: https://github.com/cdfoundation/sig-events/discussions/40
+        * We should document decisions in the spec / documentation
+        * This groups should be empowered to take decisions on the protocol spec / vocabulary
+        * Review cycles are required after decisions
+        * Potential process:
+            * Large features on the spec require a larger review audience
+            * We can work in a doc/pr/hackmd until a feature is ready for review from a larger audience
+            * Small changes are done in PRs and approved by the small group
+            * 
+
+Participants:
+- Mattias Linnér (Ericsson)
+- Erik Sternerson (doWhile)
+- Emil Bäckmark (Ericsson)
+- Andrea Frittoli (IBM)
+- Oleg Nenashev (Jenkins)
+
+
 
 ## Meeting 5th October
 
