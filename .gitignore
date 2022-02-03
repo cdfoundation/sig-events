@@ -1,6 +1,5 @@
-
-# Created by https://www.toptal.com/developers/gitignore/api/vim
-# Edit at https://www.toptal.com/developers/gitignore?templates=vim
+.idea/
+cde/sdk/go/build/*
 
 ### Vim ###
 # Swap
@@ -23,4 +22,3 @@ tags
 # Persistent undo
 [._]*.un~
 
-# End of https://www.toptal.com/developers/gitignore/api/vim
