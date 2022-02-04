@@ -111,9 +111,10 @@ Chairs and the TOC Sponsor of the SIG are
 
 SIG Events meets bi-weekly on Mondays at 3pm UTC in the summer time and at 4pm UTC in winter time. (*See your timezone [here](https://time.is/3pm_in_UTC)*).
 
-- [Meeting agenda and minutes](./docs/meetings.md).
+- [Meeting agenda and minutes](./docs/SIG%20Meeting%20Notes%20current.md).
 - [Zoom Bridge](https://zoom.us/j/97660712600?pwd=Z3BqYTE5YzNsbEhmck16cjdZNEFIUT09).
 - [Zoom International dial-in numbers](https://zoom.us/zoomconference).
 - [CDF Public Calendar (UTC)](https://calendar.google.com/calendar/u/0/embed?src=linuxfoundation.org_mhf0kmgedn67ihni8r129avp24@group.calendar.google.com&ctz=UTC).
 - [Recorded meetings on Youtube](https://www.youtube.com/playlist?list=PL2KXbZ9-EY9RlxWAnAjxs8Azuz11XVhkC)
-- [Archived meeting notes (2020)](docs/meetings_2020.md).
+- [Archived meeting notes (2021)](./docs/SIG%20Meeting%20Notes%202021.md).
+- [Archived meeting notes (2020)](./docs/Events%20Workstream%20Meeting%20Notes%202020.md).
