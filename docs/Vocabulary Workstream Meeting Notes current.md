@@ -4,9 +4,68 @@
 
 This document contains the notes from the of the Events SIG meetings focused on [vocabulary discussion](https://hackmd.io/lBlDCrL7TvmtNOjxdopJ5g).
 
-## Next
+## 8th February
 
-- Issue [Consider taking advantage of this list of task/step types when qualifying event types](https://github.com/cdevents/spec/issues/18)
+Participants:
+
+- Erik Sternerson, doWhile
+- Kara de la Marck, CDF
+- Ishan Khare
+- Emil Bäckmark, Ericsson
+- Vibhav Bobade
+- \<add yourself\>
+
+Agenda:
+
+
+- Announcements
+    - [Website](https://cdevents.dev)
+    - [Mailing list](https://groups.google.com/g/cdevents-dev)
+    - [Slack Channel](https://cdeliveryfdn.slack.com/archives/C030SKZ0F4K)
+    - CDEvents [Issues](https://github.com/cdevents/spec)
+    - [Contributor Summit](https://docs.google.com/forms/d/1iIKp_xh3Sx3Mh9hp_VYAIAyR_EkF-nVoTp2JkGkdErQ/edit)
+    - [v0.1 Planning](https://github.com/orgs/cdevents/projects/1/views/1)
+    - [Webinar](https://doodle.com/poll/34u9znbdmnayx7k4)
+
+- Issues to discuss:
+    - [Consider taking advantage of this list of task/step types when qualifying event types](https://github.com/cdevents/spec/issues/18)
+        - The discussion is still ongoing on SIG interop side
+        - There are two discussions going on, one about "[Steps](https://github.com/cdfoundation/sig-interoperability/pull/81)" and "[Stages](https://github.com/cdfoundation/sig-interoperability/pull/76)"
+        - 
+    - Usage of [subject](https://github.com/cdevents/spec/issues/11)
+        - There is no subject equivalent in Eiffel
+        - It should be an optional field on the CloudEvents binding
+        - It could be an optional field on CDEvents
+        - Andrea to make a PR
+    - [Link produced events and consumed events](https://github.com/cdevents/spec/issues/10)
+        - We should support different kind of links
+        - The standardization work done in defining "objects" in CDEvents can be used to provide extra context (still specified by CDEvents)
+        - Andrea to make a PR
+    - [Add cd.service.published event to vocabulary](https://github.com/cdfoundation/sig-events/issues/111)
+
+- SDKs
+    - Golang, Python, Java
+        - For Python SDK, any preference on project/dependency solution?
+            - Python
+                - Poetry, setuptools etc.
+                - No preference stated, first person to start developing can decide.
+            - We can continue to work async on the SKD for now
+            - 
+
+- Proof of Concept
+    - [Knative PoC](https://github.com/cdfoundation/sig-events/issues/107)
+    - Metrics PoC
+        - Andrea is going to create an issue to track the work
+
+- Project updates
+    - Tekton
+        - Resuming work on experimental controller with Vibhav
+        - Setup a roadmap for the project
+        - Plan to move out of experimental
+    - Jenkins
+    - Knative
+    - Spinnaker
+    - Keptn
 
 
 ## Meeting 25th January
