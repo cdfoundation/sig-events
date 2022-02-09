@@ -70,6 +70,7 @@ Current members:
 - Fredrik Fristedt [@fredjn](https://github.com/fredjn), Axis Communications
 - Oleg Nenashev [@oleg-nenashev](https://github.com/oleg-nenashev), [Dynatrace](https://www.dynatrace.com/)/[Jenkins](https://jenkins.io)/[Keptn](https://keptn.sh)
 - Kara de la Marck [@MarckK](https://github.com/MarckK), Continuous Delivery Foundation
+- Kevin Chu [@kbychu](https://github.com/kbychu), [GitLab](https://gitlab.com/)
 
 ### New Members
 
