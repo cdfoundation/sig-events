@@ -72,7 +72,7 @@ Current members:
 - Kara de la Marck [@MarckK](https://github.com/MarckK), Continuous Delivery Foundation
 - Kevin Chu [@kbychu](https://github.com/kbychu), [GitLab](https://gitlab.com/)
 - Vibhav Bobade [@waveywaves](https://github.com/waveywaves), Independent
-
+- Matheus Paes [@MatheusPaes](https://github.com/MatheusPaes), [PicPay](https://picpay.com/)
 
 ### New Members
 
