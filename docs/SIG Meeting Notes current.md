@@ -23,6 +23,82 @@ Meeting notes for the workstream are managed on HackMD [here](https://hackmd.io/
 - Presentations
 - PR / Design Discussions
 
+## Next Meeting (Feb 28th)
+- Presentation from Fidelity (Jamie Plower) on their use of Cloudevents in CI/CD pipelines?
+
+## Meeting February 14th
+
+Meeeting time in your timezone [here](https://time.is/4pm_14_February_2022_in_UTC). You're welcome to join!
+
+Participants:
+- Emil Bäckmark, Ericsson
+- Erik Sternerson, doWhile
+- Steve Taylor, DeployHub
+- Kevin Chu, GitLab
+- Mattias Linnér, Ericsson
+- Oleg Nenashev, Dynatrace, Keptn/Jenkins
+- Kara de la Marck, CDF
+
+
+### Agenda
+
+- Action Items From Last meeting
+    - Kara / Oleg: online meetup
+        - Should be planned as soon as possible after the project is officially announced, to be announced before KubeCon
+        - We'll try to arrange something a few weeks after FOSDEM. Time around 3 or 4 PM UTC. Duration 90 minutes.
+        - Doodle poll: https://doodle.com/poll/34u9znbdmnayx7k4?utm_source=poll&utm_medium=link
+    - Kara: contributor summit at cdCon - [Slack msg](https://cdeliveryfdn.slack.com/archives/C030SKZ0F4K/p1643901186679179)
+         * For each Contributor Summit, we should normally be able to provide breakfast, snacks at breaks, and beverages throughout the day. :coffee: :croissant:  
+        - So it is important for CDF to have an estimate of number of attendees
+        - [Form](https://docs.google.com/forms/d/e/1FAIpQLSfJGFdQhFAbScBt3y3sW0WCQMl903X9T3ycmix0PpB2Zq8aoQ/viewform) to be filled in (deadline Feb 28th) - Andrea will fill it in once the below form is filled in
+        - Related [form](https://docs.google.com/forms/d/e/1FAIpQLSeZGMEGldtkrj1viMcT9nQgAgHZVkIlzQZ45aTvN74992Mawg/viewform?usp=sf_link) from Andrea - gathering partecipants and ideas. All: Please answer this form
+            - Only three responses so far
+    - Emil & Andrea / all: [PR document](https://docs.google.com/document/d/1asktguMF_K4N5Vugn0EQ_dCyCgxZX69o2D02MRGzNjA/edit?usp=sharing) - deadline? No fixed deadline. Can be shaped as the project evolves, SDKs? Also, currently need to source more supporting quotes.
+        - Erik: Provide supporting quote from doWhile/VCC
+    - Kara to check CDF/LF possibilities for a "Marketing clip" for CDEvents, to apply for being part of the $10K CDF/TOC budget. E.g. 30-90 second video presenting the project and the spec in an appealing manner.
+        - (Kara) It should be possible. Kara will check what they can do and come back to us.
+        
+- Meetups / Conferences
+* Kara: KubeCon update - CDEvents will have a full day co-located at KubeCon EU 🥳 
+    - Please respond with your ideas for the full day event here: https://github.com/cdfoundation/sig-events/issues/115
+    - We need to title the event and form a schedule to promote the full day event.
+    - This will be officially announced soon. If you will be at [KubeCon EU](https://events.linuxfoundation.org/kubecon-cloudnativecon-europe/) please do join us!
+- Presentations
+    - Presentation from Fidelity (Jamie Plower) on their use of Cloudevents in CI/CD pipelines
+
+- Updates From Other Groups
+    - CDF/TOC
+        - SIG Software Supply Chain seems to become approved
+        - CDF Ambassadors. Representation of the CDEvents
+        - Waiting for Bevy rollout. Needs to happen first
+        - Migrate CDF members from Meetup to Bevy.
+        - Kara: CDF cannot port the CDF meetup members to Bevy, but we can do an email blast to invite them through Meetup Pro. Roxanne will send this email.
+        - CDF Community Builders will be announced soon.
+    - SIG Interoperability
+        - At our last meeting, Justin Abrahms raised the idea that the Interoperability SIG create a catalogue of quality gates.
+        - GH Discussion: https://github.com/cdfoundation/sig-interoperability/discussions/83
+        - This Thursday, 17 February, Anders Eknert, from Styra, will join us to discuss quality gates. This discussion will be a great way to further our catalogue of quality gates.
+        - Note: the term "quality gates" probably comes from Keptn. It might not be the final name for it. Keptn is not happy about this term and want to change
+    - SIG Best Practices
+    - [Vocabulary workstream](https://hackmd.io/2FRGlw9fTMmKN1OQUVvguA)
+- CD Events Project set up
+    - [Bootstrap Governance](https://github.com/cdevents/spec/blob/main/governance.md) to-do list:
+        - [Contribution Process](https://github.com/cdevents/spec/blob/main/governance.md#contribution-process)
+            - Andrea will draft a first version of it. Everyone should help out contributing to it.
+        - [Project Charter](https://github.com/cdevents/spec/blob/main/governance.md#initial-charter)
+            - (Andrea) One volunteer to draft (hackmd), discussion/approval in meeting?
+        - [PR document](https://docs.google.com/document/d/1asktguMF_K4N5Vugn0EQ_dCyCgxZX69o2D02MRGzNjA/edit?usp=sharing)
+    - Review [0.1 project](https://github.com/orgs/cdevents/projects/1/views/1)
+        - Event examples should probably be added
+        - Swagger API to be provided? AsynchAPI/OpenAPI?
+    - CDEvents / Keptn alignment. Keptn Events Spec is wider and includes app lifecycle events too, future is to be seen (new standard?). Oleg to follow-up
+    - ON: Get CloudEvents folks participating too?
+- Blog Posts / Links
+- Presentations
+- PR / Design Discussions
+    - https://github.com/cdevents/spec/pull/26
+
+
 ## Meeting January 31st
 
 Meeeting time in your timezone [here](https://time.is/4pm_31_January_2022_in_UTC). You're welcome to join!
@@ -33,6 +109,7 @@ Participants:
 - Erik Sternerson (doWhile)
 - Kara de la Marck (CDF)
 - Oleg Nenashev (Dynatrace/Jenkins/Keptn)
+- Emil Bäckmark (Ericsson)
 
 Agenda:
 - Action Items From Last meeting
@@ -124,6 +201,10 @@ Agenda:
 
     - Questionnaire for FOSDEM
         - Erik or Andrea to present current proposal and get feedback.
+
+- End user presentations
+    - Jamie Plower from Fidelity can present their CI/CD with Cloudevents on next meeting
+    - Hopefully on next meeting (Feb 14th)
 
 
 
