@@ -31,7 +31,6 @@ func init() {
 	serviceCmd.AddCommand(serviceUpgradedCmd)
 	serviceCmd.AddCommand(serviceRolledbackCmd)
 	serviceCmd.AddCommand(serviceRemovedCmd)
-	serviceCmd.AddCommand(serviceCreatedCmd)
 	serviceCmd.AddCommand(servicePublishedCmd)
 
 	serviceCmd.PersistentFlags().StringVarP(&serviceEnvID, "envId", "e", "", "Environment Id where the Service is running")
@@ -184,44 +183,6 @@ var serviceRolledbackCmd = &cobra.Command{
 
 		// Create an Event.
 		event, _ := cde.CreateServiceEvent(cde.ServiceRolledbackEventV1, cde.ServiceEventParams{
-			ServiceEnvID:              serviceEnvID,
-			ServiceVersion:            serviceVersion,
-			ServiceName:               serviceName,
-			ServiceNamespace:          serviceNamespace,
-			ServiceActiveRevisionName: serviceActiveRevisionName,
-			ServiceData:               serviceData,
-		})
-
-		event.SetSource(source)
-
-		// Set a target.
-		ctx := cloudevents.ContextWithTarget(context.Background(), CDE_SINK)
-
-		// Send that Event.
-		log.Printf("sending event %s\n", event)
-
-		if result := c.Send(ctx, event); !cloudevents.IsACK(result) {
-			log.Fatalf("failed to send, %v", result)
-			return result
-		}
-
-		return nil
-	},
-}
-
-var serviceCreatedCmd = &cobra.Command{
-	Use:   "created",
-	Short: "Emit Service created Event",
-	Long:  `Emit Service created CloudEvent`,
-	RunE: func(cmd *cobra.Command, args []string) error {
-		c, err := cloudevents.NewDefaultClient()
-		if err != nil {
-			log.Fatalf("failed to create client, %v", err)
-			return err
-		}
-
-		// Create an Event.
-		event, _ := cde.CreateServiceEvent(cde.ServiceCreatedV1, cde.ServiceEventParams{
 			ServiceEnvID:              serviceEnvID,
 			ServiceVersion:            serviceVersion,
 			ServiceName:               serviceName,

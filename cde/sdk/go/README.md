@@ -41,9 +41,9 @@ The following events are currently supported:
 
 Examples:
 
-- **cd.environment.created.v1** `./cde env created --id staging --name "Staging Environment" --repo http://github.com/user/myrepo --data event=data`
-- **cd.environment.modified.v1** `./cde env modified --id staging --name "Staging Environment" --repo http://github.com/user/myrepo --data event=data`
-- **cd.environment.deleted.v1** `./cde env deleted --id staging --name "Staging Environment" --repo http://github.com/user/myrepo --data event=data`
+- **dev.cdevents.environment.created.v1** `./cde env created --id staging --name "Staging Environment" --repo http://github.com/user/myrepo --data event=data`
+- **dev.cdevents.environment.modified.v1** `./cde env modified --id staging --name "Staging Environment" --repo http://github.com/user/myrepo --data event=data`
+- **dev.cdevents.environment.deleted.v1** `./cde env deleted --id staging --name "Staging Environment" --repo http://github.com/user/myrepo --data event=data`
 
 
 ## Service Events
@@ -54,10 +54,10 @@ Examples:
 
 Examples:
 
-- **cd.service.deployed.v1** `./cde service deployed --envId staging --name my-service --version 1.0.2 --data service=data`
-- **cd.service.upgraded.v1** `./cde service upgraded --envId staging --name my-service --version 1.0.3 --data service=data`
-- **cd.service.rolledback.v1** `./cde service rolledback --envId staging --name my-service --version 1.0.2 --data service=data`
-- **cd.service.removed.v1** `./cde service removed --envId staging --name my-service --version 1.0.2 --data service=data`
+- **dev.cdevents.service.deployed.v1** `./cde service deployed --envId staging --name my-service --version 1.0.2 --data service=data`
+- **dev.cdevents.service.upgraded.v1** `./cde service upgraded --envId staging --name my-service --version 1.0.3 --data service=data`
+- **dev.cdevents.service.rolledback.v1** `./cde service rolledback --envId staging --name my-service --version 1.0.2 --data service=data`
+- **dev.cdevents.service.removed.v1** `./cde service removed --envId staging --name my-service --version 1.0.2 --data service=data`
 
 ## PipelineRun Events
 - Properties
@@ -68,9 +68,9 @@ Examples:
   - Errors
 
 Examples:
-- **cd.pipelinerun.queued.v1**   `./cde pipelinerun queued --id pipe1 --name "My Pipeline" --status "Queued" --url "http://my-pipelinerunner" --errors "Hopfully no errors" --data pipeline=data`
-- **cd.pipelinerun.started.v1**  `./cde pipelinerun started --id pipe1 --name "My Pipeline" --status "Starting" --url "http://my-pipelinerunner" --errors "Hopfully no errors" --data pipeline=data`
-- **cd.pipelinerun.finished.v1** `./cde pipelinerun finished --id pipe1 --name "My Pipeline" --status "Finished" --url "http://my-pipelinerunner" --errors "Hopfully no errors" --data pipeline=data`
+- **dev.cdevents.pipelinerun.queued.v1**   `./cde pipelinerun queued --id pipe1 --name "My Pipeline" --status "Queued" --url "http://my-pipelinerunner" --errors "Hopfully no errors" --data pipeline=data`
+- **dev.cdevents.pipelinerun.started.v1**  `./cde pipelinerun started --id pipe1 --name "My Pipeline" --status "Starting" --url "http://my-pipelinerunner" --errors "Hopfully no errors" --data pipeline=data`
+- **dev.cdevents.pipelinerun.finished.v1** `./cde pipelinerun finished --id pipe1 --name "My Pipeline" --status "Finished" --url "http://my-pipelinerunner" --errors "Hopfully no errors" --data pipeline=data`
 
 ## TaskRun Events
 - Properties
@@ -81,8 +81,8 @@ Examples:
   - Errors
 
 Examples:
-- **cd.taskrun.started.v1**  `./cde taskrun started --id task1 --name "My Task Run" --pipelineid pipe1 --data task=data`
-- **cd.taskrun.finished.v1** `./cde taskrun finished --id task1 --name "My Task Run" --pipelineid pipe1 --data task=data`
+- **dev.cdevents.taskrun.started.v1**  `./cde taskrun started --id task1 --name "My Task Run" --pipelineid pipe1 --data task=data`
+- **dev.cdevents.taskrun.finished.v1** `./cde taskrun finished --id task1 --name "My Task Run" --pipelineid pipe1 --data task=data`
 
 ## Repository Events
 - Properties
@@ -91,9 +91,9 @@ Examples:
   - URL
 
 Examples:
-- **cd.repository.created.v1** `./cde repository created --id repository_id --name "Name of repository" --url "http://my-repository" --data repository=data`
-- **cd.repository.modified.v1** `./cde repository modified --id repository_id --name "Name of repository" --url "http://my-repository" --data repository=data`
-- **cd.repository.deleted.v1** `./cde repository deleted --id repository_id --name "Name of repository" --url "http://my-repository" --data repository=data`
+- **dev.cdevents.repository.created.v1** `./cde repository created --id repository_id --name "Name of repository" --url "http://my-repository" --data repository=data`
+- **dev.cdevents.repository.modified.v1** `./cde repository modified --id repository_id --name "Name of repository" --url "http://my-repository" --data repository=data`
+- **dev.cdevents.repository.deleted.v1** `./cde repository deleted --id repository_id --name "Name of repository" --url "http://my-repository" --data repository=data`
 
 
 # References

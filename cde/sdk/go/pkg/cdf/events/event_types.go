@@ -29,59 +29,58 @@ type CDEventType string
 const (
 
 	// PipelineRun events
-	PipelineRunStartedEventV1  CDEventType = "cd.pipelinerun.started.v1"
-	PipelineRunFinishedEventV1 CDEventType = "cd.pipelinerun.finished.v1"
-	PipelineRunQueuedEventV1   CDEventType = "cd.pipelinerun.queued.v1"
+	PipelineRunStartedEventV1  CDEventType = "dev.cdevents.pipelinerun.started.v1"
+	PipelineRunFinishedEventV1 CDEventType = "dev.cdevents.pipelinerun.finished.v1"
+	PipelineRunQueuedEventV1   CDEventType = "dev.cdevents.pipelinerun.queued.v1"
 
 	// TaskRun events
-	TaskRunStartedEventV1  CDEventType = "cd.taskrun.started.v1"
-	TaskRunFinishedEventV1 CDEventType = "cd.taskrun.finished.v1"
+	TaskRunStartedEventV1  CDEventType = "dev.cdevents.taskrun.started.v1"
+	TaskRunFinishedEventV1 CDEventType = "dev.cdevents.taskrun.finished.v1"
 
 	// Repository events
-	RepositoryCreatedEventV1  CDEventType = "cd.repository.created.v1"
-	RepositoryModifiedEventV1 CDEventType = "cd.repository.modified.v1"
-	RepositoryDeletedEventV1  CDEventType = "cd.repository.deleted.v1"
+	RepositoryCreatedEventV1  CDEventType = "dev.cdevents.repository.created.v1"
+	RepositoryModifiedEventV1 CDEventType = "dev.cdevents.repository.modified.v1"
+	RepositoryDeletedEventV1  CDEventType = "dev.cdevents.repository.deleted.v1"
 
-	BranchCreatedEventV1 CDEventType = "cd.repository.branch.created.v1"
-	BranchDeletedEventV1 CDEventType = "cd.repository.branch.deleted.v1"
+	BranchCreatedEventV1 CDEventType = "dev.cdevents.repository.branch.created.v1"
+	BranchDeletedEventV1 CDEventType = "dev.cdevents.repository.branch.deleted.v1"
 
 	// Change Events
-	ChangeCreatedEventV1   CDEventType = "cd.repository.change.created.v1"
-	ChangeUpdatedEventV1   CDEventType = "cd.repository.change.updated.v1"
-	ChangeReviewedEventV1  CDEventType = "cd.repository.change.reviewed.v1"
-	ChangeMergedEventV1    CDEventType = "cd.repository.change.merged.v1"
-	ChangeAbandonedEventV1 CDEventType = "cd.repository.change.abandoned.v1"
+	ChangeCreatedEventV1   CDEventType = "dev.cdevents.repository.change.created.v1"
+	ChangeUpdatedEventV1   CDEventType = "dev.cdevents.repository.change.updated.v1"
+	ChangeReviewedEventV1  CDEventType = "dev.cdevents.repository.change.reviewed.v1"
+	ChangeMergedEventV1    CDEventType = "dev.cdevents.repository.change.merged.v1"
+	ChangeAbandonedEventV1 CDEventType = "dev.cdevents.repository.change.abandoned.v1"
 
 	// Build Events
-	BuildStartedEventV1  CDEventType = "cd.build.started.v1"
-	BuildQueuedEventV1   CDEventType = "cd.build.queued.v1"
-	BuildFinishedEventV1 CDEventType = "cd.build.finished.v1"
+	BuildStartedEventV1  CDEventType = "dev.cdevents.build.started.v1"
+	BuildQueuedEventV1   CDEventType = "dev.cdevents.build.queued.v1"
+	BuildFinishedEventV1 CDEventType = "dev.cdevents.build.finished.v1"
 
 	// Test Events
-	TestCaseStartedEventV1  CDEventType = "cd.test.case.started.v1"
-	TestCaseQueuedEventV1   CDEventType = "cd.test.case.queued.v1"
-	TestCaseFinishedEventV1 CDEventType = "cd.test.case.finished.v1"
+	TestCaseStartedEventV1  CDEventType = "dev.cdevents.test.case.started.v1"
+	TestCaseQueuedEventV1   CDEventType = "dev.cdevents.test.case.queued.v1"
+	TestCaseFinishedEventV1 CDEventType = "dev.cdevents.test.case.finished.v1"
 
-	TestSuiteStartedEventV1  CDEventType = "cd.test.suite.started.v1"
-	TestSuiteQueuedEventV1   CDEventType = "cd.test.suite.queued.v1"
-	TestSuiteFinishedEventV1 CDEventType = "cd.test.suite.finished.v1"
+	TestSuiteStartedEventV1  CDEventType = "dev.cdevents.test.suite.started.v1"
+	TestSuiteQueuedEventV1   CDEventType = "dev.cdevents.test.suite.queued.v1"
+	TestSuiteFinishedEventV1 CDEventType = "dev.cdevents.test.suite.finished.v1"
 
 	// Artifact Events
-	ArtifactPackagedEventV1  CDEventType = "cd.artifact.packaged.v1"
-	ArtifactPublishedEventV1 CDEventType = "cd.artifact.published.v1"
+	ArtifactPackagedEventV1  CDEventType = "dev.cdevents.artifact.packaged.v1"
+	ArtifactPublishedEventV1 CDEventType = "dev.cdevents.artifact.published.v1"
 
 	// Environment Events
-	EnvironmentCreatedEventV1  CDEventType = "cd.environment.created.v1"
-	EnvironmentModifiedEventV1 CDEventType = "cd.environment.modified.v1"
-	EnvironmentDeletedEventV1  CDEventType = "cd.environment.deleted.v1"
+	EnvironmentCreatedEventV1  CDEventType = "dev.cdevents.environment.created.v1"
+	EnvironmentModifiedEventV1 CDEventType = "dev.cdevents.environment.modified.v1"
+	EnvironmentDeletedEventV1  CDEventType = "dev.cdevents.environment.deleted.v1"
 
 	// Service Events
-	ServiceDeployedEventV1   CDEventType = "cd.service.deployed.v1"
-	ServiceUpgradedEventV1   CDEventType = "cd.service.upgraded.v1"
-	ServiceRolledbackEventV1 CDEventType = "cd.service.rolledback.v1"
-	ServiceRemovedEventV1    CDEventType = "cd.service.removed.v1"
-	ServiceCreatedV1         CDEventType = "cd.service.created.v1"
-	ServicePublishedV1       CDEventType = "cd.service.published,v1"
+	ServiceDeployedEventV1   CDEventType = "dev.cdevents.service.deployed.v1"
+	ServiceUpgradedEventV1   CDEventType = "dev.cdevents.service.upgraded.v1"
+	ServiceRolledbackEventV1 CDEventType = "dev.cdevents.service.rolledback.v1"
+	ServiceRemovedEventV1    CDEventType = "dev.cdevents.service.removed.v1"
+	ServicePublishedV1       CDEventType = "dev.cdevents.service.published,v1"
 )
 
 func (t CDEventType) String() string {

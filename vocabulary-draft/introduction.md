@@ -22,7 +22,7 @@ Also notice that we currently use the term 'pipeline' to denote a pipelines, wor
 The following attributes are REQUIRED to be present in all the Events defined in this vocabulary:
 
 - **Event ID**: defines a unique identifier for the event
-- **Event Type**: defines a textual description of the event type, only event types described in this document are supported. All event types should be prefixed with `cd.`
+- **Event Type**: defines a textual description of the event type, only event types described in this document are supported. All event types should be prefixed with `dev.cdevents.`
 - **Event Source**: defines the context in which an event happened
 - **Event Timestamp**: defines the time when the event was produced
 
