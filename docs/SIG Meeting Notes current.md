@@ -1,4 +1,8 @@
-# Events SIG Meeting Notes
+---
+tags: SIG Events
+---
+
+# CDF Events SIG Meeting Notes
 
 [![hackmd-github-sync-badge](https://hackmd.io/xjK5ujQbTHSaEZjoY28b8g/badge)](https://hackmd.io/xjK5ujQbTHSaEZjoY28b8g)
 
@@ -8,6 +12,10 @@ The SIG was initiated as a [workstream under SIG Interoperability ]( https://git
 
 Meeting notes for the workstream are managed on HackMD [here](https://hackmd.io/xjK5ujQbTHSaEZjoY28b8g), and published to GitHub [here](https://github.com/cdfoundation/sig-events/blob/main/docs/meetings.md).
 
+
+## Future presentations (to be scheduled)
+
+- Presentation from Fidelity (Jamie Plower) on their use of Cloudevents in CI/CD pipelines?
 
 ## Agenda Template
 
@@ -23,8 +31,142 @@ Meeting notes for the workstream are managed on HackMD [here](https://hackmd.io/
 - Presentations
 - PR / Design Discussions
 
-## Next Meeting (Feb 28th)
-- Presentation from Fidelity (Jamie Plower) on their use of Cloudevents in CI/CD pipelines?
+## Meeting March 14th
+
+Meeeting time in your timezone [here](https://time.is/4pm_14_March_2022_in_UTC). You're welcome to join!
+
+
+Participants:
+- Matias Linnér, Ericsson
+- Emil Bäckmark, Ericsson
+- Andrea Frittoli, IBM
+- Oleg Nenashev, Dynatrace, Keptn/Jenkins
+- \<add yourself\>
+
+Agenda:
+- Action Items From Last meeting
+    - (Steve) Reach out to Direktiv for a presentation on their events usage
+- General
+    - Daylight savings time
+        - US is already there. For most counrties in Europe it begins on March 27th (before next meeting)
+        - Proposal: Move to 3pm UTC. Next meeting on [this time](https://time.is/3pm_28_March_2022_in_UTC)
+        - Decided to accept the proposal
+        - (Oleg) update the CDF calendar from next meeting
+    - [CDFoundation Non-profit Sponsorship Application to HackMD](https://github.com/cdfoundation/foundation/issues/358)
+        - [CD Foundation org in HackMD](https://hackmd.io/team/cdfoundation?nav=overview)
+- Meetups / Conferences
+    - Webinar
+        - Postponed from March 2nd. New date?
+        - Proposed to have it on April 4th, at 3pm-4pm UTC
+        - We should use the Bevy portal for this. CDEvents chapter
+        - (Oleg) Add to CDF calendar
+        - (Andrea) Roxanne could help us announce this
+        - Agenda:
+            - Andrea (and Erik) presents an updated presentation from FOSDEM
+            - Open discussion on the participants use cases
+        - We should all reach out to the companies/organizations that could be interested to join
+    - KubeCon
+        - CDEventsCon
+            - May 17th, 9am-5pm
+            - https://hackmd.io/JMM-V7IlTwWoS1YcDK9m_A
+        - CDF Booth
+            - All days? CDEvents one day.
+    - cdCon
+        - (Andrea) cdCon contributor summit
+            - google form done for <10 in person partecipants, requested support for remote partecipants
+- Updates From Other Groups
+    - CDF/TOC
+    - SIG Interoperability
+    - SIG Best Practices
+    - SIG Software Supply Chain
+    - [Vocabulary workstream](https://hackmd.io/2FRGlw9fTMmKN1OQUVvguA)
+- CD Events Project set up
+    - [PR Document](https://docs.google.com/document/d/1asktguMF_K4N5Vugn0EQ_dCyCgxZX69o2D02MRGzNjA/edit#)
+    - (Kara) Marketing Clip
+- Blog Posts / Links
+- Presentations
+- PR / Design Discussions
+
+
+## Meeting February 28th
+
+Meeeting time in your timezone [here](https://time.is/4pm_28_February_2022_in_UTC). You're welcome to join!
+
+
+Participants:
+- Steve Taylor (DeployHub)
+- Erik Sternerson (doWhile)
+- Mattias Linnér (Ericsson)
+- Andrea Frittoli (IBM)
+- 
+
+Agenda:
+
+- Action Items From Last meeting
+    - (Andrea) [Contribution process added](https://github.com/cdevents/.github/blob/main/docs/CONTRIBUTING.md)
+    - (Andrea) cdCon contributor summit
+        - google form done for <10 in person partecipants 
+            - requested support for remote partecipants
+    - (Emil / Andrea) [PR Document](https://docs.google.com/document/d/1asktguMF_K4N5Vugn0EQ_dCyCgxZX69o2D02MRGzNjA/edit#)
+        - Comments merged in (mostly)
+        - We have a few quotes now, it would be nice to have some more
+    - (Kara) Marketing Clip
+    - (Andrea) CDEvents at KubeCon
+        - These's still time to reply to the [form](https://docs.google.com/forms/d/e/1FAIpQLSd7CSxSs_Q0mxromY-FXzEEWyJdKycniKMBHThycJsDXrA9nQ/viewform?usp=sf_link)
+        - 9 responses so far
+        - Proposed event names
+            - CDEvents Day
+            - Events in CI/CD
+            - CDEventsCon
+            - CDEvents contributor summit
+            - How do we achieve Iteroperability in the CNCF ecosystem?
+        - Ortelius could prepare a talk about GitOps events
+- Updates From Other Groups
+    - CDF/TOC
+        - [CDFoundation Non-profit Sponsorship Application to HackMD](https://github.com/cdfoundation/foundation/issues/358)
+        - Bevy now available at https://community.cd.foundation/cdevents/
+        - Zoom client cannot be installed on laptop in a few companies
+        - Bevy has a desktop client?
+    - SIG Interoperability
+    - SIG Best Practices
+    - [CDEvents / Vocabulary workstream](https://hackmd.io/2FRGlw9fTMmKN1OQUVvguA)
+- CD Events Project set up
+- Meetups / Conferences
+    - Upcoming CDEvents webinar Wed 2nd
+        - Needs to be added into the system
+        - Content?
+        - Advertisement?
+        - (Andrea) Is there enough time between now and Wed or shall we reschedule?
+        - We should probably reschedule
+            - Reach out to Kara (Andrea)
+- Blog Posts / Links
+- Presentations
+- PR / Design Discussions
+
+- [Direktiv](https://docs.direktiv.io/v0.6.0/getting_started/events/)
+    - They have a lot of events that might help CDEvents leaping forward
+    - Steve to check if it possible to get a presentation
+
+- Eiffel community is working on describing the entire git graph through events
+    - It might be helpful for CDEvents
+    - It would be great to have a presentation
+    - It requires event persistence
+        - Eiffel@Ericsson uses MongoDB to store events
+        - Graph database: [ArangoDB](https://arangodb.com)
+
+- [Metrics PoC](https://hackmd.io/cFw0xO6XSwGwIoJ78Re91A)
+    - What can we reuse from 4-keys
+    - Switch big-query for a different backend?
+    - Re-use some of the queries?
+    - Visualization of relationships:
+        - D3S (js)
+        - Vis.js
+        - Hardest part is getting the data in the right (JSON) format
+
+- Releases
+    - In eiffel to group events togther: 
+        - https://github.com/eiffel-community/eiffel/blob/master/eiffel-vocabulary/EiffelFlowContextDefinedEvent.md
+
 
 ## Meeting February 14th
 
