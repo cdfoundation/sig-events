@@ -31,6 +31,158 @@ Meeting notes for the workstream are managed on HackMD [here](https://hackmd.io/
 - Presentations
 - PR / Design Discussions
 
+## Meeting April 25th
+
+Meeeting time in your timezone [here](https://time.is/3pm_25_April_2022_in_UTC). You're welcome to join!
+
+Participants:
+- Emil Bäckmark, Ericsson
+- Mattias Linnér, Ericsson
+- Erik Sternerson, doWhile
+- Tracy Ragan, DeployHub
+
+Agenda:
+- Action Items From Last meeting
+    - (Andrea) Ask Roxanne to help announcing the webinar
+        - Roxanne accepted to announce it
+        - Emil asked Michelle today to announce it, but it might be too late to attract new people to it now
+    - (All) Reach out to the companies/organizations that could be interested to join the webinar
+    - (Emil) Reach out to Kara to find out whats left before the CDEvents project can be officially launched
+        - Reached out, and it is ongoing.
+- Webinar/meetup April 27th
+    - https://community.cd.foundation/events/details/cd-foundation-cdevents-presents-cdevents-online-webinarmeetup/
+    - Agenda:
+        - Andrea (and Erik) presents an updated presentation from FOSDEM
+            - In-progress update pushed to <https://github.com/cdevents/presentations/tree/main/2022-04-27-cdevents-online>
+            - Q: What do we want to present as updates?
+        - Panel or open discussion on the participants use cases
+- CDEvents Panel
+    - We had [this idea](https://docs.google.com/document/d/12UNdVBO7_rOBIEtOsrjViEjVUdp8dyYl_tM5ljSP7Ps/edit) some time ago, should we try to squeeze it is as well? 
+    - We can revisit this idea for sometime early autumn unless the panel on CDEventsCon would replace it.
+- CDEventsCon May 17th @ KubeCon
+    - [Planning](https://hackmd.io/JMM-V7IlTwWoS1YcDK9m_A)
+    - [Blog announcement](https://cd.foundation/blog/2022/04/11/attend-cdeventscon-this-may/)
+    - (Andrea) to reach out to the speakers to see that it is all set
+- CDEvents Day June 10th @ cdCon
+    - [Full cdCon Schedule](https://events.linuxfoundation.org/cdcon/program/schedule/)
+    - [CDEvents Community Summit Schedule](https://cdcon2022.sched.com/event/10fUW/cdevents-community-summit?iframe=no&w=100%&sidebar=yes&bg=no)
+    - [Erik and Andrea will talk](https://cdcon2022.sched.com/event/10UYC/building-devops-metrics-for-your-choice-of-cd-tools-through-cdevents-andrea-frittoli-ibm-erik-sternerson-dowhile?iframe=yes&w=100%&sidebar=yes&bg=no)
+- CD Events Project set up
+    - [PR Document](https://docs.google.com/document/d/1asktguMF_K4N5Vugn0EQ_dCyCgxZX69o2D02MRGzNjA/edit#)
+    - (Kara) Marketing Clip
+- Other items
+    - Updates from other CDF SIGs, PRs/issues
+    - https://github.com/cdevents/spec/issues/18
+    - https://github.com/cdevents/spec/pull/35
+
+
+## Meeting April 11th
+
+Meeeting time in your timezone [here](https://time.is/3pm_11_April_2022_in_UTC). You're welcome to join!
+
+Participants:
+- Wilhelm Wonigkeit (Direktiv)
+- Emil Bäckmark (Ericsson)
+- Steve Taylor (DeployHub)
+- Mattias Linnér (Ericsson)
+- \<add yourself\>
+
+Agenda:
+- Action Items From Last meeting
+    - (Emil) Plan for webinar/meetup on April 26th or 27th and add to CDF calendar
+        - Done. April 27th is set.
+    - (Andrea) Ask Roxanne to help announcing the webinar
+        - Roxanne accepted to announce it
+    - (All) Reach out to the companies/organizations that could be interested to join the webinar
+- Presentations
+    - [Direktiv](https://github.com/direktiv/direktiv) presented by Wilhelm Wonigkeit
+        - See recording of this SIG for demo and discussions
+- Meetups / Conferences
+    - Webinar
+        - Agenda:
+            - Andrea (and Erik) presents an updated presentation from FOSDEM
+            - Panel or open discussion on the participants use cases
+    - CDF Online Meetup
+        - https://docs.google.com/document/d/12UNdVBO7_rOBIEtOsrjViEjVUdp8dyYl_tM5ljSP7Ps/edit
+    - KubeCon
+        - CDEventsCon May 17th
+            - https://hackmd.io/JMM-V7IlTwWoS1YcDK9m_A
+            - https://cd.foundation/blog/2022/04/11/attend-cdeventscon-this-may/
+        - CDF Booth
+            - Canceled (?)
+    - cdCon
+        - https://events.linuxfoundation.org/cdcon/program/schedule/
+        - (Andrea) cdCon contributor summit
+            - June 10th
+- Updates From Other Groups
+- CD Events Project set up
+    - [PR Document](https://docs.google.com/document/d/1asktguMF_K4N5Vugn0EQ_dCyCgxZX69o2D02MRGzNjA/edit#)
+    - (Kara) Marketing Clip
+    - (Emil) Reach out to Kara to find out whats left
+- Blog Posts / Links
+- PR / Design Discussions
+
+
+## Meeting March 28th
+
+Meeeting time in your timezone [here](https://time.is/3pm_28_March_2022_in_UTC). You're welcome to join!
+
+Participants:
+- Steve Taylor (DeployHub)
+- Tracy Ragan (DeployHub)
+- Mattias Linér (Ericsson)
+- Emil Bäckmark (Ericsson)
+- Andrea Frittoli (IBM)
+- \<add yourself\>
+
+Agenda:
+- Action Items From Last meeting
+    - (Steve) Reach out to Direktiv for a presentation on their events usage
+        - Contact in place (Emil et al). Possibly a presentation for April 25th
+    - (Oleg) Add webinar on April 4th to CDF calendar
+    - (Andrea) Ask Roxanne to help announcing the webinar
+    - (All) Reach out to the companies/organizations that could be interested to join the webinar
+- Meetups / Conferences
+    - Webinar
+        - Proposed to have it on April 4th, at 3pm-4pm UTC
+            - April 4th is not feasible anymore
+        - We should use the Bevy portal for this. CDEvents chapter - https://community.cd.foundation/cdevents/
+        - We could join this initiative and the CDF Online Meetup discussed below. We should use the Bevy portal and announce it through the CDF Online Meetup forum
+        - Agenda:
+            - Andrea (and Erik) presents an updated presentation from FOSDEM
+            - Panel or open discussion on the participants use cases
+        - To try out Bevy we could set up one of our SIG meetings through Bevy (vocabulary meeting next week?)
+        - Andrea will be on PTO from April 7th to 25th. We should set up this meetup in the week of 25th (earliest on 26th). To be discussed on slack.
+    - CDF Online Meetup
+        - https://docs.google.com/document/d/12UNdVBO7_rOBIEtOsrjViEjVUdp8dyYl_tM5ljSP7Ps/edit
+    - KubeCon
+        - CDEventsCon
+            - May 17th, 9am-5pm
+            - https://hackmd.io/JMM-V7IlTwWoS1YcDK9m_A
+        - CDF Booth
+            - Canceled (?)
+    - cdCon
+        - (Andrea) cdCon contributor summit
+            - google form done for <10 in person partecipants, requested support for remote partecipants
+            - Info to be provided until April 1st:
+                - Event contact name and email address
+                - Official event title - this will be displayed on the schedule and on print signage
+                - 300 word (maximum) event description
+                - Date of event - originally submitted: Friday, June 10 (Options: Thursday, June 9 / Friday, June 10 / Thursday, June 9 AND Friday, June 10)
+                - Event time frame - originally submitted: 9:00 AM - 12:00 PM. Note that the convention center opens at 8:00 AM, so sessions should start closer to 9:00 AM.
+                - Estimated number of attendees - originally submitted: <10
+                - Link to external event site or schedule (optional)
+                - Project high resolution logo (if applicable)
+                - Email address or contact information for attendee questions (to be listed on the website)
+- Updates From Other Groups
+- CD Events Project set up
+    - [PR Document](https://docs.google.com/document/d/1asktguMF_K4N5Vugn0EQ_dCyCgxZX69o2D02MRGzNjA/edit#)
+    - (Kara) Marketing Clip
+- Blog Posts / Links
+- Presentations
+- PR / Design Discussions
+
+
 ## Meeting March 14th
 
 Meeeting time in your timezone [here](https://time.is/4pm_14_March_2022_in_UTC). You're welcome to join!
@@ -52,8 +204,6 @@ Agenda:
         - Proposal: Move to 3pm UTC. Next meeting on [this time](https://time.is/3pm_28_March_2022_in_UTC)
         - Decided to accept the proposal
         - (Oleg) update the CDF calendar from next meeting
-    - [CDFoundation Non-profit Sponsorship Application to HackMD](https://github.com/cdfoundation/foundation/issues/358)
-        - [CD Foundation org in HackMD](https://hackmd.io/team/cdfoundation?nav=overview)
 - Meetups / Conferences
     - Webinar
         - Postponed from March 2nd. New date?
