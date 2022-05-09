@@ -31,6 +31,39 @@ Meeting notes for the workstream are managed on HackMD [here](https://hackmd.io/
 - Presentations
 - PR / Design Discussions
 
+## Meeting May 9th
+
+Meeeting time in your timezone [here](https://time.is/3pm_9_May_2022_in_UTC). You're welcome to join!
+
+Participants:
+- Emil Bäckmark, Ericsson
+- Steve Taylor, DeployHub
+- Tracy Ragan, DeployHub
+- Mattias Linnér Ericsson
+- Andrea Frittoli, IBM
+- Erik Sternerson, doWhile
+- \<add yourself\>
+
+Agenda:
+- Last meetings actions
+    - (Emil) Reach out to Kara to find out whats left before the CDEvents project can be officially launched
+        - Reached out, and it is ongoing.
+- Conclusions from the webinar/meetup
+    - https://www.youtube.com/watch?v=qTii8beEyBM
+- CDEventsCon
+    - RSVP for virtual attendees not yet in place. Emily is working on it.
+    - Panel discussion
+        - https://docs.google.com/document/d/1HZwgnsPFgBBl4gmZHqacJoWWBwFlxbICg5dJCUNsF8s/edit
+    - [CDEventsCon Schedule](https://cdcon2022.sched.com/event/10fUW)
+- CDEvents Contributor Summit @ cdCon
+    - [cdCon full schedule](https://events.linuxfoundation.org/cdcon/program/schedule/)
+    - [Planning doc](https://hackmd.io/rzJPQL4nTlWORg-wwVBw1g)
+    - 3 hours only (half-day)
+- Presentations to be held
+    - Still waiting for response from Fidelity
+    - Cartographer is to be presented on May 26th on SIG supply chain: https://hackmd.io/l1BfXp1kQKGKSaKLbl6xJw?view
+
+
 ## Meeting April 25th
 
 Meeeting time in your timezone [here](https://time.is/3pm_25_April_2022_in_UTC). You're welcome to join!
