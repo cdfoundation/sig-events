@@ -98,7 +98,7 @@ if [ -z "$TEKTON_DASHBOARD_VERSION" ]; then
   TEKTON_DASHBOARD_VERSION=$(get_latest_release tektoncd/dashboard)
 fi
 
-KNATIVE_VERSION=${KNATIVE_VERSION:-0.24.0}
+KNATIVE_VERSION=${KNATIVE_VERSION:-1.3.0}
 
 echo "Checking if needed repos can be found"
 if [ ! -d "${KEPTN_CDF_TRANSLATOR_PATH:-${GOPATH}/src/github.com/salaboy/keptn-cdf-translator}" ]
@@ -388,6 +388,9 @@ spec:
     uri: http://el-cdevent-listener.cdevents:8080
 EOF
 
+## Run the script to install and configure Spinnaker with poc
+sudo bash $BASE_DIR/spinnaker/installAndConfigSpinnaker.sh
+
 # Echo relevant environment
 env | egrep '(KO|KIND|KEPTN|^TEKTON|BROKER|KNATIVE|reg_)' > poc.env
 
@@ -396,6 +399,7 @@ echo "Tekton Dashboard available at http://tekton-127.0.0.1.nip.io"
 echo "Keptn Bridge available at http://keptn-127.0.0.1.nip.io"
 echo "-> for the login creds, use keptn configure bridge -o"
 echo "CloudEvents player available at http://cloudevents-player.default.knative-127.0.0.1.nip.io"
+echo "Spinnaker UI available at http://spin-ui-127.0.0.1.nip.io"
 
 echo "To kick off the demo, from the poc folder, run tkn:"
 echo "tkn pipeline start build-artifact -w name=sources,volumeClaimTemplateFile=./tekton/workspace-template.yaml"

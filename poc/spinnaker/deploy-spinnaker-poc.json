@@ -1,0 +1,89 @@
+{
+ "isNew": true,
+ "application": "cdevents-poc",
+ "keepWaitingPipelines": false,
+ "lastModifiedBy": "anonymous",
+ "limitConcurrent": true,
+ "name": "deploy-spinnaker-poc",
+ "spelEvaluator": "v4",
+ "stages": [
+  {
+   "account": "poc-k8s-account",
+   "cloudProvider": "kubernetes",
+   "manifests": [
+    {
+     "apiVersion": "apps/v1",
+     "kind": "Deployment",
+     "metadata": {
+      "name": "spinnaker-poc-deployment"
+     },
+     "spec": {
+      "replicas": 1,
+      "selector": {
+       "matchLabels": {
+        "app": "cdevents-spinnaker-poc"
+       }
+      },
+      "template": {
+       "metadata": {
+        "labels": {
+         "app": "cdevents-spinnaker-poc"
+        }
+       },
+       "spec": {
+        "containers": [
+         {
+          "image": "localhost:5000/cdevent/poc:v1.0",
+          "name": "cdevents-spinnaker-poc",
+          "ports": [
+           {
+            "containerPort": 80
+           }
+          ]
+         }
+        ]
+       }
+      }
+     }
+    },
+    {
+     "apiVersion": "v1",
+     "kind": "Service",
+     "metadata": {
+      "name": "spinnaker-poc-service"
+     },
+     "spec": {
+      "ports": [
+       {
+        "port": 80,
+        "targetPort": 80
+       }
+      ],
+      "selector": {
+       "app": "cdevents-spinnaker-poc"
+      },
+      "type": "ClusterIP"
+     }
+    }
+   ],
+   "moniker": {
+    "app": "cdevents-poc"
+   },
+   "name": "Deploy (Manifest)",
+   "refId": "1",
+   "requisiteStageRefIds": [],
+   "skipExpressionEvaluation": false,
+   "source": "text",
+   "trafficManagement": {
+    "enabled": false,
+    "options": {
+     "enableTraffic": false,
+     "services": []
+    }
+   },
+   "type": "deployManifest"
+  }
+ ],
+ "triggers": [],
+ "updateTs": "1649334445000"
+}
