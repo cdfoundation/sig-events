@@ -73,6 +73,7 @@ Current members:
 - Kevin Chu [@kbychu](https://github.com/kbychu), [GitLab](https://gitlab.com/)
 - Vibhav Bobade [@waveywaves](https://github.com/waveywaves), Independent
 - Matheus Paes [@MatheusPaes](https://github.com/MatheusPaes), [PicPay](https://picpay.com/)
+- Ishan Khare [@ishankhare07](https://github.com/ishankhare07), [Loft Labs]
 
 ### New Members
 
