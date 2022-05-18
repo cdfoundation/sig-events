@@ -107,15 +107,12 @@ function createApplicationAndPipeline() {
     ## Run hal deploy connect with nohup - before pipeline creation..
     nohup hal deploy connect &
     count=0
-    max_count=10
+    max_count=20
     echo "Check Spinnaker API gateway is running."
     while [ $count -lt $max_count ]; do
-        sudo netstat -tulpn | grep 8084
-        if [[ $? -eq 0 ]]; then
-            break
-        fi
+        sudo netstat -tulpn | grep 8084 && break
         count=$[$count +1]
-        echo "Sleep for 5Sec before next attempt."
+        echo "Spinnaker API gateway is NOT running, sleep for 5Sec before next attempt."
         sleep 5
     done
 
@@ -126,7 +123,7 @@ function createApplicationAndPipeline() {
         cd $GIT_PATH_SIGEVENTS/poc/spinnaker
         spin pipeline save -f deploy-spinnaker-poc.json
         echo "Spinnaker Application and Pipeline created successfully" ) || (
-        echo "Spinnaker API gateway is NOT running, please run 'nohup hal deploy connect &' and run the below commands to create the pipeline"
+        echo "Spinnaker API gateway is still NOT running, please run 'nohup hal deploy connect &' and run the below commands to create the pipeline"
         echo "-------------------------------------------"
         echo "spin application save --application-name cdevents-poc --owner-email someone@example.com --cloud-providers "kubernetes""
         echo "cd $GIT_PATH_SIGEVENTS/poc/spinnaker"
