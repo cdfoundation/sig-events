@@ -3,13 +3,12 @@
 set -e -o pipefail
 
 ## This script is used for the following actions
-## 1. Install helm, halyard and spincli latest versions 
-## 2. Install Minio Server as service in k8s cluster and configure as storage service for spinnaker
-## 3. Configure kubernetes account with spinnaker
-## 4. Install spinnaker using halyard command
-## 5. Create a trigger to subscribe spinnaker event API
-## 6. Launch spinnaker deployment and create Application/Pipeline using spincli
-## 7. Create Ingress to access spinnaker UI from host
+## 1. Install Minio Server as service in k8s cluster and configure as storage service for spinnaker
+## 2. Configure kubernetes account with spinnaker
+## 3. Install spinnaker using halyard command
+## 4. Create a trigger to subscribe spinnaker event API
+## 5. Launch spinnaker deployment and create Application/Pipeline using spincli
+## 6. Create Ingress to access spinnaker UI from host
 
 
 BASE_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )"
@@ -17,27 +16,6 @@ BASE_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )"
 ## Declare variables
 GIT_PATH_SIGEVENTS=$BASE_DIR/../../
 SPIN_ECHO_GIT_URL="git@github.com:rjalander/echo.git -b cdevent_consume"
-
-## functions
-function installHelm() {
-    curl -fsSL -o get_helm.sh https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-3
-    chmod 700 get_helm.sh
-    ./get_helm.sh
-    helm version > /dev/null
-}
-
-function installHalyard() {
-    curl -O https://raw.githubusercontent.com/spinnaker/halyard/master/install/debian/InstallHalyard.sh
-    sudo bash InstallHalyard.sh
-    hal -v > /dev/null
-}
-
-function installSpinCLI () {
-    curl -LO https://storage.googleapis.com/spinnaker-artifacts/spin/$(curl -s https://storage.googleapis.com/spinnaker-artifacts/spin/latest)/linux/amd64/spin
-    chmod +x spin
-    sudo mv spin /usr/local/bin/spin
-    spin --version >> /dev/null
-}
 
 function installMinioService() {
     helm repo add minio https://helm.min.io/
@@ -183,10 +161,6 @@ EOF
 ########
 ## Main
 #######
-installHelm
-installHalyard
-installSpinCLI
-
 installMinioService
 configureK8SAccountWithSpinnaker
 installSpinnaker
