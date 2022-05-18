@@ -161,6 +161,11 @@ EOF
 ########
 ## Main
 #######
+echo "Checking if required CLIs are installed"
+helm version > /dev/null
+hal -v > /dev/null
+spin --version >> /dev/null
+
 installMinioService
 configureK8SAccountWithSpinnaker
 installSpinnaker
