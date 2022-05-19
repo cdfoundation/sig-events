@@ -123,12 +123,7 @@ function createApplicationAndPipeline() {
         cd $GIT_PATH_SIGEVENTS/poc/spinnaker
         spin pipeline save -f deploy-spinnaker-poc.json
         echo "Spinnaker Application and Pipeline created successfully" ) || (
-        echo "Spinnaker API gateway is still NOT running, please run 'nohup hal deploy connect &' and run the below commands to create the pipeline"
-        echo "-------------------------------------------"
-        echo "spin application save --application-name cdevents-poc --owner-email someone@example.com --cloud-providers "kubernetes""
-        echo "cd $GIT_PATH_SIGEVENTS/poc/spinnaker"
-        echo "spin pipeline save -f deploy-spinnaker-poc.json" 
-        echo "-------------------------------------------" )
+        echo "Spinnaker API gateway is still NOT running, please check the logs from spin-gate micro service pod.")
 }
 
 function createIngressSpinnakerUI() {
