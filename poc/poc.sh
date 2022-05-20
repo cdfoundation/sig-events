@@ -396,7 +396,8 @@ spec:
 EOF
 
 ## Run the script to install and configure Spinnaker with poc
-sudo bash $BASE_DIR/spinnaker/installAndConfigSpinnaker.sh
+chmod +x $BASE_DIR/spinnaker/installAndConfigSpinnaker.sh
+$BASE_DIR/spinnaker/installAndConfigSpinnaker.sh
 
 # Echo relevant environment
 env | egrep '(KO|KIND|KEPTN|^TEKTON|BROKER|KNATIVE|reg_)' > poc.env
