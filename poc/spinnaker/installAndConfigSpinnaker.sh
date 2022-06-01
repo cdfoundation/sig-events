@@ -2,13 +2,13 @@
 
 set -e -o pipefail
 
-## This script is used for the following actions
-## 1. Install Minio Server as service in k8s cluster and configure as storage service for spinnaker
-## 2. Configure kubernetes account with spinnaker
-## 3. Install spinnaker using halyard command
-## 4. Create a trigger to subscribe spinnaker event API
-## 5. Launch spinnaker deployment and create Application/Pipeline using spincli
-## 6. Create Ingress to access spinnaker UI from host
+## This script is used to install configure spinnaker to run with the sig-events poc
+## 1. Create hal stable deployment and update with Spinnaker service account
+## 2. Deploy distributed spinnaker in K8S cluster using halyard
+## 3. Update spin-echo with the cdevents API and build new image
+## 3. Create a trigger to subscribe spinnaker event API
+## 4. Launch spinnaker deployment and create Application/Pipeline using spin CLI
+## 5. Create Ingress to access spinnaker UI from host
 
 
 BASE_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )"
@@ -17,65 +17,54 @@ BASE_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )"
 GIT_PATH_SIGEVENTS=$BASE_DIR/../../
 SPIN_ECHO_GIT_URL="git@github.com:rjalander/echo.git -b cdevent_consume"
 
-function installMinioService() {
-    helm repo add minio https://helm.min.io/
-    helm install my-release minio/minio || true
+function deployHalAndUpdateServiceAccount() {
+    kubectl create deployment hal --image gcr.io/spinnaker-marketplace/halyard:stable
+    cd $GIT_PATH_SIGEVENTS/poc/spinnaker
+    kubectl create -f spinnakerServiceAccount.yaml
+    kubectl patch deployment hal --patch '{"spec": {"template": {"spec": {"serviceAccountName":"spinnaker-service-account"}}}}'
+    echo "Sleep for 10Sec for hal deployment to start"
+    sleep 10
+}
 
-    ACCESS_KEY=$(kubectl get secret -n default my-release-minio -o jsonpath="{.data.accesskey}" | base64 --decode)
-    SECRET_KEY=$(kubectl get secret -n default my-release-minio -o jsonpath="{.data.secretkey}" | base64 --decode)
-    MINIO_END_POINT=$(kubectl get endpoints my-release-minio -n default | grep my-release-minio | awk '{print $2}')
-
+function checkHalPodIsRunning() {
+    HAL_POD_NAME=$(kubectl get pods -l app=hal --field-selector=status.phase==Running -o jsonpath="{.items[0].metadata.name}")
     count=0
-    max_count=10
-    echo "Check minio endpoint is configured."
+    max_count=20
+    echo "Check hal pod is running."
     while [ $count -lt $max_count ]; do
-        echo "MINIO_END_POINT ==> $MINIO_END_POINT"
-        if [[ $MINIO_END_POINT != "<none>" ]]; then
+        echo "HAL_POD_NAME ==> $HAL_POD_NAME"
+        if [[ $HAL_POD_NAME != "" ]]; then
             break
         fi
         count=$[$count +1]
         echo "Sleep for 5Sec before next attempt."
         sleep 5
-        MINIO_END_POINT=$(kubectl get endpoints my-release-minio -n default | grep my-release-minio | awk '{print $2}')
+        HAL_POD_NAME=$(kubectl get pods -l app=hal --field-selector=status.phase==Running -o jsonpath="{.items[0].metadata.name}")
     done
-    if [[ $MINIO_END_POINT == "<none>" ]]; then
-            echo "Unable to get the minio endpoint - $MINIO_END_POINT"
+    if [[ $HAL_POD_NAME == "" ]]; then
+            echo "Hal pod is not running, exiting."
             exit 1
     fi
-
-    echo $SECRET_KEY | \
-         hal config storage s3 edit --endpoint http://$MINIO_END_POINT \
-             --access-key-id $ACCESS_KEY \
-             --secret-access-key
-
-    hal config storage edit --type s3
-
-    mkdir -p ~/.hal/default/profiles &&   touch ~/.hal/default/profiles/front50-local.yml
-    echo 'spinnaker.s3.versioning: false' > ~/.hal/default/profiles/front50-local.yml
 }
 
-function configureK8SAccountWithSpinnaker() {
-    hal config provider kubernetes enable
-    K8S_ACCOUNT=poc-k8s-account
-    hal config provider kubernetes account add $K8S_ACCOUNT \
-        --provider-version v2 \
-        --context $(kubectl config current-context) || true
-    hal config deploy edit --type distributed --account-name $K8S_ACCOUNT
+function deploySpinnakerWithHalPod() {
+    checkHalPodIsRunning
+    HAL_POD_NAME=$(kubectl get pods -l app=hal --field-selector=status.phase==Running -o jsonpath="{.items[0].metadata.name}")
+    chmod +x $GIT_PATH_SIGEVENTS/poc/spinnaker/deploySpinnakerWithHalyard.sh
+    kubectl cp $GIT_PATH_SIGEVENTS/poc/spinnaker/deploySpinnakerWithHalyard.sh default/$HAL_POD_NAME:/home/spinnaker/
+    kubectl exec -it $HAL_POD_NAME -- /bin/bash -c "/home/spinnaker/deploySpinnakerWithHalyard.sh"
 }
 
-function installSpinnaker() {
-    hal config version edit --version 1.26.6
-    hal deploy apply
-    echo "Sleep for 20Sec to initialize spinnaker micro services"
-    sleep 20
-
+function updateSpinEchoWithCDEventsAPI() {
     rm -rf ~/dev/spinnaker/echo
     mkdir -p ~/dev/spinnaker/echo
     git clone $SPIN_ECHO_GIT_URL ~/dev/spinnaker/echo
     cd ~/dev/spinnaker/echo
     rm -rf ./echo.yml ./spinnaker.yml
-    ln ~/.hal/default/staging/echo.yml ./echo.yml
-    ln ~/.hal/default/staging/spinnaker.yml ./spinnaker.yml
+    checkHalPodIsRunning
+    HAL_POD_NAME=$(kubectl get pods -l app=hal --field-selector=status.phase==Running -o jsonpath="{.items[0].metadata.name}")
+    kubectl cp default/$HAL_POD_NAME:/home/spinnaker/.hal/default/staging/spinnaker.yml ./spinnaker.yml
+    kubectl cp default/$HAL_POD_NAME:/home/spinnaker/.hal/default/staging/echo.yml ./echo.yml
     ./gradlew echo-web:installDist -x test && docker build -f Dockerfile.slim --tag localhost:5000/cdevents/spinnaker-echo-poc .
     docker push localhost:5000/cdevents/spinnaker-echo-poc:latest
 
@@ -84,7 +73,6 @@ function installSpinnaker() {
     kubectl apply -f spin-echo-deploy.yaml
     echo "Sleep for 20Sec to initialize spinnaker poc echo service"
     sleep 20
-
 }
 
 function createTriggerToSubscribeSpinnakerEvent() {
@@ -104,8 +92,9 @@ EOF
 }
 
 function createApplicationAndPipeline() {
-    ## Run hal deploy connect with nohup - before pipeline creation..
-    nohup hal deploy connect &
+    ## connect with nohup - before pipeline creation..
+    nohup kubectl -n spinnaker port-forward service/spin-deck 9000:9000 &
+    nohup kubectl -n spinnaker port-forward service/spin-gate 8084:8084 &
     count=0
     max_count=20
     echo "Check Spinnaker API gateway is running."
@@ -153,14 +142,12 @@ EOF
 ########
 ## Main
 #######
-echo "Checking if required CLIs are installed"
-helm version > /dev/null
-hal -v > /dev/null
+echo "Checking if spin CLI is installed"
 spin --version >> /dev/null
 
-installMinioService
-configureK8SAccountWithSpinnaker
-installSpinnaker
+deployHalAndUpdateServiceAccount
+deploySpinnakerWithHalPod
+updateSpinEchoWithCDEventsAPI
 createTriggerToSubscribeSpinnakerEvent
 createApplicationAndPipeline
 createIngressSpinnakerUI

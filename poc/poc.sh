@@ -35,8 +35,6 @@ export KO_DOCKER_REPO=kind.local
 #   https://github.com/tektoncd/experimental - contains tekton cloudevent controller
 #   should be cloned under $GOROOT/src/github.com/<org>/<repo> or alternatively
 #   the corresponding PATH environment variables must be set (see the declare section above)
-# - Helm CLI (https://helm.sh/docs/intro/install/)
-# - Halyard CLI (https://spinnaker.io/docs/setup/install/halyard/)
 # - Spin CLI (https://spinnaker.io/docs/setup/other_config/spin/)
 
 
