@@ -127,8 +127,6 @@ go version > /dev/null
 ko version > /dev/null
 kind version > /dev/null
 keptn > /dev/null
-helm version > /dev/null
-hal -v > /dev/null
 spin --version >> /dev/null
 
 echo "===> Creating a local Container Registry"
