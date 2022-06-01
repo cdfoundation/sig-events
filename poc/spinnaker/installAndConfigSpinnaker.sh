@@ -18,6 +18,7 @@ GIT_PATH_SIGEVENTS=$BASE_DIR/../../
 SPIN_ECHO_GIT_URL="git@github.com:rjalander/echo.git -b cdevent_consume"
 
 function deployHalAndUpdateServiceAccount() {
+    kubectl delete deployment hal || true
     kubectl create deployment hal --image gcr.io/spinnaker-marketplace/halyard:stable
     cd $GIT_PATH_SIGEVENTS/poc/spinnaker
     kubectl create -f spinnakerServiceAccount.yaml
