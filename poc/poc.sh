@@ -1,5 +1,4 @@
 #!/bin/bash
-set -x
 set -e -o pipefail
 
 BASE_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )"
@@ -420,7 +419,9 @@ echo "Tekton Dashboard available at http://tekton-127.0.0.1.nip.io"
 echo "Keptn Bridge available at http://keptn-127.0.0.1.nip.io"
 echo "-> for the login creds, use keptn configure bridge -o"
 echo "CloudEvents player available at http://cloudevents-player.default.knative-127.0.0.1.nip.io"
-echo "Spinnaker UI available at http://spin-ui-127.0.0.1.nip.io"
+if [[ $RUN_WITH_SPINNAKER == "true" ]]; then
+   echo "Spinnaker UI available at http://spin-ui-127.0.0.1.nip.io"
+fi
 
 echo "To kick off the demo, from the poc folder, run tkn:"
 echo "tkn pipeline start build-artifact -w name=sources,volumeClaimTemplateFile=./tekton/workspace-template.yaml"
