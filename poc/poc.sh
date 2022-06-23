@@ -1,4 +1,5 @@
 #!/bin/bash
+set -x
 set -e -o pipefail
 
 BASE_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )"
@@ -42,6 +43,8 @@ export KO_DOCKER_REPO=kind.local
 # - Latest versions will be installed if not specified
 # - The script is written to be mostly idempotent
 
+RUN_WITH_SPINNAKER="false"
+
 get_latest_release() {
   curl --silent "https://api.github.com/repos/$1/releases/latest" | # Get latest release from GitHub api
     grep '"tag_name":' |                                            # Get tag line
@@ -58,7 +61,7 @@ retry_command() {
 }
 
 # Read command line options
-while getopts ":c:p:t:d:k:" opt; do
+while getopts ":c:p:t:d:k:sh" opt; do
   case ${opt} in
     c )
       CLUSTER_NAME=$OPTARG
@@ -75,13 +78,22 @@ while getopts ":c:p:t:d:k:" opt; do
     k )
       KNATIVE_VERSION=$OPTARG
       ;;
+    s )
+      RUN_WITH_SPINNAKER="true"
+      ;;
+    h )
+      echo "Usage:  poc.sh [-c cluster-name -p pipeline-version -t triggers-version -d dashboard-version -k knative-version -s <run-poc-with-spinnaker>]"	    
+      exit 0
+      ;;
     \? )
       echo "Invalid option: $OPTARG" 1>&2
       echo 1>&2
-      echo "Usage:  tekton_in_kind.sh [-c cluster-name -p pipeline-version -t triggers-version -d dashboard-version -k knative-version]"
+      echo "Usage:  poc.sh [-c cluster-name -p pipeline-version -t triggers-version -d dashboard-version -k knative-version -s <run-poc-with-spinnaker>]"
       ;;
     : )
       echo "Invalid option: $OPTARG requires an argument" 1>&2
+      echo 1>&2
+      echo "Usage:  poc.sh [-c cluster-name -p pipeline-version -t triggers-version -d dashboard-version -k knative-version -s <run-poc-with-spinnaker>]"
       ;;
   esac
 done
@@ -127,7 +139,9 @@ go version > /dev/null
 ko version > /dev/null
 kind version > /dev/null
 keptn > /dev/null
-spin --version >> /dev/null
+if [[ $RUN_WITH_SPINNAKER == "true" ]]; then
+   spin --version >> /dev/null
+fi
 
 echo "===> Creating a local Container Registry"
 # create registry container unless it already exists
@@ -391,9 +405,12 @@ spec:
     uri: http://el-cdevent-listener.cdevents:8080
 EOF
 
-## Run the script to install and configure Spinnaker with poc
-chmod +x $BASE_DIR/spinnaker/installAndConfigSpinnaker.sh
-$BASE_DIR/spinnaker/installAndConfigSpinnaker.sh
+## Run the script to install and configure Spinnaker with poc if enabled
+if [[ $RUN_WITH_SPINNAKER == "true" ]]; then
+   echo "Running script to install and configure Spinnaker with poc"
+   chmod +x $BASE_DIR/spinnaker/installAndConfigSpinnaker.sh
+   $BASE_DIR/spinnaker/installAndConfigSpinnaker.sh
+fi
 
 # Echo relevant environment
 env | egrep '(KO|KIND|KEPTN|^TEKTON|BROKER|KNATIVE|reg_)' > poc.env
