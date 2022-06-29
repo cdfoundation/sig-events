@@ -73,6 +73,7 @@ Current members:
 - Kevin Chu [@kbychu](https://github.com/kbychu), [GitLab](https://gitlab.com/)
 - Vibhav Bobade [@waveywaves](https://github.com/waveywaves), Independent
 - Matheus Paes [@MatheusPaes](https://github.com/MatheusPaes), [PicPay](https://picpay.com/)
+- Brett Smith ([@xbcsmith](https://github.com/xbcsmith)), SAS Institute Inc.
 - Moteesh Reddy [@moteesh-in2tive](https://github.com/moteesh-in2tive), [Ozone](https://ozone.one/)
 
 ### New Members
