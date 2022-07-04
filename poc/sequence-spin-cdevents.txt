@@ -1,0 +1,36 @@
+@startuml
+	User -> Tekton: Start Build Pipeline
+	Tekton --> KeptnInbound: cd.pipeline.start
+	Tekton -> Tekton: Run Build Pipeline
+	Tekton -> KeptnInbound: cd.artifact.packaged
+	Note right of Tekton: (ID, Name, Version)
+	KeptnInbound -> Keptn: prod.delivery.triggered
+	Note right of KeptnInbound: (Project, Stage, Service, Config Change)
+	Note left of Keptn: Name -> Service, ID -> Config Change
+	Keptn -> User: Wait for Approval
+	Note left of User: Config Change
+	User -> Keptn: Approved!
+	Keptn -> KeptnOutbound: deployment.triggered
+	Note right of Keptn: (Project, Service, Stage, Id, Ctx)
+	Note right of Keptn: The Keptn Ctx identifies the Deployment Task
+	KeptnOutbound -> TektonTriggers: cd.artifact.published
+	Note right of KeptnOutbound: (ID, Name, Image, TriggerId, Ctx)
+	Note left of TektonTriggers: TriggerId = Id from deployment, ID and Image -> Config Change, Name -> Service
+	KeptnOutbound -> Spinnaker: cd.artifact.published
+	Note right of KeptnOutbound: (ID, Name, Image, TriggerId, Ctx)
+	KeptnOutbound -> KeptnInbound: cd.artifact.published
+    Note left of KeptnOutbound: (ID, Name, Image, TriggerId, Ctx)
+    KeptnInbound -> Keptn: deployment.started
+    Note right of KeptnInbound: (Project, Stage, Service)
+    TektonTriggers -> Tekton: start pipeline
+    Note left of TektonTriggers: (ArtifactID, ArtifactName, TriggerId, Ctx)
+    Tekton -> Tekton: Run Deploy Pipeline
+    Tekton -> KeptnInbound: cd.service.deployed
+    Note right of Tekton: (EnvID, ServiceName, Version, TriggerId, Ctx)
+    Spinnaker -> Spinnaker: Run Deploy Pipeline
+    Spinnaker -> KeptnInbound: cd.service.deployed
+    Note left of Spinnaker: (EnvID, ServiceName, Version, TriggerId, Ctx)
+    Note left of KeptnInbound: EnvId and ServiceName -> Name/Service, Version = Deployment Gen
+    KeptnInbound -> Keptn: deployment.finished
+    Note right of KeptnInbound: (Project, Stage, Service, URI, Name, TriggerId, Ctx)
+@enduml
