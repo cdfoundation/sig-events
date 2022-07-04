@@ -31,6 +31,154 @@ Meeting notes for the workstream are managed on HackMD [here](https://hackmd.io/
 - Presentations
 - PR / Design Discussions
 
+## Next
+- Jenkins CloudEvents->CDEvents plugin transformation?
+
+## Meeting July 4th
+
+Meeeting time in your timezone [here](https://time.is/3pm_4_July_2022_in_UTC). You're welcome to join!
+
+### Participants
+- Emil Bäckmark, Ericsson
+- Erik Sternerson, doWhile
+- Andrea Frittoli, IBM
+- Jalander Ramagiri, Ericsson Software Technologies
+- Oleg Nenashev, Dynatrace
+
+### Last Meeting's Actions
+- None
+
+### Agenda
+- Last meeting's actions
+- [CDEvents 0.1 Planning](https://github.com/orgs/cdevents/projects/1/views/1)
+    - [Release announcement](https://github.com/cdevents/spec/issues/47)
+    - [Project governance plan](https://github.com/cdevents/spec/issues/48)
+        - Should be started soon (after summer?)
+    - CDF Outreach Committee had a meeting last week, and we should interact more to make sure the CDEvents release is published in relevant channels and with the relevant artifacts provided
+        - Oleg to provide a link to more info about this
+    - We still have budget to use for CDEvents during this year. It could be used for the 0.1 release or other activity related to CDEvents.
+        - Technical writer or similar could be used to make our docs more professional. copy editing for the documentation or new docs
+        - No need to hire an intern/student, LFX Mentorship support having experienced developers/writers who want to start in open source
+        - Internships for extended features related to CDEvents
+            - Adapters for established platforms/tools, such as GitHub etc. The money should be used neutrally to vendors though.
+            - (Andrea) Providing a visualization frontend for CDEvents would be great. Maybe just a PoC one for internal/demo use, not a production tool
+            - Automation for SDKs etc
+         - Alternative: supporting organized events at a major conference, or maybe travel grants
+         - Plan:
+             - Oleg to launch a call for potential docs contributors.
+             - Oleg to setup the LFX Mentorship project and the Crowdfunding backend, get the LF to transfer money there on behalf of the CDF.
+             - Andrea to look in to mentoring for a visualization solution
+- Presentations
+        
+    - Jalander: Demo of Spinnaker integration (https://github.com/cdfoundation/sig-events/pull/120)
+        - Expands the current PoC, where Keptn and Tekton communicates, with a Spinnaker integration that does a similar deployment.
+        - Patches were needed in Keptn. Oleg to follow-up on what's needed (CDEvents adoption) and to invite Jalander to the developer meeting
+- Upcoming Presentations
+    - Fidelity. Date being discussed. Probably August 1st, unless Jamie shows up on his first working day after vacations on July 18th.
+- Takeaways from Conferences
+    - June 21-24: [Open Source Summit NA](https://events.linuxfoundation.org/open-source-summit-north-america/)
+- Upcoming Conferences
+    - Sept 13-16: [Open Source Summit Europe ](https://events.linuxfoundation.org/open-source-summit-europe/)
+        - Co-located events can still be requested
+        - Andrea has submitted a CFP for a CDEvents intro, together with Erik
+    - Sept 1-Oct 1?: [Spinnaker Summit](https://cd.foundation/event/spinnaker-summit-2/)
+        - Not really launched yet
+    - Oct 24-28: [KubeCon NA](https://events.linuxfoundation.org/kubecon-cloudnativecon-north-america/)
+        - Deadline for requesting co-located events is July 29
+        - CFP for Spinnaker integration provided by Jalander
+- Sync with SIG Interop about definition of terms
+    - https://github.com/cdevents/spec/issues/18
+
+
+## Meeting June 20th
+
+Meeeting time in your timezone [here](https://time.is/3pm_20_June_2022_in_UTC). You're welcome to join!
+
+Participants:
+- \<add yourself\>
+- Erik Sternerson, doWhile
+- Fatih Degirmenci, CDF
+- Emil Bäckmark, Ericsson
+- Jalander Ramagiri, Ericsson Software Technologies
+
+Agenda:
+- Last meetings actions
+- CDEventsCon takeaways
+    - [Recordings](https://www.youtube.com/playlist?list=PL2KXbZ9-EY9QtshpDdxEyDTbSPMZzZZS1) and most [Presentations](https://github.com/cdevents/presentations/tree/main/CDEventsCon-2022) are available
+    - Any feedback to bring to next CDEventsCon or cdCon/CDEvents summit?
+    - We seem to need to re-iterate the basic CDEvents presentation over and over again. We should probably store an introduction. Primarily the presentation but also a recorded version would be beneficial. A short intro video would be suitable to publish on cdevents.dev as well. We should use the existing intro presentation as a base for it. https://github.com/cdevents/spec/issues/49
+- CDEvents 0.1 Planning
+    - [Release announcement](https://github.com/cdevents/spec/issues/47)
+    - [Project governance plan](https://github.com/cdevents/spec/issues/48)
+        - Should be started soon (after summer?)
+- Upcoming Presentations
+    - Fidelity? Emil to reach out to Jamie Plower and Ger McMahon
+    - Jalander: Demo of Spinnaker integration (https://github.com/cdfoundation/sig-events/pull/120) - date to be set
+- Upcoming Conferences
+    - June 21-24: [Open Source Summit NA](https://events.linuxfoundation.org/open-source-summit-north-america/)
+    - Sept 13-16: [Open Source Summit Europe ](https://events.linuxfoundation.org/open-source-summit-europe/)
+        - Co-located events can still be requested
+        - Andrea has submitted a CFP for a CDEvents intro, together with Erik
+    - Sept 1-Oct 1?: [Spinnaker Summit](https://cd.foundation/event/spinnaker-summit-2/)
+        - Not really launched yet
+    - Oct 24-28: [KubeCon NA](https://events.linuxfoundation.org/kubecon-cloudnativecon-north-america/)
+        - Deadline for requesting co-located events is July 29
+        - CFP for Spinnaker integration provided by Jalander
+- Summer meeting schedule
+    - SIG meetings: July 4th (No US participation?), July 18th, Aug 1st
+    - Vocabulary meetings: June 28th, July 12th, July 26th, Aug 9th
+    - Cancel July meetings?
+    - Erik will be working through the summer. Emil will be away from second week in July - first week of August. Jalander plan to work all summer.
+    - Let's discuss it on Slack
+- Integrate Spinnaker with sig-events PoC
+    - PR review https://github.com/cdfoundation/sig-events/pull/120
+- RFC : Implementing CDEvents to Spinnaker using Java SDK
+    - https://github.com/spinnaker/governance/pull/299
+
+
+## Meeting May 23th
+
+Meeeting time in your timezone [here](https://time.is/3pm_23_May_2022_in_UTC). You're welcome to join!
+
+Participants:
+- Emil Bäckmark, Ericsson
+- Erik Sternerson, doWhile
+- Andrea Frittoli, IBM
+- Tracy Ragan, DeployHub
+- Kara de la Marck, CDF
+- \<add yourself\>
+
+Agenda:
+- Last meetings actions
+- Launch of CDEvents project
+    - [Post](https://cd.foundation/announcement/2022/05/17/cd-foundation-announces-cdevents-a-vendor-neutral-specification-for-defining-the-format-of-event-data/)
+    - Should we write a whitepaper accompanying the launch, providing the more high-level values of CDEvents?
+        - Yes. We're probably not able to finish it before CDCon, but we should mention there that we're working on it.
+        - https://docs.google.com/document/d/1SVVE-N2gzxQ9us-kDB0dBhkDZS9JsZAWjrB2doLnpok/edit
+        - Everyone should start contributing to it now
+- CDEvents Community Meeting at cdCon
+    - https://hackmd.io/rzJPQL4nTlWORg-wwVBw1g
+    - Virtual Platform?
+        - Bevvy for the event and also for the actual online meeting
+    - We have some ideas but the event needs to be organised
+        - Volunteers?
+    - Emil, Andrea and Erik to prepare for the topics to discuss (see hackmd doc above)
+        - Create a hackmd doc for each and provide an intro to the discussion
+- cdCon
+    - Booth?
+        - No, but a demo theater is available
+- Takeaways from CDEventsCon/KubeCon
+    - CDEventsCon presentations to be uploaded to Sched and [CDEvents presentations repo](https://github.com/cdevents/presentations)
+        - [PR #6](https://github.com/cdevents/presentations/pull/6)
+    - Photos: https://photos.app.goo.gl/18fSgCZVrqU1bRnw9
+        - Andrea can add us as contributors to that folder to upload photos
+    - Social: Twitter / Linked-In
+- Open Source Summit EU
+    - CFP Closes May 30th
+- CDEvents Project Governance
+    - Time to start setting it up?
+
+
 ## Meeting May 9th
 
 Meeeting time in your timezone [here](https://time.is/3pm_9_May_2022_in_UTC). You're welcome to join!
