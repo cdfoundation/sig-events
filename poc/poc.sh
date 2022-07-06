@@ -35,10 +35,14 @@ export KO_DOCKER_REPO=kind.local
 #   https://github.com/tektoncd/experimental - contains tekton cloudevent controller
 #   should be cloned under $GOROOT/src/github.com/<org>/<repo> or alternatively
 #   the corresponding PATH environment variables must be set (see the declare section above)
+# - Spin CLI (https://spinnaker.io/docs/setup/other_config/spin/)
+
 
 # Notes:
 # - Latest versions will be installed if not specified
 # - The script is written to be mostly idempotent
+
+RUN_WITH_SPINNAKER="false"
 
 get_latest_release() {
   curl --silent "https://api.github.com/repos/$1/releases/latest" | # Get latest release from GitHub api
@@ -56,7 +60,7 @@ retry_command() {
 }
 
 # Read command line options
-while getopts ":c:p:t:d:k:" opt; do
+while getopts ":c:p:t:d:k:sh" opt; do
   case ${opt} in
     c )
       CLUSTER_NAME=$OPTARG
@@ -73,13 +77,22 @@ while getopts ":c:p:t:d:k:" opt; do
     k )
       KNATIVE_VERSION=$OPTARG
       ;;
+    s )
+      RUN_WITH_SPINNAKER="true"
+      ;;
+    h )
+      echo "Usage:  poc.sh [-c cluster-name -p pipeline-version -t triggers-version -d dashboard-version -k knative-version -s <run-poc-with-spinnaker>]"	    
+      exit 0
+      ;;
     \? )
       echo "Invalid option: $OPTARG" 1>&2
       echo 1>&2
-      echo "Usage:  tekton_in_kind.sh [-c cluster-name -p pipeline-version -t triggers-version -d dashboard-version -k knative-version]"
+      echo "Usage:  poc.sh [-c cluster-name -p pipeline-version -t triggers-version -d dashboard-version -k knative-version -s <run-poc-with-spinnaker>]"
       ;;
     : )
       echo "Invalid option: $OPTARG requires an argument" 1>&2
+      echo 1>&2
+      echo "Usage:  poc.sh [-c cluster-name -p pipeline-version -t triggers-version -d dashboard-version -k knative-version -s <run-poc-with-spinnaker>]"
       ;;
   esac
 done
@@ -98,7 +111,7 @@ if [ -z "$TEKTON_DASHBOARD_VERSION" ]; then
   TEKTON_DASHBOARD_VERSION=$(get_latest_release tektoncd/dashboard)
 fi
 
-KNATIVE_VERSION=${KNATIVE_VERSION:-0.24.0}
+KNATIVE_VERSION=${KNATIVE_VERSION:-1.3.0}
 
 echo "Checking if needed repos can be found"
 if [ ! -d "${KEPTN_CDF_TRANSLATOR_PATH:-${GOPATH}/src/github.com/salaboy/keptn-cdf-translator}" ]
@@ -125,6 +138,9 @@ go version > /dev/null
 ko version > /dev/null
 kind version > /dev/null
 keptn > /dev/null
+if [[ $RUN_WITH_SPINNAKER == "true" ]]; then
+   spin --version >> /dev/null
+fi
 
 echo "===> Creating a local Container Registry"
 # create registry container unless it already exists
@@ -388,6 +404,13 @@ spec:
     uri: http://el-cdevent-listener.cdevents:8080
 EOF
 
+## Run the script to install and configure Spinnaker with poc if enabled
+if [[ $RUN_WITH_SPINNAKER == "true" ]]; then
+   echo "Running script to install and configure Spinnaker with poc"
+   chmod +x $BASE_DIR/spinnaker/installAndConfigSpinnaker.sh
+   $BASE_DIR/spinnaker/installAndConfigSpinnaker.sh
+fi
+
 # Echo relevant environment
 env | egrep '(KO|KIND|KEPTN|^TEKTON|BROKER|KNATIVE|reg_)' > poc.env
 
@@ -396,6 +419,9 @@ echo "Tekton Dashboard available at http://tekton-127.0.0.1.nip.io"
 echo "Keptn Bridge available at http://keptn-127.0.0.1.nip.io"
 echo "-> for the login creds, use keptn configure bridge -o"
 echo "CloudEvents player available at http://cloudevents-player.default.knative-127.0.0.1.nip.io"
+if [[ $RUN_WITH_SPINNAKER == "true" ]]; then
+   echo "Spinnaker UI available at http://spin-ui-127.0.0.1.nip.io"
+fi
 
 echo "To kick off the demo, from the poc folder, run tkn:"
 echo "tkn pipeline start build-artifact -w name=sources,volumeClaimTemplateFile=./tekton/workspace-template.yaml"
