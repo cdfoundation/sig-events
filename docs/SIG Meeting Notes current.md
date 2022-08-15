@@ -13,10 +13,6 @@ The SIG was initiated as a [workstream under SIG Interoperability ]( https://git
 Meeting notes for the workstream are managed on HackMD [here](https://hackmd.io/xjK5ujQbTHSaEZjoY28b8g), and published to GitHub [here](https://github.com/cdfoundation/sig-events/blob/main/docs/meetings.md).
 
 
-## Future presentations (to be scheduled)
-
-- Presentation from Fidelity (Jamie Plower) on their use of Cloudevents in CI/CD pipelines?
-
 ## Agenda Template
 
 - Action Items From Last meeting
@@ -31,8 +27,118 @@ Meeting notes for the workstream are managed on HackMD [here](https://hackmd.io/
 - Presentations
 - PR / Design Discussions
 
-## Next
-- Jenkins CloudEvents->CDEvents plugin transformation?
+
+## Future Presentations
+
+- Brett to present the event CI/CD architecture at SAS
+- Mike to present/demo the work on CNCF Reference Architecture, OpenSFF and events
+    - Frsca
+
+## Next time
+
+## Meeting August 15th
+
+### Participants
+- Emil Bäckmark, Ericsson
+- Mike Lieberman, Kusari
+- Brett Smith, SAS
+- Tracy Ragan, DeployHub
+- Kara de la Marck, CDF
+
+
+### Agenda
+- Seems the zoom link on the CDF calendar to this meeting doesn't match the link on GitHub and in this MoM. Emil will fix it.
+- Presentation from Fidelity (Jamie Plower) on their use of Cloudevents in CI/CD pipelines.
+
+## Meeting August 1st
+
+### Participants
+
+- Mike Lieberman, Kusari and CNCF Security TAG
+- Tim Miller, Kusari
+- Tracy Ragan, DeployHub, CDF TOC, OpenSSF Board
+- Vibhav Bobade, Uffizzi
+- Parth Patel, Kusari
+- Brett Smith, SAS Institute
+
+### Agenda
+
+- Reference Architecture
+    - It should be vendor neutral
+    - How does it relate to the [vocabulary](https://github.com/cdfoundation/sig-events/blob/main/vocabulary-draft/introduction.md)
+        - The reference architecture should contribute back into the vocabulary
+            - And contribute back to the landscape
+    - Reference architecture can help to:
+        - train engineers
+        - have a concrete example to explain events driven architecture
+        - explain what to do/not to with CD tools
+        - naming is hard: terms can be overloaded
+    - There are not best practices that are valid for everyone
+        - Different companies will need different practices
+        - How do we target the reference architecture
+
+- Landscape
+    - Creating the CDF landscape is hard
+        - It's relatively static
+        - It's difficult to put a tool in a category since you need to select a primary feature 
+        - The landscape is not mapped to the vocabulary
+    - Primary category + relation to vocabulary
+
+- Working group to define a vocabulary across SIGs and landscape
+    - Bring a proposal for this WG to the TOC
+
+- CDEvents Whitepaper: 
+    - https://cd.foundation/blog/2022/06/07/cdevents-publishes-first-whitepaper/
+    - [PDF](https://redpanda.com/)
+    - We should convert it into markdown and add it to the repo
+    - Continue to iterate on the whitepaper
+    - We could use the whitepaper
+
+- Kafka vs RedPanda
+    - RedPanda drop-in replacent of Kafka written in C
+    - [RedPanda](https://redpanda.com/)
+
+
+## Meeting July 18th
+
+Meeeting time in your timezone [here](https://time.is/3pm_4_July_2022_in_UTC). You're welcome to join!
+
+### Participants
+- Erik Sternerson, doWhile
+- Andrea Frittoli, IBM
+- Kara de la Marck, CDF
+
+### Last Meeting's Actions
+
+- Oleg to provide a link to more info about this
+    - We still have budget to use for CDEvents during this year. It could be used for the 0.1 release or other activity related to CDEvents.
+    - Andrea: create issue about CDEvents visualisation
+        - https://github.com/cdfoundation/sig-events/issues/126 
+
+### Agenda
+
+- Updates From Other Groups
+    - CDF/TOC
+    - SIG Interoperability
+    - SIG Best Practices
+    - [Vocabulary workstream](https://hackmd.io/2FRGlw9fTMmKN1OQUVvguA)
+
+- Jenkins CloudEvents->CDEvents plugin transformation
+
+- Community repo (Andrea)
+    - Plan to create a cdevents/community repo over the summer
+    - Migrate existing relevant docs and links
+    - Define governace docs in the new repo
+
+- Python SDK progressing
+    - First goal is 1:1 parity with Go SDK, and evolve from there
+    - Current ongoing work in forked repo at https://github.com/tarekbadrshalaan/sdk-python/tree/skeleton-project (very much work-in-progress status)
+
+- CDEvents presentation at Open Source Summit Europe
+    - Friday Sept 16 @ 15:55-16:35
+    - https://sched.co/15z6i
+
+
 
 ## Meeting July 4th
 
