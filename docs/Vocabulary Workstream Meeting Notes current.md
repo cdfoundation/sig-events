@@ -9,7 +9,521 @@ tags: CDEvents
 This document contains the notes from the of the Events SIG meetings focused on [vocabulary discussion](https://hackmd.io/lBlDCrL7TvmtNOjxdopJ5g).
 
 
+## Aug 17th
+
+Participants:
+- Mattias Linnér, Ericsson
+- Emil Bäckmark, Ericsson
+- Andrea Frittoli
+- Brad McCoy
+
+
+Agenda:
+
+- Community repo
+    - https://github.com/cdevents/community
+    - comments welcome
+	- Fill in the project description
+	- Update links about creating issues
+	- Moving issues across
+	- Setup markdown linter
+	- Drop the WIP
+
+- GO SDK Update
+    - Initial working SDK at https://github.com/cdevents/sdk-go/pull/1
+    - Short walkthrough the SDK
+    - CI pending
+	- Check unit tests from the old SDK
+	- Documentation:
+        - Development.md
+        - Contribute.md
+    - OWNERS team
+
+- [Release v0.1](https://github.com/orgs/cdevents/projects/1/views/1) reviews
+    - Schema: https://github.com/cdevents/spec/issues/13
+    - Milestone v0.1: https://github.com/cdevents/spec/milestone/1
+
+## Aug 9th
+
+Participants:
+- Erik Sternerson, doWhile
+- Tarek Badr, doWhile :)
+- Andrea Frittoli, IBM
+- Emil Bäckmark, Ericsson
+- Ben Powell, Apple
+- Kara de la Marck, CDF
+- 
+
+Agenda:
+
+- Meeting recordings
+    - Updated to youtube via Zapier (Andrea's personal account)
+    - One manual step left, add video to playlist, set to public
+
+- Python SDK demo
+    - (Erik&Tarek) Think about minimum supported Python version
+        - Cloudevents Python SDK is Python 3.6+
+
+- Should we align across SDKs?
+    - In terms of SDK, we shall follow standard expectation for each specific language
+    - We need cross-compatibility / conformance tests across SDKs
+
+- SDK "readiness" checklist
+    - Send events?
+    - Receive events?
+    - "Classes" for all event types?
+        - Classes can have strongly typed properties and documentation, which gives a better user experience in many cases.
+    - Other?
+        - Documentation
+            - Generated docs
+            - Basic README intro to the project
+        - Test cases / conformance tests (cross-sdk)
+
+- Shall we have one CLI?
+    - We need to pick a language
+        - Python: pros, no arch specific builds, cons: you need the correct python version
+        - Go: multiplatform, but it requires multiple builds
+        - (Andrea) create an issue to track this discussion
+
+- Go SDK
+    - Andrea started working on the SDK
+    - Proposed API for the SDK:
+        - Create generic CDEvent by source, subjectId
+            - Version is set automatically, can be overwritten
+            - Event ID is generated (?), can be overwritten
+            - Timestamp is set to the even creation time, can be overwritten
+            - Subject source and event source are set to source
+        - SubjectContent lets read/write fields by key name
+        - One go struct per event type, which meets the SubjectContent interface
+        - Create the struct, set it to the event
+            - ```golang
+              cdevent := NewEvent(subjectId, source)
+              sc := PipelineRunQueuedSubjectContent{
+                    PipelineName: "pipeline",
+                    URL: "someurl",
+              }
+              cdevent.SetContent(sc)
+              ```
+            - Sets the event type in the main event
+            - Sets the subject content
+        - Get the event as CloudEvent, send it through the CloudEvents SDK go client
+            - ```golang
+              ce := cdevent.AsCloudEvent()
+              result := ceClient.Send(cloudevents.ContextWithRetriesExponentialBackoff(ctx, 10*time.Millisecond, 10), *ce);
+              ```
+    - Using generic in go?
+    - We need to be able to receive cdevents into defined objects
+    - Working with empty interfaces can be painful
+
+- For the CLI probably keep the same structure as today?
+
+- Binary vs Structured mode
+    - Andrea to roll back existing part about binary/structured
+    - Add new field for vendor data
+
+
+
+## Aug 3rd
+
+_Meeting canceled_
+
+## July 26th
+
+Participants:
+- Andrea Frittoli, IBM
+- Erik Sternerson, doWhile
+- 
+
+
+Agenda:
+
+- Metrics POC events
+    - Change events
+        - Merged event
+            - Data model missing
+                - Sha of last commit
+                - List of all shas
+    - Artifact events
+        - Source repos and last sha for each
+            - Using a list from the start
+            - Let's try with a list 
+            - we can revert to a single repo if running into issues during the POC
+        - Assumption
+            - Many cases with a single repo
+            - Some cases with many repo
+            - Let's try use the latter to cover all cases
+        - PR soon
+    - Incident events
+        - Add new stage?
+        - Incident created, updated, resolved
+        - PR with bare minium data model
+
+- Binary Mode POC 
+    - https://github.com/cdevents/spec/pull/54 
+    - What about deeper levels
+        - Other not support them in "binary" mode
+        - Json serialised to string
+        - Base64 encoded (to be signalled to receivers)
+    - Why "binary" mode? 
+        - We could have clearer naming like HTTP header mode
+        - Andrea to check with CloudEvents team
+        - Consistency of naming may be a plus
+
+- Python SDK
+    - Work progressing
+
+- Meetings
+    - Weekly cadence
+        - Alternating weeks help us progress
+    - How do we make sure people who can attend one meeting (and not both) do not feel left out
+        - Recap in the beginning of the meeting?
+        - Advice to read the notes
+        - Upload for meetings
+            - Andrea to look into recording automation
+
+- Java SDK: https://github.com/cdevents/sdk-java
+
+## July 20th
+
+Participants:
+- Erik Sternerson, doWhile
+- Andrea Frittoli, IBM
+- Mattias Linnér, Ericsson
+- Meha Bhalodiya
+- Vibhav Bobade, Uffizzi
+- Jamie Plower, Fidelity Investments
+
+Agenda:
+
+- Updates
+    - Python SDK
+        - First goal is 1:1 parity with Go SDK, and evolve from there
+        - Current ongoing work in forked repo at https://github.com/tarekbadrshalaan/sdk-python/tree/skeleton-project (very much work-in-progress status)
+        - Actively under development
+        - 
+    - Spinnaker POC
+        - PR merged on SIG events side
+        - Variable image sha implemented
+    - Website
+        - [Nighty job to publish spec](https://github.com/cdevents/cdevents.dev/actions/workflows/nightly-deploy.yaml)
+    - CDEvents presentation at Open Source Summit Europe
+        - Friday Sept 16 @ 15:55-16:35
+        - https://sched.co/15z6i
+    - Reformatting of the spec, updates to lowerCamelCase
+        - Working on the CI bucket (Andrea)
+            - https://github.com/cdevents/spec/pull/53
+        - Next up the CD bucket
+        - Lots of missing parts in the data model
+    - Java SDK
+    - GitHub webhook to CDEvents
+
+- Build events
+    - https://github.com/cdevents/spec/issues/37
+    - What do we mean by change?
+        - PR/MR/etc or 
+        - Commit sha
+    - Eiffel does not have a build event
+    - Eiffel has a concept of composition
+        - A composition may combine multiple inputs, with a version
+    - Jamie - SCM event correlates to clone event which correlates to artifact
+    - We could use artifacts only for the metrics POC
+
+- CDEvents content mode (on top of CloudEvents HTTP Binary mode):
+    - Structured:
+        - JSON payload with CDEvents meta, subject, links as "payload"
+        - Content type for payload content?
+        - ```http
+          Content-Type: application/cdevents+json; charset=utf-8
+          ce-headers: ...
+          
+          {
+           "meta": {
+              "version": "draft",
+              "id": "A234-1234-1234",
+              "source": "/staging/tekton/",
+              "type": "dev.cdevents.taskrun.started",
+              "timestamp": "2018-04-05T17:31:00Z",
+              "datatype": "application/json+my-vendor-app"
+           }
+           "subject": {
+              "id": "/namespace/taskrun-123",
+              "type": "taskrun",
+              "content": {
+                 "task": "my-task",
+                 "URL": "/apis/tekton.dev/v1beta1/namespaces/default/taskruns/my-taskrun-123"
+                 "pipelinerun": {
+                    "id": "/somewherelse/pipelinerun-123",
+                    "source": "/staging/jenkins/"
+                 }
+              }
+           }
+           "data": { <vendor-data> }
+           }
+          ```
+    - Binary:
+        - CDEvents meta, subject, links all in HTTP headers
+        - ```http
+          Content-Type: application/xml; charset=utf-8
+          ce-headers: ... 
+          cde-meta:  version=draft; id=A234-1234-1234; source=/staging/tekton/; type=dev.cdevents.taskrun.started; timestamp=2018-04-05T17:31:00Z
+            cde-subject: id=/namespace/taskrun-123; type=taskrun; content-task=my-task; content-URL=/apis/tekton.dev/v1beta1/namespaces/default/taskruns/my-taskrun-123; content-pipelinerun-id=/somewherelse/pipelinerun-123; content-pipelinerun-source=/staging/jenkins/
+
+          <xml>
+              <root>Some vendor content</root>
+          </xml>
+          ```
+
+- Community repo (Andrea)
+    - Plan to create a cdevents/community repo over the summer
+    - Migrate existing relevant docs and links
+    - Define governace docs in the new repo
+
+- CDEvents visualisation
+    - https://github.com/cdfoundation/sig-events/issues/126 
+
+- Spec feature branches for POCs?
+
+
+## July 12th
+
+\<No meeting\>
+    
+## July 6th
+
+Participants:
+- Emil Bäckmark, Ericsson, UTC+2
+- Andrea Frittoli, IBM, UTC+1
+- Mattias Linnér, Ericsson, UTC+2
+- Meha Bhalodiya
+- Brad McCoy, UTC+10
+- 
+
+Agenda:
+
+- Brad to go over Flux integration for CDEvents
+- Introduce Subjects: https://github.com/cdevents/spec/pull/35
+    - Type:
+        - The first part is all reverse DNS
+        - We can keep all lower case?
+    - UpperCamelCase vs lowerCamelCase
+        - lowerCamelCase seems more popular
+        - we should use same format for keys and enum values
+        - document the decision as part of the PR
+    - Subjects and Predicates https://github.com/cdevents/spec/pull/35#discussion_r911184157 
+        - When grouping events, having the static part of the subject separate could be useful
+        - Split this into a different PR?
+        - 
+- CDEvents content mode (on top of CloudEvents HTTP Binary mode):
+    - Structured:
+        - JSON payload with CDEvents meta, subject, links as "payload"
+        - Content type for payload content?
+        - ```http
+          Content-Type: application/cdevents+json; charset=utf-8
+          ce-headers: ...
+          
+          {
+           "meta": {
+              "version": "draft",
+              "id": "A234-1234-1234",
+              "source": "/staging/tekton/",
+              "type": "dev.cdevents.taskrun.started",
+              "timestamp": "2018-04-05T17:31:00Z",
+              "datatype": "application/json+my-vendor-app"
+           }
+           "subject": {
+              "id": "/namespace/taskrun-123",
+              "type": "taskrun",
+              "content": {
+                 "task": "my-task",
+                 "URL": "/apis/tekton.dev/v1beta1/namespaces/default/taskruns/my-taskrun-123"
+                 "pipelinerun": {
+                    "id": "/somewherelse/pipelinerun-123",
+                    "source": "/staging/jenkins/"
+                 }
+              }
+           }
+           "data": { <vendor-data> }
+           }
+          ```
+        - Useful for storing events as JSON blobs in a DB
+            - Do we need the CloudEvents part there too?
+                - We could consider structured mode on top of CloudEvents structured, mostly for this kind of storage as JSON use cases
+    - Binary:
+        - CDEvents meta, subject, links all in HTTP headers
+            ```http
+            Content-Type: application/xml; charset=utf-8
+            ce-headers: ... 
+            cde-meta:  version=draft; id=A234-1234-1234; source=/staging/tekton/; type=dev.cdevents.taskrun.started; timestamp=2018-04-05T17:31:00Z
+            cde-subject: id=/namespace/taskrun-123; type=taskrun; content-task=my-task; content-URL=/apis/tekton.dev/v1beta1/namespaces/default/taskruns/my-taskrun-123; content-pipelinerun-id=/somewherelse/pipelinerun-123; content-pipelinerun-source=/staging/jenkins/
+              
+            <xml>
+                <root>Some vendor content</root>
+            </xml>
+            ```
+
+
+## June 28th
+
+Participants:
+- \<add yourself\>
+- Andrea Frittoli, he/him, IBM, UTC+1
+- Emil Bäckmark, he/him, Ericsson, UTC+2
+
+Agenda:
+
+- Meetings
+    - Poll: https://forms.gle/oC2qto7hjxBAGPvq8
+    - Responses: https://docs.google.com/forms/d/1h2kmkcoV5CdeiFfFaLfGJ_dxuAIHb7I8D3hNy5R7bp0/edit#responses
+    - Existing meeting time
+    - (Andrea) Make proposals in CDEvents channel for specific times/dates and ask people to vote
+        - Avoid conflicts within the CDF calendar
+        - Options (added after the meeting)
+            - :one: Monday July 4th, 10am UTC, and then every other week
+            - :two: Monday July 4th, 11am UTC, and then every other week
+            - :three: Tuesday July 5th, 10am UTC, and then every other week
+            - :four: Tuesday July 5th, 11am UTC, and then every other week
+            - :five: Wednesday July 6th, 10am UTC, and then every other week
+            - :six: Wednesday July 6th, 11am UTC, and then every other week
+    - We would have three meetings in total
+        - SIG meeting
+        - 2 CDEvent meetings
+    - Who would be interested in joining from Pacific
+        - Ben
+        - Check who else
+        - We could have a shorter follow-up meeting at a Pacific friendly time?
+
+- Updates on https://github.com/cdevents/spec/pull/35
+    - Updated data section, introduced content modes in `cloudevent-binding.md`
+    - Changed format of fields on `core.md`
+    - Addressed comments on `spec.md`
+    - Schema updates pending - move schemas to different PR?
+    - To be done - next PR?
+        - CDEvents binary mode (all in headers, vendor data in payload) 
+        - Full examples for various modes, including vendor payload
+
+    - Up next: Updates to the rest of vocabulary docs, similar to `core.md`
+
+- Aligning the vocabulary with SIG Interop
+    - https://github.com/cdevents/spec/issues/18 
+        - Interop WG: Pipeline, stage, step
+        - CDEvents: Pipelinerun, taskrun
+    - Make a statement in our docs
+        - We strive to align with SIG interop names from the vocabulary
+        - The final naming won't be ready in time for v0.1
+        - People should be aware that names may/will change in later releases
+    - (Andrea) Reach out / join Interop SIG to clarify plan for defining the names
+    - Comment on issue https://github.com/cdevents/spec/issues/18 
+        - Create a new issue for the docs part discussed today
+
+- Roadmap: 
+    - https://github.com/orgs/cdevents/projects/1/views/1
+    - Consolidate PoCs back to cdevents org
+    - Review and consolidate discussions to the cdevents org
+
+- Support for links:
+    - Anyone would like to propose spec changes?
+    - Emil is interested
+
+- How to collaborate on spec
+    - It's hard to collaborate on PR/issues for spec
+    - We could attempt working on an hackmd docs until it's ready and then PR
+
+- SDKs
+    - Python SDK updates
+    - Java SDK targeted for v0.1
+
+- PR to review:
+    - Spinnaker PoC: https://github.com/cdfoundation/sig-events/pull/120
+    - Events published: https://github.com/cdevents/spec/pull/31
+    - Subjects: https://github.com/cdevents/spec/pull/35
+
+- Create a community repo
+    - Governance setup
+    - PoC discussion
+    - Overall cdevents issues / discussions (not spec specific)
+    - Is it possible to move issues across orgs or export/import?
+
+- Summer meetings
+    - It looks like enough people might be working through the summer
+        - Erik, Jalander, Andrea
+        - July 4th holiday in the US
+        - Emil away 4 weeks after the 4th
+    - Let's keep meetings in July and August
+
+
+## June 14th
+
+Participants:
+- \<add yourself\>
+- Erik Sternerson, doWhile
+- Andrea Frittoli, he/him, IBM, UTC+1
+- Emil Bäckmark, Ericsson
+- Ben Powell, he/him, Apple
+- Kara de la Marck, CDF
+
+Agenda:
+
+- Updates:
+    - Whitepaper: https://cd.foundation/blog/2022/06/07/cdevents-publishes-first-whitepaper/
+    - Project Announcement:
+        - https://sdtimes.com/devops/cd-foundation-announces-new-specification-for-defining-event-data-format/
+        - https://www.martechcube.com/cd-foundation-announces-cdevents/
+    - DevOps.com: https://devops.com/continuous-delivery-foundation-adds-interoperability-project/
+    - DevOps.com: https://devops.com/cdevents-aims-to-standardize-ci-cd-interoperability/
+    - TechTarget.com: https://www.techtarget.com/searchitoperations/news/252521316/OpenTelemetry-inspires-CDFs-event-driven-architecture-plan
+    - TechTarget.com: https://www.techtarget.com/searchitoperations/news/252521264/New-CD-Foundation-GM-fights-CI-CD-pipeline-fragmentation
+
+
+- Roadmap review:
+    - Anything redundant?
+    - Anything missing?
+- SDK automations
+    - Swagger, smithy (?) modeling languages to explore
+    - We must rely on CloudEvents SDK as base layers for the SDKs
+    - We would like to automate docs creation too where possible
+    - 
+- Payload structure:
+    - [Initial PR](https://github.com/cdevents/spec/pull/35) (already discussed last time)
+    - [Further discussion](https://github.com/cdevents/spec/issues/40) based on Ben's input
+    - [Schema issue](https://github.com/cdevents/spec/issues/14) in the roadmap
+- Dependency Updates:
+    - [PoC Dependency Updates through events](https://github.com/cdevents/spec/issues/39)
+- Versioning Strategies:
+    - [#43](https://github.com/cdevents/spec/issues/43), [#40](https://github.com/cdevents/spec/issues/40)
+    - Specification version
+        - Semantic versioning
+    - Event version
+        - Add version numbers to events before v0.1
+    - How and when do we provide backward compatibility?
+        - e.g. Consumer v1 receives events from producer v2
+- To review:
+    - Spinnaker PoC: https://github.com/cdfoundation/sig-events/pull/120
+    - Events published: https://github.com/cdevents/spec/pull/31
+
+
+## May 31st
+*Meeting canceled due to no participants joining*
+
+## May 3rd
+
+Participants:
+- Emil Bäckmark, Ericsson
+- Andrea Frittoli, IBM
+- Mattias Linnér, Ericsson
+- Erik Sternerson, doWhile
+- \<add yourself\>
+
+Agenda:
+- Introduction of objects and subjects: https://github.com/cdevents/spec/pull/35
+    - Spent the whole meeting discussing this
+    - (Emil) add results from discussion on the PR
+- "Requested" events: https://github.com/cdevents/spec/issues/36
+    - We didn't have time to discuss this.
+- About CDEventsCon
+    - Someone needs to be responsible to handle the chat from virtual audience and bring it to the in-person speaker
+
 ## April 19th
+
 Participants:
 - Emil Bäckmark, Ericsson
 - Liora Milbaum, RedHat
