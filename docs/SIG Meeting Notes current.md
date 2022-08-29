@@ -6,7 +6,7 @@ tags: SIG Events
 
 [![hackmd-github-sync-badge](https://hackmd.io/xjK5ujQbTHSaEZjoY28b8g/badge)](https://hackmd.io/xjK5ujQbTHSaEZjoY28b8g)
 
-This SIG meets bi-weekly on Mondays at [3pm UTC](https://time.is/3pm_in_UTC) during summer time and at [4pm UTC](https://time.is/4pm_in_UTC) during winter time). The meeting can be accessed through [this zoom link](https://zoom.us/j/97660712600?pwd=Z3BqYTE5YzNsbEhmck16cjdZNEFIUT09). For older meetings please see our [playlist on YouTube](https://www.youtube.com/playlist?list=PL2KXbZ9-EY9RlxWAnAjxs8Azuz11XVhkC)
+This SIG meets bi-weekly on Mondays at [3pm UTC](https://time.is/3pm_in_UTC) during summer time and at [4pm UTC](https://time.is/4pm_in_UTC) during winter time). The meeting can be accessed through [this zoom link](https://zoom.us/j/98408983891?pwd=VXBxMjJTaThGRGFWRXFmdUxsRUZUdz09). For older meetings please see our [playlist on YouTube](https://www.youtube.com/playlist?list=PL2KXbZ9-EY9RlxWAnAjxs8Azuz11XVhkC)
 
 The SIG was initiated as a [workstream under SIG Interoperability ]( https://github.com/cdfoundation/sig-interoperability/blob/master/docs/meetings_2020.md#May-28-2020) and its first meeting was held on June 8th 2020.
 
@@ -18,14 +18,12 @@ Meeting notes for the workstream are managed on HackMD [here](https://hackmd.io/
 - Action Items From Last meeting
 - Updates From Other Groups
     - CDF/TOC
-    - SIG Interoperability
-    - SIG Best Practices
-    - [Vocabulary workstream](https://hackmd.io/2FRGlw9fTMmKN1OQUVvguA)
-- CD Events Project set up
-- Meetups / Conferences
-- Blog Posts / Links
-- Presentations
-- PR / Design Discussions
+    - SIG Interoperability, Best Practices, Software supply Chain
+    - CDEvents [Vocabulary/Spec Updates](https://hackmd.io/2FRGlw9fTMmKN1OQUVvguA)
+- CD Events Project Updates
+- Upcoming/Recent Meetups & Conferences
+- Today's Presentations
+- Future Presentations
 
 
 ## Future Presentations
@@ -34,7 +32,33 @@ Meeting notes for the workstream are managed on HackMD [here](https://hackmd.io/
 - Mike to present/demo the work on CNCF Reference Architecture, OpenSFF and events
     - Frsca
 
-## Next time
+## Meeting August 29th
+
+### Participants
+- \<add yourself\>
+
+
+### Agenda
+- Action Items From Last meeting
+    - Zoom meeting link confusion sorted out
+- Updates From Other Groups
+    - CDF/TOC
+    - SIG Interoperability, Best Practices, Software supply Chain
+    - CDEvents [Vocabulary/Spec Updates](https://hackmd.io/2FRGlw9fTMmKN1OQUVvguA)
+- CD Events Project Updates
+    - GitHub Migration from cdfoundation/sig-events to cdevents
+    - New governance setup to be initiated
+- Upcoming/Recent Meetups & Conferences
+    - [CD mini summit](https://cd.foundation/cd-mini-summit-2022-dublin/), Sept 12th, Dublin
+    - [Open Source Summit](https://events.linuxfoundation.org/open-source-summit-europe/), Sept 13th-16th, Dublin
+    - [Spinnaker Summit](https://events.linuxfoundation.org/spinnaker-summit/program/schedule/), Oct 23rd-24th, Detroit
+    - [CD summit](https://cd.foundation/blog/2022/08/23/continuous-delivery-summit-2022-call-for-papers-open/), Oct 25th, Detroit
+        - CFP ends Aug 31st
+    - [KubeCon](https://events.linuxfoundation.org/kubecon-cloudnativecon-north-america/), Oct 24th-28th, Detroit
+- Today's Presentations
+    - Mike presents/demoes the work on CNCF Reference Architecture, OpenSFF and events
+- Future Presentation Proposals
+
 
 ## Meeting August 15th
 
@@ -49,6 +73,7 @@ Meeting notes for the workstream are managed on HackMD [here](https://hackmd.io/
 ### Agenda
 - Seems the zoom link on the CDF calendar to this meeting doesn't match the link on GitHub and in this MoM. Emil will fix it.
 - Presentation from Fidelity (Jamie Plower) on their use of Cloudevents in CI/CD pipelines.
+
 
 ## Meeting August 1st
 
