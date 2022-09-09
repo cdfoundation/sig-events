@@ -9,6 +9,178 @@ tags: CDEvents
 This document contains the notes from the of the Events SIG meetings focused on [vocabulary discussion](https://hackmd.io/lBlDCrL7TvmtNOjxdopJ5g).
 
 
+## Sep 14th
+*Meeting canceled due Open Source Summit*
+
+## Sep 6th
+
+Participants:
+
+- Andrea Frittoli, he/him, IBM, UTC+1
+- Emil Bäckmark, Ericsson, UTC+2
+- Kara de la Marck, CDF, UTC-4
+- Jalander Ramagiri, Ericsson Software Technology, UTC+1
+- Erik Sternerson, doWhile
+
+Agenda:
+
+- Action items from last time:
+    - spec: adding json schema: WIP https://github.com/cdevents/spec/pull/61
+    - spec: adding `data` field: https://github.com/cdevents/spec/pull/63 -> merged
+        - WIP adding `customData` to the `go-sdk` https://github.com/cdevents/sdk-go/pull/19
+    - spec: Subscriber model considerations, add diagram to spec: TBD
+    - document decision (from CDEvents community summit) about prescriptive events in the spec: TBD
+    - poc / demo implementation: Create issue to track this work: TBD
+
+- Versioning: https://github.com/cdevents/spec/issues/43
+    - From SDK user pov, users are most likely interested to send an event by spec version (event version is then implied)
+    - The receiving side needs to know the event version (spec version is not so relevant)
+    - Proposed starting approach
+        - Version in the context for the spec, free text
+        - Semantic version for events in the event type string
+
+- CDEventer demo (Andrea)
+
+- Documentation format:
+    - Initial improvements: https://github.com/cdevents/spec/pull/63
+
+- Go SDK unit tests: https://github.com/cdevents/sdk-go/issues/2 -> Issue clused now
+
+- Document general required features for sdk
+    - Community repo
+    - Unit test coverage
+    - Conformance tests (hosted in the spec/jsonschema?)
+    - We need to pin the spec version in the SDK
+
+
+## Aug 31st
+
+Participants:
+- Andrea Frittoli, he/him, IBM, UTC+1
+- Emil Bäckmark, Ericsson, UTC+2
+- Mattias Linnér, Ericsson, UTC+2
+- Brad McCoy, he/him, Basiq, UTC+11
+
+
+Agenda:
+
+- Action items from last time:
+    - sdk-go: support for validating through json schema: DONE
+    - spec: adding json schema: WIP https://github.com/cdevents/spec/pull/61
+    - spec: adding `data` field: TBD https://github.com/cdevents/spec/issues/60
+    - spec: add the version to the schema: DONE in the go-sdk, for the spec: https://github.com/cdevents/spec/pull/61
+    - java-sdk: Check with Jalander if he plans to update the Java SDK with the new spec version (draft/v0.1): TBD
+        - Java SDK presentation at OSS Mini summit with Eiffel
+        - No plan on updating the SDK before v0.1
+        - It should not be a requirement for v0.1, but it still could be done
+        - We should work on it at least once v0.1 is released
+    - spec: Subscriber model considerations, add diagram to spec: TBD
+    - document decision (from CDEvents community summit) about prescriptive events in the spec: TBD
+    - poc / demo implementation: Create issue to track this work: TBD
+
+- sdk-go: discuss comments on https://github.com/cdevents/spec/pull/61
+
+- spec/sdk: event versions
+    - Old and new SDK include `v1` in event types:
+        - dev.cdevents.artifact.packaged.v1
+    - Spec does not include version in event types:
+        - dev.cdevents.artifact.packaged
+    - (Andrea) I think we should include version
+    - What versioning schema do we use and how does it compare to the spec version? https://github.com/cdevents/spec/issues/43 
+
+- poc / demo implementation
+    - Mattias: Could the SDK serve this purpose?
+    - Emil: SDK (one or more will be used), but do not rely on specific tools (Tekton, Jenkins, etc)
+    - Mattias: we should lower the barrier for getting started with CDEvents
+    - Emil: existing POCs can be complex to understand as they require specific tool knowledge
+    - A simple CDEvent listener / display tool would be useful
+    - We could use the TOC budget for CDEvents for that project
+    - (A) Bring the topic to the next TOC meeting
+    - (A) Find the issue with the description of the project
+        - https://github.com/cdfoundation/sig-events/issues/126
+
+- spec format:
+    - Improve the event documentation in the spec: https://gist.github.com/afrittoli/372489774e1eed01756b54098c06eb76
+
+- (Brad) Using k8s events to generate CloudEvents / CDEvents
+    - Would be useful for Flux / CDEvents
+    - Knative example: https://knative.dev/docs/eventing/sources/apiserversource/
+
+
+## Aug 23rd
+
+Participants:
+- Andrea Frittoli, he/him, IBM, UTC+1
+- Erik Sternerson, doWhile
+- Tarek Badr, doWhile
+- Ben Powell, Apple
+- Emil Bäckmark, Ericsson
+
+
+Agenda:
+
+- GO SDK Updates
+    - TaskRun, PipelineRun and Change events completed (matching spec)
+    - All other events added, matching spec WIP
+    - Added support for creating JSONschemas from Go types
+    - Added support for validating an `interface{}` through a JSONschema
+        - One pending issue on https://github.com/cdevents/sdk-go/pull/6
+
+- Spec updates:
+    - Formatting of the spec merged and live at https://cdevents.dev/docs
+    - CDEvents binary mode removed
+    - Adding json schema https://github.com/cdevents/spec/pull/61
+    - Add issue to track the `data` field to be added https://github.com/cdevents/spec/issues/60
+        - Add the version to the schema
+            - Add default value for the "version" field
+            - or enum with single value
+            - example from Eiffel
+                - ```json
+                  "type": "string",
+                  "enum": [
+                    "3.1.0"
+                  ],
+                  "default": "3.1.0"
+                  },
+                  ```
+        - See https://schema.org/docs/schemas.html 
+        - No additional properties in spec fields, only in `data`
+            - already in the schema
+                - https://github.com/cdevents/spec/pull/61/files#diff-115d17a864e7c9f66d3f6f4b51282e803d161c93fcc2d0294b2cbf55179be200R24
+
+- V0.1 roadmap updates
+    - Actually closed issues marked as done (project automation missing there)
+    - Removed PoC from v0.1 plan 
+    - Added more details to https://github.com/cdevents/spec/issues/13
+        - Created 4 sub-issues for the type of events required for the DORA PoC
+    - Reviewed the v0.1 milestone to ensure it's aligned to with the project
+    - Java SDK
+        - Check with Jalander if he plans to update the Java SDK with the new spec version (draft/v0.1)
+
+- Py SDK updates
+    - DRAFT PR: https://github.com/cdevents/sdk-python/pull/1
+    - Default values for context fields
+        - Source
+        - Id
+        - Timestamp
+        - reusable application specific context could be useful (across SDKs)
+
+- Spec Consideration
+    - Subscriber model considerations
+        - Add a diagram like in the spec https://raw.githubusercontent.com/cdfoundation/sig-events/main/poc/sig-events-spinnaker-functional.png
+        - Make it clearer in the spec that the subscriber model is the primary use case
+        - It's in the primer today but we need to make it more relevant
+            - <https://cdevents.dev/docs/primer/#why-not-point-to-point-communication>
+
+- Should we provide PoCs or reference implementations aligned with each CDEvents release?
+    - Build a publish/suscribe use case
+    - It doesn't have to use an actual tool (tekton, keptn, etc)
+    - Easy to demo, easy to update for each release
+    - Should this be a requirement for v0.1?
+
+- Migrate content from sig-events to cdevents
+
+
 ## Aug 17th
 
 Participants:
