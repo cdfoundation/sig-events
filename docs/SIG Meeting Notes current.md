@@ -29,12 +29,19 @@ Meeting notes for the workstream are managed on HackMD [here](https://hackmd.io/
 ## Future Presentations
 
 - Brett to present the event CI/CD architecture at SAS
-- Mike to present/demo the work on CNCF Reference Architecture, OpenSFF and events
-    - Frsca
+
+## Meeting September 12 29th
+*Meeting canceled due to CD Mini Summit and Open Source Summit*
 
 ## Meeting August 29th
 
 ### Participants
+- Emil Bäckmark, Ericsson
+- Kara de la Marck, CDF
+- Mike Lieberman, Kusari and CNCF Security TAG
+- Brett Smith, SAS
+- Jalander Ramagiri, Ericsson Software Technology
+- Ankit, Berkshire Grey/Jenkins X
 - \<add yourself\>
 
 
@@ -46,18 +53,26 @@ Meeting notes for the workstream are managed on HackMD [here](https://hackmd.io/
     - SIG Interoperability, Best Practices, Software supply Chain
     - CDEvents [Vocabulary/Spec Updates](https://hackmd.io/2FRGlw9fTMmKN1OQUVvguA)
 - CD Events Project Updates
-    - GitHub Migration from cdfoundation/sig-events to cdevents
-    - New governance setup to be initiated
+    - [GitHub Migration from cdfoundation/sig-events to cdevents](https://github.com/cdfoundation/sig-events/issues?q=is%3Aissue+is%3Aopen+label%3A%22migrate+to+cdevents%22)
+    - [New governance setup to be initiated](https://github.com/cdevents/spec/issues/48)
 - Upcoming/Recent Meetups & Conferences
     - [CD mini summit](https://cd.foundation/cd-mini-summit-2022-dublin/), Sept 12th, Dublin
+        - Physical, and recorded, but probably not virtual
     - [Open Source Summit](https://events.linuxfoundation.org/open-source-summit-europe/), Sept 13th-16th, Dublin
     - [Spinnaker Summit](https://events.linuxfoundation.org/spinnaker-summit/program/schedule/), Oct 23rd-24th, Detroit
     - [CD summit](https://cd.foundation/blog/2022/08/23/continuous-delivery-summit-2022-call-for-papers-open/), Oct 25th, Detroit
         - CFP ends Aug 31st
     - [KubeCon](https://events.linuxfoundation.org/kubecon-cloudnativecon-north-america/), Oct 24th-28th, Detroit
+    - Eiffel Summit, Oct 11th-12th, Stockholm
+        - To be announced
+        - Physical only
 - Today's Presentations
-    - Mike presents/demoes the work on CNCF Reference Architecture, OpenSFF and events
+    - Mike presents/demoes the work on CNCF Reference Architecture, OpenSFF, FRSCA and how CDEvents could fit into it
+- PoC Discussions
+    - Integrating Eiffel events to SIG Events PoC
 - Future Presentation Proposals
+- Next meeting
+    - Sept 12th might be cancelled due to Open Source Summit
 
 
 ## Meeting August 15th
