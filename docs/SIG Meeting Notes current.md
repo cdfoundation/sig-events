@@ -30,7 +30,7 @@ Meeting notes for the workstream are managed on HackMD [here](https://hackmd.io/
 
 - Brett to present the event CI/CD architecture at SAS
 
-## Meeting September 12 29th
+## Meeting September 12th
 *Meeting canceled due to CD Mini Summit and Open Source Summit*
 
 ## Meeting August 29th
