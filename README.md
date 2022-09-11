@@ -92,7 +92,7 @@ New members are advised to:
 - Submit a PR to add yourself to the [members list](#members).
 - Here are various ways to get involved:
   - Share your thoughts by joining the meetings, posting to the mailing list, discussions forum or Slack channel.
-  - Add a topic you would like to discuss to [the agenda](docs/) of upcoming meeting.
+  - Add a topic you would like to discuss to [the agenda](https://hackmd.io/xjK5ujQbTHSaEZjoY28b8g) of upcoming meeting.
   - Create a [new issue](https://github.com/cdfoundation/sig-events/issues) or start a [discussion](https://github.com/cdfoundation/sig-events/discussions) to start gathering feedback and collaborating.
   - Choose an issue where [help is needed](https://github.com/cdfoundation/sig-events/issues/labels/help%20wanted) and comment on it expressing interest.
 
