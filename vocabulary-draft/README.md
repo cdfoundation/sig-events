@@ -1,18 +1,14 @@
+***Note! This draft vocabulary/specification is no longer maintained. Please go to the official [CDEvents website](https://cdevents.dev/) to follow the progress there.***
+
 # Continuous Delivery Events
 
-Continuous Delivery Events (CD Events or CDE) is a common event format for the Continuous Delivery (CD) ecosystem.
+Continuous Delivery Events (CDEvents) is a common event format for the Continuous Delivery (CD) ecosystem.
 
-CD Events are an enabler for interoperability between different CI/CD tools as they provide a tool agnostic communication protocol.
-
-## Name
-
-Continuous Delivery Events is a temporary name that we adopted until we have a final name.
-If you have an idea for a name, feel free to share it via [this form](https://docs.google.com/forms/d/1CVPooDG16B6JaBqQysH7V6UehYcZcSw_PM1HrtxwNns/edit).
+CDEvents are an enabler for interoperability between different CI/CD tools as they provide a tool agnostic communication protocol.
 
 ## Events Format
 
-CD Events are [CloudEvents](https://cloudevents.io/) with CDE specific extensions and payload structure, which is based
-on the [CDE vocabulary](introduction.md).
+CDEvents are [CloudEvents](https://cloudevents.io/) with specific extensions and payload structure, which is based on the [CDEvents vocabulary](introduction.md).
 
 Events producer may use the payload to provide extra context to the events consumers; the payload however is not meant to
 transport large amounts of data. Data such as logs or software artifacts should be linked to from the event and not
@@ -21,13 +17,12 @@ on events size and size limits.
 
 ### Specification
 
-The aim of the Events SIG is to produce a version specification for CDE. The draft specification is defined in the
-form a this [draft CDE vocabulary](introduction.md).
+The aim of the Events SIG is to produce a version specification for CDEvents. The specification was initially defined in the [draft CDE vocabulary](introduction.md).
 
 ## Tools
 
-Developers may create CD Events via the [CDE SDK and CLI](../cde/sdk/go/README.md).
+The draft specification of the CDEvents is combined with an [SDK and CLI](https://github.com/cdfoundation/sig-events/blob/main/cde/sdk/go/README.md).
 
 ## Proof of Concept
 
-The Events SIG is working on a [Proof of Concept](../poc/README.md) to demonstrate how to use CD Events and the SDK.
+There is a [Proof of Concept](../poc/README.md) demonstrating how to use draft CDEvents specification and its SDK.
