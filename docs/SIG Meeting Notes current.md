@@ -28,7 +28,116 @@ Meeting notes for the workstream are managed on HackMD [here](https://hackmd.io/
 
 ## Future Presentations
 
-- Brett to present the event CI/CD architecture at SAS
+- To be added
+
+## Meeting October 10th
+
+### Participants
+- Emil Bäckmark, Ericsson, UTC+2
+- Fatih Degirmenci, CDF, UTC+2
+- Brett Smith, SAS, UTC -4
+- Andrea Frittoli, he/him, IBM, UTC+1
+- Mike Lieberman, he/him, Kusari, UTC-4
+- Jalander Ramagiri, he/him, Ericsson Software Technology, UTC+1
+- Parth Patel, he/him, Kusari, UTC-4
+- \<add yourself\>
+
+### Agenda
+- Action Items From Last meeting
+    - (Andrea) Inform Roxanne about our intent to be part of Hacktoberfest
+        - Done, see below
+- Updates From TOC and Other SIGs
+    - CDF/TOC
+        - Tekton is requesting to become a Graduated project, alongside Jenkins
+        - What is the current status of the CDF budget to spend on improving the CDEvents website?
+    - SIG Interoperability, Best Practices, Software Supply Chain
+        - SSC
+            - Supply chain maturity model is being discussed, as an addition to SLSA.
+- [CD Events Project](https://hackmd.io/2FRGlw9fTMmKN1OQUVvguA) Updates
+    - Decided to release v0.1 before CD Summit
+    - [v0.1 milestone status](https://github.com/orgs/cdevents/projects/1)
+- Recent/Upcoming Meetups & Conferences
+    - [Hacktoberfest](https://cd.foundation/hacktoberfest/), Oct, Online
+        - [CDEvents Hacktoberfest announcement](https://github.com/cdevents/community/issues/7)
+        - [CDEvents Hacktoberfest status](https://github.com/orgs/cdevents/projects/3/views/1)
+    - [Spinnaker Summit](https://events.linuxfoundation.org/spinnaker-summit/program/schedule/), Oct 24th-25th, Detroit
+        - Jalander will present the updated CDEvents PoC
+    - [CD summit](https://cd.foundation/blog/2022/08/23/continuous-delivery-summit-2022-call-for-papers-open/), Oct 25th, Detroit
+        - [Schedule](https://events.linuxfoundation.org/continuous-delivery-summit/program/schedule/)
+        - Remote attendance possibility not yet announced
+    - [KubeCon](https://events.linuxfoundation.org/kubecon-cloudnativecon-north-america/), Oct 24th-28th, Detroit
+        - [Mike will present FRSCA](https://kccncna2022.sched.com/event/182Jo/slsa-frsca-recipe-for-secure-supply-chain-parth-patel-michael-lieberman-kusari?iframe=no)
+    - [Eiffel Summit](https://eiffel-community.github.io/summit.html), Oct 11th-12th, Stockholm
+        - Physical only
+        - Will present status update from CDEvents
+- Today's Presentations
+    - None planned
+- in-toto and signed attestations
+    - See [Slack Question](https://cdeliveryfdn.slack.com/archives/C0151BTKEJX/p1663860227738519)
+    - [in-toto is](https://github.com/in-toto/docs/blob/v0.9/in-toto-spec.md) "a system for securing the way in which software is developed, built, tested, and packaged \[ ... \] making it transparent to the user what steps were performed, by whom and in what order."
+    - [in-toto attestation](https://github.com/in-toto/attestation)
+        - \[Michael\] In-toto is made of several components
+            - Attestation
+            - Layout: defines where different part of the attestation may come from
+                - [docs](https://in-toto.readthedocs.io/en/latest/layout-creation-example.html)
+            - TUF (related project)
+    - If we are using events to transport security data we may want to consider signing events
+        - https://github.com/cdevents/spec/issues/70
+- PoC idea: [Dependency updates through events](https://github.com/cdevents/spec/issues/39) - extend Mend Renovate?
+    - There is an interest in creating/promoting a PoC like this. Remains to be seen who wants to take it on.
+- Whitepaper updates
+    - It might be too late to bring updates to the creative team to be able to have it published along the CD summit.
+
+
+## Meeting September 26th
+
+### Participants
+- Emil Bäckmark, Ericsson, CET
+- Brett Smith, SAS
+- Andrea Frittoli, IBM, UTC+1
+- Mike Lieberman, Kusari and CNCF Security TAG
+- Erik Sternerson, doWhile
+
+### Agenda
+- Action Items From Last meeting
+- Updates From Other Groups
+    - CDF/TOC
+        - We might still have CDF budget to spend on CDEvents tasks. Proposed is Improving the CDEvents site as a LFX Mentorship project. Other ideas?
+    - SIG Interoperability, Best Practices, Software Supply Chain
+    - [CDEvents/Vocabulary Workgroup](https://hackmd.io/2FRGlw9fTMmKN1OQUVvguA)
+        - Focusing on spec and SDK updates for 0.1
+        - Versioning PR up for review
+            - https://github.com/cdevents/spec/pull/67
+        - Artifact id format discussed
+        - Updates to cover for DORA metrics needs
+- CD Events Project Updates
+    - Progressing slowly towards [v0.1](https://github.com/orgs/cdevents/projects/1)
+- Upcoming/Recent Meetups & Conferences
+    - [CD mini summit](https://cd.foundation/cd-mini-summit-2022-dublin/), Sept 12th, Dublin
+        - Was it recorded? No. A blog post is written - https://cd.foundation/blog/2022/09/19/cd-mini-summit-wrap-up/
+    - [Open Source Summit](https://events.linuxfoundation.org/open-source-summit-europe/), Sept 13th-16th, Dublin
+        - Erik & Andrea presented DORA Metrics with CDEvents
+    - [Hacktoberfest](https://cd.foundation/hacktoberfest/), Oct, Online
+        - We need to add topics/labels to our issues on GitHub so that they show up
+        - Write a blog post to describe what we would like to focus on for Hacktoberfest (good first issues, areas to work on)
+        - Andrea will inform Roxanne about our intent to be epart of it
+        - Participants need to register this week (?) to be able to participate on Hacktoberfest
+    - [Spinnaker Summit](https://events.linuxfoundation.org/spinnaker-summit/program/schedule/), Oct 23rd-24th, Detroit
+        - Jalander will present the updated CDEvents PoC
+    - [CD summit](https://cd.foundation/blog/2022/08/23/continuous-delivery-summit-2022-call-for-papers-open/), Oct 25th, Detroit
+        - [Schedule](https://events.linuxfoundation.org/continuous-delivery-summit/program/schedule/)
+    - [KubeCon](https://events.linuxfoundation.org/kubecon-cloudnativecon-north-america/), Oct 24th-28th, Detroit
+        - Any presentations to highlight?
+        - [Mike will present FRSCA](https://kccncna2022.sched.com/event/182Jo/slsa-frsca-recipe-for-secure-supply-chain-parth-patel-michael-lieberman-kusari?iframe=no)
+    - [Eiffel Summit](https://eiffel-community.github.io/summit.html), Oct 11th-12th, Stockholm
+        - Physical only
+- Today's Presentations
+    - Presentation from Brett Smith on the CI/CD architecture at SAS
+- [Signed attestations (in-toto)](https://cdeliveryfdn.slack.com/archives/C0151BTKEJX/p1663860227738519)
+    - End of time, so didn't manage to get to this topic today
+- PoC idea: [Dependency updates through events](https://github.com/cdevents/spec/issues/39) - extend Mend Renovate?
+    - End of time, so didn't manage to get to this topic today
+
 
 ## Meeting September 12th
 *Meeting canceled due to CD Mini Summit and Open Source Summit*
