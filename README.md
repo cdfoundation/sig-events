@@ -35,9 +35,11 @@ The group will focus on the use of events to provide interoperability through to
 
 ### Outcome
 
-The group is working on a standardized event protocol that caters for technology agnostic machine-to-machine communication in CI/CD systems. This specification will be published, reviewed and agreed upon between relevant Linux Foundation projects/members.
+The group is working on a standardized event protocol that caters for technology agnostic machine-to-machine communication in CI/CD systems. This specification will be published, reviewed and agreed upon between relevant Linux Foundation projects/members. This work can be followed through the [CDEvents website](https://cdevents.dev/).
 
-The group aims to provide reference implementations such as event listeners and event senders on top of CloudEvents.
+The group aims to provide reference implementations such as event listeners and event senders on top of CloudEvents. These implementations are / will be published under the [CDEvents GitHub organization](https://github.com/cdevents).
+
+The group also produces blog posts, whitepapers and presentations published within the CD Foundation.
 
 ### History
 
