@@ -12,23 +12,69 @@ The SIG was initiated as a [workstream under SIG Interoperability ]( https://git
 
 Meeting notes for the workstream are managed on HackMD [here](https://hackmd.io/xjK5ujQbTHSaEZjoY28b8g), and published to GitHub [here](https://github.com/cdfoundation/sig-events/blob/main/docs/meetings.md).
 
-
-## Agenda Template
-
-- Action Items From Last meeting
-- Updates From Other Groups
-    - CDF/TOC
-    - SIG Interoperability, Best Practices, Software supply Chain
-    - CDEvents [Vocabulary/Spec Updates](https://hackmd.io/2FRGlw9fTMmKN1OQUVvguA)
-- CD Events Project Updates
-- Upcoming/Recent Meetups & Conferences
-- Today's Presentations
-- Future Presentations
-
-
 ## Future Presentations
 
 - To be added
+
+## Meeting November 7th
+
+### Participants
+- Emil Bäckmark, UTC+1, Ericsson
+- Andrea Frittoli, UTC, IBM
+- Terry Cox, UTC, Bootstrap
+- \<add yourself\>
+
+
+### Agenda
+
+- Action Items From Last meeting
+
+- Updates From TOC and Other SIGs
+    - CDF/TOC
+    - SIG Interoperability, Best Practices, Software Supply Chain
+        - SIG Best Practices is now on Wednesdays instead of Mondays
+
+- Meeting starts at [4pm UTC](https://time.is/4pm_7_november_2022_in_UTC)
+
+- [CDEvents Project](https://hackmd.io/2FRGlw9fTMmKN1OQUVvguA) Updates
+    - v0.1.1 released
+    - [release v0.2](https://github.com/orgs/cdevents/projects/1/views/9?filterQuery=-status%3ADone+milestone%3A%22v0.2%22+) to be planned, considering our [roadmap](https://github.com/cdevents/spec/blob/main/roadmap.md) and the [roadmap project](https://github.com/orgs/cdevents/projects/1/views/8?visibleFields=%5B%22Title%22%2C%22Assignees%22%2C%22Status%22%2C%22Milestone%22%2C1324321%2C%22Labels%22%2C%22Repository%22%5D)
+
+- Recent/Upcoming Meetups & Conferences
+    - [Hacktoberfest](https://cd.foundation/hacktoberfest/), Oct, Online
+        - [CDEvents Hacktoberfest announcement](https://github.com/cdevents/community/issues/7)
+        - [CDEvents Hacktoberfest status](https://github.com/orgs/cdevents/projects/3/views/1)
+        - A few issues were solved. For the next hackathon/hacktoberfest we would benefit from being better prepared by creating and grouping more tailormade issues and tasks.
+    - [Spinnaker Summit](https://events.linuxfoundation.org/spinnaker-summit/program/schedule/), Oct 24th-25th, Detroit
+        - Videos: https://www.youtube.com/playlist?list=PL2KXbZ9-EY9QW4vewD7Lk6Mm6PJbWECOM 
+    - [CD summit](https://cd.foundation/blog/2022/08/23/continuous-delivery-summit-2022-call-for-papers-open/), Oct 25th, Detroit
+        - Videos: https://www.youtube.com/playlist?list=PL2KXbZ9-EY9R9ybqDfWRVMktP0ubKofqD 
+    - [KubeCon](https://events.linuxfoundation.org/kubecon-cloudnativecon-north-america/), Oct 24th-28th, Detroit
+        - Talk about GUAC: We should look further into if CDEvents could be a valuable interface to provide data to GUAC to eliminate the need of GUAC specific adapters in all data producers
+    - KubeCon EU in Amsterdam in April
+        - CFP ends on Nov 18th [CFP Page](https://events.linuxfoundation.org/kubecon-cloudnativecon-europe/program/cfp/)
+
+- Today's Presentations
+    - None planned
+
+- Start planning for [CDEvents project proper governance](https://github.com/cdevents/community/issues/15)
+    - To be handled as a [project](https://github.com/orgs/cdevents/projects?query=is%3Aopen)? Or through issue labels?
+
+- Website revamp
+    - Ready to start working on the project
+    - Topics to be clarified
+        - Audience for documentation
+            - Producers and consumers of events with slightly different needs
+            - Producers are CI/CD tools
+            - Consumers: metrics collectors, visualisers
+            - Decision makers, selecting CI/CD tools
+            - Browsing audience, technical or non-technical: how CDEvents fits within best practices
+        - Target devices for website
+        - Process for managing content revisions
+
+## Meeting October 24th
+Canceled due to CD Summit & KubeCon NA?
+
 
 ## Meeting October 10th
 
