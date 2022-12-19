@@ -8,6 +8,622 @@ tags: CDEvents
 
 This document contains the notes from the of the Events SIG meetings focused on [vocabulary discussion](https://hackmd.io/lBlDCrL7TvmtNOjxdopJ5g).
 
+The Tuesday meetings are held at [3pm UTC](https://time.is/3pm_in_UTC) during summer time and at [4pm UTC](https://time.is/4pm_in_UTC) during winter time), and the Wednesday meetings are held at [10am UTC](https://time.is/10am_in_UTC) during summer time and at [11am UTC](https://time.is/11am_in_UTC) during winter time).
+
+## Dec 19th
+
+Participants:
+- Emil Bäckmark, Ericsson, UTC+1
+- Andrea Frittoli, IBM, UTC
+- Erik Sternerson, dowhile, UTC+1
+- 
+
+Agenda:
+- SIG Events meeting
+    - Presentations
+    - Interactions for other SIGs
+    - Event architecture
+    - Held on demand (if there is an agenda)
+- Holiday meetings
+    - Jan 2nd SIG Events, CDEvents Cancelled
+    - Dec 27th CDEvents Cancelled
+    - Next CDEvents WG Jan 10th
+    - Next SIG Events meeting (if agenda) Jan 16th
+- New timeslot for APAC friendly meeting since today
+    - https://time.is/11am_19_december_2022_in_UTC
+
+- (A) Andrea to track TOC presentation feedback in an issue
+- v0.2 planning
+
+
+## Dec 13th
+
+Participants:
+- Andrea Frittoli, he/him, IBM, UTC
+- Emil Bäckmark, he/him, Ericsson, UTC+1
+- Erik Sternerson, he/him, doWhile, UTC+1
+- 
+
+Agenda:
+
+- Action Items
+    - [New meeting time poll](https://doodle.com/meeting/participate/id/e1W8D43b)
+    - [Top3 Issues for contributors](https://github.com/orgs/cdevents/projects/1/views/10)
+    - [Connecting events](https://github.com/cdevents/spec/issues/104)
+
+- cdevents.dev
+    - PRs merged
+
+- v0.2 roadmap
+
+- Enforcing global config in the cdevents GitHub org
+    -  github.com/github/safe-settings or github.com/probot/settings?
+
+- Connecting Events
+    - 
+
+- Release Events
+    - 
+
+
+## Dec 7th
+
+Participants:
+- Andrea Frittoli, he/him, IBM, UTC
+- Emil Bäckmark, Ericsson, UTC+1
+- Mattias Linnér, Ericsson, UTC+1
+- Brad McCoy, he/hime, Basiq, UTC+10
+
+
+Agenda:
+
+- Meeting time
+    - Current time on Wednesday is a permanent conflict for Erik
+    - Alternatives (proposed by for Erik). Please vote with +1
+        - Tuesdays at the same time or 
+        - Tuesdays one hour earlier +2
+        - Wednesdays one hour earlier +2
+        - Wednesdays one hour later +2
+        - Thursdays one hour later +1
+        - Fridays almost any time
+    - Andrea to make a Doodle
+        - Ping Vibhav, Adam, Jalander, Salaboy, Hergy Tchuinkou, Christoffer Vig
+
+- CDEvents presentation to TOC
+    - Surface POC / videos on the website
+        - Showcase CDEvents
+        - Robert can help
+    - Provide a top 3 list of things CDEvents needs help with
+        - Maintain a list at all times
+        - TOC can help advertise how to contribute to CDEvents
+    - [Slides](https://github.com/afrittoli/cdevents_roadmap/blob/toc_update_202212/cdevents_roadmap.pdf)
+
+- TOP three priorities (good candidates for new contributors)
+    - Help with Java SDK
+    - Help with Python SDK
+    - Revamp POCs
+        - Port existing POC to v0.1
+        - Move to CDEvents GitHub org
+        - Document on website
+
+    - Other priorities, probably not good for newcomers
+        - Incident events
+            - Andrea working on it
+        - Release events
+            - Interest in contributing from IBM/RedHat
+            - Release stage defined by SIG Interop: https://github.com/cdfoundation/sig-interoperability/blob/main/docs/pipelines-terminology.md#release-stage
+        - Feature request events
+            - Eiffel has issues events
+        - These need more internal discussions to clarify what we want to do
+
+- Connecting events
+    - [Event Links](https://github.com/cdevents/spec/issues/10) 
+        - Eiffel model
+        - Database of events
+        - Links with different semantics
+    - Propagated Context
+        - Issue to be created by Ben
+            - https://github.com/cdevents/spec/issues/100 
+        - If an event does not have a context, it generates one (UUID)
+        - Events pass along a list(?) of contexts from "source" events
+        - Context ID meant to be used to easily filter events
+            - For the CloudEvents binding it could be a CE extension
+    - Existing art
+        - [Distributed tracing over CloudEvents](https://opentelemetry.io/docs/reference/specification/trace/semantic_conventions/cloudevents/)
+            - OpenTelemetry defines a semantic convention for CloudEvents
+        - [Trace Context RFC](https://www.w3.org/TR/trace-context/)
+    - Span IDs
+        - Honeycomb build events
+            - https://user-images.githubusercontent.com/361454/57872910-ac9eea00-77c1-11e9-8bdd-db7a870dcd61.png
+    - Linked events
+        -
+    - Use Cases:
+        - Find vulnerabilities upstream
+        - Visualise ditributed workflows
+        - Metric collections 
+    - Visualisation tools
+        - Jaeger
+        - Honeycomb
+        - Aspecto https://www.aspecto.io/ 
+
+
+- Release Events
+    - 
+
+## Nov 29th
+
+Participants:
+- Andrea Frittoli, he/him, IBM, UTC
+- Emil Bäckmark, he/him, Ericsson, UTC+1
+- Fatih Degirmenci, he/him, CDF, UTC+1
+
+Agenda:
+
+- Actions
+    - Andrea to draft incident events
+        - Ongoing
+    - Ben to create an issue about "global ID" 
+        - Done: https://github.com/cdevents/spec/issues/100
+
+- CDEvents website & docs updates
+    - Aiming to complete the bulk of the work by the end of the week
+    - PRs for review
+        - Spec: 
+            - https://github.com/cdevents/spec/pull/102
+        - Website:
+            - https://github.com/cdevents/cdevents.dev/pull/22
+    - Spec repository and website repo separation
+        - Use separate repos like today
+            - Not optimised for web nor github
+            - Flat navigation structure
+        - Using separate repos, optimize for web view
+            - Keep spec repo and branches/tags
+            - Optimise rendering
+            - Support multiple repos for SDK
+        - Using one repo
+            - Simplify development process for contribution of docs
+        - Keep the secification only on GitHub
+            - Keep dev process for spec simple
+            - Optimise for GitHub view
+        - Proof of concept
+            - Dedicated branch for experimentation
+        - Proposed next steps
+            - Keep two repos
+                - cdevents.dev, docsy repo
+                - spec, purely browsed through GitHub
+            - Remove submodule in cdevents.dev
+            - Move primer, roadmap and non reference docs to cdevents.dev
+            - We can still use the dropdown with version of the spec
+                - Links point to GitHub
+                - Needs some experimentation
+                - Maybe use an iframe on the website to show GitHub content
+            - In future we can evaluate more professional rendering of the spec
+
+- Connecting events
+    - [Event Links](https://github.com/cdevents/spec/issues/10) 
+        - Eiffel model
+        - Database of events
+        - Links with different semantics
+    - Propagated Context
+        - Issue to be created by Ben
+            - https://github.com/cdevents/spec/issues/100 
+        - If an event does not have a context, it generates one (UUID)
+        - Events pass along a list(?) of contexts from "source" events
+        - Context ID meant to be used to easily filter events
+            - For the CloudEvents binding it could be a CE extension
+    - Existing art
+        - [Distributed tracing over CloudEvents](https://opentelemetry.io/docs/reference/specification/trace/semantic_conventions/cloudevents/)
+            - OpenTelemetry defines a semantic convention for CloudEvents
+        - [Trace Context RFC](https://www.w3.org/TR/trace-context/)
+
+- SDK Updates:
+    - Java SDK
+    - Python SDK
+    - Golang SDK
+    - GitHub Action
+
+- 0.2 planning
+    - 
+
+## Nov 23rd
+
+Participants:
+- Andrea Frittoli, he/him, IBM, UTC
+- Brad McCoy, he/him, Basiq, UTC
+- Terry Cox, he/him, Bootstrap Ltd, UTC
+- Hergy Tchuinkou, he/him, Prodyna SE, UTC
+
+Agenda:
+
+- Specification updates
+    - New patch release https://github.com/cdevents/spec/releases/tag/v0.1.2
+        - Fixed the event type version for CD stage
+    - PRs to start v0.2-draft
+        - https://github.com/cdevents/spec/pull/92
+        - https://github.com/cdevents/spec/pull/94
+
+- CDEvents and Jenkins X
+    - JX planning a POC for receiving/sending CloudEvents / CDEvents
+    - https://github.com/jenkins-x/jx-cdevents-adapter
+    - Use GitHub Action adapter to get CDEvents
+    - Use CDEvents to trigger JX pipelines
+    - We could go a GSOC project on this
+
+- CDEvents website & docs updates
+    - Replay spec changes to spec-v0.1 branch
+    - Andrea to update the spec-v0.1 branch
+    - Diagrams
+        - It would be nice to have more diagrams in the spec
+        - Mermaid works for GitHub
+        - Draw.io sources + SVG in the repo is what we've done in a few places
+        - We should document the best practice for diagrams in CONTRIBUTING.md
+        - Majority of diagrams will be in the primer.md
+
+- Incident events
+    - Incident subjects
+        - Fields: ID, source, Environment, Service, Kind
+            - Source can be monitoring system, the application itself, a ticketing system, an SRE
+            - ID is a UUID
+            - Environment and Service are a references
+            - Kind could be something that describes the kind of degradation that was detected, with a fixed set of keywords
+                - Response time, reliability, functional
+            - SLA breached 
+            - Best practices SIG / Supply Chain SIG - Maturity Workflow
+                - Working on describing metrics associated with key activices
+            - Priority
+        - Predicate:
+            - Update / Report
+            - Finish / Restore
+            - No start event?
+            - Remediation
+            - Ignored / accepted
+                - Technical debt / accepted risk
+                - Capturing this is important for metrics / audit trail
+            - Upgrade / downgrade / triaged
+        - Incident report can be a risk or an issue
+        - The time the incident is reported is not necessarily the time the incident is started
+    - Remediation subject?
+        - Important to capture decisions not to act based on an incident
+        - Keep track of what was done before to address an incident / issue
+        - 
+    - Metric?
+        - We could use events to report changes in a metric
+            - A change beyond a certain threshold would be an incident
+        - Maybe OpenTelemetry is best used for that
+            - OpenTelemetry reports values of metrics
+            - Event could be used to react to a change
+
+- Connecting events
+    - [Event Links](https://github.com/cdevents/spec/issues/10) 
+        - Eiffel model
+        - Database of events
+        - Links with different semantics
+    - Propagated Context
+        - Issue to be created by Ben
+            - https://github.com/cdevents/spec/issues/100 
+        - If an event does not have a context, it generates one (UUID)
+        - Events pass along a list? of contexts from "source" events
+        - Context ID meant to be used to easily filter events
+            - For the CloudEvents binding it could be a CE extension
+    - Existing art
+        - [Distributed tracing over CloudEvents](https://opentelemetry.io/docs/reference/specification/trace/semantic_conventions/cloudevents/)
+            - OpenTelemetry defines a semantic convention for CloudEvents
+        - [Trace Context RFC](https://www.w3.org/TR/trace-context/)
+
+- SDK Updates:
+    - Java SDK
+    - Python SDK
+    - Golang SDK
+    - GitHub Action
+
+- 0.2 planning
+    - 
+
+## Nov 15th
+
+Participants:
+- Ben Powell, Apple
+- Emil Bäckmark, UTC+1, Ericsson
+- Andrea Frittoli, he/him, IBM, UTC
+- Erik Sternerson, doWhile
+- Jalander Ramagiri, Ericsson Software Technology
+- Terry Cox, Bootstrap Ltd
+- Dadisi Sanyika, Apple
+- Rajat Gupta, Jenkins X
+
+Agenda:
+- Related to [Links](https://github.com/cdevents/spec/issues/10) are the need for a context id
+    - A context ID could help tracing through event in an e2e flow
+    - Use cases and suggestions
+    - Overarching system / graph front-end would benefit from links to present relationships between events
+    - Querying links vs. querying by context
+    - A context ID requires a starting event
+        - How is the starting event defined?
+    - We could include an optional context ID, that a system could inject
+        - Define rules about how the context ID is propagated
+        - Define how a system is know it's the starting point for the context ID to be generated
+    - This could be a case of an annotated envelope
+    - Context ids / span ids are already widely used in observability so we should reuse the benefits seen there
+    - Ben will write an issue on span ids
+
+- [Spec versioning](https://github.com/cdevents/spec/issues/87)
+    - Current status:
+        - spec `version` is a field in all events
+        - schema defines `version` as enum with default value
+        - schema id includes the spec version e.g. `https://cdevents.dev/0.1.1/schema/artifact-packaged-event`
+    - Create a new release means that:
+        - The enum for `version` must be updated in all schemas. 
+            - Since this changes the schema, it actually requires a new version of the event type as well
+        - The id must be updated in all schemas
+    - Possible solutions:
+        1. [remove the enum for `version`](https://github.com/cdevents/spec/pull/90), add the enum for `type`, update the SDK to validate the value for `version`
+        2. remove version completely from the context and from the id, use the event type version in the schema id
+        3. other ideas?
+
+- Java SDK
+    - Java SDK is based on the old draft spec, the event format is different, there is no `customData`
+    - Spinnaker (Java based) is interested in integrating CDEvents
+    - Fidelity is interested in integrating CDEvents through the Java SDK, and they would need `customData`
+    - Can we prioritize work on the Java SDK? Who's available to work on it?
+    - Plan for v0.1 release
+    - The CDEvents PoC will also be updated to use the updated Java SDK and Go SDK versions
+    - https://github.com/cdevents/sdk-java/issues/11
+
+- Python SDK
+    - Current status?
+        - [PR for sending events](https://github.com/cdevents/sdk-python/pull/11)
+        - Not sufficiently documented
+    - Plan for v0.1 release
+        - Switch to [pydantic](https://pydantic-docs.helpmanual.io/) for data model
+            - [Also supported by CloudEvents](https://pydantic-docs.helpmanual.io/)
+            - Should give us the parsing "for free"
+            - Should-be-straightforward(tm)
+        - Verify and document
+        - Release
+    - CLI? Which, if any, SDK should have it?
+        - We'll probably prioritize the Go SDK as the CLI backend for now, since it is usually more uptodate, but we could also have other backends later.
+
+- GitHub action updates
+    - ?
+
+- 0.2 planning
+    - It would be good to get assignees to various items in the roadmap to get an idea about
+        - who's working on what
+        - what kind of progress we may expect for 0.2
+        - when should 0.2 happen
+
+        - (Andrea) My current plan for 0.2 spec contributions (roughly in order)
+            - [Fix versioning and schemas](https://github.com/cdevents/spec/issues/87)
+            - Automate start/end of release through scripts
+            - Move to 0.2-draft on main
+            - [Introduce incident events](https://github.com/cdevents/spec/issues/59), extend the schema for DORA metrics as required (with Salaboy / 4-keys)
+            - [S3C aspects for artefacts, S3C related events](https://github.com/cdevents/spec/issues/70) 
+                - Use case 1: Tekton users ask for a dedicated event when Tekton chains signs artifacts produced by a build
+                - Work with FRSCA to define more use cases?
+            - [Investigate links in events](https://github.com/cdevents/spec/issues/10) - discuss use cases from Ben once available. A related issue on "span ids" will be written by Ben
+            - Investigate signing events
+
+- Upcoming events
+    - KubeCon EU CFP closes on Nov 18th
+
+- Website refresh ongoing by Terry
+
+
+## Nov 8th
+
+Participants:
+- Emil Bäckmark, Ericsson
+- Mattias Linnér, Ericsson
+- Terry Cox, Bootstrap
+- Jalander Ramagiri, Ericsson Software Technology
+- Brad McCoy, Basiq
+
+Agenda:
+- Vibhav/Brad: GitHub Actions with CDEvents, https://docs.google.com/document/d/1_99RkPZXqEXynthAB0sZfxe-ETTLCuCcQySUQdufAtw/edit
+    - We should se up a repo in cdevents. Name to be discussed in Slack
+- Terry: cdevents.dev website refresh
+    - Main topic discussed: [Process for spec revisions](https://github.com/cdevents/cdevents.dev/issues/15)
+        - How to deal with spec revisions on the website?
+    - ([Audience personas](https://github.com/cdevents/cdevents.dev/issues/17))
+    - ([Target devices](https://github.com/cdevents/cdevents.dev/issues/16))
+
+
+## Nov 1st
+
+Participants:
+- Ben Powell, Apple
+- Erik Sternerson, doWhile
+- Emil Bäckmark, Ericsson
+- (Vibhav)
+- (Terry)
+- (Tracy)
+
+Agenda:
+
+- Meeting starts at [4pm UTC](https://time.is/4pm_1_november_2022_in_UTC)
+
+- Demo: CDEvents Action for Github (Vibhav Bobade)
+    - Background and discussion kept in this Google doc: https://docs.google.com/document/d/1_99RkPZXqEXynthAB0sZfxe-ETTLCuCcQySUQdufAtw/edit
+    - We discussed a mapping for the different GitHub Actions to CDEvent types, which is now captured in the Google doc
+        - Proposed to use customData for any missing event types to begin with, instead of waiting for new event types to get into the spec, to not delay to PoC itself
+    - Use CDEvents to signal that e.g. GitHub is non-responsive or overloaded? There are use cases for this (Terry), but whether it should be solved using CDEvents only or using a combination of CDEvents and e.g. OpenTelemetry data is to be evaluated further.
+    - What SDK to use for this GitHub Actions PoC? Any. The Go SDK is available now. The Python SDK is soon there (see below). A Java SDK is on its way. Using/forking the [cloudevents-generator](https://michaelawyu.github.io/cloudevents-generator/cli.html) is also a valid option.
+
+- SDK status updates
+    - Python SDK: 
+        - [PR#11](https://github.com/cdevents/sdk-python/pull/11) for sending schema-compliant events.
+        - Not a good user experience currently.
+        - No support for parsing events yet.
+
+- Didn't reach to this topic today: Plan for CDEvents [release v0.2](https://github.com/orgs/cdevents/projects/1/views/9?filterQuery=-status%3ADone+milestone%3A%22v0.2%22+), considering our [roadmap](https://github.com/cdevents/spec/blob/main/roadmap.md) and the [roadmap project](https://github.com/orgs/cdevents/projects/1/views/8?visibleFields=%5B%22Title%22%2C%22Assignees%22%2C%22Status%22%2C%22Milestone%22%2C1324321%2C%22Labels%22%2C%22Repository%22%5D)
+
+
+## Oct 26th
+Canceled due to KubeCon NA
+
+
+## Oct 18th
+
+Participants:
+
+- Andrea Frittoli, he/him, IBM, UTC+1
+- Emil Bäckmark, he/him, Ericsson, UTC+2
+- Erik Sternerson, he/him, doWhile, UTC+2
+
+Agenda:
+
+- Adopting CDEvents PR: https://github.com/cdevents/spec/pull/77
+
+- Release v0.1 review https://github.com/orgs/cdevents/projects/1/views/1
+
+- SDK status updates
+    - Go SDK
+        - Versioning (WIP)
+        - Missing fields (WIP)
+        - Version switch (TBD)
+        - Tag/release
+    - Python SDK
+        - Spec data types (done)
+        - Producing schema-valid JSON (needs verification)
+        - Parsing schema-valid JSON (not started)
+        - Versioning (not started)
+        - CloudEvents mapping (not started)
+        - CloudEvents binding/transport (not started)
+        - Readme (not started)
+        - Can be completed end-of-week at the earliest.
+        
+- cdevents.dev
+    - Ticket: https://github.com/cdevents/cdevents.dev/issues/12
+
+
+## Oct 4th
+
+Participants:
+
+- Andrea Frittoli, he/him, IBM, UTC+1
+- Erik Sternerson, doWhile
+- Emil Bäckmark, Ericsson, UTC+2
+- Ben Powell, Apple
+
+Agenda:
+
+- Review v0.1.0 project
+    - https://github.com/orgs/cdevents/projects/1/views/1
+    - Release planning:
+        - Decision deadline Oct 17th, best asap
+        - Technical work cut off date 17/10
+        - Release preparation (admin, release process): 17/10 -> 21/10
+            - Spec: 
+                - Update from draft to v0.1.0
+                - Make a release with git tag and release notes
+            - SDKs:
+                - Update from draft to v0.1.0
+                - Make a release with git tag and release notes
+            - Blog post / Article
+                - We should start ASAP
+                - Check with Fatih what kind of content
+                - Whitepaper review
+            - Last week before KubeCon will be busy
+            - Presentation to the TOC
+        - Summit on 25/10
+    - Post release activies
+        - Share on social media
+        - Interviews?
+        - Proof of concepts updated for v0.1
+        - Presentation to TOC
+        - Presentation to other communities
+            - Tekton
+            - Keptn
+            - Spinnaker
+            - Jenkins
+    - Decision: we will make v0.1.0 before the cd summit!
+
+- New fields planned for the spec (already in Andrea's [fork](https://github.com/afrittoli/cdevents-sdk-go/commits/main) of the SDK):
+    - [repo in change events](https://github.com/afrittoli/cdevents-sdk-go/commit/b227cb6aa95d32fad39c447d6e80feb636d1ae51)
+    - [last change to artifact packaged](https://github.com/afrittoli/cdevents-sdk-go/commit/527d4a1aca5e8d0df24813df5ad65d049fc8d312)
+    - [artifact id to service events](https://github.com/afrittoli/cdevents-sdk-go/commit/71e4b6f13743359584383d0e65a2c9d20c666505)
+        - Using package URL for artifact IDs
+
+- v0.2.0 Roadmap ideas
+    - Align naming with interop SIG dictionary
+    - Introduce incident events
+    - SSSC aspects: artifact SBOM, signature, artifact verified event
+    - Test types coded in CDEvents
+    - Golang, Python, Java SDK updated
+    - SDK conformance tests from spec
+    - Compositions, input/output artifact model
+        - PoC dependency updates through events
+    - Integration with tools
+    - CDEventer / reusable CDEvent receiver/adapter
+    - Inter-event references/links
+
+- Hacktoberfest contributions
+    - Contributors cannot assign themselves to issues
+    - https://github.com/cdevents/sdk-python/pull/7
+
+
+## Sept 28th
+
+Participants:
+
+- Brad McCoy
+- Andrea Frittoli
+
+Agenda:
+
+- Actions from last time
+    - Ben - write an issue headers vs. payload on GitHub 
+
+- Hacktoberfest 
+    - "blog post" https://github.com/cdevents/community/issues/7
+    - Project: https://github.com/orgs/cdevents/projects/3
+
+- Interesting project for message routing:
+    - https://github.com/aquasecurity/postee
+    - https://github.com/afrittoli/cdeventer
+    - https://www.triggermesh.com/ (perhaps too heavy)
+    - https://www.direktiv.io/
+
+- Versioning PR https://github.com/cdevents/spec/pull/67
+
+- New fields planned for the spec (already in Andrea's [fork](https://github.com/afrittoli/cdevents-sdk-go/commits/main) of the SDK):
+    - [repo in change events](https://github.com/afrittoli/cdevents-sdk-go/commit/b227cb6aa95d32fad39c447d6e80feb636d1ae51)
+    - [last change to artifact packaged](https://github.com/afrittoli/cdevents-sdk-go/commit/527d4a1aca5e8d0df24813df5ad65d049fc8d312)
+    - [artifact id to service events](https://github.com/afrittoli/cdevents-sdk-go/commit/71e4b6f13743359584383d0e65a2c9d20c666505)
+        - Using package URL for artifact IDs
+
+- Review v0.1.0 project https://github.com/orgs/cdevents/projects/1/views/1
+
+## Sep 20th
+
+Participants:
+
+- Emil Bäckmark, Ericsson
+- Ben Powell, Apple
+- Erik Sternerson, doWhile
+- Kara de la Marck, CDF
+
+Agenda:
+
+- Revisited the discussion about headers vs payload for the CDEvents specific data
+    - CDEvents don't intend to _replace_ existing messages sent in existing tools, but rather to complement it by providing a new way to send information to be the base for interoperability in CI/CD systems.
+    - Action: Ben - write an issue for this on GitHub https://github.com/cdevents/spec/issues
+- Action items from last time
+    - Document subscriber model (descriptive events) - create [issue created](https://github.com/cdevents/spec/issues/66)
+    - SDK Features: [issue created](https://github.com/cdevents/community/issues/4)
+
+
+SDK / Spec changes from the OSS Demo
+
+- DORA Metric demo at OSS Summit EU
+    - Quite a small audience in the room
+    - A few questions raised
+- Added a few fields in my [fork](https://github.com/afrittoli/cdevents-sdk-go/commits/main) of the SDK
+    - [repo in change events](https://github.com/afrittoli/cdevents-sdk-go/commit/b227cb6aa95d32fad39c447d6e80feb636d1ae51)
+    - [last change to artifact packaged](https://github.com/afrittoli/cdevents-sdk-go/commit/527d4a1aca5e8d0df24813df5ad65d049fc8d312)
+    - [artifact id to service events](https://github.com/afrittoli/cdevents-sdk-go/commit/71e4b6f13743359584383d0e65a2c9d20c666505)
+
+
 
 ## Sep 14th
 *Meeting canceled due Open Source Summit*
