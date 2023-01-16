@@ -10,6 +10,102 @@ This document contains the notes from the of the Events SIG meetings focused on 
 
 The Tuesday meetings are held at [3pm UTC](https://time.is/3pm_in_UTC) during summer time and at [4pm UTC](https://time.is/4pm_in_UTC) during winter time), and the Wednesday meetings are held at [10am UTC](https://time.is/10am_in_UTC) during summer time and at [11am UTC](https://time.is/11am_in_UTC) during winter time).
 
+
+## Jan 16th, 2023
+
+Participants:
+- Andrea Frittoli, IBM, UTC
+- Emil Bäckmark, Ericsson, UTC+1
+- Brad McCoy, Basiq, UTC+10
+- Ole Lensmar, Kubeshop, UTC+1
+- Bruno Lopes, Kubeshop, UTC+1
+
+Links:
+- [v0.2 Roadmap](https://github.com/orgs/cdevents/projects/1/views/9)
+    - Planned for Feb 16th
+
+Agenda:
+- Action items from last week
+    - Needs review https://github.com/cdevents/sdk-java/pull/12
+        - Review comments need to be addressed
+        - (Andrea) How are we planning the migration?
+    - Spinnaker RFC ad-hoc meeting
+        - Left a comment on https://github.com/spinnaker/governance/pull/299
+        - Any more updates?
+
+- Shall we archive meeting notes from 2022?
+    - (Andrea) Create an archive file for CDEvents and SIG
+    - (Andrea) Sync to GitHub, add link to past ones
+
+- Test events
+    - Proposal by Ole (TestKube) https://github.com/kubeshop/cdevents-spec/blob/main/testing-events.md
+        - Moving events to a dedicated bucket
+        - Tests can be executed outside of CI
+    - Are CDEvents only for automated scenarios?
+        - Not necessarily!
+    - Agreed: Move test events to a new bucket
+        - Update schema
+    - Test types
+        - Could be an enum
+        - We could start with plain string
+        - Work in the interop WG about standard naming
+
+- Incident events
+    - https://github.com/cdevents/spec/issues/59
+    - ([@menehune23](https://github.com/menehune23)) proposed to start with a minimalist model
+    - (Emil) We need a formal definition of incidents
+    - Minimal data model (starting point)
+        - Subject: Incident
+        - Attributes:
+            - ID, Source (mandatory in all subjects)
+            - Environment (reference, mandatory)
+            - Service or Artifact (reference, optional)
+        - Predicates:
+            - reported
+            - resolved
+
+- Conferences
+    - cdCon CFP open, early bird ends Jan 17th
+        - Feb 10th CFP deadline
+        - https://cd.foundation/blog/2023/01/11/cdcon-2023-call-for-papers-now-open/
+
+- Other updates?
+    - Jenkins X
+        - Starting back after holidays, next week meeting
+    - Python SDK
+
+
+## Jan 10th, 2023
+
+Participants:
+- Andrea Frittoli, IBM, UTC
+- Emil Bäckmark, Ericsson, UTC+1
+- Ben Powell, Apple
+- Jalander Ramagiri, Ericsson Software Technology, UTC
+
+
+Links:
+- [v0.2 Roadmap](https://github.com/orgs/cdevents/projects/1/views/9)
+    - Planned for Feb 16th
+
+Agenda:
+- Spec Updates
+    - Connecting events, [design](https://hackmd.io/-Or6hobHSLWVj4duAWX7nA) WIP 
+
+- SDK Updates
+    - Golang
+        - No updates
+    - Java
+        - Adam is working on it
+        - Update to the continuous deployment events
+        - Needs review: https://github.com/cdevents/sdk-java/pull/12
+    - Python
+
+- Tool Updates
+    - Spinnaker
+    - [RFC](https://github.com/spinnaker/governance/pull/299)
+    - Proposal: setup an ad-hoc meeting to discuss and progress on the RFC
+
 ## Dec 19th
 
 Participants:
