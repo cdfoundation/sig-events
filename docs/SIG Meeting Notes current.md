@@ -13,15 +13,60 @@ The SIG was initiated as a [workstream under SIG Interoperability ]( https://git
 Meeting notes for the workstream are managed on HackMD [here](https://hackmd.io/xjK5ujQbTHSaEZjoY28b8g), and published to GitHub [here](https://github.com/cdfoundation/sig-events/blob/main/docs/meetings.md).
 
 ## Future Presentations/Meetings
+- Interoperability initiative together with VSMI
 
-### TOC Project Nominations
-- Nominations to be provided between May 22 and June 5. See [process](https://github.com/cdfoundation/toc/pull/202). Voters registration open until May 26.
-- Are you on [the voters list](https://protect2.fireeye.com/v1/url?k=31323334-501d5122-313273af-454445555731-4b8c207147c35781&q=1&e=14a79fae-dd7b-404d-85c3-fd3782645f4d&u=https%3A%2F%2Fgithub.com%2Fcdfoundation%2Ftoc%2Fblob%2Ff4accdde9248981c80507b982f4214b098c780d6%2Felections%2F2023%2Fvoters.md)? If not, and if you consider yourself a contributor to CDF or any of its projects, you could sign up on [this form](https://protect2.fireeye.com/v1/url?k=31323334-501d5122-313273af-454445555731-7c934222755ef6a8&q=1&e=14a79fae-dd7b-404d-85c3-fd3782645f4d&u=https%3A%2F%2Fdocs.google.com%2Fforms%2Fd%2Fe%2F1FAIpQLSdsxCadKwauQ4EHjaNihGtVQJQ027ECsXBZACU7WqXm4dBMCw%2Fviewform).
+
+## June 5
+
+### Participants
+* Emil Bäckmark, Ericsson, UTC+2.
+* Andrea Frittoli, IBM, UTC+1
+* Tracy Ragan, DeployHub/Ortelius
+* \<please add yourself\>
+
+### Agenda
+
+- Action items from previous meetings
+    - (Emil) prepare SIG Events/CDEvents project info needed by TOC
+    - (Andrea) Talk to Michael from Argo CD about possible collaboration
+        - Done. See collaboration with ArgoCD below
+
+- Updates from other CDF Groups
+    - TOC
+        - [TOC Project representatives elections](https://github.com/cdfoundation/toc/tree/main/elections/2023#project-representative-elections)
+            - Emil nominated as representative for CDEvents
+            - Voting to be performed between June 12 and 26
+
+
+- Collaboration with other communities
+    - OpenSSF
+        - [Alpha-Omega](https://openssf.org/community/alpha-omega/) group - https://github.com/ossf/alpha-omega
+        - New workgroup: [Sterling toolchain](https://github.com/ossf/tac/issues/151)
+            - Next meeting in OpenSSF June 6, 9AM PT https://zoom-lfx.platform.linuxfoundation.org/meeting/99113620416?password=62d59368-d605-4207-a5dc-dcd60fd9352f
+            - Andrea might be able to join
+    - CNCF TAG App Delivery
+        - Meet them again on June 7?
+        - https://calendar.google.com/calendar/u/0/embed?src=linuxfoundation.org_o5avjlvt2cae9bq7a95emc4740@group.calendar.google.com
+        - https://github.com/cncf/tag-app-delivery/issues/397
+    - ArgoCD
+        - RFC created https://github.com/orgs/cdevents/projects/4/views/10
+        - https://github.com/argoproj/argo-cd/pull/13723
+    - Whitepaper on Test events
+        - A blog being written together with Tracy Ragan and Ole Lensmar from Kubeshop
+        - CDF Online Meetup on Testing https://www.meetup.com/cd-foundation-online/events/293894216/
+
+- Plan for CDEvents v0.4
+    - [v0.4 Roadmap](https://github.com/orgs/cdevents/projects/1/views/13)
+    - [all in roadmap](https://github.com/orgs/cdevents/projects/1/views/8)
+    - [issues in CDEvents org not labeled with roadmap](https://github.com/issues?page=1&q=is%3Aopen+is%3Aissue+archived%3Afalse+user%3Acdevents+-label%3Aroadmap)
+        - We got through all issues in spec repo, but there might be issues in other repos that we should look potentially add to the 0.4 roadmap as well.
+
 
 ## May 22
 
 ### Participants
 * Emil Bäckmark, Ericsson, UTC+2
+* Andrea Frittoli, IBM, UTC+1
 * \<please add yourself\>
 
 ### Agenda
