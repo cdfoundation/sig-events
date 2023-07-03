@@ -14,6 +14,86 @@ Meeting notes for the workstream are managed on HackMD [here](https://hackmd.io/
 
 ## Future Presentations/Meetings
 - Interoperability initiative together with VSMI
+- July 3rd: [Microcks](https://github.com/microcks) (30min) 
+    - Simulating CloudEvents with [AsyncAPI](https://www.asyncapi.com/) and [Microcks](https://microcks.io/) and potential usages within CDEvents dev cycle for mocking and testing purpose.
+    - Trailers: https://microcks.io/blog/simulating-cloudevents-with-asyncapi/ & https://youtu.be/_p9RyClgYhE 
+
+
+## July 3
+
+### Participants
+* Andrea Frittoli, IBM, UTC+1
+* Fatih Degirmenci, CDF, UTC+2
+* Steve Pereira, VSMI, UTC-5
+
+### Agenda
+
+- Action items from previous meetings
+    - n/a
+
+- Updates from other CDF or related groups
+    - VSM Interoperability: [new monthly meeting](https://calendar.google.com/calendar/event?action=TEMPLATE&tmeid=NzB2aGIydW1ubzJqdTl1cmRhcmZkMHM0cXVfMjAyMzA3MjVUMTMwMDAwWiBsaW51eGZvdW5kYXRpb24ub3JnX21oZjBrbWdlZG42N2lobmk4cjEyOWF2cDI0QGc&tmsrc=linuxfoundation.org_mhf0kmgedn67ihni8r129avp24%40group.calendar.google.com&scp=ALL) every last Tuesday of the month, 1pm UTC
+    - CNCF TAG App Delivery
+        - Looking for contributors to drive a CDEvents based podtato-head version
+    - OpenSSF
+        - Weekly toolbelt meeting, Tue @ 4pm UTC
+        - Opportunity for OpenSSF / CDEvents collaboration
+    - OpenTelemetry
+        - [CI/CD Semantic in OpenTelemetry](https://github.com/open-telemetry/oteps/pull/223)
+
+- [Microcks](https://github.com/microcks) (30min) 
+    - Simulating CloudEvents with [AsyncAPI](https://www.asyncapi.com/) and [Microcks](https://microcks.io/) and potential usages within CDEvents dev cycle for mocking and testing purpose.
+    - Trailers: https://microcks.io/blog/simulating-cloudevents-with-asyncapi/ & https://youtu.be/_p9RyClgYhE 
+
+
+
+## June 26
+
+### Participants
+* Andrea Frittoli, IBM, UTC+1
+* Emil Bäckmark, Ericsson, UTC+2
+* \<please add yourself\>
+
+### Agenda
+
+- Action items from previous meetings
+    - (Emil) prepare SIG Events/CDEvents project info needed by TOC
+
+- Updates from other CDF or related groups
+    - TOC
+        - [TOC Project representatives elections](https://github.com/cdfoundation/toc/tree/main/elections/2023#project-representative-elections)
+            - Last day to vote is today!
+    - CNCF TAG App Delivery
+        - Looking for contributors to drive a CDEvents based podtato-head version
+        - When to meet next? Not yet planned
+        - Is Direktiv in the scope for this TAG? https://www.linkedin.com/posts/direktiv_cloud-native-landscape-activity-7076847310835486720-sjtA
+    - OpenSSF
+        - Tracy R has asked for contributors from OpenSSF to help with the CDEvents security events
+        - Alpha-omega and Sterling toolchain groups
+            - Meeting on June 6
+            - Andrea participated on the Sterling toolchain meeting
+        - [Meeting Notes](https://docs.google.com/document/d/1H3Nk0PwmylLg5F7pqrIvyKzTyXAll0-f50B7DdqOh4A/edit)
+            - [Security Toolbelt MVSR](https://docs.google.com/document/d/1k-0ReRSXEOIT8FRVbwNMe0BJ-QUvn-0c0hfFY-f4QzA/edit)
+        - We have been requested to provide some meetups slide deck material to OpenSSF Asia. Andrea will connect back to Tracy about this.
+
+- Eiffel Summit held in June
+    - [Agenda](https://eiffel-community.github.io/summit.html)
+    - [Recordings](https://www.youtube.com/playlist?list=PLU5MfFmhN7pzm-K39EKP82NzLGvYa0WvQ)
+    - Emil should provide a summary of the Eiffel Summit in a coming SIG Events meeting
+
+- Collaboration with VSMI
+    - Discussions have stalled a while. Re-launched in a [dedicated meeting tomorrow](https://calendar.google.com/calendar/event?eid=NHQxMGI2MWs5YjdlYTE2cnNtOGxnanRqMDQgbGludXhmb3VuZGF0aW9uLm9yZ19taGYwa21nZWRuNjdpaG5pOHIxMjlhdnAyNEBn&ctz=UTC).
+
+- SIG Events and CDEvents meetings over the summer
+    - To be held as usual. Emil is off some weeks, but Andrea will drive. Later Andrea is off and Emil will drive.
+    - Exceptions to this should be communicated in Slack
+
+
+
+
+## June 19
+
+Meeting postponed one week. Next meeting on June 26
 
 
 ## June 5
