@@ -6,7 +6,7 @@ tags: SIG Events
 
 [![hackmd-github-sync-badge](https://hackmd.io/xjK5ujQbTHSaEZjoY28b8g/badge)](https://hackmd.io/xjK5ujQbTHSaEZjoY28b8g)
 
-This SIG meets bi-weekly on Mondays at [3pm UTC](https://time.is/3pm_in_UTC) during summer time and at [4pm UTC](https://time.is/4pm_in_UTC) during winter time). The meeting can be accessed through [this zoom link](https://zoom.us/j/98408983891?pwd=VXBxMjJTaThGRGFWRXFmdUxsRUZUdz09). For older meetings please see our [playlist on YouTube](https://www.youtube.com/playlist?list=PL2KXbZ9-EY9RlxWAnAjxs8Azuz11XVhkC)
+This SIG meets bi-weekly on Mondays at [3pm UTC](https://time.is/3pm_in_UTC) during summer time and at [4pm UTC](https://time.is/4pm_in_UTC) during winter time). See the [CDF Public Calendar](https://calendar.google.com/calendar/u/0/embed?src=linuxfoundation.org_mhf0kmgedn67ihni8r129avp24@group.calendar.google.com&ctz=CET) for zoom link and other meeting details. For older meetings please see our [playlist on YouTube](https://www.youtube.com/playlist?list=PL2KXbZ9-EY9RlxWAnAjxs8Azuz11XVhkC)
 
 The SIG was initiated as a [workstream under SIG Interoperability ]( https://github.com/cdfoundation/sig-interoperability/blob/master/docs/meetings_2020.md#May-28-2020) and its first meeting was held on June 8th 2020.
 
@@ -14,9 +14,6 @@ Meeting notes for the workstream are managed on HackMD [here](https://hackmd.io/
 
 ## Future Presentations/Meetings
 - Interoperability initiative together with VSMI
-- July 3rd: [Microcks](https://github.com/microcks) (30min) 
-    - Simulating CloudEvents with [AsyncAPI](https://www.asyncapi.com/) and [Microcks](https://microcks.io/) and potential usages within CDEvents dev cycle for mocking and testing purpose.
-    - Trailers: https://microcks.io/blog/simulating-cloudevents-with-asyncapi/ & https://youtu.be/_p9RyClgYhE 
 
 
 ## July 3
