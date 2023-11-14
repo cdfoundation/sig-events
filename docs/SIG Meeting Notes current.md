@@ -6,14 +6,92 @@ tags: SIG Events
 
 [![hackmd-github-sync-badge](https://hackmd.io/xjK5ujQbTHSaEZjoY28b8g/badge)](https://hackmd.io/xjK5ujQbTHSaEZjoY28b8g)
 
-This SIG meets bi-weekly on Mondays at [3pm UTC](https://time.is/3pm_in_UTC) during summer time and at [4pm UTC](https://time.is/4pm_in_UTC) during winter time). See the [CDF Public Calendar](https://calendar.google.com/calendar/u/0/embed?src=linuxfoundation.org_mhf0kmgedn67ihni8r129avp24@group.calendar.google.com&ctz=CET) for zoom link and other meeting details. For older meetings please see our [playlist on YouTube](https://www.youtube.com/playlist?list=PL2KXbZ9-EY9RlxWAnAjxs8Azuz11XVhkC)
+This SIG meets bi-weekly on Mondays at [3pm UTC](https://time.is/3pm_in_UTC) during summer time and at [4pm UTC](https://time.is/4pm_in_UTC) during winter time). See the [CDF Public Calendar](https://calendar.google.com/calendar/u/0/embed?src=linuxfoundation.org_mhf0kmgedn67ihni8r129avp24@group.calendar.google.com) for zoom link and other meeting details. For older meetings please see our [playlist on YouTube](https://www.youtube.com/playlist?list=PL2KXbZ9-EY9RlxWAnAjxs8Azuz11XVhkC)
 
 The SIG was initiated as a [workstream under SIG Interoperability ]( https://github.com/cdfoundation/sig-interoperability/blob/master/docs/meetings_2020.md#May-28-2020) and its first meeting was held on June 8th 2020.
 
 Meeting notes for the workstream are managed on HackMD [here](https://hackmd.io/xjK5ujQbTHSaEZjoY28b8g), and published to GitHub [here](https://github.com/cdfoundation/sig-events/blob/main/docs/meetings.md).
 
 ## Future Presentations/Meetings
+
 - Interoperability initiative together with VSMI
+- New blog post, focused on CDEvents Testing events: https://cd.foundation/blog/2023/08/01/cdevents-embraces-testing-in-cd-pipelines/
+- New Techstrong TV episode in The CD Pipeline, about Testing, mentioning CDEvents a lot: https://techstrong.tv/videos/cd-pipeline/advancing-testing-in-continuous-delivery-unveiling-challenges-strategies-and-the-cd-foundations-initiatives-the-cd-pipeline-ep-8
+- Hacktoberfest results
+
+
+## Nov 14
+
+Canceled due to no items on the agenda
+
+
+## Oct 16
+
+Canceled due to no items on the agenda
+
+
+## Oct 9
+
+Meeting rescheduled to next week (Oct 16)
+
+
+## Sep 25
+
+Canceled due to no items on the agenda
+
+
+## Sep 11
+
+Canceled
+
+
+## Aug 28
+
+### Participants
+* Emil Bäckmark, Ericsson, UTC+2
+* Jalander Ramagiri, Ericsson Software Technology, UTC+1
+* Adam Kenihan, Ericsson Software Technology, UTC+1
+* Dave Donnelly, Ericsson Software Technology, UTC+1
+* Andrew Fenner, Ericsson Software Technology, UTC+1
+* Victor Lu
+* Tracy Ragan, DeployHub / Ortelius, UTC-6 
+
+
+### Agenda
+
+- Action items from previous meetings
+
+- Updates from other CDF or related groups
+    - CDEvents
+        - A [Dotnet SDK](https://github.com/cdevents/sdk-dotnet) is being developed
+
+- Conferences & Meetups
+    - [CD Mini Summit](https://events.linuxfoundation.org/open-source-summit-europe/features/co-located-events/#cd-mini-summit) (co-located with [Open Source Summit Europe](https://events.linuxfoundation.org/open-source-summit-europe/)) in Bilbao, Spain
+        - Virtual attendence possible
+
+- Visualization PoC demo - Jalander
+    - Based on PoC inn sig-events repo
+    - GitHub Actions event sending added
+    - Next steps
+        - Update to the latest current spec, merge to https://github.com/cdevents/visualisation
+        - Once the connecting events is in place the PoC should be updated accordingly
+
+- Hacktoberfest
+    - Emil to create an issue and send to Tracy today!
+        - https://github.com/cdevents/community/issues/35
+
+
+## Aug 14
+
+### Participants
+* Emil Bäckmark, Ericsson, UTC+2
+* Steve Pereira, VSMI, UTC-5
+
+### Agenda
+
+- VSMI Updates
+    - [OSLC](https://open-services.net/) also does some standardization on VSM related data. Should we somehow relate to that?
+    - Issued a survey to vendors on interoperability but have yet to receive a meaningful response
 
 
 ## July 3
