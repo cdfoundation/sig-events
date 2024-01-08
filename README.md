@@ -1,4 +1,13 @@
-# CDF Events Special Interest Group
+# CDF Events Special Interest Group - **Archived**
+
+The initial work produced by the Events SIG is available in this repository and it
+lead to the creation of the [CDEvents Project](https://cdevents.dev).
+
+The conversation about interoperability and events continues at the CDF through the work
+of the [CDEvents Project](https://cdevents.dev) and its
+[CDEvents Implementation Working Group](https://github.com/cdevents/implementation-wg).
+
+If you are interested in events and interoperability please join us at the CDEvents project.
 
 ## Quick links
 
