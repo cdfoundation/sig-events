@@ -86,6 +86,7 @@ Current members:
 - Moteesh Reddy [@moteesh-in2tive](https://github.com/moteesh-in2tive), [Ozone](https://ozone.one/)
 - Marcus Philip [@marcusphi](https://github.com/marcusphi), [Avanza](https://www.avanza.se/)
 - Adam Gardner [@agardnerit](https://github.com/agardnerit), [OpenFeature](https://openfeature.dev)/[Keptn](https://keptn.sh)
+- Muktesh Mishra [@codedevil](https://github.com/mukteshkrmishra), Independent
 
 ### New Members
 
